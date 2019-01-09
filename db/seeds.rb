@@ -85,55 +85,20 @@ post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.j
 #   ex) <img src=”<% url_for(@car.picture)%>”
 
 
-
-
 # add in react app
 # https://suncoast.io/handbook/resources/add-react-app-to-rails  
-# skip 1 ,3 , 7
+# skip step 1
 # get capstone-v2 in the ruby app and rename it as client - lowercase c
-# then go see gavin for getting rid of github connection
+# then go see gavin for getting rid of github connection 
 
 
-# data response 
-# click on Profile
-# pass the id and pull the data for that Profile  
-#   - profile info
-#     - name 
-#     - about_me  
-#     - quote
-# {
-#   profile: {
-#     name: "shea", 
-#     about_me: "I enjoy learning and growing through challenges", 
-#     quote: "resilence",
-#     profile_image: url_for(profile.profile_image), 
-#     cover_image: url_for(profile.cover_image)
-#   }
-# }
+# when clicking on comment to see all comments for a post 
+# pass the id and pull the data for that comment  
+# comments  
+# - profile image
+# - profile name
+# - comment_body
 
-
-# {
-# posts [
-    # {
-    # title: "How to do stuff", 
-    # image: image_url_here, 
-    # body: "blah blah", 
-    # post_image: "client/src/assets/dev.jpeg"
-    # }, 
-    # {
-    # title: "How to do more stuff", 
-    # image: image_url_here, 
-    # body: "blah blah", 
-    # post_image: "client/src/assets/dev.jpeg"
-    # }, 
-    # {
-    # title: "How do i get this backend stuff down?", 
-    # image: image_url_here, 
-    # body: "resilence i guess? meet up this weekend?", 
-    # post_image: "client/src/assets/dev.jpeg"
-    # }
-#   ]
-# }
 
 
 #   - posts 
@@ -165,3 +130,32 @@ post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.j
 # 11) Keep repeating steps 6 through 9 for parts of your app that show data
 # 12) Then work on the parts of your app that create/edit data through forms.
 # ..........................
+
+
+
+#
+# creating a controller
+#
+# in terminal
+#   - rails generate controller api/profiles
+
+# in routes.rb
+#   Rails.application.routes.draw do
+#     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+#     get "/api/profiles/:id", to: "api/profiles#show"
+#   end
+
+#   in profile controller
+#   class Api::ProfilesController < ApplicationController
+#     def show
+#       profile_id = params[:id]
+  
+#       profile = Profile.find(profile_id)
+  
+#       render json: {
+#         profile: {
+#           name: profile.name, 
+  
+#         }
+#       }
+#     end
