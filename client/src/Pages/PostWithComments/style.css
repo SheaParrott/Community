@@ -1,0 +1,19 @@
+/* Comment */
+div.comment {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  text-align: left;
+}
+h6.comment,
+p.comment {
+  margin: 0 0 0 15px;
+}
+input.comment {
+  margin: 5px;
+  width: 300px;
+}
+button.comment {
+  margin: 5px;
+  width: 200px;
+}

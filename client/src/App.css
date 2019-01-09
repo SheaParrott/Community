@@ -1,0 +1,54 @@
+.App {
+  text-align: center;
+  height: 100%;
+}
+
+/* general styling  */
+h1.AppName,
+.creator {
+  font-family: 'Lobster', cursive;
+  font-weight: 600;
+  letter-spacing: 0.9px;
+}
+header {
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 0 5px black;
+  padding: 5px 0 5px 0;
+  font-size: 25px;
+}
+p {
+  margin: 6px;
+}
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 0 5px black;
+  padding: 5px 0 5px 0;
+  font-size: 0.7rem;
+  opacity: 0.7;
+  margin-top: 4px;
+  width: 100%;
+}
+a {
+  text-decoration: none;
+  margin: 6px;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+a:hover {
+  color: #349af0;
+}
+
+h4 {
+  margin: 0;
+}
+h6 {
+  margin: 3px 0 3px 0;
+}
+.fas,
+.fab {
+  font-size: 2rem;
+}

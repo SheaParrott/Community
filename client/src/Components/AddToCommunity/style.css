@@ -1,0 +1,15 @@
+div.addToCommunityBox {
+  display: flex;
+  justify-content: center;
+}
+div.addToCommunity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px 0 5px;
+  box-shadow: 0 0 5px black;
+  border-radius: 20px;
+}
+.fa-plus-circle {
+  font-size: 20px;
+}

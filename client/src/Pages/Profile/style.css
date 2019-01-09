@@ -1,0 +1,110 @@
+/* profile page */
+div.CoverImage {
+  width: 100;
+}
+main.ProfileBody {
+  margin-top: -140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+img.ProfileCoverImage {
+  background: url(../../assets/space.jpeg) no-repeat;
+  background-size: contain;
+  border: 1px solid black;
+  width: 100%;
+}
+img.ProfileImage {
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 50%;
+  border: 1px solid black;
+  box-shadow: 0 0 4px white;
+}
+div.profileQuote {
+  width: 310px;
+  font-family: cursive;
+  padding: 5px 0 5px 0;
+}
+img.ProfileImage:hover {
+  box-shadow: 0 0 5px #349af0;
+  cursor: pointer;
+}
+div.profileAttributesBar {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 33px;
+}
+h6.profileAttributesLeft {
+  box-shadow: 0 0 5px black;
+  border-radius: 50%;
+  padding: 15px 22px 15px 22px;
+  margin: 2px -20px 2px 30px;
+}
+h6.profileAttributesMiddle {
+  box-shadow: 0 0 5px black;
+  border-radius: 50%;
+  padding: 10px 22px 10px 22px;
+  margin: -30px 9px 32px 9px;
+}
+h6.profileAttributesRight {
+  box-shadow: 0 0 5px black;
+  border-radius: 50%;
+  padding: 15px 22px 15px 22px;
+  margin: 2px 30px 2px -20px;
+}
+h6.profileAttributesLeft:hover,
+h6.profileAttributesMiddle:hover,
+h6.profileAttributesRight:hover {
+  box-shadow: 0 0 5px #349af0;
+  cursor: pointer;
+}
+
+div.profileBio {
+  margin: 5px;
+  width: 310px;
+  box-shadow: 0 0 5px black;
+}
+
+div.profileMyCommunityParent {
+  width: 310px;
+  box-shadow: 0 0 5px black;
+  margin-bottom: 5px;
+}
+div.profileMyCommunity {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 300px;
+  padding: 5px;
+}
+img.ProfileCommunityProfileImage {
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 50%;
+  border: 1px solid black;
+  box-shadow: 0 0 4px white;
+  margin: 5px;
+}
+
+img.ProfileRequestBoxImage {
+  max-width: 60px;
+  max-height: 40px;
+  box-shadow: 0 0 5px black;
+  margin: 5px;
+}
+div.ProfilePostsBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 310px;
+  box-shadow: 0 0 5px black;
+  margin: 0 5px 5px 5px;
+}
+div.ProfileRecommendedPost {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 1px black;
+  width: 300px;
+  margin: 1px;
+}

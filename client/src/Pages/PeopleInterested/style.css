@@ -1,0 +1,26 @@
+div.PeopleInterestedBox {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3px;
+}
+section.PeopleInterestedBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 0 0 1px black;
+  width: 300px;
+  margin: 1px;
+}
+img.PeopleInterestedProfileImage {
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 25%;
+  border: 1px solid black;
+  box-shadow: 0 0 4px white;
+  margin: 5px;
+  margin-right: 60px;
+}
+i.fa-ellipsis-v {
+  margin-left: 60px;
+}

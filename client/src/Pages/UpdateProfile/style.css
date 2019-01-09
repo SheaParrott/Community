@@ -1,0 +1,7 @@
+section.tagsBox {
+  display: flex;
+  flex-wrap: wrap;
+  width: 310px;
+  margin: 2px;
+  box-shadow: 0 0 5px black;
+}

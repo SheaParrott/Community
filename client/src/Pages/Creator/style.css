@@ -1,0 +1,23 @@
+/* creator page */
+h1.creator {
+  font-size: 2rem;
+  margin: 0 0 10px 0;
+  padding-top: 10px;
+}
+img.creator {
+  width: 160px;
+  box-shadow: 0 0 5px black;
+}
+p.creatorInfo {
+  font-weight: 700;
+}
+div.creator {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+}
+.fa-arrow-left {
+  padding-right: 40px;
+  margin-left: 20px;
+  font-size: 20px;
+}
