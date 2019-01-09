@@ -12,10 +12,50 @@ import Footer from '../../Components/Footer'
 import Post from '../../Components/Post/Post'
 import AddToCommunity from '../../Components/AddToCommunity/AddToCommunity'
 
+// {
+//   profile: {
+//     name: "shea",
+//     about_me: "I enjoy learning and growing through challenges",
+//     quote: "resilence",
+//     profile_image: url_for(profile.profile_image),
+//     cover_image: url_for(profile.cover_image)
+//   }
+// }
+
 class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      profile: {
+        name: 'shea',
+        about_me: 'I enjoy learning and growing through challenges',
+        quote: 'resilience',
+        profile_image: profileimg,
+        cover_image: coverimg,
+        posts: [
+          {
+            id: 1,
+            title: 'How to do stuff',
+            image: requestimg,
+            body: 'blah blah',
+            timestamp: '2/8/18'
+          },
+          {
+            id: 2,
+            title: 'How to do more stuff',
+            image: requestimg,
+            body: 'blah blah',
+            timestamp: '2/5/18'
+          },
+          {
+            id: 3,
+            title: 'How do i get this backend stuff down?',
+            image: requestimg,
+            body: 'resilence i guess? meet up this weekend?',
+            timestamp: '2/7/18'
+          }
+        ]
+      },
       profileBioSection: ''
     }
   }
@@ -29,13 +69,7 @@ class Profile extends Component {
     // console.log(this.state.profileBioSection)
     // will need if statements to make work right
     if (this.state.profileBioSection === '') {
-      return (
-        <p>
-          Pokem ipsum dolor sit amet Zekrom Nidoran Togetic Girafarig Hariyama
-          Cubchoo. V for victory Remoraid Terrakion Lanturn Seviper Grimer
-          Plusle.
-        </p>
-      )
+      return <p>{this.state.profile.about_me}</p>
     }
     if (this.state.profileBioSection === 'STRENGTHS') {
       return (
@@ -47,13 +81,7 @@ class Profile extends Component {
         </ul>
       )
     } else if (this.state.profileBioSection === 'ABOUT ME') {
-      return (
-        <p>
-          Pokem ipsum dolor sit amet Zekrom Nidoran Togetic Girafarig Hariyama
-          Cubchoo. V for victory Remoraid Terrakion Lanturn Seviper Grimer
-          Plusle.
-        </p>
-      )
+      return <p>{this.state.profile.about_me}</p>
     } else if (this.state.profileBioSection === 'STRUGGLES') {
       return (
         <ul>
@@ -71,18 +99,23 @@ class Profile extends Component {
       <div className="App">
         <Header />
         <div className="CoverImage">
-          <img className="ProfileCoverImage" src={coverimg} alt="profile" />
+          <img
+            className="ProfileCoverImage"
+            src={this.state.profile.cover_image}
+            alt="profile"
+          />
         </div>
         <main className="ProfileBody">
           <div className="profileTop">
             <Link to="/UpdateProfile">
-              <img className="ProfileImage" src={profileimg} alt="profile" />
+              <img
+                className="ProfileImage"
+                src={this.state.profile.profile_image}
+                alt="profile"
+              />
             </Link>
             <AddToCommunity />
-            <div className="profileQuote">
-              Failure will never overtake me if my determination to succeed is
-              strong enough.
-            </div>
+            <div className="profileQuote">{this.state.profile.quote}</div>
           </div>
           {/* on click fill bio box below with info */}
           {/* each struggle and strength needs to have a  tag tied to it */}
@@ -261,12 +294,19 @@ class Profile extends Component {
               <h6>See More</h6>
             </Link>
           </div>
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
+          {this.state.profile.posts.map(post => {
+            return (
+              <Post
+                key={post.id}
+                profileName={this.state.profile.name}
+                profileImage={this.state.profile.profile_image}
+                postTitle={post.title}
+                postImage={post.image}
+                postBody={post.body}
+                timestamp={post.timestamp}
+              />
+            )
+          })}
         </main>
         <Footer />
       </div>

@@ -7,6 +7,14 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 //
 // three lines is called a hamburger menu
 //
+
+// profileName={this.state.profile.name}
+// profileImage={this.state.profile.profile_image}
+// postTitle={post.title}
+// postImage={post.image}
+// postBody={post.body}
+// timestamp={post.timestamp}
+
 class Post extends Component {
   render() {
     return (
@@ -17,15 +25,17 @@ class Post extends Component {
               <Link to="/Profile">
                 <img
                   className="requestBoxProfileImage"
-                  src={profileimg}
+                  src={this.props.profileImage}
                   alt="profile"
                 />
               </Link>
               <div className="requestBoxTopBarInfo">
                 <Link to="/Profile">
-                  <p className="requestBoxProfileName">Pickle Rick</p>
+                  <p className="requestBoxProfileName">
+                    {this.props.profileName}
+                  </p>
                 </Link>
-                <p className="requestBoxDate">Yesterday</p>
+                <p className="requestBoxDate">{this.props.timestamp}</p>
               </div>
               {/* options menu (possibly remove)
               - turn off notifications? 
@@ -34,12 +44,9 @@ class Post extends Component {
                 <i className="fas fa-ellipsis-v" />
               </a>
             </div>
-            <h4 className="requestBoxTitle">Need help with react router!!</h4>
+            <h4 className="requestBoxTitle">{this.props.postTitle}</h4>
             <img className="requestBoxImage" src={requestimg} alt="request" />
-            <ul>
-              <li>free on weekends and nights after 7</li>
-              <li>Meetup at Starbucks downtown St.Pete?</li>
-            </ul>
+            <p>{this.props.postBody}</p>
             <div className="requestBoxMiddleBar">
               <div className="requestBoxMiddleBarTwo">
                 <Link to="/PostWithComments">

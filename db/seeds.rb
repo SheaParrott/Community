@@ -112,24 +112,28 @@ post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.j
 # }
 
 
-
+# {
 # posts [
-#   {
-#   title: "How to do stuff", 
-#   image: image_url_here, 
-#   body: "blah blah"
-#   }, 
-#   {
-#   title: "How to do more stuff", 
-#   image: image_url_here, 
-#   body: "blah blah"
-#   }, 
-#   {
-#   title: "How do i get this backend stuff down?", 
-#   image: image_url_here, 
-#   body: "resilence i guess? meet up this weekend?"
+    # {
+    # title: "How to do stuff", 
+    # image: image_url_here, 
+    # body: "blah blah", 
+    # post_image: "client/src/assets/dev.jpeg"
+    # }, 
+    # {
+    # title: "How to do more stuff", 
+    # image: image_url_here, 
+    # body: "blah blah", 
+    # post_image: "client/src/assets/dev.jpeg"
+    # }, 
+    # {
+    # title: "How do i get this backend stuff down?", 
+    # image: image_url_here, 
+    # body: "resilence i guess? meet up this weekend?", 
+    # post_image: "client/src/assets/dev.jpeg"
+    # }
+#   ]
 # }
-# ]
 
 
 #   - posts 
@@ -141,3 +145,23 @@ post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.j
 #     - posts images
 #   - interested posts  
 #   - recommended posts 
+
+
+
+
+# ..........................
+# @channel Gavin’s “HOW TO SUCCEED AT CAPSTONE” (Ruby Edition)
+
+# 1) Make a new rails app
+# 2) do `rails g model` as often as you like - and setup your various `belongs_to` and `has_many` relations
+# 3) Generate some sample/fake data
+# 4) Merge your react app into your app as the `client` folder
+# 5) Start with a part of your API that is showing/listing data
+# 6) Convert static HTML to static data from `this.state`  (e.g. static `ul` / `li` example from the Taco Locations app) - Then change UI to use `map` to iterate over state to dynamically generate your UI
+# 7) The JSON you have in `this.state` will be the JSON you need from your controllers.
+# 8) Generate a controller. See how we created a controller to `index` (list) all the taco locations - Have the controller build a JSON structure like the one you made in steps 5 + 6
+# 9) Change hard coded state to using axios to fetch from your API
+# 10) Refresh the UI if you need things like maps, etc.
+# 11) Keep repeating steps 6 through 9 for parts of your app that show data
+# 12) Then work on the parts of your app that create/edit data through forms.
+# ..........................
