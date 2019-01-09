@@ -6,21 +6,56 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+def image(path)
+  File.open(Rails.root.join(path))
+end
+
 # To reset all the data in the database:
-#    rails db:schema:load db:seed
+#    rails db:schema:load
+#    rails db:seed
+
+
+# new profile
 gavin = Profile.create(name: "Gavin", about_me: "Ruby developer and improviser", quote: "Time is an illusion, lunchtime doubly so")
-gavin.posts.create(title: "About SDG", body: "blah blah blah")
-gavin.posts.create(title: "About APU", body: "My improv team is called APU")
+# Manual image uploading
+gavin.profile_image.attach(io: image('client/src/assets/picklerick.jpg'), filename: 'picklerick.jpg')
+gavin.cover_image.attach(io: image('client/src/assets/space.jpeg'), filename: 'space.jpeg')
+# posts
+post = gavin.posts.create(title: "About SDG", body: "blah blah blah")
+post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
 
-jason = Profile.create(name: "Jason", about_me: "CEO of SDG", quote: "Whoa!")
-jason.posts.create(title: "How to create a code school", body: "blah blah")
-jason.posts.create(title: "How to create a other things", body: "blah blah")
+post = gavin.posts.create(title: "About APU", body: "My improv team is called APU")
+post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+# end
 
+# new profile
+jason = Profile.create(name: "Jason", about_me: "Ruby developer and CEO", quote: "hmmmm.....djhfjsh")
+# Manual image uploading
+jason.profile_image.attach(io: image('client/src/assets/picklerick.jpg'), filename: 'picklerick.jpg')
+jason.cover_image.attach(io: image('client/src/assets/space.jpeg'), filename: 'space.jpeg')
+# posts
+post = jason.posts.create(title: "How to create a code school", body: "blah blah")
+post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+
+post = jason.posts.create(title: "How to create a other things", body: "blah blah")
+post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+# end
+
+# new profile
 shea = Profile.create(name: "shea", about_me: "creater of this app", quote: "resilence")
-shea.posts.create(title: "How to do stuff", body: "blah blah")
-shea.posts.create(title: "How to do more stuff", body: "blah blah")
-shea.posts.create(title: "How do i get this backend stuff down?", body: "resilence i guess? meet up this weekend?")
+# Manual image uploading
+shea.profile_image.attach(io: image('client/src/assets/picklerick.jpg'), filename: 'picklerick.jpg')
+shea.cover_image.attach(io: image('client/src/assets/space.jpeg'), filename: 'space.jpeg')
+# posts
+post = shea.posts.create(title: "How to do stuff", body: "blah blah")
+post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
 
+post = shea.posts.create(title: "How to do more stuff", body: "blah blah")
+post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+
+post = shea.posts.create(title: "How do i get this backend stuff down?", body: "resilence i guess? meet up this weekend?")
+post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+# end
 
 
 # api only instructions
@@ -37,15 +72,12 @@ shea.posts.create(title: "How do i get this backend stuff down?", body: "resilen
 #     - :picture
 # [] run rails db:migrate in terminal
 # (pt.2) resizing images 
-# [] add in gem for mini_magic
+# [x] add in gem for mini_magic
 #   - Bundle add mini_magic
-# [] add in imagemagic globally if not done already
+# [x] add in imagemagic globally if not done already
 #   - Brew install imagemagic
 #     - this allows us to resize images like so 
 #       - <% image_tag @car.picture.variant(resize: “75x75”)%>
-  
-
-
 
 
 # notes:
@@ -73,9 +105,13 @@ shea.posts.create(title: "How do i get this backend stuff down?", body: "resilen
 #   profile: {
 #     name: "shea", 
 #     about_me: "I enjoy learning and growing through challenges", 
-#     quote: "resilence"
+#     quote: "resilence",
+#     profile_image: url_for(profile.profile_image), 
+#     cover_image: url_for(profile.cover_image)
 #   }
 # }
+
+
 
 # posts [
 #   {
