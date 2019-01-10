@@ -18,7 +18,8 @@ class Profile extends Component {
     super(props)
     this.state = {
       profile: {
-        posts: []
+        posts: [],
+        interested_posts: []
       },
       profileBioSection: ''
     }
@@ -240,36 +241,20 @@ class Profile extends Component {
           </div>
           <div className="ProfilePostsBox">
             <h6>interested Posts:</h6>
-            <Link to="/PostWithComments">
-              <div className="ProfileRecommendedPost">
-                <img
-                  className="ProfileRequestBoxImage"
-                  src={requestimg}
-                  alt="request"
-                />
-                <h4>Need help with react router!!</h4>
-              </div>
-            </Link>
-            <Link to="/PostWithComments">
-              <div className="ProfileRecommendedPost">
-                <img
-                  className="ProfileRequestBoxImage"
-                  src={requestimg}
-                  alt="request"
-                />
-                <h4>Need help with react router!!</h4>
-              </div>
-            </Link>
-            <Link to="/PostWithComments">
-              <div className="ProfileRecommendedPost">
-                <img
-                  className="ProfileRequestBoxImage"
-                  src={requestimg}
-                  alt="request"
-                />
-                <h4>Need help with react router!!</h4>
-              </div>
-            </Link>
+            {this.state.profile.interested_posts.map(post => {
+              return (
+                <Link to="/PostWithComments">
+                  <div className="ProfileRecommendedPost">
+                    <img
+                      className="ProfileRequestBoxImage"
+                      src={post.image}
+                      alt="request"
+                    />
+                    <h4>{post.title}</h4>
+                  </div>
+                </Link>
+              )
+            })}
             <Link to="/Posts">
               <h6>See More</h6>
             </Link>
