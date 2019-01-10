@@ -57,6 +57,16 @@ post = shea.posts.create(title: "How do i get this backend stuff down?", body: "
 post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
 # end
 
+tag.create(name: "general")
+tag.create(name: "life")
+tag.create(name: "health")
+tag.create(name: "Web development")
+tag.create(name: "automotive")
+tag.create(name: "sports")
+tag.create(name: "gaming")
+tag.create(name: "cooking")
+
+
 
 # api only instructions
 # rails new --app

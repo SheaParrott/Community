@@ -12,7 +12,6 @@ import coverimg from '../../assets/space.jpeg'
 import requestimg from '../../assets/dev.jpeg'
 import Footer from '../../Components/Footer'
 import Post from '../../Components/Post/Post'
-import AddToCommunity from '../../Components/AddToCommunity/AddToCommunity'
 
 class Profile extends Component {
   constructor(props) {
