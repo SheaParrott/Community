@@ -14,31 +14,88 @@ end
 #    rails db:schema:load
 #    rails db:seed
 
+#tags
+general = Tag.create(name: "general")
+life = Tag.create(name: "life")
+health = Tag.create(name: "health")
+web = Tag.create(name: "Web development")
+automotive = Tag.create(name: "automotive")
+sports = Tag.create(name: "sports")
+gaming = Tag.create(name: "gaming")
+cooking = Tag.create(name: "cooking")
+networking = Tag.create(name: "networking")
 
 # new profile
 gavin = Profile.create(name: "Gavin", about_me: "Ruby developer and improviser", quote: "Time is an illusion, lunchtime doubly so")
+
 # Manual image uploading
 gavin.profile_image.attach(io: image('client/src/assets/picklerick.jpg'), filename: 'picklerick.jpg')
 gavin.cover_image.attach(io: image('client/src/assets/space.jpeg'), filename: 'space.jpeg')
-# posts
-post = gavin.posts.create(title: "About SDG", body: "blah blah blah")
+
+# This says, GAVIN (the profile) has a STRENGTH (boolean) in WEB (tag)
+ProfileTagging.create(profile: gavin, tag: web, strength: true)
+ProfileTagging.create(profile: gavin, tag: life, strength: true)
+ProfileTagging.create(profile: gavin, tag: networking, strength: true)
+
+# This says, GAVIN (the profile) has a WEAKNESS (boolean) in HEALTH (tag)
+ProfileTagging.create(profile: gavin, tag: health, strength: false)
+ProfileTagging.create(profile: gavin, tag: automotive, strength: false)
+ProfileTagging.create(profile: gavin, tag: gaming, strength: false)
+
+# [x , x] posts the user made, then post tagging 
+post = gavin.authored_posts.create(title: "About SDG", body: "blah blah blah")
 post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
 
-post = gavin.posts.create(title: "About APU", body: "My improv team is called APU")
+# [x] create a bunch of of post taggings. associate posts with multiple tags
+PostTagging.create(post: post, tag: gaming)
+PostTagging.create(post: post, tag: web)
+PostTagging.create(post: post, tag: networking)
+
+
+post = gavin.authored_posts.create(title: "About APU", body: "My improv team is called APU")
 post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+
+# [x] create a bunch of of post taggings. associate posts with multiple tags
+PostTagging.create(post: post, tag: general)
+PostTagging.create(post: post, tag: life)
+PostTagging.create(post: post, tag: health)
+
 # end
+
 
 # new profile
 jason = Profile.create(name: "Jason", about_me: "Ruby developer and CEO", quote: "hmmmm.....djhfjsh")
+
 # Manual image uploading
 jason.profile_image.attach(io: image('client/src/assets/picklerick.jpg'), filename: 'picklerick.jpg')
 jason.cover_image.attach(io: image('client/src/assets/space.jpeg'), filename: 'space.jpeg')
-# posts
-post = jason.posts.create(title: "How to create a code school", body: "blah blah")
+
+# This says, JASON (the profile) has a STRENGTH (boolean) in WEB (tag)
+ProfileTagging.create(profile: jason, tag: web, strength: true)
+ProfileTagging.create(profile: jason, tag: automotive, strength: true)
+ProfileTagging.create(profile: jason, tag: gaming, strength: true)
+
+# This says, JASON (the profile) has a WEAKNESS (boolean) in HEALTH (tag)
+ProfileTagging.create(profile: jason, tag: health, strength: false)
+ProfileTagging.create(profile: jason, tag: life, strength: false)
+ProfileTagging.create(profile: jason, tag: networking, strength: false)
+
+# [x , x] posts the user made, then post tagging 
+post = jason.authored_posts.create(title: "How to create a code school", body: "blah blah")
 post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
 
-post = jason.posts.create(title: "How to create a other things", body: "blah blah")
+# [x] create a bunch of of post taggings. associate posts with multiple tags
+PostTagging.create(post: post, tag: sports)
+PostTagging.create(post: post, tag: web)
+PostTagging.create(post: post, tag: automotive)
+
+post = jason.authored_posts.create(title: "How to create a other things", body: "blah blah")
 post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+
+# [x] create a bunch of of post taggings. associate posts with multiple tags
+PostTagging.create(post: post, tag: cooking)
+PostTagging.create(post: post, tag: web)
+PostTagging.create(post: post, tag: automotive)
 # end
 
 # new profile
@@ -46,53 +103,58 @@ shea = Profile.create(name: "shea", about_me: "creater of this app", quote: "res
 # Manual image uploading
 shea.profile_image.attach(io: image('client/src/assets/picklerick.jpg'), filename: 'picklerick.jpg')
 shea.cover_image.attach(io: image('client/src/assets/space.jpeg'), filename: 'space.jpeg')
-# posts
-post = shea.posts.create(title: "How to do stuff", body: "blah blah")
+
+# This says, SHEA (the profile) has a STRENGTH (boolean) in WEB (tag)
+ProfileTagging.create(profile: shea, tag: health, strength: true)
+ProfileTagging.create(profile: shea, tag: automotive, strength: true)
+ProfileTagging.create(profile: shea, tag: gaming, strength: true)
+
+# This says, SHEA (the profile) has a WEAKNESS (boolean) in HEALTH (tag)
+ProfileTagging.create(profile: shea, tag: sports, strength: false)
+ProfileTagging.create(profile: shea, tag: cooking, strength: false)
+ProfileTagging.create(profile: shea, tag: general, strength: false)
+
+# [x , ] posts the user made, then post tagging 
+post = shea.authored_posts.create(title: "How to do stuff", body: "blah blah")
 post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
 
-post = shea.posts.create(title: "How to do more stuff", body: "blah blah")
-post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
 
-post = shea.posts.create(title: "How do i get this backend stuff down?", body: "resilence i guess? meet up this weekend?")
-post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+post = shea.authored_posts.create(title: "How do i get this backend stuff down?", body: "resilence i guess? meet up this weekend?")
+backend_post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
 # end
 
-tag.create(name: "general")
-tag.create(name: "life")
-tag.create(name: "health")
-tag.create(name: "Web development")
-tag.create(name: "automotive")
-tag.create(name: "sports")
-tag.create(name: "gaming")
-tag.create(name: "cooking")
+
+#tags
+general = Tag.create(name: "general")
+life = Tag.create(name: "life")
+health = Tag.create(name: "health")
+web = Tag.create(name: "Web development")
+automotive = Tag.create(name: "automotive")
+sports = Tag.create(name: "sports")
+gaming = Tag.create(name: "gaming")
+cooking = Tag.create(name: "cooking")
+networking = Tag.create(name: "networking")
 
 
+
+
+# [] create some interested posts 
+
+# [] then get the profile tags to display
+
+
+
+
+
+
+# Next step:   this says BACKEND POST (the post) is related to WEB (tag)
+# PostTagging.create(post: backend_post, tag: web)
 
 # api only instructions
 # rails new --app
 # rails generate models
 # add in data
 # add in react app
-
-
-# (pt.1) adding images: add in image uploading and set up relationships to posts using Active_storage
-# [x] add in Rails active_storage:install in terminal
-# [x] add in has_one_attached :image in the models
-# [] under the profile and post controller require an image for the data input
-#     - :picture
-# [] run rails db:migrate in terminal
-# (pt.2) resizing images 
-# [x] add in gem for mini_magic
-#   - Bundle add mini_magic
-# [x] add in imagemagic globally if not done already
-#   - Brew install imagemagic
-#     - this allows us to resize images like so 
-#       - <% image_tag @car.picture.variant(resize: “75x75”)%>
-
-
-# notes:
-# - url_for is the active storage insert for targeting the images
-#   ex) <img src=”<% url_for(@car.picture)%>”
 
 
 # add in react app
@@ -102,50 +164,8 @@ tag.create(name: "cooking")
 # then go see gavin for getting rid of github connection 
 
 
-# when clicking on comment to see all comments for a post 
-# pass the id and pull the data for that comment  
-# comments  
-# - profile image
-# - profile name
-# - comment_body
-
-
-
-#   - posts 
-#     - header
-#     - body  
-#   - images 
-#     - profile image
-#     - cover image
-#     - posts images
-#   - interested posts  
-#   - recommended posts 
-
-
-
-
-# ..........................
-# @channel Gavin’s “HOW TO SUCCEED AT CAPSTONE” (Ruby Edition)
-
-# 1) Make a new rails app
-# 2) do `rails g model` as often as you like - and setup your various `belongs_to` and `has_many` relations
-# 3) Generate some sample/fake data
-# 4) Merge your react app into your app as the `client` folder
-# 5) Start with a part of your API that is showing/listing data
-# 6) Convert static HTML to static data from `this.state`  (e.g. static `ul` / `li` example from the Taco Locations app) - Then change UI to use `map` to iterate over state to dynamically generate your UI
-# 7) The JSON you have in `this.state` will be the JSON you need from your controllers.
-# 8) Generate a controller. See how we created a controller to `index` (list) all the taco locations - Have the controller build a JSON structure like the one you made in steps 5 + 6
-# 9) Change hard coded state to using axios to fetch from your API
-# 10) Refresh the UI if you need things like maps, etc.
-# 11) Keep repeating steps 6 through 9 for parts of your app that show data
-# 12) Then work on the parts of your app that create/edit data through forms.
-# ..........................
-
-
-
 #
 # creating a controller
-#
 # in terminal
 #   - rails generate controller api/profiles
 
@@ -171,10 +191,59 @@ tag.create(name: "cooking")
 #     end
 
 
+#
+# how app works instructions/notes
+#
+# when clicking on comment to see all comments for a post 
+# pass the id and pull the data for that comment  
+# comments  
+# - profile image
+# - profile name
+# - comment_body
+
+
+
+
+# ..........................
+# @channel Gavin’s “HOW TO SUCCEED AT CAPSTONE” (Ruby Edition)
+
+# 1) Make a new rails app
+# 2) do `rails g model` as often as you like - and setup your various `belongs_to` and `has_many` relations
+# 3) Generate some sample/fake data
+# 4) Merge your react app into your app as the `client` folder
+# 5) Start with a part of your API that is showing/listing data
+# 6) Convert static HTML to static data from `this.state`  (e.g. static `ul` / `li` example from the Taco Locations app) - Then change UI to use `map` to iterate over state to dynamically generate your UI
+# 7) The JSON you have in `this.state` will be the JSON you need from your controllers.
+# 8) Generate a controller. See how we created a controller to `index` (list) all the taco locations - Have the controller build a JSON structure like the one you made in steps 5 + 6
+# 9) Change hard coded state to using axios to fetch from your API
+# 10) Refresh the UI if you need things like maps, etc.
+# 11) Keep repeating steps 6 through 9 for parts of your app that show data
+# 12) Then work on the parts of your app that create/edit data through forms.
+# ..........................
+
 
 
 # to do list Ruby
-# []
+# [] create profile model
+# - [] create seed data
+# - [] go to react app, create json data and use static data to make dynamic
+# - [] generate controller, make json return for data required
+# - [] axios call for dynamic data
+# - [] make a update profile method, using put axios, reload data
+# [] create tag model
+# [] create post model
+# [] create a profileTaggiing model
+# - belongs_to profile, belongs_to tag
+# - add in all has_many, through relations
+# - create seed data relations
+# [] create a postTagging model
+# - belongs_to post, belongs_to tag
+# - add in all has_many, through relations
+# - create seed data relations
+# [] create a interested model
+# - belongs_to post, belongs_to profile
+# - add in all has_many, through relations
+# - create seed data relations
 
 
 
@@ -200,5 +269,21 @@ tag.create(name: "cooking")
 # [] mycommunity component - hamburger menu remove friend option
 # [] postwithcomments - when clicked add to my interested posts
 # [] signin component - style again, add Oauth
+# [] go through all pages and components - add @media to all
 
-
+# (pt.1) adding images: add in image uploading and set up relationships to posts using Active_storage
+# [x] add in Rails active_storage:install in terminal
+# [x] add in has_one_attached :image in the models
+# [] under the profile and post controller require an image for the data input
+#     - :picture
+# [] run rails db:migrate in terminal
+# (pt.2) resizing images 
+# [x] add in gem for mini_magic
+#   - Bundle add mini_magic
+# [x] add in imagemagic globally if not done already
+#   - Brew install imagemagic
+#     - this allows us to resize images like so 
+#       - <% image_tag @car.picture.variant(resize: “75x75”)%>
+# notes:
+# - url_for is the active storage insert for targeting the images
+#   ex) <img src=”<% url_for(@car.picture)%>”

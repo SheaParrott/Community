@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  profile: one
+  tag: one
+  strength: false
+
+two:
+  profile: two
+  tag: two
+  strength: false

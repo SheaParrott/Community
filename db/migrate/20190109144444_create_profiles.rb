@@ -5,6 +5,7 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
       t.text :about_me
       t.text :quote
 
+
       t.timestamps
     end
   end

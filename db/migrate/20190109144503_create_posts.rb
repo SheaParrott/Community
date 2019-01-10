@@ -5,6 +5,8 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.text :body
       t.belongs_to :profile, foreign_key: true
 
+
+
       t.timestamps
     end
   end

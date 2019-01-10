@@ -84,11 +84,17 @@ class Profile extends Component {
                 alt="profile"
               />
             </Link>
-            <div className="addToCommunityBox">
+            {/* <div className="addToCommunityBox">
               <div className="addToCommunity">
-                {/* make clickable */}
+                make clickable
                 <i className="fas fa-plus-circle" />
                 <p>Add to Community</p>
+              </div>
+            </div> */}
+            <div className="addToCommunityBox">
+              <div className="addToCommunity">
+                {/* <i className="fas fa-plus-circle" /> */}
+                <p>{this.state.profile.name}</p>
               </div>
             </div>
             <div className="profileQuote">{this.state.profile.quote}</div>

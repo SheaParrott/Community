@@ -11,7 +11,7 @@ class Api::ProfilesController < ApplicationController
         quote: profile.quote,
         profile_image: url_for(profile.profile_image),
         cover_image: url_for(profile.cover_image),
-        posts: profile.posts.map do |post|
+        posts: profile.authored_posts.map do |post|
           {
             id: post.id,
             title: post.title,
