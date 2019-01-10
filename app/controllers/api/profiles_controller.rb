@@ -4,6 +4,36 @@ class Api::ProfilesController < ApplicationController
 
     profile = Profile.find(profile_id)
 
+    posts = profile.authored_posts.map do |post|
+      {
+        id: post.id,
+        title: post.title,
+        image: url_for(post.post_image),
+        body: post.body,
+        timestamp: post.created_at
+      }
+    end
+
+    interested_posts = profile.posts.map do |post|
+      {
+        id: post.id,
+        title: post.title,
+        image: url_for(post.post_image),
+        body: post.body,
+        timestamp: post.created_at
+      }
+    end
+
+    # recommended_posts = profile. do |post|
+    #   {
+    #     id: post.id,
+    #     title: post.title,
+    #     image: url_for(post.post_image),
+    #     body: post.body,
+    #     timestamp: post.created_at
+    #   }
+    # end
+
     render json: {
       profile: {
         name: profile.name,
@@ -11,15 +41,8 @@ class Api::ProfilesController < ApplicationController
         quote: profile.quote,
         profile_image: url_for(profile.profile_image),
         cover_image: url_for(profile.cover_image),
-        posts: profile.authored_posts.map do |post|
-          {
-            id: post.id,
-            title: post.title,
-            image: url_for(post.post_image),
-            body: post.body,
-            timestamp: post.created_at
-          }
-        end
+        posts: posts,
+        interested_posts: interested_posts,
       }
     }
   end

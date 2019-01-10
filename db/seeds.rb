@@ -3,8 +3,8 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create!(name: 'Luke', movie: movies.first)
 
 def image(path)
   File.open(Rails.root.join(path))
@@ -15,130 +15,135 @@ end
 #    rails db:seed
 
 #tags
-general = Tag.create(name: "general")
-life = Tag.create(name: "life")
-health = Tag.create(name: "health")
-web = Tag.create(name: "Web development")
-automotive = Tag.create(name: "automotive")
-sports = Tag.create(name: "sports")
-gaming = Tag.create(name: "gaming")
-cooking = Tag.create(name: "cooking")
-networking = Tag.create(name: "networking")
+general = Tag.create!(name: "general")
+life = Tag.create!(name: "life")
+health = Tag.create!(name: "health")
+web = Tag.create!(name: "Web development")
+automotive = Tag.create!(name: "automotive")
+sports = Tag.create!(name: "sports")
+gaming = Tag.create!(name: "gaming")
+cooking = Tag.create!(name: "cooking")
+networking = Tag.create!(name: "networking")
 
 # new profile
-gavin = Profile.create(name: "Gavin", about_me: "Ruby developer and improviser", quote: "Time is an illusion, lunchtime doubly so")
+gavin = Profile.create!(name: "Gavin", about_me: "Ruby developer and improviser", quote: "Time is an illusion, lunchtime doubly so")
 
 # Manual image uploading
 gavin.profile_image.attach(io: image('client/src/assets/picklerick.jpg'), filename: 'picklerick.jpg')
 gavin.cover_image.attach(io: image('client/src/assets/space.jpeg'), filename: 'space.jpeg')
 
 # This says, GAVIN (the profile) has a STRENGTH (boolean) in WEB (tag)
-ProfileTagging.create(profile: gavin, tag: web, strength: true)
-ProfileTagging.create(profile: gavin, tag: life, strength: true)
-ProfileTagging.create(profile: gavin, tag: networking, strength: true)
+ProfileTagging.create!(profile: gavin, tag: web, strength: true)
+ProfileTagging.create!(profile: gavin, tag: life, strength: true)
+ProfileTagging.create!(profile: gavin, tag: networking, strength: true)
 
 # This says, GAVIN (the profile) has a WEAKNESS (boolean) in HEALTH (tag)
-ProfileTagging.create(profile: gavin, tag: health, strength: false)
-ProfileTagging.create(profile: gavin, tag: automotive, strength: false)
-ProfileTagging.create(profile: gavin, tag: gaming, strength: false)
+ProfileTagging.create!(profile: gavin, tag: health, strength: false)
+ProfileTagging.create!(profile: gavin, tag: automotive, strength: false)
+ProfileTagging.create!(profile: gavin, tag: gaming, strength: false)
 
-# [x , x] posts the user made, then post tagging 
-post = gavin.authored_posts.create(title: "About SDG", body: "blah blah blah")
-post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+# [x , x, ] posts the user made, then post tagging, then interestedpost for one use to this post 
+postOne  = gavin.authored_posts.create!(title: "About SDG", body: "blah blah blah")
+postOne .post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
 
-# [x] create a bunch of of post taggings. associate posts with multiple tags
-PostTagging.create(post: post, tag: gaming)
-PostTagging.create(post: post, tag: web)
-PostTagging.create(post: post, tag: networking)
+# [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
+PostTagging.create!(post: postOne , tag: gaming)
+PostTagging.create!(post: postOne , tag: web)
+PostTagging.create!(post: postOne , tag: networking)
 
 
-post = gavin.authored_posts.create(title: "About APU", body: "My improv team is called APU")
-post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+postTwo = gavin.authored_posts.create!(title: "About APU", body: "My improv team is called APU")
+postTwo.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
 
-# [x] create a bunch of of post taggings. associate posts with multiple tags
-PostTagging.create(post: post, tag: general)
-PostTagging.create(post: post, tag: life)
-PostTagging.create(post: post, tag: health)
+# [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
+PostTagging.create!(post: postTwo, tag: gaming)
+PostTagging.create!(post: postTwo, tag: web)
+PostTagging.create!(post: postTwo, tag: networking)
 
 # end
 
 
 # new profile
-jason = Profile.create(name: "Jason", about_me: "Ruby developer and CEO", quote: "hmmmm.....djhfjsh")
+jason = Profile.create!(name: "Jason", about_me: "Ruby developer and CEO", quote: "hmmmm.....djhfjsh")
 
 # Manual image uploading
 jason.profile_image.attach(io: image('client/src/assets/picklerick.jpg'), filename: 'picklerick.jpg')
 jason.cover_image.attach(io: image('client/src/assets/space.jpeg'), filename: 'space.jpeg')
 
 # This says, JASON (the profile) has a STRENGTH (boolean) in WEB (tag)
-ProfileTagging.create(profile: jason, tag: web, strength: true)
-ProfileTagging.create(profile: jason, tag: automotive, strength: true)
-ProfileTagging.create(profile: jason, tag: gaming, strength: true)
+ProfileTagging.create!(profile: jason, tag: web, strength: true)
+ProfileTagging.create!(profile: jason, tag: automotive, strength: true)
+ProfileTagging.create!(profile: jason, tag: gaming, strength: true)
 
 # This says, JASON (the profile) has a WEAKNESS (boolean) in HEALTH (tag)
-ProfileTagging.create(profile: jason, tag: health, strength: false)
-ProfileTagging.create(profile: jason, tag: life, strength: false)
-ProfileTagging.create(profile: jason, tag: networking, strength: false)
+ProfileTagging.create!(profile: jason, tag: health, strength: false)
+ProfileTagging.create!(profile: jason, tag: life, strength: false)
+ProfileTagging.create!(profile: jason, tag: networking, strength: false)
 
-# [x , x] posts the user made, then post tagging 
-post = jason.authored_posts.create(title: "How to create a code school", body: "blah blah")
-post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+# [x , x, ] posts the user made, then post tagging, then interestedpost for one use to this post 
+postThree = jason.authored_posts.create!(title: "How to create a code school", body: "blah blah")
+postThree.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
 
-# [x] create a bunch of of post taggings. associate posts with multiple tags
-PostTagging.create(post: post, tag: sports)
-PostTagging.create(post: post, tag: web)
-PostTagging.create(post: post, tag: automotive)
+# [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
+PostTagging.create!(post: postThree, tag: sports)
+PostTagging.create!(post: postThree, tag: web)
+PostTagging.create!(post: postThree, tag: automotive)
 
-post = jason.authored_posts.create(title: "How to create a other things", body: "blah blah")
-post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
 
-# [x] create a bunch of of post taggings. associate posts with multiple tags
-PostTagging.create(post: post, tag: cooking)
-PostTagging.create(post: post, tag: web)
-PostTagging.create(post: post, tag: automotive)
+postFour = jason.authored_posts.create!(title: "How to create a other things", body: "blah blah")
+postFour.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+
+# [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
+PostTagging.create!(post: postFour, tag: cooking)
+PostTagging.create!(post: postFour, tag: web)
+PostTagging.create!(post: postFour, tag: automotive)
+
 # end
 
 # new profile
-shea = Profile.create(name: "shea", about_me: "creater of this app", quote: "resilence")
+shea = Profile.create!(name: "shea", about_me: "creater of this app", quote: "resilence")
 # Manual image uploading
 shea.profile_image.attach(io: image('client/src/assets/picklerick.jpg'), filename: 'picklerick.jpg')
 shea.cover_image.attach(io: image('client/src/assets/space.jpeg'), filename: 'space.jpeg')
 
 # This says, SHEA (the profile) has a STRENGTH (boolean) in WEB (tag)
-ProfileTagging.create(profile: shea, tag: health, strength: true)
-ProfileTagging.create(profile: shea, tag: automotive, strength: true)
-ProfileTagging.create(profile: shea, tag: gaming, strength: true)
+ProfileTagging.create!(profile: shea, tag: health, strength: true)
+ProfileTagging.create!(profile: shea, tag: automotive, strength: true)
+ProfileTagging.create!(profile: shea, tag: gaming, strength: true)
 
 # This says, SHEA (the profile) has a WEAKNESS (boolean) in HEALTH (tag)
-ProfileTagging.create(profile: shea, tag: sports, strength: false)
-ProfileTagging.create(profile: shea, tag: cooking, strength: false)
-ProfileTagging.create(profile: shea, tag: general, strength: false)
+ProfileTagging.create!(profile: shea, tag: sports, strength: false)
+ProfileTagging.create!(profile: shea, tag: cooking, strength: false)
+ProfileTagging.create!(profile: shea, tag: general, strength: false)
 
-# [x , ] posts the user made, then post tagging 
-post = shea.authored_posts.create(title: "How to do stuff", body: "blah blah")
-post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+# [x , x, ] posts the user made, then post tagging, then interestedpost for one use to this post 
+postFive = shea.authored_posts.create!(title: "How to do stuff", body: "blah blah")
+postFive.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+
+# [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
+PostTagging.create!(post: postFive, tag: general)
+PostTagging.create!(post: postFive, tag: sports)
+PostTagging.create!(post: postFive, tag: automotive)
 
 
-post = shea.authored_posts.create(title: "How do i get this backend stuff down?", body: "resilence i guess? meet up this weekend?")
-backend_post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+postSix = shea.authored_posts.create!(title: "How do i get this backend stuff down?", body: "resilence i guess? meet up this weekend?")
+postSix.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+
+# [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
+PostTagging.create!(post: postSix, tag: life)
+PostTagging.create!(post: postSix, tag: health)
+PostTagging.create!(post: postSix, tag: gaming)
 # end
 
-
-#tags
-general = Tag.create(name: "general")
-life = Tag.create(name: "life")
-health = Tag.create(name: "health")
-web = Tag.create(name: "Web development")
-automotive = Tag.create(name: "automotive")
-sports = Tag.create(name: "sports")
-gaming = Tag.create(name: "gaming")
-cooking = Tag.create(name: "cooking")
-networking = Tag.create(name: "networking")
+# [-, -, ] create some interested posts 
+InterestedPost.create!(post: postSix , profile: gavin)
+InterestedPost.create!(post: postFour , profile: gavin)
+InterestedPost.create!(post: postOne  , profile: jason)
+InterestedPost.create!(post: postFive , profile: jason)
+InterestedPost.create!(post: postTwo , profile: shea)
+InterestedPost.create!(post: postThree , profile: shea)
 
 
-
-
-# [] create some interested posts 
 
 # [] then get the profile tags to display
 
@@ -148,7 +153,7 @@ networking = Tag.create(name: "networking")
 
 
 # Next step:   this says BACKEND POST (the post) is related to WEB (tag)
-# PostTagging.create(post: backend_post, tag: web)
+# PostTagging.create!(post: backend_post, tag: web)
 
 # api only instructions
 # rails new --app

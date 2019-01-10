@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-  has_many :authored_posts, class_name: "Post"
+  has_many :authored_posts, class_name: "Post", foreign_key: :profile_id
 
   has_one_attached :profile_image
   has_one_attached :cover_image
