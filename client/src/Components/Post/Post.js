@@ -1,19 +1,9 @@
 import React, { Component } from 'react'
 import requestimg from '../../assets/dev.jpeg'
 import profileimg from '../../assets/picklerick.jpg'
+import moment from 'moment'
 import './style.css'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-
-//
-// three lines is called a hamburger menu
-//
-
-// profileName={this.state.profile.name}
-// profileImage={this.state.profile.profile_image}
-// postTitle={post.title}
-// postImage={post.image}
-// postBody={post.body}
-// timestamp={post.timestamp}
 
 class Post extends Component {
   render() {
@@ -37,12 +27,6 @@ class Post extends Component {
                 </Link>
                 <p className="requestBoxDate">{this.props.timestamp}</p>
               </div>
-              {/* options menu (possibly remove)
-              - turn off notifications? 
-              - share post to your page?*/}
-              <a href="#">
-                <i className="fas fa-ellipsis-v" />
-              </a>
             </div>
             <h4 className="requestBoxTitle">{this.props.postTitle}</h4>
             <img className="requestBoxImage" src={requestimg} alt="request" />
@@ -54,7 +38,6 @@ class Post extends Component {
                 </Link>
               </div>
               <div className="requestBoxMiddleBarTwo">
-                {/* when clicked add to my interested posts */}
                 <a href="#">
                   <i className="fas fa-magnet" />
                 </a>

@@ -11,7 +11,6 @@ class Mission extends Component {
     return (
       <div className="mission-container">
         <div className="mission">
-          {/* go to previous page arrow */}
           <i className="fas fa-arrow-left" />
           <h1 className="AppName">Community</h1>
         </div>

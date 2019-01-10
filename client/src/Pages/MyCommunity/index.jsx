@@ -23,7 +23,7 @@ class MyCommunity extends Component {
             <Link to="/Profile">
               <h3 className="allMyCommunity">Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
+
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>
@@ -39,7 +39,7 @@ class MyCommunity extends Component {
             <Link to="/Profile">
               <h3 className="allMyCommunity">Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
+
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>
@@ -55,7 +55,7 @@ class MyCommunity extends Component {
             <Link to="/Profile">
               <h3 className="allMyCommunity">Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
+
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>
@@ -71,7 +71,7 @@ class MyCommunity extends Component {
             <Link to="/Profile">
               <h3 className="allMyCommunity">Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
+
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>
@@ -87,7 +87,7 @@ class MyCommunity extends Component {
             <Link to="/Profile">
               <h3 className="allMyCommunity">Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
+
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>
@@ -103,7 +103,7 @@ class MyCommunity extends Component {
             <Link to="/Profile">
               <h3 className="allMyCommunity">Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
+
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>
@@ -119,7 +119,7 @@ class MyCommunity extends Component {
             <Link to="/Profile">
               <h3 className="allMyCommunity">Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
+
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>
@@ -135,7 +135,7 @@ class MyCommunity extends Component {
             <Link to="/Profile">
               <h3 className="allMyCommunity">Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
+
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>
@@ -151,7 +151,7 @@ class MyCommunity extends Component {
             <Link to="/Profile">
               <h3 className="allMyCommunity">Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
+
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>
@@ -167,7 +167,7 @@ class MyCommunity extends Component {
             <Link to="/Profile">
               <h3 className="allMyCommunity">Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
+
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>
@@ -183,7 +183,7 @@ class MyCommunity extends Component {
             <Link to="/Profile">
               <h3 className="allMyCommunity">Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
+
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>
@@ -199,7 +199,7 @@ class MyCommunity extends Component {
             <Link to="/Profile">
               <h3 className="allMyCommunity">Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
+
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>
@@ -215,7 +215,7 @@ class MyCommunity extends Component {
             <Link to="/Profile">
               <h3 className="allMyCommunity">Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
+
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>
@@ -247,7 +247,7 @@ class MyCommunity extends Component {
             <Link to="/Profile">
               <h3 className="allMyCommunity">Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
+
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>

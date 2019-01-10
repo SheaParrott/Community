@@ -23,11 +23,11 @@ class FriendRequests extends Component {
             <Link to="/Profile">
               <h3>Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
             <button>Add</button>
             <button>Delete</button>
           </section>
         </div>
+
         <div className="friendRequestsBox">
           <section className="friendRequestsBox">
             <Link to="/Profile">
@@ -40,11 +40,11 @@ class FriendRequests extends Component {
             <Link to="/Profile">
               <h3>Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
             <button>Add</button>
             <button>Delete</button>
           </section>
         </div>
+
         <div className="friendRequestsBox">
           <section className="friendRequestsBox">
             <Link to="/Profile">
@@ -57,58 +57,6 @@ class FriendRequests extends Component {
             <Link to="/Profile">
               <h3>Pickle Rick</h3>
             </Link>
-            {/* remove friend option */}
-            <button>Add</button>
-            <button>Delete</button>
-          </section>
-        </div>
-        <div className="friendRequestsBox">
-          <section className="friendRequestsBox">
-            <Link to="/Profile">
-              <img
-                className="friendRequestsProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3>Pickle Rick</h3>
-            </Link>
-            {/* remove friend option */}
-            <button>Add</button>
-            <button>Delete</button>
-          </section>
-        </div>
-        <div className="friendRequestsBox">
-          <section className="friendRequestsBox">
-            <Link to="/Profile">
-              <img
-                className="friendRequestsProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3>Pickle Rick</h3>
-            </Link>
-            {/* remove friend option */}
-            <button>Add</button>
-            <button>Delete</button>
-          </section>
-        </div>
-        <div className="friendRequestsBox">
-          <section className="friendRequestsBox">
-            <Link to="/Profile">
-              <img
-                className="friendRequestsProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3>Pickle Rick</h3>
-            </Link>
-            {/* remove friend option */}
             <button>Add</button>
             <button>Delete</button>
           </section>

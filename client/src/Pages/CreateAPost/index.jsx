@@ -62,3 +62,4 @@ export default CreateAPost
 //   - click the header area to add in
 //   - click an image area to add image
 //   - click on first li to create first then enter to start a new li
+// note think it can be done with an on click if state !== state then axios update then get new info

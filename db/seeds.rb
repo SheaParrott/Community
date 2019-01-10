@@ -159,3 +159,36 @@ post.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.j
 #         }
 #       }
 #     end
+
+
+
+
+# to do list Ruby
+# []
+
+
+
+# to do list React
+# [] fix links wrapper in links issue
+# [] footer issue - needs to be positioned at the bottom always
+# [] post component - when clicked add to my interested box
+# [] post component - disply number of comment and people interested. this will be done by doing a .length in react
+# [] implement moment for post timestamp. did already yarn add moment
+# [] Profile component - each struggle and strength needs to have a  tag tied to it
+# [] Profile component - add to community button need to be name when its yourself. this only matters if I keep the my community component for the MVP
+# [] profile component - community logo needs to go to users profile. could be done by passing the id
+# [] profile component - create form page
+# [] header component - hamburger menu --my profile--recommended posts--interested posts--mission--creator--sign out--search options
+# [] header component - make notifications button dynamic when there is a new notification 
+# [] postwithcomments component - find a way to remove comment logo and display all comments without having to hard code most of the post html again. there is alot of repeated code here.
+# [] peopleinterested component - add to community option for hamburger menu. if we keep the my community option
+# [] createapost component - this will be a form page. could try changing things directy on page. notes there on idea of how. 
+# [] updateprofile component - this will be a form page. could try changing things directy on page. notes there on createapost componert idea of how.
+# [] createapost component - finish css and tie it to tags
+# [] friendrequests component - add friend and remove friend option. if decided to keep my community option
+# [] mission and creator components - make back button clickable and go to previous page 
+# [] mycommunity component - hamburger menu remove friend option
+# [] postwithcomments - when clicked add to my interested posts
+# [] signin component - style again, add Oauth
+
+

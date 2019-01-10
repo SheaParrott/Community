@@ -30,9 +30,6 @@ class PostWithComments extends Component {
                 </Link>
                 <p className="requestBoxDate">Yesterday</p>
               </div>
-              {/* options menu (possibly remove)
-              - turn off notifications? 
-              - share post to your page?*/}
               <a href="#">
                 <i className="fas fa-ellipsis-v" />
               </a>
@@ -45,11 +42,9 @@ class PostWithComments extends Component {
             </ul>
             <div className="requestBoxMiddleBar">
               <div className="requestBoxMiddleBarTwo">
-                {/* when clicked add to my interested posts */}
                 <a href="#">
                   <i className="fas fa-magnet" />
                 </a>
-                {/* <p className="requestBoxClick">Interested</p> */}
               </div>
             </div>
             <div className="requestBoxBottomBar">
@@ -57,8 +52,7 @@ class PostWithComments extends Component {
                 9 Interested
               </Link>
             </div>
-            {/* start of comments  */}
-            {/* removed the number of comments on post and added static comments below */}
+            {/* note: start of comments  */}
             <div className="comment">
               <Link to="/Profile">
                 <img

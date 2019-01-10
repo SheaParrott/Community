@@ -14,16 +14,6 @@ import Footer from '../../Components/Footer'
 import Post from '../../Components/Post/Post'
 import AddToCommunity from '../../Components/AddToCommunity/AddToCommunity'
 
-// {
-//   profile: {
-//     name: "shea",
-//     about_me: "I enjoy learning and growing through challenges",
-//     quote: "resilence",
-//     profile_image: url_for(profile.profile_image),
-//     cover_image: url_for(profile.cover_image)
-//   }
-// }
-
 class Profile extends Component {
   constructor(props) {
     super(props)
@@ -49,8 +39,6 @@ class Profile extends Component {
     })
   }
   fillInBox = () => {
-    // console.log(this.state.profileBioSection)
-    // will need if statements to make work right
     if (this.state.profileBioSection === '') {
       return <p>{this.state.profile.about_me}</p>
     }
@@ -97,11 +85,15 @@ class Profile extends Component {
                 alt="profile"
               />
             </Link>
-            <AddToCommunity />
+            <div className="addToCommunityBox">
+              <div className="addToCommunity">
+                {/* make clickable */}
+                <i className="fas fa-plus-circle" />
+                <p>Add to Community</p>
+              </div>
+            </div>
             <div className="profileQuote">{this.state.profile.quote}</div>
           </div>
-          {/* on click fill bio box below with info */}
-          {/* each struggle and strength needs to have a  tag tied to it */}
           <div className="profileAttributesBar">
             <h6
               onClick={this.AttributeClickToChangeState}
@@ -298,41 +290,3 @@ class Profile extends Component {
 }
 
 export default Profile
-
-// switch (event.target.dataset.attribute) {
-//   case 'STRENGTHS':
-//     ;<p>
-//       Pokem ipsum dolor sit amet Zekrom Nidoran Togetic Girafarig Hariyama
-//       Cubchoo. V for victory Remoraid Terrakion Lanturn Seviper Grimer
-//       Plusle. Blizzard Elgyem Combusken Shinx Gold Luxio Leaf Green. Ivysaur
-//       Houndoom Jirachi Professor Elm Spheal Gorebyss Silver. Razor Leaf
-//       Kingdra Xatu Serperior Sewaddle Plusle Octillery.
-//     </p>
-//     break
-//   case 'ABOUT ME':
-//     ;<p>
-//       Pokem ipsum dolor sit amet Zekrom Nidoran Togetic Girafarig Hariyama
-//       Cubchoo. V for victory Remoraid Terrakion Lanturn Seviper Grimer
-//       Plusle. Blizzard Elgyem Combusken Shinx Gold Luxio Leaf Green. Ivysaur
-//       Houndoom Jirachi Professor Elm Spheal Gorebyss Silver. Razor Leaf
-//       Kingdra Xatu Serperior Sewaddle Plusle Octillery.
-//     </p>
-//     break
-//   case 'STRUGGLES':
-//     ;<p>
-//       Pokem ipsum dolor sit amet Zekrom Nidoran Togetic Girafarig Hariyama
-//       Cubchoo. V for victory Remoraid Terrakion Lanturn Seviper Grimer
-//       Plusle. Blizzard Elgyem Combusken Shinx Gold Luxio Leaf Green. Ivysaur
-//       Houndoom Jirachi Professor Elm Spheal Gorebyss Silver. Razor Leaf
-//       Kingdra Xatu Serperior Sewaddle Plusle Octillery.
-//     </p>
-//     break
-//   default:
-//     ;<p>
-//       Pokem ipsum dolor sit amet Zekrom Nidoran Togetic Girafarig Hariyama
-//       Cubchoo. V for victory Remoraid Terrakion Lanturn Seviper Grimer
-//       Plusle. Blizzard Elgyem Combusken Shinx Gold Luxio Leaf Green. Ivysaur
-//       Houndoom Jirachi Professor Elm Spheal Gorebyss Silver. Razor Leaf
-//       Kingdra Xatu Serperior Sewaddle Plusle Octillery.
-//     </p>
-// }
