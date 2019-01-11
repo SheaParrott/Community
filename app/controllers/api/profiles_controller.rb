@@ -34,6 +34,14 @@ class Api::ProfilesController < ApplicationController
     #   }
     # end
 
+    tags = profile.tags.map do |tag|
+      {
+        tag_id: tag.id, 
+        tag_name: tag.name, 
+        # tag_strength: profile.profile_tag
+      }
+    end
+
     render json: {
       profile: {
         name: profile.name,
@@ -43,6 +51,7 @@ class Api::ProfilesController < ApplicationController
         cover_image: url_for(profile.cover_image),
         posts: posts,
         interested_posts: interested_posts,
+        tags: tags
       }
     }
   end

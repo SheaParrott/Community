@@ -19,13 +19,14 @@ class Profile extends Component {
     this.state = {
       profile: {
         posts: [],
-        interested_posts: []
+        interested_posts: [],
+        tags: []
       },
       profileBioSection: ''
     }
   }
   componentDidMount = () => {
-    axios.get(`/api/profiles/1`).then(response => {
+    axios.get(`/api/profiles/2`).then(response => {
       console.log(response.data)
 
       this.setState({
