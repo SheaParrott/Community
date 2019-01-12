@@ -17,7 +17,15 @@ import Notifications from './Pages/Notifications/index'
 import CreateAPost from './Pages/CreateAPost/index'
 import FriendRequests from './Pages/FriendRequests/index'
 
+import myDataStore from './Pages/DataStore/DataStore'
+
+import { observer } from 'mobx-react'
+import { decorate, computed, observable } from 'mobx'
+
 class App extends Component {
+  componentDidMount = () => {
+    myDataStore.getProfileData()
+  }
   render() {
     return (
       <Router>
@@ -41,7 +49,7 @@ class App extends Component {
   }
 }
 
-export default App
+export default observer(App)
 // ~COMMUNITY APP~
 // expand your world and build community
 // help & build eachother up app

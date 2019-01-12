@@ -229,6 +229,8 @@ InterestedPost.create!(post: postThree , profile: shea)
 
 
 # to do list Ruby
+# [] create a post endpoint
+# [] add to interested posts endpoint
 # [] create profile model
 # - [] create seed data
 # - [] go to react app, create json data and use static data to make dynamic
@@ -253,6 +255,8 @@ InterestedPost.create!(post: postThree , profile: shea)
 
 
 # to do list React
+# [] add a post option - get form going
+# [] onClick function for adding to interested posts
 # [] fix links wrapper in links issue
 # [] footer issue - needs to be positioned at the bottom always
 # [] post component - when clicked add to my interested box

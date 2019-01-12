@@ -12,27 +12,16 @@ import coverimg from '../../assets/space.jpeg'
 import requestimg from '../../assets/dev.jpeg'
 import Footer from '../../Components/Footer'
 import Post from '../../Components/Post/Post'
+import myDataStore from '../DataStore/DataStore'
+
+import { observer } from 'mobx-react'
 
 class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      profile: {
-        posts: [],
-        interested_posts: [],
-        tags: []
-      },
       profileBioSection: ''
     }
-  }
-  componentDidMount = () => {
-    axios.get(`/api/profiles/2`).then(response => {
-      console.log(response.data)
-
-      this.setState({
-        profile: response.data.profile
-      })
-    })
   }
   AttributeClickToChangeState = event => {
     this.setState({
@@ -40,27 +29,32 @@ class Profile extends Component {
     })
   }
   fillInBox = () => {
+    let strengths = myDataStore.profile.tags.filter(s => {
+      return s.strength
+    })
+    let weakness = myDataStore.profile.tags.filter(w => {
+      return !w.strength
+    })
+
     if (this.state.profileBioSection === '') {
-      return <p>{this.state.profile.about_me}</p>
+      return <p>{myDataStore.profile.about_me}</p>
     }
     if (this.state.profileBioSection === 'STRENGTHS') {
       return (
         <ul>
-          <li>eating lots of pizza</li>
-          <li>coding</li>
-          <li>videogames</li>
-          <li>speaking positive to others</li>
+          {strengths.map(strength => {
+            return <li key={strength.id}>{strength.name}</li>
+          })}
         </ul>
       )
     } else if (this.state.profileBioSection === 'ABOUT ME') {
-      return <p>{this.state.profile.about_me}</p>
+      return <p>{myDataStore.profile.about_me}</p>
     } else if (this.state.profileBioSection === 'STRUGGLES') {
       return (
         <ul>
-          <li>react router</li>
-          <li>networking</li>
-          <li>social anxiety</li>
-          <li>something else</li>
+          {weakness.map(weakness => {
+            return <li key={weakness.id}>{weakness.name}</li>
+          })}
         </ul>
       )
     }
@@ -73,7 +67,7 @@ class Profile extends Component {
         <div className="CoverImage">
           <img
             className="ProfileCoverImage"
-            src={this.state.profile.cover_image}
+            src={myDataStore.profile.cover_image}
             alt="profile"
           />
         </div>
@@ -82,7 +76,7 @@ class Profile extends Component {
             <Link to="/UpdateProfile">
               <img
                 className="ProfileImage"
-                src={this.state.profile.profile_image}
+                src={myDataStore.profile.profile_image}
                 alt="profile"
               />
             </Link>
@@ -96,10 +90,10 @@ class Profile extends Component {
             <div className="addToCommunityBox">
               <div className="addToCommunity">
                 {/* <i className="fas fa-plus-circle" /> */}
-                <p>{this.state.profile.name}</p>
+                <p>{myDataStore.profile.name}</p>
               </div>
             </div>
-            <div className="profileQuote">{this.state.profile.quote}</div>
+            <div className="profileQuote">{myDataStore.profile.quote}</div>
           </div>
           <div className="profileAttributesBar">
             <h6
@@ -121,12 +115,92 @@ class Profile extends Component {
               data-attribute="STRUGGLES"
               className="profileAttributesRight"
             >
-              STRUGGLES
+              GROWING
+              {/* interesd in growing in
+              growths
+              interests */}
             </h6>
           </div>
           <div className="profileBio">{this.fillInBox()}</div>
+          <div className="ProfilePostsBox">
+            <h6>Recommended Posts:</h6>
+            <Link to="/PostWithComments">
+              <div className="ProfileRecommendedPost">
+                <img
+                  className="ProfileRequestBoxImage"
+                  src={requestimg}
+                  alt="request"
+                />
+                <h4>Need help with react router!!</h4>
+              </div>
+            </Link>
+            <Link to="/PostWithComments">
+              <div className="ProfileRecommendedPost">
+                <img
+                  className="ProfileRequestBoxImage"
+                  src={requestimg}
+                  alt="request"
+                />
+                <h4>Need help with react router!!</h4>
+              </div>
+            </Link>
+            <Link to="/PostWithComments">
+              <div className="ProfileRecommendedPost">
+                <img
+                  className="ProfileRequestBoxImage"
+                  src={requestimg}
+                  alt="request"
+                />
+                <h4>Need help with react router!!</h4>
+              </div>
+            </Link>
+            <Link to="/Posts">
+              <h6>See More</h6>
+            </Link>
+          </div>
+          <div className="ProfilePostsBox">
+            <h6>interested Posts:</h6>
+            {myDataStore.profile.interested_posts.map(post => {
+              return (
+                <Link key={post.id} to="/PostWithComments">
+                  <div className="ProfileRecommendedPost">
+                    <img
+                      className="ProfileRequestBoxImage"
+                      src={post.image}
+                      alt="request"
+                    />
+                    <h4>{post.title}</h4>
+                  </div>
+                </Link>
+              )
+            })}
+            <Link to="/Posts">
+              <h6>See More</h6>
+            </Link>
+          </div>
+          {myDataStore.profile.posts.map(post => {
+            return (
+              <Post
+                key={post.id}
+                profileName={myDataStore.profile.name}
+                profileImage={myDataStore.profile.profile_image}
+                postTitle={post.title}
+                postImage={post.image}
+                postBody={post.body}
+                timestamp={post.timestamp}
+              />
+            )
+          })}
+        </main>
+        <Footer />
+      </div>
+    )
+  }
+}
 
-          <div className="profileMyCommunityParent">
+export default observer(Profile)
+
+/* <div className="profileMyCommunityParent">
             <h6>my community:</h6>
             <div className="profileMyCommunity">
               <Link to="/Profile">
@@ -203,81 +277,4 @@ class Profile extends Component {
             <Link to="/MyCommunity">
               <h6>See More</h6>
             </Link>
-          </div>
-          <div className="ProfilePostsBox">
-            <h6>Recommended Posts:</h6>
-            <Link to="/PostWithComments">
-              <div className="ProfileRecommendedPost">
-                <img
-                  className="ProfileRequestBoxImage"
-                  src={requestimg}
-                  alt="request"
-                />
-                <h4>Need help with react router!!</h4>
-              </div>
-            </Link>
-            <Link to="/PostWithComments">
-              <div className="ProfileRecommendedPost">
-                <img
-                  className="ProfileRequestBoxImage"
-                  src={requestimg}
-                  alt="request"
-                />
-                <h4>Need help with react router!!</h4>
-              </div>
-            </Link>
-            <Link to="/PostWithComments">
-              <div className="ProfileRecommendedPost">
-                <img
-                  className="ProfileRequestBoxImage"
-                  src={requestimg}
-                  alt="request"
-                />
-                <h4>Need help with react router!!</h4>
-              </div>
-            </Link>
-            <Link to="/Posts">
-              <h6>See More</h6>
-            </Link>
-          </div>
-          <div className="ProfilePostsBox">
-            <h6>interested Posts:</h6>
-            {this.state.profile.interested_posts.map(post => {
-              return (
-                <Link to="/PostWithComments">
-                  <div className="ProfileRecommendedPost">
-                    <img
-                      className="ProfileRequestBoxImage"
-                      src={post.image}
-                      alt="request"
-                    />
-                    <h4>{post.title}</h4>
-                  </div>
-                </Link>
-              )
-            })}
-            <Link to="/Posts">
-              <h6>See More</h6>
-            </Link>
-          </div>
-          {this.state.profile.posts.map(post => {
-            return (
-              <Post
-                key={post.id}
-                profileName={this.state.profile.name}
-                profileImage={this.state.profile.profile_image}
-                postTitle={post.title}
-                postImage={post.image}
-                postBody={post.body}
-                timestamp={post.timestamp}
-              />
-            )
-          })}
-        </main>
-        <Footer />
-      </div>
-    )
-  }
-}
-
-export default Profile
+          </div> */

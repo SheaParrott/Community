@@ -28,17 +28,6 @@ class UpdateProfile extends Component {
           <h5 className="tag">sometag</h5>
           <h5 className="tag">andanothertag</h5>
         </section>
-        <h5>Struggles</h5>
-        <section className="tagsBox">
-          <h5 className="tag">sports</h5>
-          <h5 className="tag">web design</h5>
-          <h5 className="tag">HTML</h5>
-          <h5 className="tag">CSS</h5>
-          <h5 className="tag">2K18</h5>
-          <h5 className="tag">somelongtag</h5>
-          <h5 className="tag">sometag</h5>
-          <h5 className="tag">andanothertag</h5>
-        </section>
         <br />
         <br />
         <Link to="/Profile">
