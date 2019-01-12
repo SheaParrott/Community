@@ -20,11 +20,11 @@ import FriendRequests from './Pages/FriendRequests/index'
 import myDataStore from './Pages/DataStore/DataStore'
 
 import { observer } from 'mobx-react'
-import { decorate, computed, observable } from 'mobx'
 
 class App extends Component {
   componentDidMount = () => {
     myDataStore.getProfileData()
+    myDataStore.getAllTags()
   }
   render() {
     return (

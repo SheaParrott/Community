@@ -6,17 +6,20 @@ import insertImage from '../../assets/insert-image.png'
 import './style.css'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Footer from '../../Components/Footer'
+import myDataStore from '../DataStore/DataStore'
+import { observer } from 'mobx-react'
+import { toJS } from 'mobx'
 
 class CreateAPost extends Component {
-  constructor(props) {
-    super(props)
+  // constructor(props) {
+  //   super(props)
 
-    this.state = {
-      header: '',
-      image: '',
-      body: []
-    }
-  }
+  //   this.state = {
+  //     header: '',
+  //     image: '',
+  //     body: []
+  //   }
+  // }
   render() {
     return (
       <div>
@@ -27,30 +30,39 @@ class CreateAPost extends Component {
           <section className="createAPostBox">
             <h4 className="createAPostTitle">You header text here</h4>
             <img className="createAPostImage" src={insertImage} alt="request" />
-            <ul>
-              <li>body notes</li>
-              <li>body notes</li>
-            </ul>
+            <p>body here</p>
           </section>
           <section className="tagsBox">
-            <h5 className="tag">sports</h5>
-            <h5 className="tag">web design</h5>
-            <h5 className="tag">HTML</h5>
-            <h5 className="tag">CSS</h5>
-            <h5 className="tag">2K18</h5>
-            <h5 className="tag">somelongtag</h5>
-            <h5 className="tag">sometag</h5>
-            <h5 className="tag">andanothertag</h5>
+            {myDataStore.AllTags.map(tag => {
+              // console.log(toJS(tag))
+              return (
+                <h5 className="tag" key={toJS(tag.id)}>
+                  <input
+                    type="checkbox"
+                    value={toJS(tag.id)}
+                    name="post[tag_ids][]"
+                    placeholder={toJS(tag.name)}
+                  />
+                  <label>{toJS(tag.name)}</label>
+                </h5>
+              )
+            })}
           </section>
           <button>Submit Post</button>
         </section>
+        <form onSubmit="">
+          <input type="text" name="post[title]" placeholder="title" />
+          <input type="file" name="post[:post_image]" placeholder="image" />
+          <input type="text" name="post[body]" placeholder="body" />
+          <input type="checkbox" value="1" name="post[tag_ids][]" />
+        </form>
         <Footer />
       </div>
     )
   }
 }
 
-export default CreateAPost
+export default observer(CreateAPost)
 
 // 3 input boxes
 // one chnages state for Header
@@ -63,3 +75,61 @@ export default CreateAPost
 //   - click an image area to add image
 //   - click on first li to create first then enter to start a new li
 // note think it can be done with an on click if state !== state then axios update then get new info
+
+//
+// []the way we create a post is. we target the profile
+// []then we create a post with the appropriate parameters
+// []then we pick a tag from all tags possible
+// below are the notes how we did it in seed data
+//
+
+// # [x , x, ] posts the user made, then post tagging, then interestedpost for one use to this post
+// postOne  = gavin.authored_posts.create!(title: "About SDG", body: "blah blah blah")
+// postOne .post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+
+// # [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
+// PostTagging.create!(post: postOne , tag: gaming)
+// PostTagging.create!(post: postOne , tag: web)
+// PostTagging.create!(post: postOne , tag: networking)
+
+// general = Tag.create!(name: "general")
+// life = Tag.create!(name: "life")
+// health = Tag.create!(name: "health")
+// web = Tag.create!(name: "Web development")
+// automotive = Tag.create!(name: "automotive")
+// sports = Tag.create!(name: "sports")
+// gaming = Tag.create!(name: "gaming")
+// cooking = Tag.create!(name: "cooking")
+// networking = Tag.create!(name: "networking")
+
+//this is from post.rb
+// # post "/api/post/create"
+
+// def create
+// {
+// post: {
+//   title: "title of post"
+//   body: "alot of text is put here"
+//   tags: []
+// }
+// }
+
+//   # <input type="text" name="post[title]" />
+//   # <input type="text" name="post[body]" />
+
+//   # Makes an array of checked ids into  "post[tag_ids]"
+//   # and since we allow that throw. *AND* since Post `has_many` tags
+//   # we get the `tag_ids=` method to associate tags to posts.
+
+//   # <input type="checkbox" value="1" name="post[tag_ids][]" />
+//   # <input type="checkbox" value="2" name="post[tag_ids][]" />
+//   # <input type="checkbox" value="7" name="post[tag_ids][]" />
+
+//   #    { "post" => { "title" => "Whoa!", "body" => "Nice!", "tag_ids" => [1, 2, 7] } }
+
+//   # Make a new post, but associate it to the currently logged in Profile
+//   new_post = current_profile.posts.create(post_params)
+
+//   # Just say all is ok...
+//   render head: :ok
+// end

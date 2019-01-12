@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   
   post "/api/posts/create", to: "api/posts#create"
 
+  get "/api/tags", to: "api/tags#show"
+
 
 
 

@@ -296,3 +296,8 @@ InterestedPost.create!(post: postThree , profile: shea)
 # notes:
 # - url_for is the active storage insert for targeting the images
 #   ex) <img src=”<% url_for(@car.picture)%>”
+
+
+
+
+# create a form and create a post

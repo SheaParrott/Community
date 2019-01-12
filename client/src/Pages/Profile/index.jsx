@@ -60,6 +60,12 @@ class Profile extends Component {
     }
   }
 
+  CommentIDToBePassedToDataStore = event => {
+    //this takes the event data and calls a function in
+    // the datastore and passing the event data to that function
+    myDataStore.commentID(event.target.dataset.comment)
+  }
+
   render() {
     return (
       <div className="App">
@@ -163,13 +169,19 @@ class Profile extends Component {
             {myDataStore.profile.interested_posts.map(post => {
               return (
                 <Link key={post.id} to="/PostWithComments">
-                  <div className="ProfileRecommendedPost">
+                  <div
+                    className="ProfileRecommendedPost"
+                    onClick={this.CommentIDToBePassedToDataStore}
+                    data-comment={post.id}
+                  >
                     <img
                       className="ProfileRequestBoxImage"
                       src={post.image}
                       alt="request"
+                      onClick={this.CommentIDToBePassedToDataStore}
+                      data-comment={post.id}
                     />
-                    <h4>{post.title}</h4>
+                    <h4 data-comment={post.id}>{post.title}</h4>
                   </div>
                 </Link>
               )

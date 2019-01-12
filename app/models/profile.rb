@@ -9,4 +9,6 @@ class Profile < ApplicationRecord
 
   has_many :interested_posts
   has_many :posts, through: :interested_posts
+
+
 end

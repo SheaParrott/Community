@@ -5,7 +5,13 @@ class Api::PostsController < ApplicationController
   # post "/api/post/create" 
 
   def create 
-
+{
+  post: {
+    title: "title of post"
+    body: "alot of text is put here"
+    tags: []
+  }
+}
 
     # <input type="text" name="post[title]" />
     # <input type="text" name="post[body]" />
@@ -42,6 +48,6 @@ class Api::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, tag_ids: [])
+    params.require(:post).permit(:title, :post_image, :body, tag_ids: [])
   end
 end
