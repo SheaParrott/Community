@@ -19,6 +19,13 @@ section.createAPostBox {
 h4.createAPostTitle {
   margin: 7px 10px 10px 10px;
 }
+input.createAPost {
+  width: 280px;
+  margin: 7px 10px 10px 10px;
+}
+input.createAPostImage {
+  margin: 50px;
+}
 img.createAPostImage {
   max-width: 205px;
   max-height: 145px;
