@@ -6,41 +6,64 @@ import Header from '../../Components/Header'
 import Footer from '../../Components/Footer'
 import { Link } from 'react-router-dom'
 import myDataStore from '../DataStore/DataStore'
+import { toJS } from 'mobx'
 
 //
 // three lines is called a hamburger menu
 //
+
+// id: post.id,
+// title: post.title,
+// image: url_for(post.post_image),
+// body: post.body,
+// profile_id: post.author.id,
+// profile_name: post.author.name,
+// profile_image: url_for(post.author.profile_image)
+
 class PostWithComments extends Component {
+  testing = () => {
+    // console.log(myDataStore.singlePost)
+    console.log(toJS(myDataStore.singlePost.body))
+    console.log(toJS(myDataStore.singlePost.image))
+  }
   render() {
     return (
       <div>
         <Header />
+        <button onClick={this.testing}>testing</button>
         <section className="requestBoxCentering">
           <section className="requestBox">
             <div className="requestBoxTopBar">
               <Link to="/Profile">
                 <img
                   className="requestBoxProfileImage"
-                  src={profileimg}
+                  src={toJS(myDataStore.singlePost.profile_image)}
                   alt="profile"
                 />
               </Link>
               <div className="requestBoxTopBarInfo">
                 <Link to="/Profile">
-                  <p className="requestBoxProfileName">Pickle Rick</p>
+                  <p className="requestBoxProfileName">
+                    {toJS(myDataStore.singlePost.profile_name)}
+                  </p>
                 </Link>
-                <p className="requestBoxDate">Yesterday</p>
+                <p className="requestBoxDate">
+                  {toJS(myDataStore.singlePost.time)}
+                </p>
               </div>
               <a href="#">
                 <i className="fas fa-ellipsis-v" />
               </a>
             </div>
-            <h4 className="requestBoxTitle">Need help with react router!!</h4>
-            <img className="requestBoxImage" src={requestimg} alt="request" />
-            <ul>
-              <li>free on weekends and nights after 7</li>
-              <li>Meetup at Starbucks downtown St.Pete?</li>
-            </ul>
+            <h4 className="requestBoxTitle">
+              {toJS(myDataStore.singlePost.title)}
+            </h4>
+            <img
+              className="requestBoxImage"
+              src={toJS(myDataStore.image)}
+              alt="requestBox"
+            />
+            <p>{toJS(myDataStore.singlePost.body)}</p>
             <div className="requestBoxMiddleBar">
               <div className="requestBoxMiddleBarTwo">
                 <a href="#">

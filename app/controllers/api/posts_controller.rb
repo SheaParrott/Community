@@ -32,12 +32,18 @@ class Api::PostsController < ApplicationController
 
     post = Post.find(post_id)
 
+    # profile = Post.find
+
     render json: {
       post: {
         id: post.id,
         title: post.title, 
         image: url_for(post.post_image),
-        body: post.body
+        body: post.body, 
+        time: post.created_at,
+        profile_id: post.author.id, 
+        profile_name: post.author.name, 
+        profile_image: url_for(post.author.profile_image)
       }
     }
   end

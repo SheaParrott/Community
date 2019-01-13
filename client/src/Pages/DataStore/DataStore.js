@@ -8,17 +8,15 @@ class DataStore {
       interested_posts: [],
       tags: []
     }
-    this.post = {}
+    this.singlePost = {}
     this.AllTags = []
     this.showOrHide = 'hidden'
   }
   changeShowOrHide = () => {
-    console.log('yyooo')
-    // this.showOrHide = ''
     this.showOrHide = !this.showOrHide ? 'hidden' : ''
   }
   getProfileData = () => {
-    axios.get(`/api/profiles/2`).then(response => {
+    axios.get(`/api/profiles/1`).then(response => {
       this.profile = response.data.profile
     })
   }
@@ -42,8 +40,8 @@ class DataStore {
     // - post.image
     // - post.body
     axios.get(`/api/posts/${theCommentID}`).then(response => {
-      // console.log(response.data.post)
-      this.post = response.data.post
+      console.log(response.data.post)
+      this.singlePost = response.data.post
     })
 
     // post comments
@@ -60,7 +58,7 @@ decorate(DataStore, {
   profile: observable,
   AllTags: observable,
   showOrHide: observable,
-  post: observable
+  singlePost: observable
 })
 
 let myDataStore = new DataStore()

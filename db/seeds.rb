@@ -300,4 +300,8 @@ InterestedPost.create!(post: postThree , profile: shea)
 
 
 
-# create a form and create a post
+# GAVIN PLEASE HELP
+# [] create a post is giving a 404
+# [] post with comments loading component to fast, 
+#    the data does not come back before the page loads. 
+#    plus, when i refresh the browser it dumps my data.

@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 // tools
-import axios from 'axios'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 // pages
 import SignIn from './Pages/SignIn/index'
 import Profile from './Pages/Profile/index'
@@ -14,7 +13,6 @@ import Mission from './Pages/Mission/index'
 import MyCommunity from './Pages/MyCommunity/index'
 import PeopleInterested from './Pages/PeopleInterested/index'
 import Notifications from './Pages/Notifications/index'
-import CreateAPost from './Pages/CreateAPost/index'
 import FriendRequests from './Pages/FriendRequests/index'
 
 import myDataStore from './Pages/DataStore/DataStore'
