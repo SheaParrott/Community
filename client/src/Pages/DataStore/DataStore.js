@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { decorate, computed, observable } from 'mobx'
+import { decorate, observable } from 'mobx'
 
 class DataStore {
   constructor() {
@@ -10,6 +10,12 @@ class DataStore {
     }
     this.post = {}
     this.AllTags = []
+    this.showOrHide = 'hidden'
+  }
+  changeShowOrHide = () => {
+    console.log('yyooo')
+    // this.showOrHide = ''
+    this.showOrHide = !this.showOrHide ? 'hidden' : ''
   }
   getProfileData = () => {
     axios.get(`/api/profiles/2`).then(response => {
@@ -35,6 +41,10 @@ class DataStore {
     // - post.title
     // - post.image
     // - post.body
+    axios.get(`/api/posts/${theCommentID}`).then(response => {
+      // console.log(response.data.post)
+      this.post = response.data.post
+    })
 
     // post comments
     // - profile.image
@@ -48,7 +58,9 @@ class DataStore {
 
 decorate(DataStore, {
   profile: observable,
-  AllTags: observable
+  AllTags: observable,
+  showOrHide: observable,
+  post: observable
 })
 
 let myDataStore = new DataStore()

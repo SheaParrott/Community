@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './style.css'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Header from '../../Components/Header'
 import Footer from '../../Components/Footer'

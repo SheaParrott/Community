@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Footer from '../../Components/Footer'
 import './style.css'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class SignIn extends Component {
   signInAuthorization = () => {

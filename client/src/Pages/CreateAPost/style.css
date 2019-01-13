@@ -1,20 +1,19 @@
-h1.createAPost {
-  font-size: 2rem;
-  padding: 5px 0 5px 0;
-  margin: 5px 0 2px 0;
-  width: 310px;
-  box-shadow: 0 0 5px black;
+.hidden {
+  display: none;
 }
 
 section.createAPostCentering {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 3px 0 3px 0;
+  margin: 0px 0 3px 0;
 }
 section.createAPostBox {
   width: 310px;
   box-shadow: 0 0 5px black;
+}
+button.postSubmit {
+  width: 100vw;
 }
 h4.createAPostTitle {
   margin: 7px 10px 10px 10px;
@@ -22,9 +21,6 @@ h4.createAPostTitle {
 input.createAPost {
   width: 280px;
   margin: 7px 10px 10px 10px;
-}
-input.createAPostImage {
-  margin: 50px;
 }
 img.createAPostImage {
   max-width: 205px;

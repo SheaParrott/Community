@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   get "/api/profiles/:id", to: "api/profiles#show"
   
   post "/api/posts/create", to: "api/posts#create"
+  get "/api/posts/:id", to: "api/posts#show"
 
   get "/api/tags", to: "api/tags#show"
+
 
 
 

@@ -5,13 +5,6 @@ class Api::PostsController < ApplicationController
   # post "/api/post/create" 
 
   def create 
-{
-  post: {
-    title: "title of post"
-    body: "alot of text is put here"
-    tags: []
-  }
-}
 
     # <input type="text" name="post[title]" />
     # <input type="text" name="post[body]" />
@@ -34,14 +27,20 @@ class Api::PostsController < ApplicationController
     render head: :ok
   end 
 
-#   # [x , x, ] posts the user made, then post tagging, then interestedpost for one use to this post 
-# postOne  = gavin.authored_posts.create!(title: "About SDG", body: "blah blah blah")
-# postOne .post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+  def show
+    post_id = params[:id]
 
-# # [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
-# PostTagging.create!(post: postOne , tag: gaming)
-# PostTagging.create!(post: postOne , tag: web)
-# PostTagging.create!(post: postOne , tag: networking)
+    post = Post.find(post_id)
+
+    render json: {
+      post: {
+        id: post.id,
+        title: post.title, 
+        image: url_for(post.post_image),
+        body: post.body
+      }
+    }
+  end
 
 
 
@@ -51,3 +50,15 @@ class Api::PostsController < ApplicationController
     params.require(:post).permit(:title, :post_image, :body, tag_ids: [])
   end
 end
+
+
+
+
+# {
+#   post: {
+#     title: "title of post",
+#     image: "image here"
+#     body: "alot of text is put here",
+#     tags: []
+#   }
+# }

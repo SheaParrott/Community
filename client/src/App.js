@@ -37,7 +37,6 @@ class App extends Component {
           <Route path="/UpdateProfile/" component={UpdateProfile} />
           <Route path="/MyCommunity/" component={MyCommunity} />
           <Route path="/FriendRequests/" component={FriendRequests} />
-          <Route path="/CreateAPost/" component={CreateAPost} />
           <Route path="/Posts/" component={Posts} />
           <Route path="/PostWithComments/" component={PostWithComments} />
           <Route path="/PeopleInterested/" component={PeopleInterested} />

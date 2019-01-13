@@ -80,6 +80,14 @@ div.profileBio {
   width: 310px;
   box-shadow: 0 0 5px black;
 }
+div.profileCreateAPost {
+  margin-bottom: 5px;
+  width: 310px;
+  box-shadow: 0 0 5px black;
+}
+.lessTopMargin {
+  margin-top: -15px;
+}
 
 div.profileMyCommunityParent {
   width: 310px;

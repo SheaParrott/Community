@@ -4,7 +4,8 @@ import profileimg from '../../assets/picklerick.jpg'
 import './style.css'
 import Header from '../../Components/Header'
 import Footer from '../../Components/Footer'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import myDataStore from '../DataStore/DataStore'
 
 //
 // three lines is called a hamburger menu

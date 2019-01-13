@@ -1,20 +1,16 @@
 import React, { Component } from 'react'
 import './style.css'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import axios from 'axios'
-
-import SignIn from '../SignIn/index'
-import Posts from '../Posts/index'
 import Header from '../../Components/Header'
-import profileimg from '../../assets/picklerick.jpg'
-import coverimg from '../../assets/space.jpeg'
 import requestimg from '../../assets/dev.jpeg'
 import Footer from '../../Components/Footer'
 import Post from '../../Components/Post/Post'
 import myDataStore from '../DataStore/DataStore'
 
 import { observer } from 'mobx-react'
+import CreateAPost from '../CreateAPost'
 
 class Profile extends Component {
   constructor(props) {
@@ -59,7 +55,9 @@ class Profile extends Component {
       )
     }
   }
-
+  dataBaseShowOrHide = () => {
+    myDataStore.changeShowOrHide()
+  }
   CommentIDToBePassedToDataStore = event => {
     //this takes the event data and calls a function in
     // the datastore and passing the event data to that function
@@ -128,6 +126,14 @@ class Profile extends Component {
             </h6>
           </div>
           <div className="profileBio">{this.fillInBox()}</div>
+          {/* add in ternary opperator to remove post component off 
+          profile page after submitted. or play with state to make
+          appear and disappear */}
+          <div className="profileCreateAPost" onClick={this.dataBaseShowOrHide}>
+            <p>Create a post</p>
+            <i className="fas fa-sort-down lessTopMargin" />
+          </div>
+          <CreateAPost />
           <div className="ProfilePostsBox">
             <h6>Recommended Posts:</h6>
             <Link to="/PostWithComments">
