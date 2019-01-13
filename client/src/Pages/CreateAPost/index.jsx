@@ -69,7 +69,11 @@ class CreateAPost extends Component {
                   </h5>
                 )
               })}
-              <button className="postSubmit" type="submit">
+              <button
+                onClick={myDataStore.changeShowOrHide}
+                className="postSubmit"
+                type="submit"
+              >
                 Submit Post
               </button>
             </section>

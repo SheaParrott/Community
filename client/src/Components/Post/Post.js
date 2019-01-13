@@ -36,7 +36,10 @@ class Post extends Component {
             <div className="requestBoxMiddleBar">
               <div className="requestBoxMiddleBarTwo">
                 <Link to="/PostWithComments">
-                  <i className="far fa-comment" />
+                  <i
+                    onClick={this.props.CommentIDToBePassedToDataStore}
+                    className="far fa-comment"
+                  />
                 </Link>
               </div>
               <div className="requestBoxMiddleBarTwo">
@@ -49,7 +52,11 @@ class Post extends Component {
               </div>
             </div>
             <div className="requestBoxBottomBar">
-              <Link to="/PostWithComments" className="requestBoxBottomBarInfo">
+              <Link
+                onClick={this.props.CommentIDToBePassedToDataStore}
+                to="/PostWithComments"
+                className="requestBoxBottomBarInfo"
+              >
                 7 comments
               </Link>
               <Link to="/PeopleInterested" className="requestBoxBottomBarInfo">

@@ -195,11 +195,16 @@ class Profile extends Component {
             <Link to="/Posts">
               <h6>See More</h6>
             </Link>
+            {/* passing this id is not working? */}
           </div>
           {myDataStore.profile.posts.map(post => {
             return (
               <Post
                 key={post.id}
+                CommentIDToBePassedToDataStore={
+                  this.CommentIDToBePassedToDataStore
+                }
+                data-comment={post.id}
                 profileName={myDataStore.profile.name}
                 profileImage={myDataStore.profile.profile_image}
                 postTitle={post.title}

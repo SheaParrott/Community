@@ -26,8 +26,27 @@ class DataStore {
       // console.log(response.data.tags)
     })
   }
+
+  profileID = theProfileID => {
+    console.log(theProfileID)
+    // now get single post with comments and pass
+    // to post with comment section. create a new observable
+    // for postWithComment component
+
+    // data needed from api
+    // - profile pic
+    // - profile name
+    // - post.created
+    // - post.title
+    // - post.image
+    // - post.body
+    axios.get(`/api/profiles/${theProfileID}`).then(response => {
+      console.log(response.data.profile)
+      this.profile = response.data.profile
+    })
+  }
   commentID = theCommentID => {
-    console.log(theCommentID)
+    // console.log(theCommentID)
     // now get single post with comments and pass
     // to post with comment section. create a new observable
     // for postWithComment component

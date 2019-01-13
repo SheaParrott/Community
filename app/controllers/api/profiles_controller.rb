@@ -1,4 +1,6 @@
 class Api::ProfilesController < ApplicationController
+  # skip_before_action :verify_authenticity_token
+
   def show
     profile_id = params[:id]
 
@@ -20,7 +22,8 @@ class Api::ProfilesController < ApplicationController
         title: post.title,
         image: url_for(post.post_image),
         body: post.body,
-        timestamp: post.created_at
+        timestamp: post.created_at, 
+        author: post.author.id
       }
     end
 

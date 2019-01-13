@@ -26,6 +26,13 @@ class PostWithComments extends Component {
     console.log(toJS(myDataStore.singlePost.body))
     console.log(toJS(myDataStore.singlePost.image))
   }
+
+  ProfileIDToBePassedToDataStore = event => {
+    //this takes the event data and calls a function in
+    // the datastore and passing the event data to that function
+    myDataStore.profileID(event.target.dataset.profile)
+    // console.log(event.target.dataset.profile)
+  }
   render() {
     return (
       <div>
@@ -36,6 +43,8 @@ class PostWithComments extends Component {
             <div className="requestBoxTopBar">
               <Link to="/Profile">
                 <img
+                  onClick={this.ProfileIDToBePassedToDataStore}
+                  data-profile={toJS(myDataStore.singlePost.profile_id)}
                   className="requestBoxProfileImage"
                   src={toJS(myDataStore.singlePost.profile_image)}
                   alt="profile"
@@ -43,7 +52,11 @@ class PostWithComments extends Component {
               </Link>
               <div className="requestBoxTopBarInfo">
                 <Link to="/Profile">
-                  <p className="requestBoxProfileName">
+                  <p
+                    onClick={this.ProfileIDToBePassedToDataStore}
+                    data-profile={toJS(myDataStore.singlePost.profile_id)}
+                    className="requestBoxProfileName"
+                  >
                     {toJS(myDataStore.singlePost.profile_name)}
                   </p>
                 </Link>

@@ -305,3 +305,11 @@ InterestedPost.create!(post: postThree , profile: shea)
 # [] post with comments loading component to fast, 
 #    the data does not come back before the page loads. 
 #    plus, when i refresh the browser it dumps my data.
+#   - could work on getting all information when 
+#    interested_post is called. then pass the 
+#    appropriate information when needed. 
+#   - or if i can figure a way to cache the data for a
+#    short period of time, that way when the browser 
+#    loads its still there
+# [] passing id of posts on profile is not working
+#    unsure how to make this work
