@@ -4,9 +4,6 @@ div.CoverImage {
 }
 main.ProfileBody {
   margin-top: -140px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 img.ProfileCoverImage {
   background: url(../../assets/space.jpeg) no-repeat;
@@ -21,11 +18,15 @@ img.ProfileImage {
   border: 1px solid black;
   box-shadow: 0 0 4px white;
 }
-div.addToCommunityBox {
+div.nameBox {
   display: flex;
   justify-content: center;
 }
-div.addToCommunity {
+h3.name {
+  margin: 0;
+  padding: 2px 5px 2px 5px;
+}
+div.name {
   display: flex;
   justify-content: center;
   align-items: center;

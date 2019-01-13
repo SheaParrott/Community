@@ -52,13 +52,13 @@ class PostWithComments extends Component {
               </Link>
               <div className="requestBoxTopBarInfo">
                 <Link to="/Profile">
-                  <p
+                  <h4
                     onClick={this.ProfileIDToBePassedToDataStore}
                     data-profile={toJS(myDataStore.singlePost.profile_id)}
                     className="requestBoxProfileName"
                   >
                     {toJS(myDataStore.singlePost.profile_name)}
-                  </p>
+                  </h4>
                 </Link>
                 <p className="requestBoxDate">
                   {toJS(myDataStore.singlePost.time)}
@@ -164,7 +164,6 @@ class PostWithComments extends Component {
             <button className="comment">submit</button>
           </section>
         </section>
-        <Footer />
       </div>
     )
   }

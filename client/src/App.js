@@ -14,6 +14,7 @@ import MyCommunity from './Pages/MyCommunity/index'
 import PeopleInterested from './Pages/PeopleInterested/index'
 import Notifications from './Pages/Notifications/index'
 import FriendRequests from './Pages/FriendRequests/index'
+import Footer from './Components/Footer'
 
 import myDataStore from './Pages/DataStore/DataStore'
 
@@ -24,6 +25,7 @@ class App extends Component {
     myDataStore.getProfileData()
     myDataStore.getAllTags()
   }
+
   render() {
     return (
       <Router>
@@ -40,6 +42,7 @@ class App extends Component {
           <Route path="/PeopleInterested/" component={PeopleInterested} />
           <Route path="/Creator/" component={Creator} />
           <Route path="/Mission/" component={Mission} />
+          <Footer />
         </div>
       </Router>
     )

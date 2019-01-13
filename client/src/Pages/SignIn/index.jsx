@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Footer from '../../Components/Footer'
 import './style.css'
 import { Link } from 'react-router-dom'
 
@@ -55,10 +54,9 @@ class SignIn extends Component {
           <i class="fas fa-arrow-right" />
           <div className="signInMissionStatementsRight">
             <i className="fab fa-connectdevelop" />
-            <p className="signInMissionStatementsRight">BUILD COMMUNITY</p>
+            <p className="signInMissionStatementsRight">CONNECT</p>
           </div>
         </section>
-        <Footer />
       </div>
     )
   }

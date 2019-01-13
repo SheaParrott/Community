@@ -31,7 +31,6 @@ class Mission extends Component {
             <button onClick={this.loadCreatorPage}>Contact Us</button>
           </Link>
         </div>
-        <Footer />
       </div>
     )
   }

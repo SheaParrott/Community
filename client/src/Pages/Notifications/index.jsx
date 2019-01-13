@@ -108,7 +108,6 @@ class Notifications extends Component {
             </section>
           </Link>
         </div>
-        <Footer />
       </>
     )
   }

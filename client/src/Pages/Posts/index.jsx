@@ -13,7 +13,6 @@ class Posts extends Component {
         <Post />
         <Post />
         <Post />
-        <Footer />
       </div>
     )
   }

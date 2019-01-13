@@ -33,7 +33,6 @@ class UpdateProfile extends Component {
         <Link to="/Profile">
           <button>SUBMIT</button>
         </Link>
-        <Footer />
       </div>
     )
   }

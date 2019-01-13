@@ -33,7 +33,7 @@ class Profile extends Component {
     })
 
     if (this.state.profileBioSection === '') {
-      return <p>{myDataStore.profile.about_me}</p>
+      return <h4>{myDataStore.profile.about_me}</h4>
     }
     if (this.state.profileBioSection === 'STRENGTHS') {
       return (
@@ -44,7 +44,7 @@ class Profile extends Component {
         </ul>
       )
     } else if (this.state.profileBioSection === 'ABOUT ME') {
-      return <p>{myDataStore.profile.about_me}</p>
+      return <h5>{myDataStore.profile.about_me}</h5>
     } else if (this.state.profileBioSection === 'STRUGGLES') {
       return (
         <ul>
@@ -59,8 +59,6 @@ class Profile extends Component {
     myDataStore.changeShowOrHide()
   }
   CommentIDToBePassedToDataStore = event => {
-    //this takes the event data and calls a function in
-    // the datastore and passing the event data to that function
     myDataStore.commentID(event.target.dataset.comment)
   }
 
@@ -75,7 +73,7 @@ class Profile extends Component {
             alt="profile"
           />
         </div>
-        <main className="ProfileBody">
+        <main className="ProfileBody mainContent">
           <div className="profileTop">
             <Link to="/UpdateProfile">
               <img
@@ -91,10 +89,10 @@ class Profile extends Component {
                 <p>Add to Community</p>
               </div>
             </div> */}
-            <div className="addToCommunityBox">
-              <div className="addToCommunity">
+            <div className="nameBox">
+              <div className="name">
                 {/* <i className="fas fa-plus-circle" /> */}
-                <p>{myDataStore.profile.name}</p>
+                <h3 className="name">{myDataStore.profile.name}</h3>
               </div>
             </div>
             <div className="profileQuote">{myDataStore.profile.quote}</div>
@@ -130,7 +128,7 @@ class Profile extends Component {
           profile page after submitted. or play with state to make
           appear and disappear */}
           <div className="profileCreateAPost" onClick={this.dataBaseShowOrHide}>
-            <p>Create a post</p>
+            <h5>Create a post</h5>
             <i className="fas fa-sort-down lessTopMargin" />
           </div>
           <CreateAPost />
@@ -215,7 +213,6 @@ class Profile extends Component {
             )
           })}
         </main>
-        <Footer />
       </div>
     )
   }

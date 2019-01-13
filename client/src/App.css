@@ -1,14 +1,79 @@
 .App {
   text-align: center;
-  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  /* font-weight: 700; */
+  /* letter-spacing: 0.5px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+ul,
+li,
+.serif {
+  font-family: 'Merriweather', serif;
+}
+.cursive {
+  font-family: 'Kaushan Script', cursive;
+}
+h5 {
+  margin: 0;
+  padding: 5px;
+}
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* font-family: 'Lobster', cursive;
+like this for: use letter-spacing for added styling
+recommended and interested posts header
+7 comments and interested people
+footer bar
+font-family: 'Sarabun', sans-serif;
+contact info for creator component
+tags
+post title
+comment body
+font-family: 'Kaushan Script', cursive;
+name
+attribuutes bar
+tags?
+font-family: 'Pacifico', cursive; */
+
+/* font-family: 'Sarabun', sans-serif;
+font-family: 'Dancing Script', cursive;
+font-family: 'Charm', cursive;
+font-family: 'Great Vibes', cursive;
+font-family: 'Alegreya SC', serif; */
+/* font-family: 'Montserrat', sans-serif; */
+/* body and main content */
+/* font-family: 'Merriweather', serif; */
+/* headers and tiles and names */
+
+@font-face {
+  font-family: 'community';
+  src: url('./assets/Brilliantte\ Personal\ Use\ Only.ttf');
+}
+@font-face {
+  font-family: 'Faded';
+  src: url('./assets/Championship.ttf');
 }
 
 /* general styling  */
 h1.AppName,
 .creator {
-  font-family: 'Lobster', cursive;
-  font-weight: 600;
+  font-family: 'community', cursive;
+  font-weight: 700;
   letter-spacing: 0.9px;
+  font-size: 3rem;
+  margin: 0 0 20px 0;
 }
 header {
   display: flex;
@@ -16,6 +81,11 @@ header {
   box-shadow: 0 0 5px black;
   padding: 5px 0 5px 0;
   font-size: 25px;
+  background: linear-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0.788));
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
 }
 p {
   margin: 6px;

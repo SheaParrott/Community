@@ -61,8 +61,6 @@ class FriendRequests extends Component {
             <button>Delete</button>
           </section>
         </div>
-
-        <Footer />
       </>
     )
   }

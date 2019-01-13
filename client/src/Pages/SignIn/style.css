@@ -55,7 +55,11 @@ div.signInMissionStatementsRight {
 }
 p.signInMissionStatements {
   margin: 3px 0 0 0;
+  font-family: 'Faded';
+  letter-spacing: 0.5px;
 }
 p.signInMissionStatementsRight {
   margin: 3px 0 0 0;
+  font-family: 'Faded';
+  letter-spacing: 0.5px;
 }

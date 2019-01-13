@@ -19,9 +19,9 @@ class Post extends Component {
               </Link>
               <div className="requestBoxTopBarInfo">
                 <Link to="/Profile">
-                  <p className="requestBoxProfileName">
+                  <h4 className="requestBoxProfileName">
                     {this.props.profileName}
-                  </p>
+                  </h4>
                 </Link>
                 <p className="requestBoxDate">{this.props.timestamp}</p>
               </div>

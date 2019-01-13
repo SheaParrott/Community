@@ -86,8 +86,6 @@ class MyCommunity extends Component {
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>
-
-        <Footer />
       </>
     )
   }
