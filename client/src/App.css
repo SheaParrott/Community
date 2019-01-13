@@ -40,6 +40,9 @@ h5 {
   flex-direction: column;
   align-items: center;
 }
+.marginFromHeader {
+  margin-top: 45px;
+}
 /* font-family: 'Lobster', cursive;
 like this for: use letter-spacing for added styling
 recommended and interested posts header

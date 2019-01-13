@@ -34,22 +34,18 @@ class Post extends Component {
             />
             <p>{this.props.postBody}</p>
             <div className="requestBoxMiddleBar">
-              <div className="requestBoxMiddleBarTwo">
-                <Link to="/PostWithComments">
-                  <i
-                    onClick={this.props.CommentIDToBePassedToDataStore}
-                    className="far fa-comment"
-                  />
-                </Link>
-              </div>
-              <div className="requestBoxMiddleBarTwo">
-                {/* create endpoint that adds this to your 
+              <Link to="/PostWithComments">
+                <i
+                  onClick={this.props.CommentIDToBePassedToDataStore}
+                  className="far fa-comment"
+                />
+              </Link>
+              {/* create endpoint that adds this to your 
               interested posts and totals up the number 
               and displays below */}
-                <a href="#">
-                  <i className="fas fa-magnet" />
-                </a>
-              </div>
+              <a href="#">
+                <i className="fas fa-magnet" />
+              </a>
             </div>
             <div className="requestBoxBottomBar">
               <Link

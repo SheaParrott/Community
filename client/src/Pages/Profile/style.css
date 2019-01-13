@@ -119,9 +119,6 @@ img.ProfileRequestBoxImage {
   margin: 5px;
 }
 div.ProfilePostsBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 310px;
   box-shadow: 0 0 5px black;
   margin: 0 5px 5px 5px;

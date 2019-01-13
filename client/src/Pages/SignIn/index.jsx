@@ -16,7 +16,7 @@ class SignIn extends Component {
     return (
       <div>
         <h1 className="AppName">Community</h1>
-        <section className="signIn">
+        <section className="signIn columnCentering">
           <p>SIGN IN</p>
           <input placeholder="Username" />
           <input placeholder="Password" />
@@ -25,7 +25,7 @@ class SignIn extends Component {
           </Link>
         </section>
         <h5>to sign up</h5>
-        <section className="signUp">
+        <section className="signUp columnCentering">
           <Link to="/UpdateProfile">
             <button onClick={this.googleAuthorization}>
               <i className="fab fa-google-plus-g" />

@@ -8,107 +8,109 @@ import Footer from '../../Components/Footer'
 class Notifications extends Component {
   render() {
     return (
-      <>
+      <div>
         <Header />
-        <div className="notificationsBox">
-          <Link to="/PostWithComments">
-            <section className="notificationsBox">
-              <Link to="/Profile">
-                <img
-                  className="notificationsBoxProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <h5>Pickle Rick commented on your Post</h5>
-            </section>
-          </Link>
-          <Link to="/FriendRequests">
-            <section className="notificationsBox">
-              <Link to="/Profile">
-                <img
-                  className="notificationsBoxProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <h5>Pickle Rick requested to join your community</h5>
-            </section>
-          </Link>
-          <Link to="/PostWithComments">
-            <section className="notificationsBox">
-              <Link to="/Profile">
-                <img
-                  className="notificationsBoxProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <h5>Pickle Rick commented on your Post</h5>
-            </section>
-          </Link>
-          <Link to="/FriendRequests">
-            <section className="notificationsBox">
-              <Link to="/Profile">
-                <img
-                  className="notificationsBoxProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <h5>Pickle Rick requested to join your community</h5>
-            </section>
-          </Link>
-          <Link to="/PostWithComments">
-            <section className="notificationsBox">
-              <Link to="/Profile">
-                <img
-                  className="notificationsBoxProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <h5>Pickle Rick commented on your Post</h5>
-            </section>
-          </Link>
-          <Link to="/FriendRequests">
-            <section className="notificationsBox">
-              <Link to="/Profile">
-                <img
-                  className="notificationsBoxProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <h5>Pickle Rick requested to join your community</h5>
-            </section>
-          </Link>
-          <Link to="/PostWithComments">
-            <section className="notificationsBox">
-              <Link to="/Profile">
-                <img
-                  className="notificationsBoxProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <h5>Pickle Rick commented on your Post</h5>
-            </section>
-          </Link>
-          <Link to="/FriendRequests">
-            <section className="notificationsBox">
-              <Link to="/Profile">
-                <img
-                  className="notificationsBoxProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <h5>Pickle Rick requested to join your community</h5>
-            </section>
-          </Link>
+        <div className="marginFromHeader">
+          <div className="notificationsBox columnCentering">
+            <Link to="/PostWithComments">
+              <section className="notificationsBox">
+                <Link to="/Profile">
+                  <img
+                    className="notificationsBoxProfileImage"
+                    src={profileimg}
+                    alt="profile"
+                  />
+                </Link>
+                <h5>Pickle Rick commented on your Post</h5>
+              </section>
+            </Link>
+            <Link to="/FriendRequests">
+              <section className="notificationsBox">
+                <Link to="/Profile">
+                  <img
+                    className="notificationsBoxProfileImage"
+                    src={profileimg}
+                    alt="profile"
+                  />
+                </Link>
+                <h5>Pickle Rick requested to join your community</h5>
+              </section>
+            </Link>
+            <Link to="/PostWithComments">
+              <section className="notificationsBox">
+                <Link to="/Profile">
+                  <img
+                    className="notificationsBoxProfileImage"
+                    src={profileimg}
+                    alt="profile"
+                  />
+                </Link>
+                <h5>Pickle Rick commented on your Post</h5>
+              </section>
+            </Link>
+            <Link to="/FriendRequests">
+              <section className="notificationsBox">
+                <Link to="/Profile">
+                  <img
+                    className="notificationsBoxProfileImage"
+                    src={profileimg}
+                    alt="profile"
+                  />
+                </Link>
+                <h5>Pickle Rick requested to join your community</h5>
+              </section>
+            </Link>
+            <Link to="/PostWithComments">
+              <section className="notificationsBox">
+                <Link to="/Profile">
+                  <img
+                    className="notificationsBoxProfileImage"
+                    src={profileimg}
+                    alt="profile"
+                  />
+                </Link>
+                <h5>Pickle Rick commented on your Post</h5>
+              </section>
+            </Link>
+            <Link to="/FriendRequests">
+              <section className="notificationsBox">
+                <Link to="/Profile">
+                  <img
+                    className="notificationsBoxProfileImage"
+                    src={profileimg}
+                    alt="profile"
+                  />
+                </Link>
+                <h5>Pickle Rick requested to join your community</h5>
+              </section>
+            </Link>
+            <Link to="/PostWithComments">
+              <section className="notificationsBox">
+                <Link to="/Profile">
+                  <img
+                    className="notificationsBoxProfileImage"
+                    src={profileimg}
+                    alt="profile"
+                  />
+                </Link>
+                <h5>Pickle Rick commented on your Post</h5>
+              </section>
+            </Link>
+            <Link to="/FriendRequests">
+              <section className="notificationsBox">
+                <Link to="/Profile">
+                  <img
+                    className="notificationsBoxProfileImage"
+                    src={profileimg}
+                    alt="profile"
+                  />
+                </Link>
+                <h5>Pickle Rick requested to join your community</h5>
+              </section>
+            </Link>
+          </div>
         </div>
-      </>
+      </div>
     )
   }
 }

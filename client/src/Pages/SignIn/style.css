@@ -1,8 +1,5 @@
 /* sign in page  */
 section.signIn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   border: 1px solid black;
   box-shadow: 0 0 5px black;
   width: 50%;
@@ -11,9 +8,6 @@ section.signIn {
   padding-bottom: 5px;
 }
 section.signUp {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   border: 1px solid black;
   box-shadow: 0 0 5px black;
   width: 50%;

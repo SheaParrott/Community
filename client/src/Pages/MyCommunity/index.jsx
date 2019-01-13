@@ -235,8 +235,8 @@ class MyCommunity extends Component {
             <i className="fas fa-ellipsis-v" />
           </section>
         </div>
-        <div className="allMyCommunityBox">
-          <section className="allMyCommunityBox">
+        <div className="allMyCommunityBox ">
+          <section className="allMyCommunityBox columnCentering">
             <Link to="/Profile">
               <img
                 className="allMyCommunityProfileImage"

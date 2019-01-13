@@ -7,12 +7,14 @@ import Footer from '../../Components/Footer'
 class Posts extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="columnCentering">
         <Header />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <div className="marginFromHeader">
+          <Post />
+          <Post />
+          <Post />
+          <Post />
+        </div>
       </div>
     )
   }

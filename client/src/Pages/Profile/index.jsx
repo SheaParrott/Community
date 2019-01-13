@@ -168,7 +168,7 @@ class Profile extends Component {
               <h6>See More</h6>
             </Link>
           </div>
-          <div className="ProfilePostsBox">
+          <div className="ProfilePostsBox columnCentering">
             <h6>interested Posts:</h6>
             {myDataStore.profile.interested_posts.map(post => {
               return (

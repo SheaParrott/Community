@@ -8,85 +8,86 @@ import Footer from '../../Components/Footer'
 class MyCommunity extends Component {
   render() {
     return (
-      <>
+      <div className="columnCentering">
         <Header />
-
-        <div className="PeopleInterestedBox">
-          <section className="PeopleInterestedBox">
-            <Link to="/Profile">
-              <img
-                className="PeopleInterestedProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="PeopleInterested">Pickle Rick</h3>
-            </Link>
-            <i className="fas fa-ellipsis-v" />
-          </section>
+        <div className="marginFromHeader">
+          <div className="PeopleInterestedBox">
+            <section className="PeopleInterestedBox">
+              <Link to="/Profile">
+                <img
+                  className="PeopleInterestedProfileImage"
+                  src={profileimg}
+                  alt="profile"
+                />
+              </Link>
+              <Link to="/Profile">
+                <h3 className="PeopleInterested">Pickle Rick</h3>
+              </Link>
+              <i className="fas fa-ellipsis-v" />
+            </section>
+          </div>
+          <div className="PeopleInterestedBox">
+            <section className="PeopleInterestedBox">
+              <Link to="/Profile">
+                <img
+                  className="PeopleInterestedProfileImage"
+                  src={profileimg}
+                  alt="profile"
+                />
+              </Link>
+              <Link to="/Profile">
+                <h3 className="PeopleInterested">Pickle Rick</h3>
+              </Link>
+              <i className="fas fa-ellipsis-v" />
+            </section>
+          </div>
+          <div className="PeopleInterestedBox">
+            <section className="PeopleInterestedBox">
+              <Link to="/Profile">
+                <img
+                  className="PeopleInterestedProfileImage"
+                  src={profileimg}
+                  alt="profile"
+                />
+              </Link>
+              <Link to="/Profile">
+                <h3 className="PeopleInterested">Pickle Rick</h3>
+              </Link>
+              <i className="fas fa-ellipsis-v" />
+            </section>
+          </div>
+          <div className="PeopleInterestedBox ">
+            <section className="PeopleInterestedBox">
+              <Link to="/Profile">
+                <img
+                  className="PeopleInterestedProfileImage"
+                  src={profileimg}
+                  alt="profile"
+                />
+              </Link>
+              <Link to="/Profile">
+                <h3 className="PeopleInterested">Pickle Rick</h3>
+              </Link>
+              <i className="fas fa-ellipsis-v" />
+            </section>
+          </div>
+          <div className="PeopleInterestedBox">
+            <section className="PeopleInterestedBox">
+              <Link to="/Profile">
+                <img
+                  className="PeopleInterestedProfileImage"
+                  src={profileimg}
+                  alt="profile"
+                />
+              </Link>
+              <Link to="/Profile">
+                <h3 className="PeopleInterested">Pickle Rick</h3>
+              </Link>
+              <i className="fas fa-ellipsis-v" />
+            </section>
+          </div>
         </div>
-        <div className="PeopleInterestedBox">
-          <section className="PeopleInterestedBox">
-            <Link to="/Profile">
-              <img
-                className="PeopleInterestedProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="PeopleInterested">Pickle Rick</h3>
-            </Link>
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="PeopleInterestedBox">
-          <section className="PeopleInterestedBox">
-            <Link to="/Profile">
-              <img
-                className="PeopleInterestedProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="PeopleInterested">Pickle Rick</h3>
-            </Link>
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="PeopleInterestedBox">
-          <section className="PeopleInterestedBox">
-            <Link to="/Profile">
-              <img
-                className="PeopleInterestedProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="PeopleInterested">Pickle Rick</h3>
-            </Link>
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="PeopleInterestedBox">
-          <section className="PeopleInterestedBox">
-            <Link to="/Profile">
-              <img
-                className="PeopleInterestedProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="PeopleInterested">Pickle Rick</h3>
-            </Link>
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-      </>
+      </div>
     )
   }
 }
