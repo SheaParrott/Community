@@ -8,7 +8,7 @@ class Post extends Component {
     return (
       <div>
         <section className="requestBoxCentering">
-          <section className="requestBox">
+          <section className="requestBox boxShadow">
             <div className="requestBoxTopBar">
               <Link to="/Profile">
                 <img

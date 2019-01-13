@@ -10,7 +10,6 @@ section.createAPostCentering {
 }
 section.createAPostBox {
   width: 310px;
-  box-shadow: 0 0 5px black;
 }
 button.postSubmit {
   width: 100vw;
@@ -25,7 +24,6 @@ input.createAPost {
 img.createAPostImage {
   max-width: 205px;
   max-height: 145px;
-  box-shadow: 0 0 5px black;
 }
 
 section.tagsBox {
@@ -33,7 +31,6 @@ section.tagsBox {
   flex-wrap: wrap;
   width: 310px;
   margin: 2px;
-  box-shadow: 0 0 5px black;
 }
 h5.tag {
   min-width: 20px;

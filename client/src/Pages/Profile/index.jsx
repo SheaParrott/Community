@@ -90,7 +90,7 @@ class Profile extends Component {
               </div>
             </div> */}
             <div className="nameBox">
-              <div className="name">
+              <div className="name boxShadow">
                 {/* <i className="fas fa-plus-circle" /> */}
                 <h3 className="name">{myDataStore.profile.name}</h3>
               </div>
@@ -101,21 +101,21 @@ class Profile extends Component {
             <h6
               onClick={this.AttributeClickToChangeState}
               data-attribute="STRENGTHS"
-              className="profileAttributesLeft"
+              className="profileAttributesLeft boxShadow"
             >
               STRENGTHS
             </h6>
             <h6
               onClick={this.AttributeClickToChangeState}
               data-attribute="ABOUT ME"
-              className="profileAttributesMiddle"
+              className="profileAttributesMiddle boxShadow"
             >
               ABOUT ME
             </h6>
             <h6
               onClick={this.AttributeClickToChangeState}
               data-attribute="STRUGGLES"
-              className="profileAttributesRight"
+              className="profileAttributesRight boxShadow"
             >
               GROWING
               {/* interesd in growing in
@@ -123,16 +123,19 @@ class Profile extends Component {
               interests */}
             </h6>
           </div>
-          <div className="profileBio">{this.fillInBox()}</div>
+          <div className="profileBio boxShadow">{this.fillInBox()}</div>
           {/* add in ternary opperator to remove post component off 
           profile page after submitted. or play with state to make
           appear and disappear */}
-          <div className="profileCreateAPost" onClick={this.dataBaseShowOrHide}>
+          <div
+            className="profileCreateAPost boxShadow"
+            onClick={this.dataBaseShowOrHide}
+          >
             <h5>Create a post</h5>
             <i className="fas fa-sort-down lessTopMargin" />
           </div>
           <CreateAPost />
-          <div className="ProfilePostsBox">
+          <div className="ProfilePostsBox columnCentering boxShadow">
             <h6>Recommended Posts:</h6>
             <Link to="/PostWithComments">
               <div className="ProfileRecommendedPost">
@@ -168,7 +171,7 @@ class Profile extends Component {
               <h6>See More</h6>
             </Link>
           </div>
-          <div className="ProfilePostsBox columnCentering">
+          <div className="ProfilePostsBox columnCentering boxShadow">
             <h6>interested Posts:</h6>
             {myDataStore.profile.interested_posts.map(post => {
               return (
@@ -179,7 +182,7 @@ class Profile extends Component {
                     data-comment={post.id}
                   >
                     <img
-                      className="ProfileRequestBoxImage"
+                      className="ProfileRequestBoxImage boxShadow"
                       src={post.image}
                       alt="request"
                       onClick={this.CommentIDToBePassedToDataStore}

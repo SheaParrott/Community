@@ -1,7 +1,6 @@
 /* sign in page  */
 section.signIn {
   border: 1px solid black;
-  box-shadow: 0 0 5px black;
   width: 50%;
   margin: 0 25% 0 25%;
   border-radius: 5px;
@@ -9,7 +8,6 @@ section.signIn {
 }
 section.signUp {
   border: 1px solid black;
-  box-shadow: 0 0 5px black;
   width: 50%;
   margin: 0 25% 0 25%;
   border-radius: 5px;

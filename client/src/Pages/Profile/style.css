@@ -32,7 +32,6 @@ div.name {
   justify-content: center;
   align-items: center;
   padding: 0 5px 0 5px;
-  box-shadow: 0 0 5px black;
   border-radius: 20px;
 }
 .fa-plus-circle {
@@ -53,19 +52,16 @@ div.profileAttributesBar {
   margin-top: 33px;
 }
 h6.profileAttributesLeft {
-  box-shadow: 0 0 5px black;
   border-radius: 50%;
   padding: 15px 22px 15px 22px;
   margin: 2px -20px 2px 30px;
 }
 h6.profileAttributesMiddle {
-  box-shadow: 0 0 5px black;
   border-radius: 50%;
   padding: 10px 22px 10px 22px;
   margin: -30px 9px 32px 9px;
 }
 h6.profileAttributesRight {
-  box-shadow: 0 0 5px black;
   border-radius: 50%;
   padding: 15px 22px 15px 22px;
   margin: 2px 30px 2px -20px;
@@ -80,21 +76,13 @@ h6.profileAttributesRight:hover {
 div.profileBio {
   margin: 5px;
   width: 310px;
-  box-shadow: 0 0 5px black;
 }
 div.profileCreateAPost {
   margin-bottom: 5px;
   width: 310px;
-  box-shadow: 0 0 5px black;
 }
 .lessTopMargin {
   margin-top: -15px;
-}
-
-div.profileMyCommunityParent {
-  width: 310px;
-  box-shadow: 0 0 5px black;
-  margin-bottom: 5px;
 }
 div.profileMyCommunity {
   display: flex;
@@ -115,12 +103,10 @@ img.ProfileCommunityProfileImage {
 img.ProfileRequestBoxImage {
   max-width: 60px;
   max-height: 40px;
-  box-shadow: 0 0 5px black;
   margin: 5px;
 }
 div.ProfilePostsBox {
   width: 310px;
-  box-shadow: 0 0 5px black;
   margin: 0 5px 5px 5px;
 }
 div.ProfileRecommendedPost {

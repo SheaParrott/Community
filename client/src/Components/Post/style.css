@@ -6,7 +6,6 @@ section.requestBoxCentering {
 }
 section.requestBox {
   width: 310px;
-  box-shadow: 0 0 5px black;
 }
 div.requestBoxTopBar {
   display: flex;

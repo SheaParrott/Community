@@ -28,7 +28,7 @@ class CreateAPost extends Component {
       <div className={myDataStore.showOrHide}>
         <form onSubmit={this.createPost}>
           <section className="createAPostCentering">
-            <section className="createAPostBox">
+            <section className="createAPostBox boxShadow">
               <input
                 className="createAPost"
                 type="text"
@@ -37,7 +37,7 @@ class CreateAPost extends Component {
               />
               <img
                 onClick={this.ImageInput}
-                className="createAPostImage"
+                className="createAPostImage boxShadow"
                 src={insertImage}
                 alt="request"
               />
@@ -54,7 +54,7 @@ class CreateAPost extends Component {
                 placeholder="Edit Body Here"
               />
             </section>
-            <section className="tagsBox">
+            <section className="tagsBox boxShadow">
               {myDataStore.AllTags.map(tag => {
                 // console.log(toJS(tag))
                 return (

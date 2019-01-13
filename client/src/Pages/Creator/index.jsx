@@ -12,7 +12,7 @@ class Creator extends Component {
           <i className="fas fa-arrow-left" />
           <h1 className="creator">Shea Parrott</h1>
         </div>
-        <img className="creator" src={CreatorImage} alt="Shea" />
+        <img className="creator boxShadow" src={CreatorImage} alt="Shea" />
         <h4 className="creatorInfo">(904) 629-8670</h4>
         <h4 className="creatorInfo">
           <br />

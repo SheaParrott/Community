@@ -43,6 +43,10 @@ h5 {
 .marginFromHeader {
   margin-top: 45px;
 }
+.boxShadow {
+  box-shadow: 0 0 5px black;
+}
+
 /* font-family: 'Lobster', cursive;
 like this for: use letter-spacing for added styling
 recommended and interested posts header

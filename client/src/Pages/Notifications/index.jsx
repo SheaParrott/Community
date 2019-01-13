@@ -13,7 +13,7 @@ class Notifications extends Component {
         <div className="marginFromHeader">
           <div className="notificationsBox columnCentering">
             <Link to="/PostWithComments">
-              <section className="notificationsBox">
+              <section className="notificationsBox boxShadow">
                 <Link to="/Profile">
                   <img
                     className="notificationsBoxProfileImage"
@@ -25,7 +25,7 @@ class Notifications extends Component {
               </section>
             </Link>
             <Link to="/FriendRequests">
-              <section className="notificationsBox">
+              <section className="notificationsBox boxShadow">
                 <Link to="/Profile">
                   <img
                     className="notificationsBoxProfileImage"
@@ -37,7 +37,7 @@ class Notifications extends Component {
               </section>
             </Link>
             <Link to="/PostWithComments">
-              <section className="notificationsBox">
+              <section className="notificationsBox boxShadow">
                 <Link to="/Profile">
                   <img
                     className="notificationsBoxProfileImage"
@@ -49,7 +49,7 @@ class Notifications extends Component {
               </section>
             </Link>
             <Link to="/FriendRequests">
-              <section className="notificationsBox">
+              <section className="notificationsBox boxShadow">
                 <Link to="/Profile">
                   <img
                     className="notificationsBoxProfileImage"
@@ -61,7 +61,7 @@ class Notifications extends Component {
               </section>
             </Link>
             <Link to="/PostWithComments">
-              <section className="notificationsBox">
+              <section className="notificationsBox boxShadow">
                 <Link to="/Profile">
                   <img
                     className="notificationsBoxProfileImage"
@@ -73,7 +73,7 @@ class Notifications extends Component {
               </section>
             </Link>
             <Link to="/FriendRequests">
-              <section className="notificationsBox">
+              <section className="notificationsBox boxShadow">
                 <Link to="/Profile">
                   <img
                     className="notificationsBoxProfileImage"
@@ -85,7 +85,7 @@ class Notifications extends Component {
               </section>
             </Link>
             <Link to="/PostWithComments">
-              <section className="notificationsBox">
+              <section className="notificationsBox boxShadow">
                 <Link to="/Profile">
                   <img
                     className="notificationsBoxProfileImage"
@@ -97,7 +97,7 @@ class Notifications extends Component {
               </section>
             </Link>
             <Link to="/FriendRequests">
-              <section className="notificationsBox">
+              <section className="notificationsBox boxShadow">
                 <Link to="/Profile">
                   <img
                     className="notificationsBoxProfileImage"

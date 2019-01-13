@@ -6,7 +6,6 @@ h1.creator {
 }
 img.creator {
   width: 160px;
-  box-shadow: 0 0 5px black;
 }
 p.creatorInfo {
   font-weight: 700;
