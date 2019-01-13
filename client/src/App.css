@@ -1,12 +1,18 @@
 .App {
   text-align: center;
+
+  /* body font */
   font-family: 'Montserrat', sans-serif;
+
+  /* font options */
   /* font-weight: 700; */
   /* letter-spacing: 0.5px; */
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+/* header/name fonts */
 h1,
 h2,
 h3,
@@ -19,14 +25,17 @@ li,
 .serif {
   font-family: 'Merriweather', serif;
 }
+
+/* special font */
 .cursive {
   font-family: 'Kaushan Script', cursive;
 }
+
 h5 {
   margin: 0;
   padding: 5px;
 }
-.mainContent {
+.columnCentering {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,7 +90,7 @@ header {
   box-shadow: 0 0 5px black;
   padding: 5px 0 5px 0;
   font-size: 25px;
-  background: linear-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0.788));
+  background: linear-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0.85));
   position: fixed;
   top: 0;
   right: 0;

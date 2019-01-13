@@ -22,7 +22,7 @@ class Api::PostsController < ApplicationController
     #    { "post" => { "title" => "Whoa!", "body" => "Nice!", "tag_ids" => [1, 2, 7] } }
 
     # Make a new post, but associate it to the currently logged in Profile
-    new_post = current_profile.post.create(post_params)
+    new_post = current_profile.authored_posts.create!(post_params)
 
     # Just say all is ok...
     render head: :ok
@@ -34,6 +34,7 @@ class Api::PostsController < ApplicationController
     post = Post.find(post_id)
 
     # profile = Post.find
+    #
 
     render json: {
       post: {

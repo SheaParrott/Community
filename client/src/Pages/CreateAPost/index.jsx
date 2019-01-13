@@ -18,7 +18,7 @@ class CreateAPost extends Component {
       console.log(pair[0] + ', ' + pair[1])
     }
 
-    axios.post('/api/post/create', formData).then(response => {
+    axios.post('/api/posts', formData).then(response => {
       console.log(response)
       // form.reset()
     })
@@ -44,7 +44,7 @@ class CreateAPost extends Component {
               <input
                 className="createAPostImage"
                 type="file"
-                name="post[:post_image]"
+                name="post[post_image]"
                 placeholder="image"
               />
               <input

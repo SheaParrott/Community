@@ -21,7 +21,7 @@ class Post < ApplicationRecord
 
 
   # has_many :comments
-  
+  #
 
   # // data needed from api
   # // - profile pic

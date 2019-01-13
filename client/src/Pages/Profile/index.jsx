@@ -64,7 +64,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <div className="App">
+      <>
         <Header />
         <div className="CoverImage">
           <img
@@ -73,7 +73,7 @@ class Profile extends Component {
             alt="profile"
           />
         </div>
-        <main className="ProfileBody mainContent">
+        <main className="ProfileBody columnCentering">
           <div className="profileTop">
             <Link to="/UpdateProfile">
               <img
@@ -213,7 +213,7 @@ class Profile extends Component {
             )
           })}
         </main>
-      </div>
+      </>
     )
   }
 }
