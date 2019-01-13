@@ -26,66 +26,6 @@ class MyCommunity extends Component {
               <i className="fas fa-ellipsis-v" />
             </section>
           </div>
-          <div className="PeopleInterestedBox">
-            <section className="PeopleInterestedBox">
-              <Link to="/Profile">
-                <img
-                  className="PeopleInterestedProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <Link to="/Profile">
-                <h3 className="PeopleInterested">Pickle Rick</h3>
-              </Link>
-              <i className="fas fa-ellipsis-v" />
-            </section>
-          </div>
-          <div className="PeopleInterestedBox">
-            <section className="PeopleInterestedBox">
-              <Link to="/Profile">
-                <img
-                  className="PeopleInterestedProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <Link to="/Profile">
-                <h3 className="PeopleInterested">Pickle Rick</h3>
-              </Link>
-              <i className="fas fa-ellipsis-v" />
-            </section>
-          </div>
-          <div className="PeopleInterestedBox ">
-            <section className="PeopleInterestedBox">
-              <Link to="/Profile">
-                <img
-                  className="PeopleInterestedProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <Link to="/Profile">
-                <h3 className="PeopleInterested">Pickle Rick</h3>
-              </Link>
-              <i className="fas fa-ellipsis-v" />
-            </section>
-          </div>
-          <div className="PeopleInterestedBox">
-            <section className="PeopleInterestedBox">
-              <Link to="/Profile">
-                <img
-                  className="PeopleInterestedProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <Link to="/Profile">
-                <h3 className="PeopleInterested">Pickle Rick</h3>
-              </Link>
-              <i className="fas fa-ellipsis-v" />
-            </section>
-          </div>
         </div>
       </div>
     )

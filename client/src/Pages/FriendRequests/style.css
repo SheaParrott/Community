@@ -6,7 +6,6 @@ section.friendRequestsBox {
   align-items: center;
   justify-content: space-evenly;
   box-shadow: 0 0 1px black;
-  width: 300px;
   margin: 1px;
 }
 img.friendRequestsProfileImage {

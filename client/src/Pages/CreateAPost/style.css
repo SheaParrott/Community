@@ -8,9 +8,6 @@ section.createAPostCentering {
   flex-wrap: wrap;
   margin: 0px 0 3px 0;
 }
-section.createAPostBox {
-  width: 310px;
-}
 button.postSubmit {
   width: 100vw;
 }

@@ -12,7 +12,7 @@ class FriendRequests extends Component {
         <Header />
         <div className="marginFromHeader">
           <div className="friendRequestsBox">
-            <section className="friendRequestsBox">
+            <section className="friendRequestsBox width">
               <Link to="/Profile">
                 <img
                   className="friendRequestsProfileImage"

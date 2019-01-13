@@ -95,7 +95,9 @@ class Profile extends Component {
                 <h3 className="name">{myDataStore.profile.name}</h3>
               </div>
             </div>
-            <div className="profileQuote">{myDataStore.profile.quote}</div>
+            <div className="profileQuote widthbig">
+              {myDataStore.profile.quote}
+            </div>
           </div>
           <div className="profileAttributesBar">
             <h6
@@ -123,22 +125,24 @@ class Profile extends Component {
               interests */}
             </h6>
           </div>
-          <div className="profileBio boxShadow">{this.fillInBox()}</div>
+          <div className="profileBio boxShadow widthbig">
+            {this.fillInBox()}
+          </div>
           {/* add in ternary opperator to remove post component off 
           profile page after submitted. or play with state to make
           appear and disappear */}
           <div
-            className="profileCreateAPost boxShadow"
+            className="profileCreateAPost widthbig boxShadow"
             onClick={this.dataBaseShowOrHide}
           >
             <h5>Create a post</h5>
             <i className="fas fa-sort-down lessTopMargin" />
           </div>
           <CreateAPost />
-          <div className="ProfilePostsBox columnCentering boxShadow">
+          <div className="ProfilePostsBox columnCentering boxShadow widthbig">
             <h6>Recommended Posts:</h6>
             <Link to="/PostWithComments">
-              <div className="ProfileRecommendedPost">
+              <div className="ProfileRecommendedPost width">
                 <img
                   className="ProfileRequestBoxImage"
                   src={requestimg}
@@ -148,7 +152,7 @@ class Profile extends Component {
               </div>
             </Link>
             <Link to="/PostWithComments">
-              <div className="ProfileRecommendedPost">
+              <div className="ProfileRecommendedPost width">
                 <img
                   className="ProfileRequestBoxImage"
                   src={requestimg}
@@ -158,7 +162,7 @@ class Profile extends Component {
               </div>
             </Link>
             <Link to="/PostWithComments">
-              <div className="ProfileRecommendedPost">
+              <div className="ProfileRecommendedPost width">
                 <img
                   className="ProfileRequestBoxImage"
                   src={requestimg}
@@ -171,13 +175,13 @@ class Profile extends Component {
               <h6>See More</h6>
             </Link>
           </div>
-          <div className="ProfilePostsBox columnCentering boxShadow">
+          <div className="ProfilePostsBox columnCentering boxShadow widthbig">
             <h6>interested Posts:</h6>
             {myDataStore.profile.interested_posts.map(post => {
               return (
                 <Link key={post.id} to="/PostWithComments">
                   <div
-                    className="ProfileRecommendedPost"
+                    className="ProfileRecommendedPost width"
                     onClick={this.CommentIDToBePassedToDataStore}
                     data-comment={post.id}
                   >
@@ -225,7 +229,7 @@ export default observer(Profile)
 
 /* <div className="profileMyCommunityParent">
             <h6>my community:</h6>
-            <div className="profileMyCommunity">
+            <div className="profileMyCommunity width">
               <Link to="/Profile">
                 <img
                   className="ProfileCommunityProfileImage"

@@ -37,133 +37,145 @@ class PostWithComments extends Component {
     return (
       <div>
         <Header />
-        <button onClick={this.testing}>testing</button>
-        <section className="requestBoxCentering">
-          <section className="requestBox">
-            <div className="requestBoxTopBar">
-              <Link to="/Profile">
-                <img
-                  onClick={this.ProfileIDToBePassedToDataStore}
-                  data-profile={toJS(myDataStore.singlePost.profile_id)}
-                  className="requestBoxProfileImage"
-                  src={toJS(myDataStore.singlePost.profile_image)}
-                  alt="profile"
-                />
-              </Link>
-              <div className="requestBoxTopBarInfo">
+        <div className="marginFromHeader">
+          <button onClick={this.testing}>testing</button>
+          <section className="requestBoxCentering">
+            <section className="requestBox boxShadow">
+              <div className="requestBoxTopBar">
                 <Link to="/Profile">
-                  <h4
+                  <img
                     onClick={this.ProfileIDToBePassedToDataStore}
                     data-profile={toJS(myDataStore.singlePost.profile_id)}
-                    className="requestBoxProfileName"
-                  >
-                    {toJS(myDataStore.singlePost.profile_name)}
-                  </h4>
+                    className="requestBoxProfileImage"
+                    src={toJS(myDataStore.singlePost.profile_image)}
+                    alt="profile"
+                  />
                 </Link>
-                <p className="requestBoxDate">
-                  {toJS(myDataStore.singlePost.time)}
-                </p>
-              </div>
-              <a href="#">
-                <i className="fas fa-ellipsis-v" />
-              </a>
-            </div>
-            <h4 className="requestBoxTitle">
-              {toJS(myDataStore.singlePost.title)}
-            </h4>
-            <img
-              className="requestBoxImage"
-              src={toJS(myDataStore.image)}
-              alt="requestBox"
-            />
-            <p>{toJS(myDataStore.singlePost.body)}</p>
-            <div className="requestBoxMiddleBar">
-              <div className="requestBoxMiddleBarTwo">
+                <div className="requestBoxTopBarInfo">
+                  <Link to="/Profile">
+                    <h4
+                      onClick={this.ProfileIDToBePassedToDataStore}
+                      data-profile={toJS(myDataStore.singlePost.profile_id)}
+                      className="requestBoxProfileName"
+                    >
+                      {toJS(myDataStore.singlePost.profile_name)}
+                    </h4>
+                  </Link>
+                  <p className="requestBoxDate">
+                    {toJS(myDataStore.singlePost.time)}
+                  </p>
+                </div>
                 <a href="#">
-                  <i className="fas fa-magnet" />
+                  <i className="fas fa-ellipsis-v" />
                 </a>
               </div>
-            </div>
-            <div className="requestBoxBottomBar">
-              <Link to="/PeopleInterested" className="requestBoxBottomBarInfo">
-                9 Interested
-              </Link>
-            </div>
-            {/* note: start of comments  */}
-            <div className="comment">
-              <Link to="/Profile">
-                <img
-                  className="commentProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <div>
-                <Link to="/Profile">
-                  <h6 className="comment">Mikey Saint</h6>
-                </Link>
-                <p className="comment">
-                  I am good with react Router. Im free most saturdays to link up
-                </p>
+              <h4 className="requestBoxTitle">
+                {toJS(myDataStore.singlePost.title)}
+              </h4>
+              <img
+                className="requestBoxImage"
+                src={toJS(myDataStore.image)}
+                alt="requestBox"
+              />
+              <p>{toJS(myDataStore.singlePost.body)}</p>
+              <div className="requestBoxMiddleBar">
+                <div className="requestBoxMiddleBarTwo">
+                  <a href="#">
+                    <i className="fas fa-magnet" />
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className="comment">
-              <Link to="/Profile">
-                <img
-                  className="commentProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <div>
-                <Link to="/Profile">
-                  <h6 className="comment">Frank Mueny</h6>
+              <div className="requestBoxBottomBar">
+                <Link
+                  to="/PeopleInterested"
+                  className="requestBoxBottomBarInfo"
+                >
+                  9 Interested
                 </Link>
-                <p className="comment">
-                  I am struggling with react router. Can I join to learn too? I
-                  will bring donuts!
-                </p>
               </div>
-            </div>
-            <div className="comment">
-              <Link to="/Profile">
-                <img
-                  className="commentProfileImage"
-                  src={profileimg}
-                  alt="profile"
+              {/* note: start of comments  */}
+              <div className="columnCentering">
+                <div className="comment">
+                  <Link to="/Profile">
+                    <img
+                      className="commentProfileImage"
+                      src={profileimg}
+                      alt="profile"
+                    />
+                  </Link>
+                  <div>
+                    <Link to="/Profile">
+                      <h6 className="comment">Mikey Saint</h6>
+                    </Link>
+                    <p className="comment">
+                      I am good with react Router. Im free most saturdays to
+                      link up
+                    </p>
+                  </div>
+                </div>
+                <div className="comment">
+                  <Link to="/Profile">
+                    <img
+                      className="commentProfileImage"
+                      src={profileimg}
+                      alt="profile"
+                    />
+                  </Link>
+                  <div>
+                    <Link to="/Profile">
+                      <h6 className="comment">Frank Mueny</h6>
+                    </Link>
+                    <p className="comment">
+                      I am struggling with react router. Can I join to learn
+                      too? I will bring donuts!
+                    </p>
+                  </div>
+                </div>
+                <div className="comment">
+                  <Link to="/Profile">
+                    <img
+                      className="commentProfileImage"
+                      src={profileimg}
+                      alt="profile"
+                    />
+                  </Link>
+                  <div>
+                    <Link to="/Profile">
+                      <h6 className="comment">Martin Gabb</h6>
+                    </Link>
+                    <p className="comment">
+                      Ive been working with react router for a few years now. Id
+                      love to join in to help.
+                    </p>
+                  </div>
+                </div>
+                <div className="comment">
+                  <Link to="/Profile">
+                    <img
+                      className="commentProfileImage"
+                      src={profileimg}
+                      alt="profile"
+                    />
+                  </Link>
+                  <div>
+                    <Link to="/Profile">
+                      <h6 className="comment">Pickle Rick</h6>
+                    </Link>
+                    <p className="comment">
+                      Cool, Does starbucks 10am saturday work for everyone?
+                    </p>
+                  </div>
+                </div>
+                <input
+                  type="text"
+                  placeholder="comment here"
+                  className="comment width"
                 />
-              </Link>
-              <div>
-                <Link to="/Profile">
-                  <h6 className="comment">Martin Gabb</h6>
-                </Link>
-                <p className="comment">
-                  Ive been working with react router for a few years now. Id
-                  love to join in to help.
-                </p>
+                <button className="comment">submit</button>
               </div>
-            </div>
-            <div className="comment">
-              <Link to="/Profile">
-                <img
-                  className="commentProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <div>
-                <Link to="/Profile">
-                  <h6 className="comment">Pickle Rick</h6>
-                </Link>
-                <p className="comment">
-                  Cool, Does starbucks 10am saturday work for everyone?
-                </p>
-              </div>
-            </div>
-            <input type="text" placeholder="comment here" className="comment" />
-            <button className="comment">submit</button>
+            </section>
           </section>
-        </section>
+        </div>
       </div>
     )
   }

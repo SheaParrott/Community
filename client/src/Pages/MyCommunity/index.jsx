@@ -8,250 +8,27 @@ import Footer from '../../Components/Footer'
 class MyCommunity extends Component {
   render() {
     return (
-      <>
+      <div className="columnCentering">
         <Header />
+        <div className="marginFromHeader">
+          <div className="allMyCommunityBox">
+            <section className="allMyCommunityBox width">
+              <Link to="/Profile">
+                <img
+                  className="allMyCommunityProfileImage"
+                  src={profileimg}
+                  alt="profile"
+                />
+              </Link>
+              <Link to="/Profile">
+                <h3 className="allMyCommunity">Pickle Rick</h3>
+              </Link>
 
-        <div className="allMyCommunityBox">
-          <section className="allMyCommunityBox">
-            <Link to="/Profile">
-              <img
-                className="allMyCommunityProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="allMyCommunity">Pickle Rick</h3>
-            </Link>
-
-            <i className="fas fa-ellipsis-v" />
-          </section>
+              <i className="fas fa-ellipsis-v" />
+            </section>
+          </div>
         </div>
-        <div className="allMyCommunityBox">
-          <section className="allMyCommunityBox">
-            <Link to="/Profile">
-              <img
-                className="allMyCommunityProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="allMyCommunity">Pickle Rick</h3>
-            </Link>
-
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="allMyCommunityBox">
-          <section className="allMyCommunityBox">
-            <Link to="/Profile">
-              <img
-                className="allMyCommunityProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="allMyCommunity">Pickle Rick</h3>
-            </Link>
-
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="allMyCommunityBox">
-          <section className="allMyCommunityBox">
-            <Link to="/Profile">
-              <img
-                className="allMyCommunityProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="allMyCommunity">Pickle Rick</h3>
-            </Link>
-
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="allMyCommunityBox">
-          <section className="allMyCommunityBox">
-            <Link to="/Profile">
-              <img
-                className="allMyCommunityProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="allMyCommunity">Pickle Rick</h3>
-            </Link>
-
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="allMyCommunityBox">
-          <section className="allMyCommunityBox">
-            <Link to="/Profile">
-              <img
-                className="allMyCommunityProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="allMyCommunity">Pickle Rick</h3>
-            </Link>
-
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="allMyCommunityBox">
-          <section className="allMyCommunityBox">
-            <Link to="/Profile">
-              <img
-                className="allMyCommunityProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="allMyCommunity">Pickle Rick</h3>
-            </Link>
-
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="allMyCommunityBox">
-          <section className="allMyCommunityBox">
-            <Link to="/Profile">
-              <img
-                className="allMyCommunityProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="allMyCommunity">Pickle Rick</h3>
-            </Link>
-
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="allMyCommunityBox">
-          <section className="allMyCommunityBox">
-            <Link to="/Profile">
-              <img
-                className="allMyCommunityProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="allMyCommunity">Pickle Rick</h3>
-            </Link>
-
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="allMyCommunityBox">
-          <section className="allMyCommunityBox">
-            <Link to="/Profile">
-              <img
-                className="allMyCommunityProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="allMyCommunity">Pickle Rick</h3>
-            </Link>
-
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="allMyCommunityBox">
-          <section className="allMyCommunityBox">
-            <Link to="/Profile">
-              <img
-                className="allMyCommunityProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="allMyCommunity">Pickle Rick</h3>
-            </Link>
-
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="allMyCommunityBox">
-          <section className="allMyCommunityBox">
-            <Link to="/Profile">
-              <img
-                className="allMyCommunityProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="allMyCommunity">Pickle Rick</h3>
-            </Link>
-
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="allMyCommunityBox">
-          <section className="allMyCommunityBox">
-            <Link to="/Profile">
-              <img
-                className="allMyCommunityProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="allMyCommunity">Pickle Rick</h3>
-            </Link>
-
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="allMyCommunityBox">
-          <section className="allMyCommunityBox">
-            <Link to="/Profile">
-              <img
-                className="allMyCommunityProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="allMyCommunity">Pickle Rick</h3>
-            </Link>
-            {/* remove friend option  */}
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-        <div className="allMyCommunityBox ">
-          <section className="allMyCommunityBox columnCentering">
-            <Link to="/Profile">
-              <img
-                className="allMyCommunityProfileImage"
-                src={profileimg}
-                alt="profile"
-              />
-            </Link>
-            <Link to="/Profile">
-              <h3 className="allMyCommunity">Pickle Rick</h3>
-            </Link>
-
-            <i className="fas fa-ellipsis-v" />
-          </section>
-        </div>
-      </>
+      </div>
     )
   }
 }

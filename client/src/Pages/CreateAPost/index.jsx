@@ -28,7 +28,7 @@ class CreateAPost extends Component {
       <div className={myDataStore.showOrHide}>
         <form onSubmit={this.createPost}>
           <section className="createAPostCentering">
-            <section className="createAPostBox boxShadow">
+            <section className="widthbig boxShadow">
               <input
                 className="createAPost"
                 type="text"

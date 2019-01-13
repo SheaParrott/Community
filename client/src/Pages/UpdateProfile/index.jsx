@@ -19,7 +19,7 @@ class UpdateProfile extends Component {
           <h5>About Me</h5>
           <input type="text" />
           <h5>Strengths</h5>
-          <section className="tagsBox boxShadow">
+          <section className="tagsBox boxShadow widthbig">
             <h5 className="tag">sports</h5>
             <h5 className="tag">web design</h5>
             <h5 className="tag">HTML</h5>

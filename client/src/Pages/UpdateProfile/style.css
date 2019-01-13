@@ -1,6 +1,5 @@
 section.tagsBox {
   display: flex;
   flex-wrap: wrap;
-  width: 310px;
   margin: 2px;
 }

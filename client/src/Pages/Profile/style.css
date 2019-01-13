@@ -38,7 +38,6 @@ div.name {
   font-size: 20px;
 }
 div.profileQuote {
-  width: 310px;
   font-family: cursive;
   padding: 5px 0 5px 0;
 }
@@ -75,11 +74,9 @@ h6.profileAttributesRight:hover {
 
 div.profileBio {
   margin: 5px;
-  width: 310px;
 }
 div.profileCreateAPost {
   margin-bottom: 5px;
-  width: 310px;
 }
 .lessTopMargin {
   margin-top: -15px;
@@ -88,7 +85,6 @@ div.profileMyCommunity {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 300px;
   padding: 5px;
 }
 img.ProfileCommunityProfileImage {
@@ -106,13 +102,11 @@ img.ProfileRequestBoxImage {
   margin: 5px;
 }
 div.ProfilePostsBox {
-  width: 310px;
   margin: 0 5px 5px 5px;
 }
 div.ProfileRecommendedPost {
   display: flex;
   align-items: center;
   box-shadow: 0 0 1px black;
-  width: 300px;
   margin: 1px;
 }
