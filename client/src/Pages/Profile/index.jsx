@@ -11,6 +11,9 @@ import myDataStore from '../DataStore/DataStore'
 import { observer } from 'mobx-react'
 import CreateAPost from '../CreateAPost'
 
+import auth from '../../auth'
+import history from '../../history'
+
 class Profile extends Component {
   constructor(props) {
     super(props)
@@ -18,6 +21,14 @@ class Profile extends Component {
       profileBioSection: ''
     }
   }
+
+  componentWillMount() {
+    // Guard clause
+    if (!auth.isAuthenticated()) {
+      history.replace('/SignIn')
+    }
+  }
+
   AttributeClickToChangeState = event => {
     this.setState({
       profileBioSection: event.target.dataset.attribute

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { decorate, observable } from 'mobx'
 import { toJS } from 'mobx'
+import auth from '../../auth'
 
 class DataStore {
   constructor() {
@@ -28,7 +29,7 @@ class DataStore {
     this.PostOptions = !this.PostOptions ? 'hidden' : ''
   }
   getProfileData = () => {
-    axios.get(`/api/profiles/1`).then(response => {
+    axios.get(`/api/profiles/current`).then(response => {
       this.profile = response.data.profile
     })
   }

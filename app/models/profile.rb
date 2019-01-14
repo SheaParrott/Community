@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class Profile < ApplicationRecord
   has_many :authored_posts, class_name: "Post", foreign_key: :profile_id
 
@@ -12,4 +14,15 @@ class Profile < ApplicationRecord
 
   has_many :comments
 
+  def self.from_auth_hash(payload)
+    Profile.find_or_create_by(auth_sub: payload["sub"]) do |profile|
+      Rails.logger.debug payload
+
+      profile.profile_image.attach(io: open(payload["picture"]),
+                                   filename: "profile.png")
+
+      # profile.avatar_url = payload["picture"]
+      profile.name = payload["name"]
+    end
+  end
 end

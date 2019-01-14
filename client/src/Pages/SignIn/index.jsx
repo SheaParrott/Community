@@ -38,7 +38,7 @@ class SignIn extends Component {
           <input placeholder="Full Name" />
           <input placeholder="Username" />
           <input placeholder="Password" />
-          <Link to="/UpdateProfile">
+          <Link to="/login">
             <button onClick={this.signUp}>SIGN UP</button>
           </Link>
         </section>
