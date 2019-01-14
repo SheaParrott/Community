@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Header from '../../Components/Header'
 import requestimg from '../../assets/dev.jpeg'
-import Footer from '../../Components/Footer'
 import Post from '../../Components/Post/Post'
 import myDataStore from '../DataStore/DataStore'
 

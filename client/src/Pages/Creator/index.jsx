@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Footer from '../../Components/Footer'
 import CreatorImage from '../../assets/IMG_0327.jpg'
 import './style.css'
 import { observer } from 'mobx-react'
