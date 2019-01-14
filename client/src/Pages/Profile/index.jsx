@@ -91,7 +91,7 @@ class Profile extends Component {
             <div className="nameBox">
               <div className="name boxShadow">
                 {/* <i className="fas fa-plus-circle" /> */}
-                <h3 className="name">{myDataStore.profile.name}</h3>
+                <h2 className="name">{myDataStore.profile.name}</h2>
               </div>
             </div>
             <div className="profileQuote widthbig">
@@ -171,7 +171,7 @@ class Profile extends Component {
               </div>
             </Link>
             <Link to="/Posts">
-              <h6>See More</h6>
+              <h6 onClick={myDataStore.getAllRecommendedPosts}>See More</h6>
             </Link>
           </div>
           <div className="ProfilePostsBox columnCentering boxShadow widthbig">
@@ -197,7 +197,7 @@ class Profile extends Component {
               )
             })}
             <Link to="/Posts">
-              <h6>See More</h6>
+              <h6 onClick={myDataStore.getAllInterestedPosts}>See More</h6>
             </Link>
             {/* passing this id is not working? */}
           </div>

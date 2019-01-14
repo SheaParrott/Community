@@ -75,6 +75,12 @@ class Post extends Component {
               {/* create endpoint that adds this to your 
               interested posts and totals up the number 
               and displays below */}
+              {/* add comments here with conditions:
+                - on page post with comments make comments 
+                  logo and text hidden (faintly remeber there 
+                    is a way for this. its something params
+                    and can be checked in the console)
+                - then display comments */}
               <a href="#">
                 <i className="fas fa-magnet" />
               </a>

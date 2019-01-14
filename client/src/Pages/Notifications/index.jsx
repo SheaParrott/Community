@@ -12,18 +12,18 @@ class Notifications extends Component {
         <Header />
         <div className="marginFromHeader">
           <div className="notificationsBox columnCentering">
-            <Link to="/PostWithComments">
-              <section className="notificationsBox boxShadow">
-                <Link to="/Profile">
-                  <img
-                    className="notificationsBoxProfileImage"
-                    src={profileimg}
-                    alt="profile"
-                  />
-                </Link>
+            <section className="notificationsBox boxShadow">
+              <Link to="/Profile">
+                <img
+                  className="notificationsBoxProfileImage"
+                  src={profileimg}
+                  alt="profile"
+                />
+              </Link>
+              <Link to="/PostWithComments">
                 <h5>Pickle Rick commented on your Post</h5>
-              </section>
-            </Link>
+              </Link>
+            </section>
           </div>
         </div>
       </div>

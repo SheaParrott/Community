@@ -63,6 +63,9 @@ class PostWithComments extends Component {
                     {toJS(myDataStore.singlePost.time)}
                   </p>
                 </div>
+                {/* this is where the delete post option goes..
+                could make this the only place to edit if adding 
+                to all post poses a problem */}
                 <a href="#">
                   <i className="fas fa-ellipsis-v" />
                 </a>
@@ -78,7 +81,8 @@ class PostWithComments extends Component {
               <p>{toJS(myDataStore.singlePost.body)}</p>
               <div className="requestBoxMiddleBar">
                 <div className="requestBoxMiddleBarTwo">
-                  <a href="#">
+                  {/* add to interested posts */}
+                  <a>
                     <i className="fas fa-magnet" />
                   </a>
                 </div>

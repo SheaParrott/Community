@@ -23,7 +23,7 @@ div.nameBox {
   display: flex;
   justify-content: center;
 }
-h3.name {
+h2.name {
   margin: 0;
   padding: 2px 5px 2px 5px;
 }

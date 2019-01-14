@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { decorate, observable } from 'mobx'
+import { toJS } from 'mobx'
 
 class DataStore {
   constructor() {
@@ -14,6 +15,11 @@ class DataStore {
     this.AllTags = []
     this.showOrHide = 'hidden'
     this.PostOptions = 'hidden'
+    // this will be the recommended or interested posts show when
+    // 'see more' is clicked and posts component is loaded
+    this.RecommendedOrInterested = []
+    this.PostWithComments = 'hidden'
+    this.CommentLogo = ''
   }
   changeShowOrHide = () => {
     this.showOrHide = !this.showOrHide ? 'hidden' : ''
@@ -49,6 +55,25 @@ class DataStore {
       this.singlePost = response.data.post
     })
   }
+  getAllRecommendedPosts = () => {
+    console.log('clicked mydatastore recommended posts')
+    // console.log(toJS(this.profile.recommeded_posts))
+    // function that gets all recommeded posts and changes
+    //  the variable RecommendedOrInterested
+  }
+  getAllInterestedPosts = () => {
+    console.log(toJS(this.profile.interested_posts))
+    this.RecommendedOrInterested = toJS(this.profile.interested_posts)
+    // function that gets all interested posts and changes
+    //  the variable RecommendedOrInterested
+  }
+  ShowOrHidePostWithComment = () => {
+    // this will hide the comment logo and show the comments
+    // need a the check params for when on postWithComments
+    // component
+    this.CommentLogo = !this.showOrHide ? 'hidden' : ''
+    this.PostWithComments = !this.showOrHide ? '' : 'hidden'
+  }
 }
 
 decorate(DataStore, {
@@ -56,7 +81,9 @@ decorate(DataStore, {
   AllTags: observable,
   showOrHide: observable,
   singlePost: observable,
-  PostOptions: observable
+  PostOptions: observable,
+  PostWithComments: observable,
+  CommentLogo: observable
 })
 
 let myDataStore = new DataStore()

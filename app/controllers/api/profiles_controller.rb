@@ -23,7 +23,10 @@ class Api::ProfilesController < ApplicationController
         image: url_for(post.post_image),
         body: post.body,
         timestamp: post.created_at, 
-        author: post.author.id
+        author: post.author.id, 
+        name: post.author.name, 
+        profile_image: url_for(post.author.profile_image),
+
       }
     end
 
@@ -59,6 +62,17 @@ class Api::ProfilesController < ApplicationController
     }
   end
 
+
+  def edit
+
+    # edit profile things here
+    # cover image
+    # profile image
+    # about me
+    # tags (bool)  
+    #   -strength
+    #   -struggle
+  end
 
 end
 

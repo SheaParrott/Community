@@ -236,25 +236,25 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 
 
 # to do list Ruby
-# [] create a post endpoint
+# [x] create a post endpoint
 # [] add to interested posts endpoint
 # [] create profile model
-# - [] create seed data
-# - [] go to react app, create json data and use static data to make dynamic
-# - [] generate controller, make json return for data required
-# - [] axios call for dynamic data
+# - [x] create seed data
+# - [x] go to react app, create json data and use static data to make dynamic
+# - [x] generate controller, make json return for data required
+# - [x] axios call for dynamic data
 # - [] make a update profile method, using put axios, reload data
-# [] create tag model
-# [] create post model
-# [] create a profileTaggiing model
+# [x] create tag model
+# [x] create post model
+# [x] create a profileTaggiing model
 # - belongs_to profile, belongs_to tag
 # - add in all has_many, through relations
 # - create seed data relations
-# [] create a postTagging model
+# [x] create a postTagging model
 # - belongs_to post, belongs_to tag
 # - add in all has_many, through relations
 # - create seed data relations
-# [] create a interested model
+# [x] create a interested model
 # - belongs_to post, belongs_to profile
 # - add in all has_many, through relations
 # - create seed data relations
@@ -262,47 +262,31 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 
 
 # to do list React
-# [] add a post option - get form going
-# [] onClick function for adding to interested posts
+# [x] add a post option - get form going
 # [] fix links wrapper in links issue
-# [] footer issue - needs to be positioned at the bottom always
+# [x] footer issue - needs to be positioned at the bottom always
 # [] post component - when clicked add to my interested box
 # [] post component - disply number of comment and people interested. this will be done by doing a .length in react
 # [] implement moment for post timestamp. did already yarn add moment
-# [] Profile component - each struggle and strength needs to have a  tag tied to it
+# [x] Profile component - each struggle and strength needs to have a  tag tied to it
 # [] Profile component - add to community button need to be name when its yourself. this only matters if I keep the my community component for the MVP
 # [] profile component - community logo needs to go to users profile. could be done by passing the id
-# [] profile component - create form page
+# [] profile component - create form page, update profile
 # [] header component - hamburger menu --my profile--recommended posts--interested posts--mission--creator--sign out--search options
 # [] header component - make notifications button dynamic when there is a new notification 
+
+# GAVIN **** im close on this, please take a look
 # [] postwithcomments component - find a way to remove comment logo and display all comments without having to hard code most of the post html again. there is alot of repeated code here.
+# ****
+
 # [] peopleinterested component - add to community option for hamburger menu. if we keep the my community option
-# [] createapost component - this will be a form page. could try changing things directy on page. notes there on idea of how. 
-# [] updateprofile component - this will be a form page. could try changing things directy on page. notes there on createapost componert idea of how.
+# [x] createapost component - this will be a form page. could try changing things directy on page. notes there on idea of how. 
 # [] createapost component - finish css and tie it to tags
 # [] friendrequests component - add friend and remove friend option. if decided to keep my community option
 # [] mission and creator components - make back button clickable and go to previous page 
 # [] mycommunity component - hamburger menu remove friend option
-# [] postwithcomments - when clicked add to my interested posts
 # [] signin component - style again, add Oauth
 # [] go through all pages and components - add @media to all
-
-# (pt.1) adding images: add in image uploading and set up relationships to posts using Active_storage
-# [x] add in Rails active_storage:install in terminal
-# [x] add in has_one_attached :image in the models
-# [] under the profile and post controller require an image for the data input
-#     - :picture
-# [] run rails db:migrate in terminal
-# (pt.2) resizing images 
-# [x] add in gem for mini_magic
-#   - Bundle add mini_magic
-# [x] add in imagemagic globally if not done already
-#   - Brew install imagemagic
-#     - this allows us to resize images like so 
-#       - <% image_tag @car.picture.variant(resize: “75x75”)%>
-# notes:
-# - url_for is the active storage insert for targeting the images
-#   ex) <img src=”<% url_for(@car.picture)%>”
 
 
 
@@ -313,3 +297,8 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 #      - profile name
 #      - profile image
 # [] how to make back button work for creator and mission page?
+# [] image not showing up on postwithcomments page
+# [] idea on how to make notification work
+#    - thinking i do a component did mount, when compared to 
+#      previous data show the differene and make notifications 
+#      bar light up
