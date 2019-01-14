@@ -35,9 +35,9 @@ class PostWithComments extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="columnCentering">
         <Header />
-        <div className="marginFromHeader">
+        <div className="marginFromHeader widthbig">
           <button onClick={this.testing}>testing</button>
           <section className="requestBoxCentering">
             <section className="requestBox boxShadow">

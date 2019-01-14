@@ -33,7 +33,7 @@ class Profile extends Component {
     })
 
     if (this.state.profileBioSection === '') {
-      return <h4>{myDataStore.profile.about_me}</h4>
+      return <h4 className="aboutMe">{myDataStore.profile.about_me}</h4>
     }
     if (this.state.profileBioSection === 'STRENGTHS') {
       return (
@@ -44,7 +44,7 @@ class Profile extends Component {
         </ul>
       )
     } else if (this.state.profileBioSection === 'ABOUT ME') {
-      return <h5>{myDataStore.profile.about_me}</h5>
+      return <h4 className="aboutMe">{myDataStore.profile.about_me}</h4>
     } else if (this.state.profileBioSection === 'STRUGGLES') {
       return (
         <ul>

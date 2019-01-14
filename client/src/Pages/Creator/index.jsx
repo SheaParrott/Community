@@ -7,11 +7,9 @@ class Creator extends Component {
   render() {
     return (
       <div>
-        <div className="creator">
-          {/* go to previous page arrow */}
-          <i className="fas fa-arrow-left" />
-          <h1 className="creator">Shea Parrott</h1>
-        </div>
+        {/* go to previous page arrow */}
+        <i className="fas fa-arrow-left" />
+        <h1 className="creator">Shea Parrott</h1>
         <img className="creator boxShadow" src={CreatorImage} alt="Shea" />
         <h4 className="creatorInfo">(904) 629-8670</h4>
         <h4 className="creatorInfo">

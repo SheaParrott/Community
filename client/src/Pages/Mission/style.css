@@ -1,10 +1,6 @@
-div.mission {
-  display: flex;
-  align-items: center;
-  width: 100vw;
-}
 .fa-arrow-left {
-  padding-right: 40px;
-  margin-left: 20px;
   font-size: 20px;
+  position: fixed;
+  top: 20px;
+  left: 20px;
 }

@@ -9,12 +9,12 @@ class Mission extends Component {
   }
   render() {
     return (
-      <div className="mission-container">
-        <div className="mission">
+      <div className="columnCentering">
+        <div className="widthbig">
           <i className="fas fa-arrow-left" />
-          <h1 className="AppName">Community</h1>
         </div>
-        <div className="mission-content">
+        <div className="widthbig">
+          <h1 className="AppName">Community</h1>
           <p>
             Here in the <i>Community</i> our goal is to provide a safe place to
             help one another out and spread good vibes. This is a platform to
