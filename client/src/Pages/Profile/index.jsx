@@ -59,7 +59,7 @@ class Profile extends Component {
     myDataStore.changeShowOrHide()
   }
   CommentIDToBePassedToDataStore = event => {
-    myDataStore.commentID(event.target.dataset.comment)
+    myDataStore.getOnePost(event.target.dataset.comment)
   }
 
   render() {
@@ -206,10 +206,7 @@ class Profile extends Component {
             return (
               <Post
                 key={post.id}
-                CommentIDToBePassedToDataStore={
-                  this.CommentIDToBePassedToDataStore
-                }
-                data-comment={post.id}
+                commentID={post.id}
                 profileName={myDataStore.profile.name}
                 profileImage={myDataStore.profile.profile_image}
                 postTitle={post.title}

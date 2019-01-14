@@ -39,9 +39,9 @@ class Api::PostsController < ApplicationController
       {
         id: comment.id,
         body: comment.body,
-        author_id: post.author.id,  
-        author_image: url_for(post.author.profile_image),
-        author_name: post.author.name
+        author_id: comment.profile.id,
+        author_image: url_for(comment.author.profile_image),
+        author_name: comment.author.name
       }
     end
 

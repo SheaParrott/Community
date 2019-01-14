@@ -2,8 +2,13 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import './style.css'
 import { Link } from 'react-router-dom'
+import myDataStore from '../../Pages/DataStore/DataStore'
 
 class Post extends Component {
+  CommentIDToBePassedToDataStore = event => {
+    // console.log(this.props.commentID)
+    myDataStore.getOnePost(this.props.commentID)
+  }
   render() {
     return (
       <div>
@@ -36,7 +41,7 @@ class Post extends Component {
             <div className="requestBoxMiddleBar">
               <Link to="/PostWithComments">
                 <i
-                  onClick={this.props.CommentIDToBePassedToDataStore}
+                  onClick={this.CommentIDToBePassedToDataStore}
                   className="far fa-comment"
                 />
               </Link>
@@ -49,7 +54,7 @@ class Post extends Component {
             </div>
             <div className="requestBoxBottomBar">
               <Link
-                onClick={this.props.CommentIDToBePassedToDataStore}
+                onClick={this.CommentIDToBePassedToDataStore}
                 to="/PostWithComments"
                 className="requestBoxBottomBarInfo"
               >

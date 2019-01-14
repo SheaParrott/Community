@@ -8,7 +8,9 @@ class DataStore {
       interested_posts: [],
       tags: []
     }
-    this.singlePost = {}
+    this.singlePost = {
+      comments: []
+    }
     this.AllTags = []
     this.showOrHide = 'hidden'
   }
@@ -27,49 +29,21 @@ class DataStore {
     })
   }
 
-  profileID = theProfileID => {
+  getOneProfile = theProfileID => {
     console.log(theProfileID)
-    // now get single post with comments and pass
-    // to post with comment section. create a new observable
-    // for postWithComment component
 
-    // data needed from api
-    // - profile pic
-    // - profile name
-    // - post.created
-    // - post.title
-    // - post.image
-    // - post.body
     axios.get(`/api/profiles/${theProfileID}`).then(response => {
       console.log(response.data.profile)
       this.profile = response.data.profile
     })
   }
-  commentID = theCommentID => {
+  getOnePost = theCommentID => {
     // console.log(theCommentID)
-    // now get single post with comments and pass
-    // to post with comment section. create a new observable
-    // for postWithComment component
 
-    // data needed from api
-    // - profile pic
-    // - profile name
-    // - post.created
-    // - post.title
-    // - post.image
-    // - post.body
     axios.get(`/api/posts/${theCommentID}`).then(response => {
       console.log(response.data.post)
       this.singlePost = response.data.post
     })
-
-    // post comments
-    // - profile.image
-    // - profile.name
-    // - comment.body
-
-    //might need a internal function to pass the event
-    //data then pass that data to a function call here
   }
 }
 

@@ -157,6 +157,8 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 
 
 
+
+
 # Next step:   this says BACKEND POST (the post) is related to WEB (tag)
 # PostTagging.create!(post: backend_post, tag: web)
 
@@ -306,7 +308,6 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 
 
 # GAVIN PLEASE HELP
-# [] create a post is giving a 404
 # [] post with comments loading component to fast, 
 #    the data does not come back before the page loads. 
 #    plus, when i refresh the browser it dumps my data.
@@ -316,5 +317,6 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 #   - or if i can figure a way to cache the data for a
 #    short period of time, that way when the browser 
 #    loads its still there
-# [] passing id of posts on profile is not working
-#    unsure how to make this work
+# [] in ruby - posts controller - cant get certain json data to show
+#      - profile name
+#      - profile image

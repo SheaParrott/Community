@@ -23,14 +23,13 @@ import { toJS } from 'mobx'
 class PostWithComments extends Component {
   testing = () => {
     // console.log(myDataStore.singlePost)
-    console.log(toJS(myDataStore.singlePost.body))
-    console.log(toJS(myDataStore.singlePost.image))
+    console.log(toJS(myDataStore.singlePost.comments))
   }
 
   ProfileIDToBePassedToDataStore = event => {
     //this takes the event data and calls a function in
     // the datastore and passing the event data to that function
-    myDataStore.profileID(event.target.dataset.profile)
+    myDataStore.getOneProfile(event.target.dataset.profile)
     // console.log(event.target.dataset.profile)
   }
   render() {
@@ -95,77 +94,25 @@ class PostWithComments extends Component {
               </div>
               {/* note: start of comments  */}
               <div className="columnCentering">
-                <div className="comment">
-                  <Link to="/Profile">
-                    <img
-                      className="commentProfileImage"
-                      src={profileimg}
-                      alt="profile"
-                    />
-                  </Link>
-                  <div>
-                    <Link to="/Profile">
-                      <h6 className="comment">Mikey Saint</h6>
-                    </Link>
-                    <p className="comment">
-                      I am good with react Router. Im free most saturdays to
-                      link up
-                    </p>
-                  </div>
-                </div>
-                <div className="comment">
-                  <Link to="/Profile">
-                    <img
-                      className="commentProfileImage"
-                      src={profileimg}
-                      alt="profile"
-                    />
-                  </Link>
-                  <div>
-                    <Link to="/Profile">
-                      <h6 className="comment">Frank Mueny</h6>
-                    </Link>
-                    <p className="comment">
-                      I am struggling with react router. Can I join to learn
-                      too? I will bring donuts!
-                    </p>
-                  </div>
-                </div>
-                <div className="comment">
-                  <Link to="/Profile">
-                    <img
-                      className="commentProfileImage"
-                      src={profileimg}
-                      alt="profile"
-                    />
-                  </Link>
-                  <div>
-                    <Link to="/Profile">
-                      <h6 className="comment">Martin Gabb</h6>
-                    </Link>
-                    <p className="comment">
-                      Ive been working with react router for a few years now. Id
-                      love to join in to help.
-                    </p>
-                  </div>
-                </div>
-                <div className="comment">
-                  <Link to="/Profile">
-                    <img
-                      className="commentProfileImage"
-                      src={profileimg}
-                      alt="profile"
-                    />
-                  </Link>
-                  <div>
-                    <Link to="/Profile">
-                      <h6 className="comment">Pickle Rick</h6>
-                    </Link>
-                    <p className="comment">
-                      Cool, Does starbucks 10am saturday work for everyone?
-                    </p>
-                  </div>
-                </div>
+                {toJS(myDataStore.singlePost.comments).map(comment => {
+                  return (
+                    <div key={comment.id} className="comment widthbig">
+                      <Link to="/Profile">
+                        <img
+                          className="commentProfileImage"
+                          src={profileimg}
+                          alt="profile"
+                        />
+                      </Link>
+                      <div>
+                        <Link to="/Profile">
+                          <h6 className="comment">Mikey Saint</h6>
+                        </Link>
+                        <p className="comment">{comment.body}</p>
+                      </div>
+                    </div>
+                  )
+                })}
                 <input
                   type="text"
                   placeholder="comment here"
