@@ -35,6 +35,15 @@ class Api::PostsController < ApplicationController
 
     # profile = Post.find
     #
+    comments = post.comments do |comment|
+      {
+        id: comment.id,
+        body: comment.body,
+        author_id: post.author.id,  
+        author_image: url_for(post.author.profile_image),
+        author_name: post.author.name
+      }
+    end
 
     render json: {
       post: {
@@ -45,7 +54,8 @@ class Api::PostsController < ApplicationController
         time: post.created_at,
         profile_id: post.author.id, 
         profile_name: post.author.name, 
-        profile_image: url_for(post.author.profile_image)
+        profile_image: url_for(post.author.profile_image),
+        comments: comments
       }
     }
   end

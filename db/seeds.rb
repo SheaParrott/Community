@@ -42,9 +42,10 @@ ProfileTagging.create!(profile: gavin, tag: health, strength: false)
 ProfileTagging.create!(profile: gavin, tag: automotive, strength: false)
 ProfileTagging.create!(profile: gavin, tag: gaming, strength: false)
 
+
 # [x , x, ] posts the user made, then post tagging, then interestedpost for one use to this post 
 postOne  = gavin.authored_posts.create!(title: "About SDG", body: "blah blah blah")
-postOne .post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+postOne.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
 
 # [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
 PostTagging.create!(post: postOne , tag: gaming)
@@ -144,8 +145,12 @@ InterestedPost.create!(post: postTwo , profile: shea)
 InterestedPost.create!(post: postThree , profile: shea)
 
 
+# create a comment
+Comment.create!(profile: shea, post: postOne, body: "im going to help you")
+Comment.create!(profile: shea, post: postOne, body: "imma baller")
+Comment.create!(profile: jason, post: postOne, body: "hey brotha i can help too")
+Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 
-# [] then get the profile tags to display
 
 
 
@@ -172,7 +177,7 @@ InterestedPost.create!(post: postThree , profile: shea)
 #
 # creating a controller
 # in terminal
-#   - rails generate controller api/profiles
+#   - x
 
 # in routes.rb
 #   Rails.application.routes.draw do

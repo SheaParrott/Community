@@ -19,9 +19,8 @@ class Post < ApplicationRecord
   has_many :interested_posts
   has_many :profiles, through: :interested_posts
 
-
-  # has_many :comments
-  #
+  has_many :comments
+  
 
   # // data needed from api
   # // - profile pic
