@@ -55,7 +55,7 @@ class Post extends Component {
                 </Link>
                 <p className="requestBoxDate">{this.props.timestamp}</p>
               </div>
-              <i onClick={this.postOptions} class="fas fa-ellipsis-v" />
+              <i onClick={this.postOptions} className="fas fa-ellipsis-v" />
             </div>
             {this.renderPostOption()}
             <h4 className="requestBoxTitle">{this.props.postTitle}</h4>
