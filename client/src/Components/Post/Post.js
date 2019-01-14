@@ -12,10 +12,10 @@ class Post extends Component {
   }
   postOptions = event => {
     myDataStore.showOrHidePostOptions()
-    console.log(myDataStore.PostOptions)
+    // console.log(myDataStore.PostOptions)
   }
   postOptionDelete = () => {
-    console.log(this.props.commentID)
+    // console.log(this.props.commentID)
   }
   renderPostOption = () => {
     // how do i only show this on the post clicked?

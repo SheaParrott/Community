@@ -40,7 +40,7 @@ class DataStore {
   }
 
   getOneProfile = theProfileID => {
-    console.log(theProfileID)
+    // console.log(theProfileID)
 
     axios.get(`/api/profiles/${theProfileID}`).then(response => {
       console.log(response.data.profile)
@@ -51,18 +51,18 @@ class DataStore {
     // console.log(theCommentID)
 
     axios.get(`/api/posts/${theCommentID}`).then(response => {
-      console.log(response.data.post)
+      // console.log(response.data.post)
       this.singlePost = response.data.post
     })
   }
   getAllRecommendedPosts = () => {
-    console.log('clicked mydatastore recommended posts')
+    // console.log('clicked mydatastore recommended posts')
     // console.log(toJS(this.profile.recommeded_posts))
     // function that gets all recommeded posts and changes
     //  the variable RecommendedOrInterested
   }
   getAllInterestedPosts = () => {
-    console.log(toJS(this.profile.interested_posts))
+    // console.log(toJS(this.profile.interested_posts))
     this.RecommendedOrInterested = toJS(this.profile.interested_posts)
     // function that gets all interested posts and changes
     //  the variable RecommendedOrInterested

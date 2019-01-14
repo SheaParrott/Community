@@ -58,6 +58,22 @@ class SignIn extends Component {
             <p className="signInMissionStatementsRight">CONNECT</p>
           </div>
         </section>
+        <section className="signInMission">
+          <div className="signInMissionStatements">
+            <i className="fas fa-hands-helping" />
+            <p className="signInMissionStatements">HELP</p>
+          </div>
+          <i class="fas fa-arrow-right" />
+          <div className="signInMissionStatements">
+            <i className="fas fa-lightbulb" />
+            <p className="signInMissionStatements">INSPIRE</p>
+          </div>
+          <i class="fas fa-arrow-right" />
+          <div className="signInMissionStatementsRight">
+            <i className="fab fa-connectdevelop" />
+            <p className="signInMissionStatementsRight">CONNECT</p>
+          </div>
+        </section>
       </div>
     )
   }
