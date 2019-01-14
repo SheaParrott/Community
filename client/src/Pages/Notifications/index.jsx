@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import profileimg from '../../assets/picklerick.jpg'
 import Header from '../../Components/Header'
 import Footer from '../../Components/Footer'
+import { observer } from 'mobx-react'
 
 class Notifications extends Component {
   render() {
@@ -31,4 +32,4 @@ class Notifications extends Component {
   }
 }
 
-export default Notifications
+export default observer(Notifications)

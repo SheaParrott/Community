@@ -3,12 +3,37 @@ import moment from 'moment'
 import './style.css'
 import { Link } from 'react-router-dom'
 import myDataStore from '../../Pages/DataStore/DataStore'
+import { observer } from 'mobx-react'
 
 class Post extends Component {
   CommentIDToBePassedToDataStore = event => {
     // console.log(this.props.commentID)
     myDataStore.getOnePost(this.props.commentID)
   }
+  postOptions = event => {
+    myDataStore.showOrHidePostOptions()
+    console.log(myDataStore.PostOptions)
+  }
+  postOptionDelete = () => {
+    console.log(this.props.commentID)
+  }
+  renderPostOption = () => {
+    // how do i only show this on the post clicked?
+    // my thoughts:
+    //     - display only where id === id given
+
+    // other option:
+    // could take to another page for
+    // editing / deleting if i can figure it out?
+    return (
+      <div className={myDataStore.PostOptions}>
+        <div className="columnCentering widthbig">
+          <button onClick={this.postOptionDelete}>Delete Post?</button>
+        </div>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div>
@@ -30,7 +55,9 @@ class Post extends Component {
                 </Link>
                 <p className="requestBoxDate">{this.props.timestamp}</p>
               </div>
+              <i onClick={this.postOptions} class="fas fa-ellipsis-v" />
             </div>
+            {this.renderPostOption()}
             <h4 className="requestBoxTitle">{this.props.postTitle}</h4>
             <img
               className="requestBoxImage"
@@ -71,4 +98,4 @@ class Post extends Component {
   }
 }
 
-export default Post
+export default observer(Post)

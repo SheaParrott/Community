@@ -13,9 +13,13 @@ class DataStore {
     }
     this.AllTags = []
     this.showOrHide = 'hidden'
+    this.PostOptions = 'hidden'
   }
   changeShowOrHide = () => {
     this.showOrHide = !this.showOrHide ? 'hidden' : ''
+  }
+  showOrHidePostOptions = () => {
+    this.PostOptions = !this.PostOptions ? 'hidden' : ''
   }
   getProfileData = () => {
     axios.get(`/api/profiles/1`).then(response => {
@@ -51,7 +55,8 @@ decorate(DataStore, {
   profile: observable,
   AllTags: observable,
   showOrHide: observable,
-  singlePost: observable
+  singlePost: observable,
+  PostOptions: observable
 })
 
 let myDataStore = new DataStore()

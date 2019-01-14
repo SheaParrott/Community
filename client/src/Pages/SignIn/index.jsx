@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './style.css'
 import { Link } from 'react-router-dom'
+import { observer } from 'mobx-react'
 
 class SignIn extends Component {
   signInAuthorization = () => {
@@ -62,4 +63,4 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn
+export default observer(SignIn)

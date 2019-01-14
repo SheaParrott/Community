@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import profileimg from '../../assets/picklerick.jpg'
 import Header from '../../Components/Header'
 import Footer from '../../Components/Footer'
+import { observer } from 'mobx-react'
 
 class MyCommunity extends Component {
   render() {
@@ -33,4 +34,4 @@ class MyCommunity extends Component {
   }
 }
 
-export default MyCommunity
+export default observer(MyCommunity)

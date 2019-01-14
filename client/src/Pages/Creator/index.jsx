@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Footer from '../../Components/Footer'
 import CreatorImage from '../../assets/IMG_0327.jpg'
 import './style.css'
+import { observer } from 'mobx-react'
 
 class Creator extends Component {
   render() {
@@ -36,4 +37,4 @@ class Creator extends Component {
   }
 }
 
-export default Creator
+export default observer(Creator)

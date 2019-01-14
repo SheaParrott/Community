@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Footer from '../../Components/Footer'
 import './style.css'
 import { Link } from 'react-router-dom'
+import { observer } from 'mobx-react'
 
 class Mission extends Component {
   loadCreatorPage = () => {
@@ -36,4 +37,4 @@ class Mission extends Component {
   }
 }
 
-export default Mission
+export default observer(Mission)

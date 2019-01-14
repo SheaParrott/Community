@@ -7,6 +7,7 @@ import Footer from '../../Components/Footer'
 import { Link } from 'react-router-dom'
 import myDataStore from '../DataStore/DataStore'
 import { toJS } from 'mobx'
+import { observer } from 'mobx-react'
 
 //
 // three lines is called a hamburger menu
@@ -128,4 +129,4 @@ class PostWithComments extends Component {
   }
 }
 
-export default PostWithComments
+export default observer(PostWithComments)

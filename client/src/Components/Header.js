@@ -6,9 +6,10 @@ class Header extends Component {
     return (
       <div>
         <header>
-          <a href="#">
+          {/* <a href="#">
             <i className="fas fa-bars" />
-          </a>
+          </a> */}
+          <p className="AppName">Community</p>
           <Link to="/profile">
             <i className="fab fa-connectdevelop" />
           </Link>

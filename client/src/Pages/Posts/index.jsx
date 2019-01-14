@@ -3,6 +3,7 @@ import './style.css'
 import Post from '../../Components/Post/Post'
 import Header from '../../Components/Header'
 import Footer from '../../Components/Footer'
+import { observer } from 'mobx-react'
 
 class Posts extends Component {
   render() {
@@ -20,4 +21,4 @@ class Posts extends Component {
   }
 }
 
-export default Posts
+export default observer(Posts)
