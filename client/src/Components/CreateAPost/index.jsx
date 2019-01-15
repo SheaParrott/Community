@@ -21,8 +21,6 @@ class CreateAPost extends Component {
 
   createPost = event => {
     event.preventDefault()
-    // FormData
-    // pass data to datastore and create the post
     const formData = new FormData(event.target)
 
     for (let pair of formData.entries()) {
@@ -30,7 +28,7 @@ class CreateAPost extends Component {
     }
 
     axios.post('/api/posts', formData).then(response => {
-      console.log(response)
+      this.props.reloadProfilePage()
       // form.reset()
     })
   }

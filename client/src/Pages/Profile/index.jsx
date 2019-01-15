@@ -26,18 +26,18 @@ class Profile extends Component {
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
     }
+    this.getProfile()
+  }
 
-    // IF we have a match param from the router USE IT
-    // ... otherwise use the id of the loaded profile
+  getProfile = () => {
     const url = this.props.match.params.id
       ? `/api/profiles/${this.props.match.params.id}`
       : `/api/profiles/current`
 
     axios.get(url).then(response => {
-      this.setState({ profile: response.data.profile })
+      this.setState({ profile: response.data.profile, showCreateAPost: false })
     })
   }
-
   AttributeClickToChangeState = event => {
     this.setState({
       profileBioSection: event.target.dataset.attribute
@@ -80,10 +80,7 @@ class Profile extends Component {
     }
   }
 
-  test = () => {
-    console.log(this.state.profile.me)
-    console.log(this.state.me)
-  }
+  test = () => {}
 
   render() {
     if (!this.state.profile) {
@@ -172,7 +169,10 @@ class Profile extends Component {
                 <h5>Create a post</h5>
                 <i className="fas fa-sort-down lessTopMargin" />
               </div>
-              <CreateAPost showForm={this.state.showCreateAPost} />
+              <CreateAPost
+                showForm={this.state.showCreateAPost}
+                reloadProfilePage={this.getProfile}
+              />
             </div>
           </div>
           <div className="ProfilePostsBox columnCentering boxShadow widthbig">

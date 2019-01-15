@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post "/api/posts", to: "api/posts#create"
   get "/api/posts/:id", to: "api/posts#show"
 
+  post "/api/comment/create", to: "api/comments#create"
+
   get "/api/tags", to: "api/tags#show"
 
   get "/api/profiles/:id/recommendedposts", to: "api/profiles#recommendedPosts"

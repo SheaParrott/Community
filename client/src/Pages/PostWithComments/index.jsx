@@ -1,21 +1,8 @@
 import React, { Component } from 'react'
-import profileimg from '../../assets/picklerick.jpg'
 import './style.css'
 import Header from '../../Components/Header'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-
-//
-// three lines is called a hamburger menu
-//
-
-// id: post.id,
-// title: post.title,
-// image: url_for(post.post_image),
-// body: post.body,
-// profile_id: post.author.id,
-// profile_name: post.author.name,
-// profile_image: url_for(post.author.profile_image)
 
 class PostWithComments extends Component {
   constructor(props) {
@@ -27,31 +14,34 @@ class PostWithComments extends Component {
   }
 
   componentDidMount = () => {
+    this.fetchPost()
+  }
+
+  fetchPost = () => {
     axios
       .get(`/api/posts/${this.props.match.params.post_id}`)
       .then(response => {
-        // console.log(response.data.post)
         this.setState({ post: response.data.post })
       })
   }
 
   createComment = event => {
     event.preventDefault()
-    // FormData
-    // pass data to datastore and create the post
+
     const formData = new FormData(event.target)
 
     for (let pair of formData.entries()) {
       console.log(pair[0] + ', ' + pair[1])
     }
 
-    // axios.post('/api/posts', formData).then(response => {
-    //   console.log(response)
-    //   // form.reset()
-    // })
+    axios.post('/api/comment/create', formData).then(response => {
+      this.componentDidMount()
+    })
   }
 
-  testing = () => {}
+  testing = () => {
+    // console.log(this.props.match.params.post_id)
+  }
 
   render() {
     if (!this.state.post) {
@@ -61,10 +51,10 @@ class PostWithComments extends Component {
     return (
       <div className="columnCentering">
         <Header />
-        <div className="marginFromHeader widthbig">
+        <div className="marginFromHeader">
           <button onClick={this.testing}>testing</button>
           <section className="requestBoxCentering">
-            <section className="requestBox boxShadow">
+            <section className="requestBox boxShadow widthbig">
               <div className="requestBoxTopBar">
                 <Link to={`/Profile/${this.state.post.profile_id}`}>
                   <img
@@ -116,7 +106,7 @@ class PostWithComments extends Component {
                 {this.state.post.comments.map(comment => {
                   return (
                     <div key={comment.id} className="comment widthbig">
-                      <Link to="/Profile">
+                      <Link to={`/Profile/${comment.author_id}`}>
                         <img
                           className="commentProfileImage"
                           src={comment.author_image}
@@ -124,7 +114,7 @@ class PostWithComments extends Component {
                         />
                       </Link>
                       <div>
-                        <Link to="/Profile">
+                        <Link to={`/Profile/${comment.author_id}`}>
                           <h6 className="comment">{comment.author_name}</h6>
                         </Link>
                         <p className="comment">{comment.body}</p>
@@ -133,6 +123,11 @@ class PostWithComments extends Component {
                   )
                 })}
                 <form onSubmit={this.createComment}>
+                  <input
+                    type="hidden"
+                    name="comment[post_id]"
+                    value={this.props.match.params.post_id}
+                  />
                   <input
                     className="comment width"
                     type="text"
