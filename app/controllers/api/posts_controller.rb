@@ -38,7 +38,7 @@ class Api::PostsController < ApplicationController
         id: comment.id,
         body: comment.body,
         author_id: comment.profile.id,
-        author_image: url_for(comment.profile.profile_image),
+        author_image: comment.profile.profile_image.attached? && url_for(comment.profile.profile_image),
         author_name: comment.profile.name
       }
     end
@@ -47,12 +47,12 @@ class Api::PostsController < ApplicationController
       post: {
         id: post.id,
         title: post.title, 
-        image: url_for(post.post_image),
+        image: post.post_image.attached? && url_for(post.post_image),
         body: post.body, 
         time: post.created_at,
         profile_id: post.author.id, 
         profile_name: post.author.name, 
-        profile_image: url_for(post.author.profile_image),
+        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
         comment_count: comments.size,
         comments: comments
       }

@@ -3,6 +3,7 @@ import './style.css'
 import Header from '../../Components/Header'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import imageOrDefault from '../../imageOrDefault'
 
 class PostWithComments extends Component {
   constructor(props) {
@@ -59,7 +60,7 @@ class PostWithComments extends Component {
                 <Link to={`/Profile/${this.state.post.profile_id}`}>
                   <img
                     className="requestBoxProfileImage"
-                    src={this.state.post.profile_image}
+                    src={imageOrDefault(this.state.post.profile_image)}
                     alt="profile"
                   />
                 </Link>
@@ -81,7 +82,7 @@ class PostWithComments extends Component {
               <h4 className="requestBoxTitle">{this.state.post.title}</h4>
               <img
                 className="requestBoxImage"
-                src={this.state.post.image}
+                src={imageOrDefault(this.state.post.image)}
                 alt="requestBox"
               />
               <p>{this.state.post.body}</p>
@@ -109,7 +110,7 @@ class PostWithComments extends Component {
                       <Link to={`/Profile/${comment.author_id}`}>
                         <img
                           className="commentProfileImage"
-                          src={comment.author_image}
+                          src={imageOrDefault(comment.author_image)}
                           alt="profile"
                         />
                       </Link>

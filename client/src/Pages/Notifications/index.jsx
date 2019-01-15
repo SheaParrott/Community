@@ -3,6 +3,7 @@ import './style.css'
 import { Link } from 'react-router-dom'
 import profileimg from '../../assets/picklerick.jpg'
 import Header from '../../Components/Header'
+import imageOrDefault from '../../imageOrDefault'
 
 class Notifications extends Component {
   render() {
@@ -15,7 +16,7 @@ class Notifications extends Component {
               <Link to="/Profile">
                 <img
                   className="notificationsBoxProfileImage"
-                  src={profileimg}
+                  src={imageOrDefault(profileimg)}
                   alt="profile"
                 />
               </Link>

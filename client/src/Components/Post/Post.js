@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import './style.css'
 import { Link } from 'react-router-dom'
+import defaultPostImage from '../../assets/space.jpeg'
+import imageOrDefault from '../../imageOrDefault'
 
 class Post extends Component {
   constructor(props) {
@@ -43,7 +45,7 @@ class Post extends Component {
               <Link to={`/Profile/${this.props.profile_id}`}>
                 <img
                   className="requestBoxProfileImage"
-                  src={this.props.profileImage}
+                  src={imageOrDefault(this.props.profileImage)}
                   alt="profile"
                 />
               </Link>
@@ -61,7 +63,7 @@ class Post extends Component {
             <h4 className="requestBoxTitle">{this.props.postTitle}</h4>
             <img
               className="requestBoxImage"
-              src={this.props.postImage}
+              src={imageOrDefault(this.props.postImage)}
               alt="request"
             />
             <p>{this.props.postBody}</p>
