@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './style.css'
 import Post from '../../Components/Post/Post'
 import Header from '../../Components/Header'
-import { observer } from 'mobx-react'
 import axios from 'axios'
 
 class Posts extends Component {
@@ -58,4 +57,4 @@ class Posts extends Component {
   }
 }
 
-export default observer(Posts)
+export default Posts

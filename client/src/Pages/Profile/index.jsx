@@ -7,12 +7,9 @@ import Header from '../../Components/Header'
 import requestimg from '../../assets/dev.jpeg'
 import Post from '../../Components/Post/Post'
 
-import { observer } from 'mobx-react'
-import CreateAPost from '../CreateAPost'
-
 import auth from '../../auth'
 import history from '../../history'
-import { toJS } from 'mobx'
+import CreateAPost from '../../Components/CreateAPost'
 
 class Profile extends Component {
   constructor(props) {
@@ -84,7 +81,7 @@ class Profile extends Component {
   }
 
   test = () => {
-    console.log(toJS(this.state.profile.me))
+    console.log(this.state.profile.me)
     console.log(this.state.me)
   }
 
@@ -222,16 +219,14 @@ class Profile extends Component {
                   <div
                     className="ProfileRecommendedPost width"
                     onClick={this.CommentIDToBePassedToDataStore}
-                    data-comment={post.id}
                   >
                     <img
                       className="ProfileRequestBoxImage boxShadow"
                       src={post.image}
                       alt="request"
                       onClick={this.CommentIDToBePassedToDataStore}
-                      data-comment={post.id}
                     />
-                    <h4 data-comment={post.id}>{post.title}</h4>
+                    <h4>{post.title}</h4>
                   </div>
                 </Link>
               )
@@ -262,7 +257,7 @@ class Profile extends Component {
   }
 }
 
-export default observer(Profile)
+export default Profile
 
 /* <div className="profileMyCommunityParent">
             <h6>my community:</h6>

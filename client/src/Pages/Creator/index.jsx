@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import CreatorImage from '../../assets/IMG_0327.jpg'
 import './style.css'
-import { observer } from 'mobx-react'
 import history from '../../history'
 
 class Creator extends Component {
@@ -37,4 +36,4 @@ class Creator extends Component {
   }
 }
 
-export default observer(Creator)
+export default Creator

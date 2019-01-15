@@ -5,9 +5,6 @@ class Footer extends Component {
   render() {
     return (
       <footer>
-        <Link className="cursive" to="/Mission">
-          Mission
-        </Link>
         <Link className="cursive" to="/Creator">
           Creator
         </Link>

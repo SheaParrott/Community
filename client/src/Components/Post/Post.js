@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import './style.css'
 import { Link } from 'react-router-dom'
-import { observer } from 'mobx-react'
 
 class Post extends Component {
   constructor(props) {
@@ -104,4 +103,4 @@ class Post extends Component {
   }
 }
 
-export default observer(Post)
+export default Post

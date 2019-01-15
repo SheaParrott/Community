@@ -272,7 +272,7 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 # [] Profile component - add to community button need to be name when its yourself. this only matters if I keep the my community component for the MVP
 # [] profile component - community logo needs to go to users profile. could be done by passing the id
 # [] profile component - create form page, update profile
-# [] header component - hamburger menu --my profile--recommended posts--interested posts--mission--creator--sign out--search options
+# [] header component - hamburger menu --my profile--recommended posts--interested posts--creator--sign out--search options
 # [] header component - make notifications button dynamic when there is a new notification 
 
 # GAVIN **** im close on this, please take a look
@@ -283,7 +283,6 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 # [x] createapost component - this will be a form page. could try changing things directy on page. notes there on idea of how. 
 # [] createapost component - finish css and tie it to tags
 # [] friendrequests component - add friend and remove friend option. if decided to keep my community option
-# [] mission and creator components - make back button clickable and go to previous page 
 # [] mycommunity component - hamburger menu remove friend option
 # [] signin component - style again, add Oauth
 # [] go through all pages and components - add @media to all
@@ -293,11 +292,6 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 
 # GAVIN PLEASE HELP
 # [1/2]  when i refresh the browser it dumps my data.
-# [X] in ruby - posts controller - cant get certain json data to show
-#      - profile name
-#      - profile image
-# [X] how to make back button work for creator and mission page?
-# [X] image not showing up on postwithcomments page
 # [] idea on how to make notification work
 #    - thinking i do a component did mount, when compared to 
 #      previous data show the differene and make notifications 

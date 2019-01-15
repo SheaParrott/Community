@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 
 import insertImage from '../../assets/insert-image.png'
 import './style.css'
-import { observer } from 'mobx-react'
-import { toJS } from 'mobx'
 import axios from 'axios'
 
 class CreateAPost extends Component {
@@ -70,16 +68,15 @@ class CreateAPost extends Component {
             </section>
             <section className="tagsBox boxShadow">
               {this.state.tags.map(tag => {
-                // console.log(toJS(tag))
                 return (
-                  <h5 className="tag" key={toJS(tag.id)}>
+                  <h5 className="tag" key={tag.id}>
                     <input
                       type="checkbox"
-                      value={toJS(tag.id)}
+                      value={tag.id}
                       name="post[tag_ids][]"
-                      placeholder={toJS(tag.name)}
+                      placeholder={tag.name}
                     />
-                    <label>{toJS(tag.name)}</label>
+                    <label>{tag.name}</label>
                   </h5>
                 )
               })}
@@ -94,4 +91,4 @@ class CreateAPost extends Component {
   }
 }
 
-export default observer(CreateAPost)
+export default CreateAPost

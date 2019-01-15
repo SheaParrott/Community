@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './style.css'
-import { observer } from 'mobx-react'
 
 class PostOptions extends Component {
   render() {
@@ -21,4 +20,4 @@ class PostOptions extends Component {
   }
 }
 
-export default observer(PostOptions)
+export default PostOptions

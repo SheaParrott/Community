@@ -9,14 +9,11 @@ import UpdateProfile from './Pages/UpdateProfile/index'
 import Posts from './Pages/Posts/index'
 import PostWithComments from './Pages/PostWithComments/index'
 import Creator from './Pages/Creator/index'
-import Mission from './Pages/Mission/index'
 import MyCommunity from './Pages/MyCommunity/index'
 import PeopleInterested from './Pages/PeopleInterested/index'
 import Notifications from './Pages/Notifications/index'
 import FriendRequests from './Pages/FriendRequests/index'
 import Footer from './Components/Footer'
-
-import { observer } from 'mobx-react'
 
 import auth from './auth'
 
@@ -75,7 +72,6 @@ class App extends Component {
           />
           <Route path="/PeopleInterested/" component={PeopleInterested} />
           <Route path="/Creator/" component={Creator} />
-          <Route path="/Mission/" component={Mission} />
           <Footer />
         </div>
       </Router>
@@ -83,7 +79,7 @@ class App extends Component {
   }
 }
 
-export default observer(App)
+export default App
 // ~COMMUNITY APP~
 // expand your world and build community
 // help & build eachother up app
@@ -120,7 +116,6 @@ export default observer(App)
 // [x] see more in my community
 //     - make a my community page
 // [x] what i want to do, what i can do, what need help doing
-// [x] add some sort of back button to Mission and Creater pages
 // [] add in default inspirational quotes and inspirational quotes section
 // [x] page for updating profile page
 //  - picture

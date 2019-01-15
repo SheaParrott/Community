@@ -3,8 +3,6 @@ import profileimg from '../../assets/picklerick.jpg'
 import './style.css'
 import Header from '../../Components/Header'
 import { Link } from 'react-router-dom'
-import { toJS } from 'mobx'
-import { observer } from 'mobx-react'
 import axios from 'axios'
 
 //
@@ -37,6 +35,22 @@ class PostWithComments extends Component {
       })
   }
 
+  createComment = event => {
+    event.preventDefault()
+    // FormData
+    // pass data to datastore and create the post
+    const formData = new FormData(event.target)
+
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + ', ' + pair[1])
+    }
+
+    // axios.post('/api/posts', formData).then(response => {
+    //   console.log(response)
+    //   // form.reset()
+    // })
+  }
+
   testing = () => {}
 
   render() {
@@ -54,22 +68,18 @@ class PostWithComments extends Component {
               <div className="requestBoxTopBar">
                 <Link to={`/Profile/${this.state.post.profile_id}`}>
                   <img
-                    data-profile={toJS(this.state.post.profile_id)}
                     className="requestBoxProfileImage"
-                    src={toJS(this.state.post.profile_image)}
+                    src={this.state.post.profile_image}
                     alt="profile"
                   />
                 </Link>
                 <div className="requestBoxTopBarInfo">
                   <Link to={`/Profile/${this.state.post.profile_id}`}>
-                    <h4
-                      data-profile={toJS(this.state.post.profile_id)}
-                      className="requestBoxProfileName"
-                    >
-                      {toJS(this.state.post.profile_name)}
+                    <h4 className="requestBoxProfileName">
+                      {this.state.post.profile_name}
                     </h4>
                   </Link>
-                  <p className="requestBoxDate">{toJS(this.state.post.time)}</p>
+                  <p className="requestBoxDate">{this.state.post.time}</p>
                 </div>
                 {/* this is where the delete post option goes..
                 could make this the only place to edit if adding 
@@ -78,13 +88,13 @@ class PostWithComments extends Component {
                   <i className="fas fa-ellipsis-v" />
                 </a>
               </div>
-              <h4 className="requestBoxTitle">{toJS(this.state.post.title)}</h4>
+              <h4 className="requestBoxTitle">{this.state.post.title}</h4>
               <img
                 className="requestBoxImage"
-                src={toJS(this.state.post.image)}
+                src={this.state.post.image}
                 alt="requestBox"
               />
-              <p>{toJS(this.state.post.body)}</p>
+              <p>{this.state.post.body}</p>
               <div className="requestBoxMiddleBar">
                 <div className="requestBoxMiddleBarTwo">
                   {/* add to interested posts */}
@@ -103,7 +113,7 @@ class PostWithComments extends Component {
               </div>
               {/* note: start of comments  */}
               <div className="columnCentering">
-                {toJS(this.state.post.comments).map(comment => {
+                {this.state.post.comments.map(comment => {
                   return (
                     <div key={comment.id} className="comment widthbig">
                       <Link to="/Profile">
@@ -122,12 +132,17 @@ class PostWithComments extends Component {
                     </div>
                   )
                 })}
-                <input
-                  type="text"
-                  placeholder="comment here"
-                  className="comment width"
-                />
-                <button className="comment">submit</button>
+                <form onSubmit={this.createComment}>
+                  <input
+                    className="comment width"
+                    type="text"
+                    name="comment[body]"
+                    placeholder="Your new comment Here"
+                  />
+                  <button type="submit" className="comment width">
+                    submit
+                  </button>
+                </form>
               </div>
             </section>
           </section>
@@ -137,4 +152,4 @@ class PostWithComments extends Component {
   }
 }
 
-export default observer(PostWithComments)
+export default PostWithComments

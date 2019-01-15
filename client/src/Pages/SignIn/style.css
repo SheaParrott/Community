@@ -8,12 +8,11 @@ section.signUp {
   width: 250px;
   border-radius: 5px;
   padding: 50px 0 50px 0;
-  margin: 50px 0 50px 0;
+  margin: 10px 0 20px 0;
 }
 section.signInMission {
   display: flex;
   justify-content: space-evenly;
-  padding-top: 30px;
 }
 div.signInMissionStatements {
   width: 80px;
@@ -32,5 +31,5 @@ p.signInMissionStatementsRight {
   letter-spacing: 0.5px;
 }
 section.mission {
-  margin-top: 30px;
+  margin-top: 25px;
 }

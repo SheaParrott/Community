@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './style.css'
 import { Link } from 'react-router-dom'
-import { observer } from 'mobx-react'
 
 class SignIn extends Component {
   render() {
@@ -33,9 +32,6 @@ class SignIn extends Component {
         </section>
         <section className="mission columnCentering">
           <div className="widthbig">
-            <i className="fas fa-arrow-left" />
-          </div>
-          <div className="widthbig">
             <p>
               Here in the <i>Community</i> our goal is to provide a safe place
               to help one another out and spread good vibes. This is a platform
@@ -43,14 +39,6 @@ class SignIn extends Component {
               even pick up a new hobby. Thanks for taking the time to read about
               us. We hope you enjoy the <i>Community</i>.
             </p>
-
-            <h5>
-              Any questions or suggestions are welcome. Please click below to
-              get in contact.
-            </h5>
-            <Link to="/Creator">
-              <button onClick={this.loadCreatorPage}>Contact Us</button>
-            </Link>
           </div>
         </section>
       </div>
@@ -58,4 +46,4 @@ class SignIn extends Component {
   }
 }
 
-export default observer(SignIn)
+export default SignIn
