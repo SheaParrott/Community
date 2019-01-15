@@ -4,6 +4,7 @@ import './style.css'
 import { Link } from 'react-router-dom'
 import defaultPostImage from '../../assets/space.jpeg'
 import imageOrDefault from '../../imageOrDefault'
+import axios from 'axios'
 
 class Post extends Component {
   constructor(props) {
@@ -28,12 +29,17 @@ class Post extends Component {
     // editing / deleting if i can figure it out?
     return (
       <div className={this.state.showMenu ? '' : 'hidden'}>
-        {console.log(this.props.id)}
         <div className="columnCentering widthbig">
-          <button onClick={this.postOptionDelete}>Delete Post?</button>
+          <button onClick={this.postDelete}>Delete Post?</button>
         </div>
       </div>
     )
+  }
+  postDelete = () => {
+    console.log(this.props.id)
+    // axios call delete
+
+    // axios.delete(`/api/posts/delete/${this.props.id}`).then(Response => {})
   }
 
   render() {

@@ -8,8 +8,8 @@ class Footer extends Component {
         <Link className="cursive" to="/Creator">
           Creator
         </Link>
-        <Link className="cursive" to="/">
-          Sign In
+        <Link className="cursive" to="/logout">
+          Log out
         </Link>
         <p className="cursive">&copy; SheaParrott Productions</p>
       </footer>

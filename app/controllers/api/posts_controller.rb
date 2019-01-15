@@ -28,36 +28,43 @@ class Api::PostsController < ApplicationController
     render head: :ok
   end 
 
-  def show
-    post_id = params[:id]
+def show
+  post_id = params[:id]
 
-    post = Post.find(post_id)
+  post = Post.find(post_id)
 
-    comments = post.comments.map do |comment|
-      {
-        id: comment.id,
-        body: comment.body,
-        author_id: comment.profile.id,
-        author_image: comment.profile.profile_image.attached? && url_for(comment.profile.profile_image),
-        author_name: comment.profile.name
-      }
-    end
-
-    render json: {
-      post: {
-        id: post.id,
-        title: post.title, 
-        image: post.post_image.attached? && url_for(post.post_image),
-        body: post.body, 
-        time: post.created_at,
-        profile_id: post.author.id, 
-        profile_name: post.author.name, 
-        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
-        comment_count: comments.size,
-        comments: comments
-      }
+  comments = post.comments.map do |comment|
+    {
+      id: comment.id,
+      body: comment.body,
+      author_id: comment.profile.id,
+      author_image: comment.profile.profile_image.attached? && url_for(comment.profile.profile_image),
+      author_name: comment.profile.name
     }
   end
+
+  render json: {
+    post: {
+      id: post.id,
+      title: post.title, 
+      image: post.post_image.attached? && url_for(post.post_image),
+      body: post.body, 
+      time: post.created_at,
+      profile_id: post.author.id, 
+      profile_name: post.author.name, 
+      profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
+      comment_count: comments.size,
+      comments: comments
+    }
+  }
+  end
+
+  # "/api/posts/delete/:id"
+  # def delete 
+  #   post_id = params[:id]
+  #   Post.find(post_id).destroy
+  # end
+
 
   private
   
