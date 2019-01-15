@@ -6,19 +6,21 @@ import axios from 'axios'
 import Header from '../../Components/Header'
 import requestimg from '../../assets/dev.jpeg'
 import Post from '../../Components/Post/Post'
-import myDataStore from '../DataStore/DataStore'
 
 import { observer } from 'mobx-react'
 import CreateAPost from '../CreateAPost'
 
 import auth from '../../auth'
 import history from '../../history'
+import { toJS } from 'mobx'
 
 class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      profileBioSection: ''
+      profileBioSection: '',
+      profile: null,
+      showCreateAPost: false
     }
   }
 
@@ -27,6 +29,16 @@ class Profile extends Component {
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
     }
+
+    // IF we have a match param from the router USE IT
+    // ... otherwise use the id of the loaded profile
+    const url = this.props.match.params.id
+      ? `/api/profiles/${this.props.match.params.id}`
+      : `/api/profiles/current`
+
+    axios.get(url).then(response => {
+      this.setState({ profile: response.data.profile })
+    })
   }
 
   AttributeClickToChangeState = event => {
@@ -34,16 +46,21 @@ class Profile extends Component {
       profileBioSection: event.target.dataset.attribute
     })
   }
+
+  profileClass = () => {
+    return this.state.profile.me ? '' : 'hidden'
+  }
+
   fillInBox = () => {
-    let strengths = myDataStore.profile.tags.filter(s => {
+    let strengths = this.state.profile.tags.filter(s => {
       return s.strength
     })
-    let weakness = myDataStore.profile.tags.filter(w => {
+    let weakness = this.state.profile.tags.filter(w => {
       return !w.strength
     })
 
     if (this.state.profileBioSection === '') {
-      return <h4 className="aboutMe">{myDataStore.profile.about_me}</h4>
+      return <h4 className="aboutMe">{this.state.profile.about_me}</h4>
     }
     if (this.state.profileBioSection === 'STRENGTHS') {
       return (
@@ -54,7 +71,7 @@ class Profile extends Component {
         </ul>
       )
     } else if (this.state.profileBioSection === 'ABOUT ME') {
-      return <h4 className="aboutMe">{myDataStore.profile.about_me}</h4>
+      return <h4 className="aboutMe">{this.state.profile.about_me}</h4>
     } else if (this.state.profileBioSection === 'STRUGGLES') {
       return (
         <ul>
@@ -65,21 +82,24 @@ class Profile extends Component {
       )
     }
   }
-  dataBaseShowOrHide = () => {
-    myDataStore.changeShowOrHide()
-  }
-  CommentIDToBePassedToDataStore = event => {
-    myDataStore.getOnePost(event.target.dataset.comment)
+
+  test = () => {
+    console.log(toJS(this.state.profile.me))
+    console.log(this.state.me)
   }
 
   render() {
+    if (!this.state.profile) {
+      return <></>
+    }
+
     return (
       <>
         <Header />
         <div className="CoverImage">
           <img
             className="ProfileCoverImage"
-            src={myDataStore.profile.cover_image}
+            src={this.state.profile.cover_image}
             alt="profile"
           />
         </div>
@@ -88,7 +108,7 @@ class Profile extends Component {
             <Link to="/UpdateProfile">
               <img
                 className="ProfileImage"
-                src={myDataStore.profile.profile_image}
+                src={this.state.profile.profile_image}
                 alt="profile"
               />
             </Link>
@@ -102,11 +122,12 @@ class Profile extends Component {
             <div className="nameBox">
               <div className="name boxShadow">
                 {/* <i className="fas fa-plus-circle" /> */}
-                <h2 className="name">{myDataStore.profile.name}</h2>
+                <h2 className="name">{this.state.profile.name}</h2>
               </div>
             </div>
+            <button onClick={this.test}>test</button>
             <div className="profileQuote widthbig">
-              {myDataStore.profile.quote}
+              {this.state.profile.quote}
             </div>
           </div>
           <div className="profileAttributesBar">
@@ -141,14 +162,22 @@ class Profile extends Component {
           {/* add in ternary opperator to remove post component off 
           profile page after submitted. or play with state to make
           appear and disappear */}
-          <div
-            className="profileCreateAPost widthbig boxShadow"
-            onClick={this.dataBaseShowOrHide}
-          >
-            <h5>Create a post</h5>
-            <i className="fas fa-sort-down lessTopMargin" />
+          <div className={this.profileClass()}>
+            <div className="columnCentering">
+              <div
+                className="profileCreateAPost widthbig boxShadow"
+                onClick={() => {
+                  this.setState({
+                    showCreateAPost: !this.state.showCreateAPost
+                  })
+                }}
+              >
+                <h5>Create a post</h5>
+                <i className="fas fa-sort-down lessTopMargin" />
+              </div>
+              <CreateAPost showForm={this.state.showCreateAPost} />
+            </div>
           </div>
-          <CreateAPost />
           <div className="ProfilePostsBox columnCentering boxShadow widthbig">
             <h6>Recommended Posts:</h6>
             <Link to="/PostWithComments">
@@ -181,15 +210,15 @@ class Profile extends Component {
                 <h4>Need help with react router!!</h4>
               </div>
             </Link>
-            <Link to="/Posts">
-              <h6 onClick={myDataStore.getAllRecommendedPosts}>See More</h6>
+            <Link to={`/Profile/${this.state.profile.id}/posts/recommended`}>
+              <h6>See More</h6>
             </Link>
           </div>
           <div className="ProfilePostsBox columnCentering boxShadow widthbig">
             <h6>interested Posts:</h6>
-            {myDataStore.profile.interested_posts.map(post => {
+            {this.state.profile.interested_posts.map(post => {
               return (
-                <Link key={post.id} to="/PostWithComments">
+                <Link key={post.id} to={`/PostWithComments/${post.id}`}>
                   <div
                     className="ProfileRecommendedPost width"
                     onClick={this.CommentIDToBePassedToDataStore}
@@ -207,18 +236,19 @@ class Profile extends Component {
                 </Link>
               )
             })}
-            <Link to="/Posts">
-              <h6 onClick={myDataStore.getAllInterestedPosts}>See More</h6>
+            <Link to={`/Profile/${this.state.profile.id}/posts/interested`}>
+              <h6 onClick={this.state.getAllInterestedPosts}>See More</h6>
             </Link>
             {/* passing this id is not working? */}
           </div>
-          {myDataStore.profile.posts.map(post => {
+          {this.state.profile.posts.map(post => {
             return (
               <Post
                 key={post.id}
-                commentID={post.id}
-                profileName={myDataStore.profile.name}
-                profileImage={myDataStore.profile.profile_image}
+                id={post.id}
+                profile_id={this.state.profile.id}
+                profileName={this.state.profile.name}
+                profileImage={this.state.profile.profile_image}
                 postTitle={post.title}
                 postImage={post.image}
                 postBody={post.body}

@@ -16,8 +16,6 @@ import Notifications from './Pages/Notifications/index'
 import FriendRequests from './Pages/FriendRequests/index'
 import Footer from './Components/Footer'
 
-import myDataStore from './Pages/DataStore/DataStore'
-
 import { observer } from 'mobx-react'
 
 import auth from './auth'
@@ -35,16 +33,7 @@ class App extends Component {
     }
   }
 
-  componentDidMount = () => {
-    if (auth.isAuthenticated()) {
-      myDataStore.getProfileData()
-      myDataStore.getAllTags()
-    }
-  }
-
   render() {
-    console.log('Is the user authenticated', auth.isAuthenticated())
-
     return (
       <Router history={history}>
         <div className="App">
@@ -74,12 +63,16 @@ class App extends Component {
             }}
           />
           <Route path="/Notifications/" component={Notifications} />
-          <Route path="/Profile/" component={Profile} />
+          <Route exact path="/Profile" component={Profile} />
+          <Route exact path="/Profile/:id" component={Profile} />
           <Route path="/UpdateProfile/" component={UpdateProfile} />
           <Route path="/MyCommunity/" component={MyCommunity} />
           <Route path="/FriendRequests/" component={FriendRequests} />
-          <Route path="/Posts/" component={Posts} />
-          <Route path="/PostWithComments/" component={PostWithComments} />
+          <Route path="/Profile/:profile_id/posts/:kind" component={Posts} />
+          <Route
+            path="/PostWithComments/:post_id"
+            component={PostWithComments}
+          />
           <Route path="/PeopleInterested/" component={PeopleInterested} />
           <Route path="/Creator/" component={Creator} />
           <Route path="/Mission/" component={Mission} />

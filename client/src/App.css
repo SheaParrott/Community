@@ -55,6 +55,14 @@ h5 {
 .widthbig {
   width: 310px;
 }
+button {
+  margin: 1px;
+  background: linear-gradient(rgba(14, 173, 0, 0.7), rgba(35, 105, 2));
+  color: white;
+  font-weight: 700;
+  outline-color: #349af0;
+  padding: 4px 10px 4px 10px;
+}
 
 /* font-family: 'Lobster', cursive;
 like this for: use letter-spacing for added styling

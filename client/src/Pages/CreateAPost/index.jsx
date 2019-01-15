@@ -2,12 +2,25 @@ import React, { Component } from 'react'
 
 import insertImage from '../../assets/insert-image.png'
 import './style.css'
-import myDataStore from '../DataStore/DataStore'
 import { observer } from 'mobx-react'
 import { toJS } from 'mobx'
 import axios from 'axios'
 
 class CreateAPost extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      tags: []
+    }
+  }
+
+  componentDidMount = () => {
+    axios.get(`/api/tags`).then(response => {
+      this.setState({ tags: response.data.tags })
+    })
+  }
+
   createPost = event => {
     event.preventDefault()
     // FormData
@@ -23,9 +36,10 @@ class CreateAPost extends Component {
       // form.reset()
     })
   }
+
   render() {
     return (
-      <div className={myDataStore.showOrHide}>
+      <div className={this.props.showForm ? '' : 'hidden'}>
         <form onSubmit={this.createPost}>
           <section className="createAPostCentering">
             <section className="widthbig boxShadow">
@@ -55,7 +69,7 @@ class CreateAPost extends Component {
               />
             </section>
             <section className="tagsBox boxShadow">
-              {myDataStore.AllTags.map(tag => {
+              {this.state.tags.map(tag => {
                 // console.log(toJS(tag))
                 return (
                   <h5 className="tag" key={toJS(tag.id)}>
@@ -69,11 +83,7 @@ class CreateAPost extends Component {
                   </h5>
                 )
               })}
-              <button
-                onClick={myDataStore.changeShowOrHide}
-                className="postSubmit"
-                type="submit"
-              >
+              <button className="postSubmit" type="submit">
                 Submit Post
               </button>
             </section>

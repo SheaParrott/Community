@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   get "/api/tags", to: "api/tags#show"
 
-#
+  get "/api/profiles/:id/recommendedposts", to: "api/profiles#recommendedPosts"
 
-
+  get "/api/profiles/:id/interestedposts", to: "api/profiles#interestedPosts"
 
   if Rails.env.production?
     CLIENT_HTML = File.read(Rails.root.join('public/index.html'))

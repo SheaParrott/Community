@@ -21,6 +21,7 @@ class DataStore {
     this.RecommendedOrInterested = []
     this.PostWithComments = 'hidden'
     this.CommentLogo = ''
+    this.profileMeClass = ''
   }
   changeShowOrHide = () => {
     this.showOrHide = !this.showOrHide ? 'hidden' : ''
@@ -31,8 +32,10 @@ class DataStore {
   getProfileData = () => {
     axios.get(`/api/profiles/current`).then(response => {
       this.profile = response.data.profile
+      this.profileMeClass = response.data.profile.me ? '' : 'hidden'
     })
   }
+
   getAllTags = () => {
     axios.get(`/api/tags`).then(response => {
       this.AllTags = response.data.tags
@@ -41,13 +44,13 @@ class DataStore {
   }
 
   getOneProfile = theProfileID => {
-    // console.log(theProfileID)
-
     axios.get(`/api/profiles/${theProfileID}`).then(response => {
       console.log(response.data.profile)
       this.profile = response.data.profile
+      this.profileMeClass = response.data.profile.me ? '' : 'hidden'
     })
   }
+
   getOnePost = theCommentID => {
     // console.log(theCommentID)
 
@@ -56,12 +59,7 @@ class DataStore {
       this.singlePost = response.data.post
     })
   }
-  getAllRecommendedPosts = () => {
-    // console.log('clicked mydatastore recommended posts')
-    // console.log(toJS(this.profile.recommeded_posts))
-    // function that gets all recommeded posts and changes
-    //  the variable RecommendedOrInterested
-  }
+
   getAllInterestedPosts = () => {
     // console.log(toJS(this.profile.interested_posts))
     this.RecommendedOrInterested = toJS(this.profile.interested_posts)

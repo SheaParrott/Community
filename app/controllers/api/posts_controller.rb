@@ -33,15 +33,13 @@ class Api::PostsController < ApplicationController
 
     post = Post.find(post_id)
 
-    # profile = Post.find
-    #
-    comments = post.comments do |comment|
+    comments = post.comments.map do |comment|
       {
         id: comment.id,
         body: comment.body,
         author_id: comment.profile.id,
-        author_image: url_for(comment.author.profile_image),
-        author_name: comment.author.name
+        author_image: url_for(comment.profile.profile_image),
+        author_name: comment.profile.name
       }
     end
 
@@ -60,15 +58,14 @@ class Api::PostsController < ApplicationController
     }
   end
 
-
-
   private
-
+  
   def post_params
     params.require(:post).permit(:title, :post_image, :body, tag_ids: [])
   end
 end
 
+# Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 
 
 

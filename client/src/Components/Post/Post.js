@@ -2,22 +2,22 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import './style.css'
 import { Link } from 'react-router-dom'
-import myDataStore from '../../Pages/DataStore/DataStore'
 import { observer } from 'mobx-react'
 
 class Post extends Component {
-  CommentIDToBePassedToDataStore = event => {
-    // console.log(this.props.commentID)
-    myDataStore.getOnePost(this.props.commentID)
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      showMenu: false
+    }
   }
-  postOptions = event => {
-    myDataStore.showOrHidePostOptions()
-    // console.log(myDataStore.PostOptions)
+
+  toggleMenu = event => {
+    this.setState({ showMenu: !this.state.showMenu })
   }
-  postOptionDelete = () => {
-    // console.log(this.props.commentID)
-  }
-  renderPostOption = () => {
+
+  renderDelete = () => {
     // how do i only show this on the post clicked?
     // my thoughts:
     //     - display only where id === id given
@@ -26,7 +26,7 @@ class Post extends Component {
     // could take to another page for
     // editing / deleting if i can figure it out?
     return (
-      <div className={myDataStore.PostOptions}>
+      <div className={this.state.showMenu ? '' : 'hidden'}>
         <div className="columnCentering widthbig">
           <button onClick={this.postOptionDelete}>Delete Post?</button>
         </div>
@@ -40,7 +40,7 @@ class Post extends Component {
         <section className="requestBoxCentering">
           <section className="widthbig boxShadow">
             <div className="requestBoxTopBar">
-              <Link to="/Profile">
+              <Link to={`/Profile/${this.props.profile_id}`}>
                 <img
                   className="requestBoxProfileImage"
                   src={this.props.profileImage}
@@ -48,16 +48,16 @@ class Post extends Component {
                 />
               </Link>
               <div className="requestBoxTopBarInfo">
-                <Link to="/Profile">
+                <Link to={`/Profile/${this.props.profile_id}`}>
                   <h4 className="requestBoxProfileName">
                     {this.props.profileName}
                   </h4>
                 </Link>
                 <p className="requestBoxDate">{this.props.timestamp}</p>
               </div>
-              <i onClick={this.postOptions} className="fas fa-ellipsis-v" />
+              <i onClick={this.toggleMenu} className="fas fa-ellipsis-v" />
             </div>
-            {this.renderPostOption()}
+            {this.renderDelete()}
             <h4 className="requestBoxTitle">{this.props.postTitle}</h4>
             <img
               className="requestBoxImage"
@@ -66,7 +66,7 @@ class Post extends Component {
             />
             <p>{this.props.postBody}</p>
             <div className="requestBoxMiddleBar">
-              <Link to="/PostWithComments">
+              <Link to={`/PostWithComments/${this.props.id}`}>
                 <i
                   onClick={this.CommentIDToBePassedToDataStore}
                   className="far fa-comment"
@@ -88,7 +88,7 @@ class Post extends Component {
             <div className="requestBoxBottomBar">
               <Link
                 onClick={this.CommentIDToBePassedToDataStore}
-                to="/PostWithComments"
+                to={`/PostWithComments/${this.props.id}`}
                 className="requestBoxBottomBarInfo"
               >
                 7 comments

@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import CreatorImage from '../../assets/IMG_0327.jpg'
 import './style.css'
 import { observer } from 'mobx-react'
+import history from '../../history'
 
 class Creator extends Component {
   render() {
     return (
       <div>
         {/* go to previous page arrow */}
-        <i className="fas fa-arrow-left" />
+        <i className="fas fa-arrow-left" onClick={() => history.go(-1)} />
         <h1 className="creator">Shea Parrott</h1>
         <img className="creator boxShadow" src={CreatorImage} alt="Shea" />
         <h4 className="creatorInfo">(904) 629-8670</h4>

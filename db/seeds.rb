@@ -292,12 +292,12 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 
 
 # GAVIN PLEASE HELP
-# []  when i refresh the browser it dumps my data.
-# [] in ruby - posts controller - cant get certain json data to show
+# [1/2]  when i refresh the browser it dumps my data.
+# [X] in ruby - posts controller - cant get certain json data to show
 #      - profile name
 #      - profile image
-# [] how to make back button work for creator and mission page?
-# [] image not showing up on postwithcomments page
+# [X] how to make back button work for creator and mission page?
+# [X] image not showing up on postwithcomments page
 # [] idea on how to make notification work
 #    - thinking i do a component did mount, when compared to 
 #      previous data show the differene and make notifications 
