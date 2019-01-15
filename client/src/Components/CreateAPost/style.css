@@ -22,7 +22,6 @@ img.createAPostImage {
 section.tagsBox {
   display: flex;
   flex-wrap: wrap;
-  width: 310px;
   margin: 2px;
 }
 h5.tag {

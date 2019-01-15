@@ -53,6 +53,7 @@ class Api::PostsController < ApplicationController
         profile_id: post.author.id, 
         profile_name: post.author.name, 
         profile_image: url_for(post.author.profile_image),
+        comment_count: comments.size,
         comments: comments
       }
     }

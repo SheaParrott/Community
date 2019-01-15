@@ -64,7 +64,7 @@ class CreateAPost extends Component {
                 placeholder="Edit Body Here"
               />
             </section>
-            <section className="tagsBox boxShadow">
+            <section className="tagsBox widthbig boxShadow">
               {this.state.tags.map(tag => {
                 return (
                   <h5 className="tag" key={tag.id}>

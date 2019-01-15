@@ -80,7 +80,9 @@ class Profile extends Component {
     }
   }
 
-  test = () => {}
+  test = () => {
+    console.log(this.state.profile.id)
+  }
 
   render() {
     if (!this.state.profile) {
@@ -89,6 +91,7 @@ class Profile extends Component {
 
     return (
       <>
+        {/* pass props to header here for notifications */}
         <Header />
         <div className="CoverImage">
           <img
@@ -99,7 +102,9 @@ class Profile extends Component {
         </div>
         <main className="ProfileBody columnCentering">
           <div className="profileTop">
-            <Link to="/UpdateProfile">
+            {/* create 2 of these make the current users 
+          clickable, make other users not clickable */}
+            <Link to={`/UpdateProfile/${this.state.profile.id}`}>
               <img
                 className="ProfileImage"
                 src={this.state.profile.profile_image}
@@ -244,6 +249,7 @@ class Profile extends Component {
                 profile_id={this.state.profile.id}
                 profileName={this.state.profile.name}
                 profileImage={this.state.profile.profile_image}
+                comment_count={post.comment_count}
                 postTitle={post.title}
                 postImage={post.image}
                 postBody={post.body}

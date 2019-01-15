@@ -26,6 +26,7 @@ class Post extends Component {
     // editing / deleting if i can figure it out?
     return (
       <div className={this.state.showMenu ? '' : 'hidden'}>
+        {console.log(this.props.id)}
         <div className="columnCentering widthbig">
           <button onClick={this.postOptionDelete}>Delete Post?</button>
         </div>
@@ -90,7 +91,7 @@ class Post extends Component {
                 to={`/PostWithComments/${this.props.id}`}
                 className="requestBoxBottomBarInfo"
               >
-                7 comments
+                {this.props.comment_count} comments
               </Link>
               <Link to="/PeopleInterested" className="requestBoxBottomBarInfo">
                 5 Interested

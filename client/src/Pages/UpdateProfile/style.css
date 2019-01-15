@@ -1,3 +1,18 @@
+h3.updateProfile {
+  text-decoration: underline;
+}
+
+div.someMargin {
+  margin: 15px;
+}
+h4.someMargin,
+button.someMargin {
+  margin: 7px;
+}
+h4.someTextShadow {
+  box-shadow: 0 2px 5px black;
+}
+
 section.tagsBox {
   display: flex;
   flex-wrap: wrap;

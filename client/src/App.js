@@ -62,7 +62,7 @@ class App extends Component {
           <Route path="/Notifications/" component={Notifications} />
           <Route exact path="/Profile" component={Profile} />
           <Route exact path="/Profile/:id" component={Profile} />
-          <Route path="/UpdateProfile/" component={UpdateProfile} />
+          <Route path="/UpdateProfile/:id" component={UpdateProfile} />
           <Route path="/MyCommunity/" component={MyCommunity} />
           <Route path="/FriendRequests/" component={FriendRequests} />
           <Route path="/Profile/:profile_id/posts/:kind" component={Posts} />

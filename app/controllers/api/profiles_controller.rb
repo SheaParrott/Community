@@ -1,6 +1,29 @@
 class Api::ProfilesController < ApplicationController
   # skip_before_action :verify_authenticity_token
 
+  def update
+    current_profile.update(profile_params)
+
+    render json: current_profile
+  end
+
+
+# [] how can i get the notifications bar to show when a person 
+#    comments on my post?
+#   - thinking this may be another model? (viewed:boolean profile:belongs to)
+# most recent 10 'comments'
+
+# [] to do:
+#   - set up count for number of comments and have it return
+#     anytime we get a post.
+#   - make magnet add to interested posts
+#   - get list of people interested in a post
+#   - set up count of people interested in a post
+#   - delete post, button and id select id in place already
+
+
+
+
   def current
     profile = current_profile
 
@@ -11,6 +34,7 @@ class Api::ProfilesController < ApplicationController
         title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,
+        comment_count: post.comments.count,
         timestamp: post.created_at
       }
     end
@@ -25,6 +49,7 @@ class Api::ProfilesController < ApplicationController
         timestamp: post.created_at, 
         author_id: post.author.id, 
         name: post.author.name, 
+        comment_count: post.comments.count,
         profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
 
       }
@@ -82,6 +107,7 @@ class Api::ProfilesController < ApplicationController
         title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,
+        comment_count: post.comments.count,
         author_id: post.author.id,
         timestamp: post.created_at
       }
@@ -94,6 +120,7 @@ class Api::ProfilesController < ApplicationController
         title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,
+        comment_count: post.comments.count,
         timestamp: post.created_at, 
         author_id: post.author.id, 
         name: post.author.name, 
@@ -164,33 +191,10 @@ class Api::ProfilesController < ApplicationController
   end
 
 
+  private
 
-  #  /api/profiles/:id/interestedPosts
-  def interestedPosts 
-    profile_id = params[:id]
-
-    profile = Profile.find(profile_id)
-
-    #get all interested posts
-
-    interested_posts = profile.posts.map do |post|
-      {
-        id: post.id,
-        title: post.title,
-        image: post.post_image.attached? && url_for(post.post_image),
-        body: post.body,
-        timestamp: post.created_at, 
-        author_id: post.author.id, 
-        name: post.author.name, 
-        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
-
-      }
-
-    end
-
-      render json: {
-        interested_posts: interested_posts
-      }
+  def profile_params
+    params.require(:profile).permit(:cover_image, :profile_image, :about_me, :name, tag_ids: [])
   end
 
 
