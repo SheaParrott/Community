@@ -59,11 +59,13 @@ def show
   }
   end
 
-  # "/api/posts/delete/:id"
-  # def delete 
-  #   post_id = params[:id]
-  #   Post.find(post_id).destroy
-  # end
+
+  # /api/posts
+  def destroy 
+    p "this is the delete method"
+
+    Post.find(params[:id]).destroy
+  end
 
 
   private

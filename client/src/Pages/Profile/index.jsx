@@ -10,6 +10,7 @@ import Post from '../../Components/Post/Post'
 import auth from '../../auth'
 import history from '../../history'
 import CreateAPost from '../../Components/CreateAPost'
+import imageOrDefault from '../../imageOrDefault'
 
 class Profile extends Component {
   constructor(props) {
@@ -57,31 +58,31 @@ class Profile extends Component {
     })
 
     if (this.state.profileBioSection === '') {
-      return <h4 className="aboutMe">{this.state.profile.about_me}</h4>
+      return <h5 className="aboutMe">{this.state.profile.about_me}</h5>
     }
     if (this.state.profileBioSection === 'STRENGTHS') {
       return (
-        <ul>
+        <div>
           {strengths.map(strength => {
-            return <li key={strength.id}>{strength.name}</li>
+            return <h5 key={strength.id}>{strength.name}</h5>
           })}
-        </ul>
+        </div>
       )
     } else if (this.state.profileBioSection === 'ABOUT ME') {
-      return <h4 className="aboutMe">{this.state.profile.about_me}</h4>
+      return <h5 className="aboutMe">{this.state.profile.about_me}</h5>
     } else if (this.state.profileBioSection === 'STRUGGLES') {
       return (
-        <ul>
+        <div>
           {weakness.map(weakness => {
-            return <li key={weakness.id}>{weakness.name}</li>
+            return <h5 key={weakness.id}>{weakness.name}</h5>
           })}
-        </ul>
+        </div>
       )
     }
   }
 
   test = () => {
-    console.log(this.state.profile.id)
+    console.log(this.state.profile.recommended_posts)
   }
 
   render() {
@@ -96,7 +97,7 @@ class Profile extends Component {
         <div className="CoverImage">
           <img
             className="ProfileCoverImage"
-            src={this.state.profile.cover_image}
+            src={imageOrDefault(this.state.profile.cover_image)}
             alt="profile"
           />
         </div>
@@ -107,7 +108,7 @@ class Profile extends Component {
             <Link to={`/UpdateProfile/${this.state.profile.id}`}>
               <img
                 className="ProfileImage"
-                src={this.state.profile.profile_image}
+                src={imageOrDefault(this.state.profile.profile_image)}
                 alt="profile"
               />
             </Link>
@@ -182,43 +183,33 @@ class Profile extends Component {
           </div>
           <div className="ProfilePostsBox columnCentering boxShadow widthbig">
             <h6>Recommended Posts:</h6>
-            <Link to="/PostWithComments">
-              <div className="ProfileRecommendedPost width">
-                <img
-                  className="ProfileRequestBoxImage"
-                  src={requestimg}
-                  alt="request"
-                />
-                <h4>Need help with react router!!</h4>
-              </div>
-            </Link>
-            <Link to="/PostWithComments">
-              <div className="ProfileRecommendedPost width">
-                <img
-                  className="ProfileRequestBoxImage"
-                  src={requestimg}
-                  alt="request"
-                />
-                <h4>Need help with react router!!</h4>
-              </div>
-            </Link>
-            <Link to="/PostWithComments">
-              <div className="ProfileRecommendedPost width">
-                <img
-                  className="ProfileRequestBoxImage"
-                  src={requestimg}
-                  alt="request"
-                />
-                <h4>Need help with react router!!</h4>
-              </div>
-            </Link>
+            {this.state.profile.recommended_posts
+              .slice(0, 3)
+              .map((post, index) => {
+                return (
+                  <Link key={index} to={`/PostWithComments/${post.id}`}>
+                    <div
+                      className="ProfileRecommendedPost width"
+                      onClick={this.CommentIDToBePassedToDataStore}
+                    >
+                      <img
+                        className="ProfileRequestBoxImage boxShadow"
+                        src={imageOrDefault(post.image)}
+                        alt="request"
+                        onClick={this.CommentIDToBePassedToDataStore}
+                      />
+                      <h4>{post.title}</h4>
+                    </div>
+                  </Link>
+                )
+              })}
             <Link to={`/Profile/${this.state.profile.id}/posts/recommended`}>
-              <h6>See More</h6>
+              <h6 onClick={this.state.getAllInterestedPosts}>See More</h6>
             </Link>
           </div>
           <div className="ProfilePostsBox columnCentering boxShadow widthbig">
-            <h6>interested Posts:</h6>
-            {this.state.profile.interested_posts.map(post => {
+            <h6>Interested Posts:</h6>
+            {this.state.profile.interested_posts.slice(0, 3).map(post => {
               return (
                 <Link key={post.id} to={`/PostWithComments/${post.id}`}>
                   <div
@@ -227,7 +218,7 @@ class Profile extends Component {
                   >
                     <img
                       className="ProfileRequestBoxImage boxShadow"
-                      src={post.image}
+                      src={imageOrDefault(post.image)}
                       alt="request"
                       onClick={this.CommentIDToBePassedToDataStore}
                     />
@@ -239,7 +230,6 @@ class Profile extends Component {
             <Link to={`/Profile/${this.state.profile.id}/posts/interested`}>
               <h6 onClick={this.state.getAllInterestedPosts}>See More</h6>
             </Link>
-            {/* passing this id is not working? */}
           </div>
           {this.state.profile.posts.map(post => {
             return (

@@ -3,7 +3,7 @@ class Post < ApplicationRecord
 
   # do i need this for my endpoint to 
   # create a post with many tags?
-  has_many :post_taggings
+  has_many :post_taggings, dependent: :destroy
 
   # This also creates a few methods for is
   #    tags
@@ -16,10 +16,10 @@ class Post < ApplicationRecord
 
   has_one_attached :post_image  
 
-  has_many :interested_posts
+  has_many :interested_posts, dependent: :destroy
   has_many :profiles, through: :interested_posts
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
   
 
   # // data needed from api

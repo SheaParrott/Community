@@ -39,7 +39,22 @@ class Post extends Component {
     console.log(this.props.id)
     // axios call delete
 
-    // axios.delete(`/api/posts/delete/${this.props.id}`).then(Response => {})
+    axios.delete(`/api/posts/${this.props.id}`).then(response => {
+      console.log(response.data)
+    })
+  }
+
+  addToInterestedPosts = event => {
+    // need id for post. then created a axios call to make it happen
+    console.log(this.props.id)
+
+    axios
+      .post(`/api/interested_posts`, {
+        interested_post: { post_id: this.props.id }
+      })
+      .then(response => {
+        console.log(response.data)
+      })
   }
 
   render() {
@@ -89,9 +104,12 @@ class Post extends Component {
                     is a way for this. its something params
                     and can be checked in the console)
                 - then display comments */}
-              <a href="#">
-                <i className="fas fa-magnet" />
-              </a>
+              {/* <a href=""> */}
+              <i
+                onClick={this.addToInterestedPosts}
+                className="fas fa-magnet"
+              />
+              {/* </a> */}
             </div>
             <div className="requestBoxBottomBar">
               <Link

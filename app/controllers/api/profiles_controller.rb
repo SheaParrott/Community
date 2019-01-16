@@ -1,5 +1,4 @@
 class Api::ProfilesController < ApplicationController
-  # skip_before_action :verify_authenticity_token
 
   def update
     current_profile.update(profile_params)
@@ -7,26 +6,8 @@ class Api::ProfilesController < ApplicationController
     render json: current_profile
   end
 
-
-# [] how can i get the notifications bar to show when a person 
-#    comments on my post?
-#   - thinking this may be another model? (viewed:boolean profile:belongs to)
-# most recent 10 'comments'
-
-# [] to do:
-#   - set up count for number of comments and have it return
-#     anytime we get a post.
-#   - make magnet add to interested posts
-#   - get list of people interested in a post
-#   - set up count of people interested in a post
-#   - delete post, button and id select id in place already
-
-
-
-
   def current
     profile = current_profile
-
     # current authored posts
     posts = profile.authored_posts.map do |post|
       {
@@ -51,20 +32,23 @@ class Api::ProfilesController < ApplicationController
         name: post.author.name, 
         comment_count: post.comments.count,
         profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
-
       }
     end
 
-    # current recommented posts
-    # recommended_posts = profile. do |post|
-    #   {
-    #     id: post.id,
-    #     title: post.title,
-    #     image: url_for(post.post_image),
-    #     body: post.body,
-    #     timestamp: post.created_at
-    #   }
-    # end
+    # current recommended posts
+    recommended_posts = profile.recommended_posts.map do |post|
+      {
+        id: post.id,
+        title: post.title,
+        image: post.post_image.attached? && url_for(post.post_image),
+        body: post.body,
+        timestamp: post.created_at, 
+        author_id: post.author.id, 
+        name: post.author.name, 
+        comment_count: post.comments.count,
+        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
+      }
+    end
 
     # current chosen profile tags
     tags = profile.profile_taggings.map do |tagging|
@@ -86,7 +70,7 @@ class Api::ProfilesController < ApplicationController
         cover_image: profile.cover_image.attached? && url_for(profile.cover_image),
         posts: posts,
         interested_posts: interested_posts,
-        recommended_posts: [],
+        recommended_posts: recommended_posts,
         tags: tags,
         me: true
       }
@@ -129,16 +113,20 @@ class Api::ProfilesController < ApplicationController
       }
     end
 
-    #  show recommened posts
-    # recommended_posts = profile. do |post|
-    #   {
-    #     id: post.id,
-    #     title: post.title,
-    #     image: url_for(post.post_image),
-    #     body: post.body,
-    #     timestamp: post.created_at
-    #   }
-    # end
+    # current recommended posts
+    recommended_posts = profile.recommended_posts.map do |post|
+      {
+        id: post.id,
+        title: post.title,
+        image: post.post_image.attached? && url_for(post.post_image),
+        body: post.body,
+        timestamp: post.created_at, 
+        author_id: post.author.id, 
+        name: post.author.name, 
+        comment_count: post.comments.count,
+        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
+      }
+    end
 
     # show chosen profile tags
     tags = profile.profile_taggings.map do |tagging|
@@ -160,7 +148,7 @@ class Api::ProfilesController < ApplicationController
         cover_image: profile.cover_image.attached? && url_for(profile.cover_image),
         posts: posts,
         interested_posts: interested_posts,
-        recommended_posts: [],
+        recommended_posts: recommended_posts,
         tags: tags,
         me: false
       }
@@ -168,7 +156,9 @@ class Api::ProfilesController < ApplicationController
   end
 
 
-  def edit
+  
+
+  # def edit
 
     # edit profile things here
     # cover image
@@ -177,18 +167,7 @@ class Api::ProfilesController < ApplicationController
     # tags (bool)  
     #   -strength
     #   -struggle
-  end
-
-
-  # /api/profiles/:id/recommendedPosts
-  def recommendedPosts 
-    profile_id = params[:id]
-
-    profile = Profile.find(profile_id)
-    #get all recommended posts
-    # need to set up relationships on this
-    # before we can complete this
-  end
+  # end
 
 
   private
@@ -200,17 +179,3 @@ class Api::ProfilesController < ApplicationController
 
 end
 
-# data response 
-# click on Profile
-# pass the id and pull the data for that Profile 
-
-
-# create the route in route.rb
-# set up json return
-# link to needs to match the urls created
-# when then does the axios call 
-# this.props.match.params for
-#  axios call i believe
-
-# endpoint /api/profiles/:id/recommendedPosts
-# endpoint /api/profiles/:id/interestedPosts

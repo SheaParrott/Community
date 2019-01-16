@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   
   post "/api/posts", to: "api/posts#create"
   get "/api/posts/:id", to: "api/posts#show"
-  # delete "/api/posts/delete/:id", to: "/api/post#delete/"
+  post "/api/interested_posts", to: "api/interested_posts#create"
+  delete "/api/posts/:id", to: "api/posts#destroy"
 
   post "/api/comment/create", to: "api/comments#create"
 

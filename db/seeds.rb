@@ -296,3 +296,30 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 #    - thinking i do a component did mount, when compared to 
 #      previous data show the differene and make notifications 
 #      bar light up
+
+
+
+
+# todos:
+# get count of interested
+# issue when clicking name of myself. returns false so post a comment is gone 
+# maybe a if statement when false set a state but cant do it again when already true
+# add to interested
+# image issue talk with gavin
+# delete posts
+
+
+# [] how can i get the notifications bar to show when a person 
+#    comments on my post?
+#   - thinking this may be another model? (viewed:boolean profile:belongs to)
+# most recent 10 'comments'
+# guard clause
+# [] make a guard clause for when clicked on current profile post 
+# it calls the original url
+
+# [] to do:
+#   - make magnet add to interested posts
+#   - get list of people interested in a post
+#   - set up count of people interested in a post
+#   - delete post, button and id select id in place already
+
