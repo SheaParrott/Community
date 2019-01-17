@@ -13,7 +13,7 @@ class Header extends Component {
           <Link to="/profile">
             <i className="fab fa-connectdevelop" />
           </Link>
-          <Link to="Notifications">
+          <Link to="/Notifications">
             <i className="fas fa-bell" />
           </Link>
         </header>

@@ -9,10 +9,8 @@ import UpdateProfile from './Pages/UpdateProfile/index'
 import Posts from './Pages/Posts/index'
 import PostWithComments from './Pages/PostWithComments/index'
 import Creator from './Pages/Creator/index'
-import MyCommunity from './Pages/MyCommunity/index'
 import PeopleInterested from './Pages/PeopleInterested/index'
 import Notifications from './Pages/Notifications/index'
-import FriendRequests from './Pages/FriendRequests/index'
 import Footer from './Components/Footer'
 
 import auth from './auth'
@@ -63,8 +61,6 @@ class App extends Component {
           <Route exact path="/Profile" component={Profile} />
           <Route exact path="/Profile/:id" component={Profile} />
           <Route path="/UpdateProfile/:id" component={UpdateProfile} />
-          <Route path="/MyCommunity/" component={MyCommunity} />
-          <Route path="/FriendRequests/" component={FriendRequests} />
           <Route path="/Profile/:profile_id/posts/:kind" component={Posts} />
           <Route
             path="/PostWithComments/:post_id"

@@ -5,7 +5,7 @@ import profileimg from '../../assets/picklerick.jpg'
 import Header from '../../Components/Header'
 import imageOrDefault from '../../imageOrDefault'
 
-class MyCommunity extends Component {
+class PeopleInterested extends Component {
   render() {
     return (
       <div className="columnCentering">
@@ -32,4 +32,4 @@ class MyCommunity extends Component {
   }
 }
 
-export default MyCommunity
+export default PeopleInterested

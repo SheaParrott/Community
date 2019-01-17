@@ -89,6 +89,20 @@ class Post extends Component {
         console.log(response.data)
       })
   }
+  renderCommentLogo = () => {
+    if (!this.props.hideCommentLogoAndCount) {
+      return (
+        <Link to={`/PostWithComments/${this.props.id}`}>
+          <i
+            onClick={this.CommentIDToBePassedToDataStore}
+            className={`far fa-comment  ${
+              this.props.hideCommentLogoAndCount ? 'hidden' : ''
+            }`}
+          />
+        </Link>
+      )
+    }
+  }
 
   render() {
     return (
@@ -140,20 +154,11 @@ class Post extends Component {
             />
             <p>{this.props.postBody}</p>
             <div className="requestBoxMiddleBar">
-              <Link to={`/PostWithComments/${this.props.id}`}>
-                <i
-                  onClick={this.CommentIDToBePassedToDataStore}
-                  className={`far fa-comment  ${
-                    this.props.hideCommentLogoAndCount ? 'hidden' : ''
-                  }`}
-                />
-              </Link>
-              {/* <a href=""> */}
+              {this.renderCommentLogo()}
               <i
                 onClick={this.addToInterestedPosts}
                 className="fas fa-magnet"
               />
-              {/* </a> */}
             </div>
             <div className="requestBoxBottomBar">
               <Link
