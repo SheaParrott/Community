@@ -89,9 +89,30 @@ class Profile extends Component {
       )
     }
   }
+  renderProfileimage = () => {
+    if (!this.state.profile.me) {
+      return (
+        <img
+          className="ProfileImage"
+          src={imageOrDefault(this.state.profile.profile_image)}
+          alt="profile"
+        />
+      )
+    } else {
+      return (
+        <Link to={`/UpdateProfile/${this.state.profile.id}`}>
+          <img
+            className="ProfileImage currentProfileImage"
+            src={imageOrDefault(this.state.profile.profile_image)}
+            alt="profile"
+          />
+        </Link>
+      )
+    }
+  }
 
   test = () => {
-    console.log(this.state.profile.recommended_posts)
+    console.log(this.state.profile.me)
   }
 
   render() {
@@ -112,25 +133,9 @@ class Profile extends Component {
         </div>
         <main className="ProfileBody columnCentering">
           <div className="profileTop">
-            {/* create 2 of these make the current users 
-          clickable, make other users not clickable */}
-            <Link to={`/UpdateProfile/${this.state.profile.id}`}>
-              <img
-                className="ProfileImage"
-                src={imageOrDefault(this.state.profile.profile_image)}
-                alt="profile"
-              />
-            </Link>
-            {/* <div className="addToCommunityBox">
-              <div className="addToCommunity">
-                make clickable
-                <i className="fas fa-plus-circle" />
-                <p>Add to Community</p>
-              </div>
-            </div> */}
+            {this.renderProfileimage()}
             <div className="nameBox">
               <div className="name boxShadow">
-                {/* <i className="fas fa-plus-circle" /> */}
                 <h2 className="name">{this.state.profile.name}</h2>
               </div>
             </div>
@@ -194,7 +199,11 @@ class Profile extends Component {
               />
             </div>
           </div>
-          <div className="ProfilePostsBox columnCentering boxShadow widthbig">
+          <div
+            className={`ProfilePostsBox columnCentering boxShadow widthbig ${
+              this.state.profile.me ? '' : 'hidden'
+            }`}
+          >
             <h6>Recommended Posts:</h6>
             {this.state.profile.recommended_posts
               .slice(0, 3)

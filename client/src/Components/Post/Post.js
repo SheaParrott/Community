@@ -153,7 +153,11 @@ class Post extends Component {
               alt="request"
             />
             <p>{this.props.postBody}</p>
-            <div className="requestBoxMiddleBar">
+            <div
+              className={`requestBoxMiddleBar ${
+                this.props.hideCommentLogoAndCount ? '' : 'borderBottom'
+              }`}
+            >
               {this.renderCommentLogo()}
               <i
                 onClick={this.addToInterestedPosts}

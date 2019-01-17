@@ -150,6 +150,15 @@ class Api::ProfilesController < ApplicationController
       }
     end
 
+    # notifications = profile.notifications.map do |notification|
+    #   {
+    #     id: notifications.id, 
+    #     name: notifications.author_id, 
+    #     profile_image: notifications.author.profile_image.attached? && url_for(notifications.author.profile_image)
+    #     post_id: 
+    #   }
+    # end
+
     # show render
     render json: {
       profile: {
@@ -163,7 +172,8 @@ class Api::ProfilesController < ApplicationController
         interested_posts: interested_posts,
         recommended_posts: recommended_posts,
         tags: tags,
-        me: false
+        me: false, 
+        # notifications: notifications
       }
     }
   end

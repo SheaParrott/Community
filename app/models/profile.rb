@@ -19,6 +19,10 @@ class Profile < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  # trying to get recent comments from author_posts
+  # has_many :notifications, class_name: "comment", foreign_key: :comment_id, dependent: :destroy
+  # has_many :notifications, through :authored_posts
+
   def self.from_auth_hash(payload)
     Profile.find_or_create_by(auth_sub: payload["sub"]) do |profile|
       Rails.logger.debug payload

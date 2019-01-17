@@ -43,7 +43,7 @@ div.profileQuote {
   font-family: cursive;
   padding: 5px 0 5px 0;
 }
-img.ProfileImage:hover {
+img.currentProfileImage:hover {
   box-shadow: 0 0 5px #349af0;
   cursor: pointer;
 }
@@ -114,4 +114,7 @@ div.ProfileRecommendedPost {
   align-items: center;
   box-shadow: 0 0 1px black;
   margin: 1px;
+}
+.hidden {
+  display: none;
 }

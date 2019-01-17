@@ -153,11 +153,10 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 
 
 # to do list React
-# [1/2] post component - disply number of comment and people interested. this will be done by doing a .length in react
-# [] implement moment for post timestamp. did already yarn add moment
+# [x] post component - disply number of comments 
 # [] go through all pages and components - add @media to all
 # [] fix time stamp formatting - .toLocaleTimeString
-# [] make where current_user cannot edit other users profile - backend data recieved already for this fix (me: t or f)
+# [x] make where current_user cannot edit other users profile - backend data recieved already for this fix (me: t or f)
 # [x] reload page after delete, or redirrect if on postWithComments component
 # [x] add a post option - get form going
 # [x] fix links wrapper in links issue
