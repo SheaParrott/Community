@@ -42,6 +42,7 @@ class Posts extends Component {
               <Post
                 key={post.id}
                 id={post.id}
+                current_profile_author={post.current_profile_author}
                 comment_count={post.comment_count}
                 profile_id={post.author_id}
                 profileName={post.name}

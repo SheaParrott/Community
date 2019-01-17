@@ -65,15 +65,25 @@ class Post extends Component {
           <section className="widthbig boxShadow">
             <div className="requestBoxTopBar">
               {/* <Link to={`/Profile/${this.props.profile_id}`}> */}
-              {/* <Link to={CurrentProfileHelper(this.props.profile_id)}> */}
-              <img
-                className="requestBoxProfileImage"
-                // src={imageOrDefault(this.props.profileImage)}
-                alt="profile"
-              />
-              {/* </Link> */}
+              <Link
+                to={CurrentProfileHelper(
+                  this.props.current_profile_author,
+                  this.props.profile_id
+                )}
+              >
+                <img
+                  className="requestBoxProfileImage"
+                  src={imageOrDefault(this.props.profileImage)}
+                  alt="profile"
+                />
+              </Link>
               <div className="requestBoxTopBarInfo">
-                <Link to={`/Profile/${this.props.profile_id}`}>
+                <Link
+                  to={CurrentProfileHelper(
+                    this.props.current_profile_author,
+                    this.props.profile_id
+                  )}
+                >
                   <h4 className="requestBoxProfileName">
                     {this.props.profileName}
                   </h4>

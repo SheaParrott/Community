@@ -236,6 +236,7 @@ class Profile extends Component {
               <Post
                 key={post.id}
                 id={post.id}
+                current_profile_author={post.current_profile_author}
                 profile_id={this.state.profile.id}
                 profileName={this.state.profile.name}
                 profileImage={this.state.profile.profile_image}
