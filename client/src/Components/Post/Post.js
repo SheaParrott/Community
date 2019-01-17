@@ -11,7 +11,9 @@ class Post extends Component {
     super(props)
 
     this.state = {
-      showMenu: false
+      showMenu: false,
+      otherShowMenu: false,
+      hideThisPost: ''
     }
   }
 
@@ -43,6 +45,37 @@ class Post extends Component {
       console.log(response.data)
     })
   }
+  profileClass = () => {
+    return this.props.current_profile_author ? '' : 'hidden'
+  }
+
+  otherToggleMenu = () => {
+    this.setState({ otherShowMenu: !this.state.otherShowMenu })
+  }
+  renderAddToHidePostButton = () => {
+    // how do i only show this on the post clicked?
+    // my thoughts:
+    //     - display only where id === id given
+
+    // other option:
+    // could take to another page for
+    // editing / deleting if i can figure it out?
+    return (
+      <div className={this.state.otherShowMenu ? '' : 'hidden'}>
+        <div className="columnCentering widthbig">
+          <button onClick={this.hidePost}>Hide post?</button>
+        </div>
+      </div>
+    )
+  }
+  hidePost = () => {
+    this.setState({
+      hideThisPost: 'hidden'
+    })
+  }
+  otherProfileClass = () => {
+    return !this.props.current_profile_author ? '' : 'hidden'
+  }
 
   addToInterestedPosts = event => {
     // need id for post. then created a axios call to make it happen
@@ -59,11 +92,10 @@ class Post extends Component {
 
   render() {
     return (
-      <div>
+      <div className={this.state.hideThisPost}>
         <section className="requestBoxCentering">
           <section className="widthbig boxShadow">
             <div className="requestBoxTopBar">
-              {/* <Link to={`/Profile/${this.props.profile_id}`}> */}
               <Link
                 to={CurrentProfileHelper(
                   this.props.current_profile_author,
@@ -89,9 +121,17 @@ class Post extends Component {
                 </Link>
                 <p className="requestBoxDate">{this.props.timestamp}</p>
               </div>
-              <i onClick={this.toggleMenu} className="fas fa-ellipsis-v" />
+              <i
+                onClick={this.toggleMenu}
+                className={`fas fa-ellipsis-v ${this.profileClass()}`}
+              />
+              <i
+                onClick={this.otherToggleMenu}
+                className={`fas fa-ellipsis-v ${this.otherProfileClass()}`}
+              />
             </div>
             {this.renderDelete()}
+            {this.renderAddToHidePostButton()}
             <h4 className="requestBoxTitle">{this.props.postTitle}</h4>
             <img
               className="requestBoxImage"
@@ -103,18 +143,11 @@ class Post extends Component {
               <Link to={`/PostWithComments/${this.props.id}`}>
                 <i
                   onClick={this.CommentIDToBePassedToDataStore}
-                  className="far fa-comment"
+                  className={`far fa-comment  ${
+                    this.props.hideCommentLogoAndCount ? 'hidden' : ''
+                  }`}
                 />
               </Link>
-              {/* create endpoint that adds this to your 
-              interested posts and totals up the number 
-              and displays below */}
-              {/* add comments here with conditions:
-                - on page post with comments make comments 
-                  logo and text hidden (faintly remeber there 
-                    is a way for this. its something params
-                    and can be checked in the console)
-                - then display comments */}
               {/* <a href=""> */}
               <i
                 onClick={this.addToInterestedPosts}
@@ -126,7 +159,9 @@ class Post extends Component {
               <Link
                 onClick={this.CommentIDToBePassedToDataStore}
                 to={`/PostWithComments/${this.props.id}`}
-                className="requestBoxBottomBarInfo"
+                className={`requestBoxBottomBarInfo ${
+                  this.props.hideCommentLogoAndCount ? 'hidden' : ''
+                }`}
               >
                 {this.props.comment_count} comments
               </Link>

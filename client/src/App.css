@@ -164,3 +164,6 @@ h6 {
 .fab {
   font-size: 2rem;
 }
+.fa-magnet:hover {
+  color: #349af0;
+}

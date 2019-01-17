@@ -1,3 +1,10 @@
+.BoxCentering {
+  display: flex;
+  justify-content: center;
+  margin-top: -3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.842);
+}
+
 /* Comment */
 div.comment {
   display: flex;
