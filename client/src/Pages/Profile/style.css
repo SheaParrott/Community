@@ -84,6 +84,9 @@ div.profileCreateAPost {
 .lessTopMargin {
   margin-top: -15px;
 }
+.lessBottomMargin {
+  margin: -15px;
+}
 div.profileMyCommunity {
   display: flex;
   flex-wrap: wrap;

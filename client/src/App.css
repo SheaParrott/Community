@@ -166,6 +166,10 @@ h6 {
 .fab {
   font-size: 2rem;
 }
-.fa-magnet:hover {
+.fa-magnet:hover,
+.fa-ellipsis-v:hover,
+.fa-caret-up:hover,
+.fa-caret-down:hover {
   color: #349af0;
+  cursor: pointer;
 }

@@ -151,17 +151,11 @@ class Profile extends Component {
               className="profileAttributesRight boxShadow"
             >
               GROWING
-              {/* interesd in growing in
-              growths
-              interests */}
             </h6>
           </div>
           <div className="profileBio boxShadow widthbig">
             {this.fillInBox()}
           </div>
-          {/* add in ternary opperator to remove post component off 
-          profile page after submitted. or play with state to make
-          appear and disappear */}
           <div className={this.profileClass()}>
             <div className="columnCentering">
               <div
@@ -173,7 +167,17 @@ class Profile extends Component {
                 }}
               >
                 <h5>Create a post</h5>
-                <i className="fas fa-sort-down lessTopMargin" />
+                {/* this.state.showCreateAPost ? '' : 'hidden' */}
+                <i
+                  class={`fas fa-caret-down lessTopMargin ${
+                    !this.state.showCreateAPost ? '' : 'hidden'
+                  }`}
+                />
+                <i
+                  class={`fas fa-caret-up lessBottomMargin ${
+                    this.state.showCreateAPost ? '' : 'hidden'
+                  }`}
+                />
               </div>
               <CreateAPost
                 showForm={this.state.showCreateAPost}
