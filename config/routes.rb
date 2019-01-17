@@ -18,10 +18,4 @@ Rails.application.routes.draw do
   get "/api/profiles/:id/recommendedposts", to: "api/profiles#recommendedPosts"
 
   get "/api/profiles/:id/interestedposts", to: "api/profiles#interestedPosts"
-
-  if Rails.env.production?
-    CLIENT_HTML = File.read(Rails.root.join('public/index.html'))
-
-    get "*path", to: proc { [200, {}, [CLIENT_HTML]] }
-  end
 end

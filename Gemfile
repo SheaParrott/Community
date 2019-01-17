@@ -47,3 +47,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "rack-cors", "~> 1.0"
 
 gem "jwt", "~> 2.1"
+
+gem "cloudinary", "~> 1.11"
+gem "activestorage-cloudinary-service", "~> 0.2.3"
