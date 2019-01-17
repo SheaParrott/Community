@@ -159,7 +159,7 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 # [] go through all pages and components - add @media to all
 # [] fix time stamp formatting - .toLocaleTimeString
 # [] make where current_user cannot edit other users profile - backend data recieved already for this fix (me: t or f)
-
+# [] reload page after delete, or redirrect if on postWithComments component
 # [x] add a post option - get form going
 # [x] fix links wrapper in links issue
 # [x] footer issue - needs to be positioned at the bottom always

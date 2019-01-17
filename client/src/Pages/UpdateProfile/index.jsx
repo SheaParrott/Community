@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './style.css'
-import { Link } from 'react-router-dom'
 import history from '../../history'
 import axios from 'axios'
 import Header from '../../Components/Header'

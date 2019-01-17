@@ -39,7 +39,6 @@ class Post extends Component {
   }
   postDelete = () => {
     console.log(this.props.id)
-    // axios call delete
 
     axios.delete(`/api/posts/${this.props.id}`).then(response => {
       console.log(response.data)
@@ -53,13 +52,6 @@ class Post extends Component {
     this.setState({ otherShowMenu: !this.state.otherShowMenu })
   }
   renderAddToHidePostButton = () => {
-    // how do i only show this on the post clicked?
-    // my thoughts:
-    //     - display only where id === id given
-
-    // other option:
-    // could take to another page for
-    // editing / deleting if i can figure it out?
     return (
       <div className={this.state.otherShowMenu ? '' : 'hidden'}>
         <div className="columnCentering widthbig">

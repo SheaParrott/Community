@@ -21,15 +21,16 @@ class CreateAPost extends Component {
 
   createPost = event => {
     event.preventDefault()
-    const formData = new FormData(event.target)
+    const form = event.target
+    const formData = new FormData(form)
 
-    for (let pair of formData.entries()) {
-      console.log(pair[0] + ', ' + pair[1])
-    }
+    // for (let pair of formData.entries()) {
+    //   console.log(pair[0] + ', ' + pair[1])
+    // }
 
     axios.post('/api/posts', formData).then(response => {
       this.props.reloadProfilePage()
-      // form.reset()
+      form.reset()
     })
   }
 
