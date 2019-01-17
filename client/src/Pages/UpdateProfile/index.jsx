@@ -98,11 +98,9 @@ class UpdateProfile extends Component {
                 })}
               </section>
             </section>
-            {/* <Link to="/Profile"> */}
             <button className="someMargin" type="submit">
               SUBMIT
             </button>
-            {/* </Link> */}
           </div>
         </form>
       </div>

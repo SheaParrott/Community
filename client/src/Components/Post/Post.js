@@ -22,13 +22,6 @@ class Post extends Component {
   }
 
   renderDelete = () => {
-    // how do i only show this on the post clicked?
-    // my thoughts:
-    //     - display only where id === id given
-
-    // other option:
-    // could take to another page for
-    // editing / deleting if i can figure it out?
     return (
       <div className={this.state.showMenu ? '' : 'hidden'}>
         <div className="columnCentering widthbig">

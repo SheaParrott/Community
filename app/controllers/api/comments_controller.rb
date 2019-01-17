@@ -1,10 +1,15 @@
 class Api::CommentsController < ApplicationController
   # /api/comment/create
   def create
-    current_profile.comments.create(comment_params)
+    new_comment = current_profile.comments.create(comment_params)
 
-    # Just say all is ok...
-    render head: :ok
+    if new_comment.valid?
+      render head: :ok
+    else
+      render json: {
+        errors: new_comment.errors.full_messages
+      }
+    end
   end 
 
   def index

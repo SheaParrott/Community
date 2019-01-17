@@ -1,17 +1,11 @@
 class Post < ApplicationRecord
+  validates :title, presence: true
+  validate :must_have_at_least_one_tag
+
   belongs_to :author, class_name: "Profile", foreign_key: :profile_id
 
-  # do i need this for my endpoint to 
-  # create a post with many tags?
   has_many :post_taggings, dependent: :destroy
 
-  # This also creates a few methods for is
-  #    tags
-  #    tags=
-  #    tags.new
-  #    tags.create
-  #    tag_ids
-  #    tag_ids=
   has_many :tags, through: :post_taggings
 
   has_one_attached :post_image  
@@ -21,17 +15,10 @@ class Post < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   
+  def must_have_at_least_one_tag
+    if tags.size < 1
+      errors.add(:tags, "can't be empty")
+    end
+  end
 
-  # // data needed from api
-  # // - profile pic
-  # // - profile name
-  # // - post.created
-  # // - post.title
-  # // - post.image
-  # // - post.body
-
-  # // post comments
-  # // - profile.image
-  # // - profile.name
-  # // - comment.body
 end

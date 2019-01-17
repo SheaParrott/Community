@@ -173,3 +173,7 @@ h6 {
   color: #349af0;
   cursor: pointer;
 }
+.red {
+  color: rgba(255, 0, 0, 0.74);
+  letter-spacing: 0.5px;
+}

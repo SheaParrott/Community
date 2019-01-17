@@ -23,7 +23,6 @@ class Profile extends Component {
   }
 
   componentWillMount() {
-    // Guard clause
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
     }
@@ -117,7 +116,6 @@ class Profile extends Component {
 
     return (
       <>
-        {/* pass props to header here for notifications */}
         <Header />
         <div className="CoverImage">
           <img
@@ -175,7 +173,6 @@ class Profile extends Component {
                 }}
               >
                 <h5>Create a post</h5>
-                {/* this.state.showCreateAPost ? '' : 'hidden' */}
                 <i
                   className={`fas fa-caret-down lessTopMargin ${
                     !this.state.showCreateAPost ? '' : 'hidden'
@@ -273,82 +270,3 @@ class Profile extends Component {
 }
 
 export default Profile
-
-/* <div className="profileMyCommunityParent">
-            <h6>my community:</h6>
-            <div className="profileMyCommunity width">
-              <Link to="/Profile">
-                <img
-                  className="ProfileCommunityProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <Link to="/Profile">
-                <img
-                  className="ProfileCommunityProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <Link to="/Profile">
-                <img
-                  className="ProfileCommunityProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <Link to="/Profile">
-                <img
-                  className="ProfileCommunityProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <Link to="/Profile">
-                <img
-                  className="ProfileCommunityProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <Link to="/Profile">
-                <img
-                  className="ProfileCommunityProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <Link to="/Profile">
-                <img
-                  className="ProfileCommunityProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <Link to="/Profile">
-                <img
-                  className="ProfileCommunityProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <Link to="/Profile">
-                <img
-                  className="ProfileCommunityProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-              <Link to="/Profile">
-                <img
-                  className="ProfileCommunityProfileImage"
-                  src={profileimg}
-                  alt="profile"
-                />
-              </Link>
-            </div>
-            <Link to="/MyCommunity">
-              <h6>See More</h6>
-            </Link>
-          </div> */

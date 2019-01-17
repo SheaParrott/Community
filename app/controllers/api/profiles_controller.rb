@@ -87,10 +87,6 @@ class Api::ProfilesController < ApplicationController
 
     profile = Profile.find(profile_id)
 
-    #list of people interested in a post
-
-
-
 
     # show authored posts
     posts = profile.authored_posts.map do |post|
@@ -149,15 +145,6 @@ class Api::ProfilesController < ApplicationController
       }
     end
 
-    # notifications = profile.notifications.map do |notification|
-    #   {
-    #     id: notifications.id, 
-    #     name: notifications.author_id, 
-    #     profile_image: notifications.author.profile_image.attached? && url_for(notifications.author.profile_image)
-    #     post_id: 
-    #   }
-    # end
-
     # show render
     render json: {
       profile: {
@@ -172,7 +159,6 @@ class Api::ProfilesController < ApplicationController
         recommended_posts: recommended_posts,
         tags: tags,
         me: false, 
-        # notifications: notifications
       }
     }
   end

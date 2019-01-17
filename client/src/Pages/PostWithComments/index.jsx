@@ -13,7 +13,8 @@ class PostWithComments extends Component {
 
     this.state = {
       post: null,
-      hideCommentLogoAndCount: false
+      hideCommentLogoAndCount: false,
+      errors: []
     }
   }
   componentDidMount = () => {
@@ -33,21 +34,29 @@ class PostWithComments extends Component {
     axios
       .get(`/api/posts/${this.props.match.params.post_id}`)
       .then(response => {
-        this.setState({ post: response.data.post })
+        this.setState({ post: response.data.post, errors: [] })
       })
   }
 
   createComment = event => {
     event.preventDefault()
+    let form = event.target
 
-    const formData = new FormData(event.target)
+    const formData = new FormData(form)
 
-    for (let pair of formData.entries()) {
-      console.log(pair[0] + ', ' + pair[1])
-    }
+    // for (let pair of formData.entries()) {
+    //   console.log(pair[0] + ', ' + pair[1])
+    // }
 
     axios.post('/api/comment/create', formData).then(response => {
-      this.componentDidMount()
+      if (response.data.errors) {
+        this.setState({
+          errors: response.data.errors
+        })
+      } else {
+        form.reset()
+        this.fetchPost()
+      }
     })
   }
   render() {
@@ -72,7 +81,6 @@ class PostWithComments extends Component {
             timestamp={this.state.post.time}
           />
           <section className="BoxCentering widthbig">
-            {/* note: start of comments  */}
             <div className="columnCentering">
               {this.state.post.comments.map(comment => {
                 return (
@@ -101,6 +109,13 @@ class PostWithComments extends Component {
                       <p className="comment">{comment.body}</p>
                     </div>
                   </div>
+                )
+              })}
+              {this.state.errors.map((error, index) => {
+                return (
+                  <h5 className="red" key={index}>
+                    {error}
+                  </h5>
                 )
               })}
               <form onSubmit={this.createComment}>

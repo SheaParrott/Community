@@ -17,7 +17,6 @@ class Posts extends Component {
   }
 
   componentDidMount = () => {
-    // api to fetch the profile and the related posts
     axios
       .get(`/api/profiles/${this.props.match.params.profile_id}`)
       .then(response => {

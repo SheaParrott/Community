@@ -1,31 +1,17 @@
 class Api::PostsController < ApplicationController
-  # skip_before_action :verify_authenticity_token
-
-  # needs to be done in post controller
   
   # post "/api/post/create" 
-
   def create 
+    new_post = current_profile.authored_posts.create(post_params)
 
-    # <input type="text" name="post[title]" />
-    # <input type="text" name="post[body]" />
+    if new_post.valid?
+      render head: :ok
+    else
+      render json: {
+        errors: new_post.errors.full_messages
+      }
+    end
 
-    # Makes an array of checked ids into  "post[tag_ids]"
-    # and since we allow that throw. *AND* since Post `has_many` tags
-    # we get the `tag_ids=` method to associate tags to posts.
-
-    # <input type="checkbox" value="1" name="post[tag_ids][]" />
-    # <input type="checkbox" value="2" name="post[tag_ids][]" />
-    # <input type="checkbox" value="7" name="post[tag_ids][]" />
-
-
-    #    { "post" => { "title" => "Whoa!", "body" => "Nice!", "tag_ids" => [1, 2, 7] } }
-
-    # Make a new post, but associate it to the currently logged in Profile
-    new_post = current_profile.authored_posts.create!(post_params)
-
-    # Just say all is ok...
-    render head: :ok
   end 
 
 def show
@@ -75,16 +61,3 @@ def show
     params.require(:post).permit(:title, :post_image, :body, tag_ids: [])
   end
 end
-
-# Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
-
-
-
-# {
-#   post: {
-#     title: "title of post",
-#     image: "image here"
-#     body: "alot of text is put here",
-#     tags: []
-#   }
-# }

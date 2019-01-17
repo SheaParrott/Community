@@ -9,7 +9,8 @@ class CreateAPost extends Component {
     super(props)
 
     this.state = {
-      tags: []
+      tags: [],
+      errors: []
     }
   }
 
@@ -29,17 +30,33 @@ class CreateAPost extends Component {
     // }
 
     axios.post('/api/posts', formData).then(response => {
-      this.props.reloadProfilePage()
-      form.reset()
+      if (response.data.errors) {
+        this.setState({
+          errors: response.data.errors
+        })
+      } else {
+        this.props.reloadProfilePage()
+        form.reset()
+      }
     })
   }
-
   render() {
     return (
-      <div className={this.props.showForm ? '' : 'hidden'}>
+      <div
+        className={` widthbig boxShadow  ${
+          this.props.showForm ? '' : 'hidden'
+        }`}
+      >
         <form onSubmit={this.createPost}>
           <section className="createAPostCentering">
-            <section className="widthbig boxShadow">
+            {this.state.errors.map((error, index) => {
+              return (
+                <h4 key={index} className="red">
+                  *{error}
+                </h4>
+              )
+            })}
+            <section>
               <input
                 className="createAPost"
                 type="text"
