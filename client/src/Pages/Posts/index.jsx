@@ -3,6 +3,7 @@ import './style.css'
 import Post from '../../Components/Post/Post'
 import Header from '../../Components/Header'
 import axios from 'axios'
+import CurrentProfileHelper from '../../currentProfileHelper'
 
 class Posts extends Component {
   constructor(props) {

@@ -4,6 +4,7 @@ import Header from '../../Components/Header'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import imageOrDefault from '../../imageOrDefault'
+import CurrentProfileHelper from '../../currentProfileHelper'
 
 class PostWithComments extends Component {
   constructor(props) {
@@ -57,7 +58,13 @@ class PostWithComments extends Component {
           <section className="requestBoxCentering">
             <section className="requestBox boxShadow widthbig">
               <div className="requestBoxTopBar">
-                <Link to={`/Profile/${this.state.post.profile_id}`}>
+                {/* <Link to={`/Profile/${this.state.post.profile_id}`}> */}
+                <Link
+                  to={CurrentProfileHelper(
+                    this.state.post.current_profile_author,
+                    this.state.post.profile_id
+                  )}
+                >
                   <img
                     className="requestBoxProfileImage"
                     src={imageOrDefault(this.state.post.profile_image)}
@@ -65,7 +72,12 @@ class PostWithComments extends Component {
                   />
                 </Link>
                 <div className="requestBoxTopBarInfo">
-                  <Link to={`/Profile/${this.state.post.profile_id}`}>
+                  <Link
+                    to={CurrentProfileHelper(
+                      this.state.post.current_profile_author,
+                      this.state.post.profile_id
+                    )}
+                  >
                     <h4 className="requestBoxProfileName">
                       {this.state.post.profile_name}
                     </h4>
@@ -107,7 +119,12 @@ class PostWithComments extends Component {
                 {this.state.post.comments.map(comment => {
                   return (
                     <div key={comment.id} className="comment widthbig">
-                      <Link to={`/Profile/${comment.author_id}`}>
+                      <Link
+                        to={CurrentProfileHelper(
+                          comment.current_profile_author,
+                          comment.author_id
+                        )}
+                      >
                         <img
                           className="commentProfileImage"
                           src={imageOrDefault(comment.author_image)}
@@ -115,7 +132,12 @@ class PostWithComments extends Component {
                         />
                       </Link>
                       <div>
-                        <Link to={`/Profile/${comment.author_id}`}>
+                        <Link
+                          to={CurrentProfileHelper(
+                            comment.current_profile_author,
+                            comment.author_id
+                          )}
+                        >
                           <h6 className="comment">{comment.author_name}</h6>
                         </Link>
                         <p className="comment">{comment.body}</p>
