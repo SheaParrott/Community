@@ -17,7 +17,11 @@ class Profile < ApplicationRecord
   # Then we can ask the post taggings for all those posts
   has_many :recommended_posts, through: :post_taggings, class_name: "Post", source: :post
 
+  # Comments I have made
   has_many :comments, dependent: :destroy
+
+  # Comments on posts I have writen
+  has_many :post_comments, through: :authored_posts, class_name: "Comment", source: :comments
 
   # trying to get recent comments from author_posts
   # has_many :notifications, class_name: "comment", foreign_key: :comment_id, dependent: :destroy

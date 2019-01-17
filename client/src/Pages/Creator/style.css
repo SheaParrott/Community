@@ -12,4 +12,21 @@ p.creatorInfo {
 }
 img.resume {
   border-radius: 20%;
+  width: 160px;
+}
+div.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+div.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+img.resume:hover {
+  box-shadow: 0 0 5px #349af0;
+  cursor: pointer;
 }

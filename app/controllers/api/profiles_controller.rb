@@ -79,7 +79,6 @@ class Api::ProfilesController < ApplicationController
         me: true
       }
     }
-
   end
 
 

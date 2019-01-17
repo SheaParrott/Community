@@ -155,7 +155,9 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 # to do list React
 # [x] post component - disply number of comments 
 # [] go through all pages and components - add @media to all
-# [] fix time stamp formatting - .toLocaleTimeString
+# [] style update page better
+# [] add fontawesome logos to creator page and style better
+# [x] fix time stamp formatting - .toLocaleTimeString
 # [x] make where current_user cannot edit other users profile - backend data recieved already for this fix (me: t or f)
 # [x] reload page after delete, or redirrect if on postWithComments component
 # [x] add a post option - get form going
@@ -174,6 +176,8 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 # to do list Ruby
 # [x] deploy 
 # [x] finish active storage setup and set up cloud image service
+# [] add validations on create a post
+#   - have send and display errors when errors happen
 # [] notifications - recieve last 10 comments on my posts
 # [x] delete post, button and id select id in place already
 

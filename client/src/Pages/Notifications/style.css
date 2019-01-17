@@ -20,3 +20,6 @@ img.notificationsBox {
   max-width: 60px;
   max-height: 40px;
 }
+strong.post {
+  color: rgba(0, 0, 0, 0.616);
+}

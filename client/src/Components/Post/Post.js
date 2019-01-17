@@ -133,7 +133,15 @@ class Post extends Component {
                     {this.props.profileName}
                   </h4>
                 </Link>
-                <p className="requestBoxDate">{this.props.timestamp}</p>
+                <p className="requestBoxDate">
+                  {new Date(this.props.timestamp).toLocaleTimeString([], {
+                    month: 'short',
+                    day: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                  })}
+                </p>
               </div>
               <i
                 onClick={this.toggleMenu}

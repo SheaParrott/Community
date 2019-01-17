@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   get "/api/profiles/:id/recommendedposts", to: "api/profiles#recommendedPosts"
 
   get "/api/profiles/:id/interestedposts", to: "api/profiles#interestedPosts"
+
+  get "/api/comments", to: "api/comments#index"
 end
