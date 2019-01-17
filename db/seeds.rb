@@ -318,8 +318,16 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 # it calls the original url
 
 # [] to do:
-#   - make magnet add to interested posts
 #   - get list of people interested in a post
 #   - set up count of people interested in a post
 #   - delete post, button and id select id in place already
+
+# 
+# 
+# 
+# THE FIIIIIXXXXXXXXXX
+# how to fix my current profile issue. 
+# current profile endpoint return a special field with the profile id
+# then set the state to compair the id when clicking on names and profile images
+# when the id === the same id load the profile/ not profile/:id
 

@@ -37,12 +37,13 @@ class Posts extends Component {
         <div className="marginFromHeader">
           <button onClick={this.test}>test</button>
           {posts.map(post => {
-            console.log(post.id)
+            console.log(post)
             return (
               <Post
                 key={post.id}
                 id={post.id}
                 comment_count={post.comment_count}
+                profile_id={post.author_id}
                 profileName={post.name}
                 profileImage={post.profile_image}
                 postTitle={post.title}

@@ -7,11 +7,13 @@ class Api::ProfilesController < ApplicationController
   end
 
   def current
+    
     profile = current_profile
     # current authored posts
     posts = profile.authored_posts.map do |post|
       {
         id: post.id,
+        current_profile_author: if post.author.id == current_profile.id then true else false end,
         title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,
@@ -24,6 +26,7 @@ class Api::ProfilesController < ApplicationController
     interested_posts = profile.posts.map do |post|
       {
         id: post.id,
+        current_profile_author: if post.author.id == current_profile.id then true else false end,
         title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,
@@ -39,6 +42,7 @@ class Api::ProfilesController < ApplicationController
     recommended_posts = profile.recommended_posts.map do |post|
       {
         id: post.id,
+        current_profile_author: if post.author.id == current_profile.id then true else false end,
         title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,
@@ -88,6 +92,7 @@ class Api::ProfilesController < ApplicationController
     posts = profile.authored_posts.map do |post|
       {
         id: post.id,
+        current_profile_author: if post.author.id == current_profile.id then true else false end,
         title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,
@@ -101,6 +106,7 @@ class Api::ProfilesController < ApplicationController
     interested_posts = profile.posts.map do |post|
       {
         id: post.id,
+        current_profile_author: if post.author.id == current_profile.id then true else false end,
         title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,
@@ -117,6 +123,7 @@ class Api::ProfilesController < ApplicationController
     recommended_posts = profile.recommended_posts.map do |post|
       {
         id: post.id,
+        current_profile_author: if post.author.id == current_profile.id then true else false end,
         title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,
@@ -154,22 +161,7 @@ class Api::ProfilesController < ApplicationController
       }
     }
   end
-
-
   
-
-  # def edit
-
-    # edit profile things here
-    # cover image
-    # profile image
-    # about me
-    # tags (bool)  
-    #   -strength
-    #   -struggle
-  # end
-
-
   private
 
   def profile_params

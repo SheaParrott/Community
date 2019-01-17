@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import defaultPostImage from '../../assets/space.jpeg'
 import imageOrDefault from '../../imageOrDefault'
 import axios from 'axios'
+import CurrentProfileHelper from '../../currentProfileHelper'
 
 class Post extends Component {
   constructor(props) {
@@ -63,13 +64,14 @@ class Post extends Component {
         <section className="requestBoxCentering">
           <section className="widthbig boxShadow">
             <div className="requestBoxTopBar">
-              <Link to={`/Profile/${this.props.profile_id}`}>
-                <img
-                  className="requestBoxProfileImage"
-                  src={imageOrDefault(this.props.profileImage)}
-                  alt="profile"
-                />
-              </Link>
+              {/* <Link to={`/Profile/${this.props.profile_id}`}> */}
+              {/* <Link to={CurrentProfileHelper(this.props.profile_id)}> */}
+              <img
+                className="requestBoxProfileImage"
+                // src={imageOrDefault(this.props.profileImage)}
+                alt="profile"
+              />
+              {/* </Link> */}
               <div className="requestBoxTopBarInfo">
                 <Link to={`/Profile/${this.props.profile_id}`}>
                   <h4 className="requestBoxProfileName">

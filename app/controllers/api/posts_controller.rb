@@ -62,7 +62,6 @@ def show
 
   # /api/posts
   def destroy 
-    p "this is the delete method"
 
     Post.find(params[:id]).destroy
   end
