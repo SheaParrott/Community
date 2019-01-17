@@ -11,7 +11,7 @@ class Footer extends Component {
         <Link className="cursive" to="/logout">
           Log out
         </Link>
-        <p className="cursive">&copy; SheaParrott Productions</p>
+        <p className="cursive">&copy; SheaParrott</p>
       </footer>
     )
   }

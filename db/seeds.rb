@@ -157,6 +157,9 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 # [] implement moment for post timestamp. did already yarn add moment
 # [] notifications - make notifications button dynamic when there is a new notification 
 # [] go through all pages and components - add @media to all
+# [] fix time stamp formatting - .toLocaleTimeString
+# [] make where current_user cannot edit other users profile - backend data recieved already for this fix (me: t or f)
+
 # [x] add a post option - get form going
 # [x] fix links wrapper in links issue
 # [x] footer issue - needs to be positioned at the bottom always

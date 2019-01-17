@@ -10,3 +10,6 @@ img.creator {
 p.creatorInfo {
   font-weight: 700;
 }
+img.resume {
+  border-radius: 20%;
+}
