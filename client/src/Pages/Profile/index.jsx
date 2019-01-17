@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import axios from 'axios'
 import Header from '../../Components/Header'
-import requestimg from '../../assets/dev.jpeg'
+import requestimg from '../../assets/dev.jpg'
 import Post from '../../Components/Post/Post'
 
 import auth from '../../auth'
@@ -18,7 +18,8 @@ class Profile extends Component {
     this.state = {
       profileBioSection: '',
       profile: null,
-      showCreateAPost: false
+      showCreateAPost: false,
+      onProfilePage: false
     }
   }
 
@@ -28,6 +29,14 @@ class Profile extends Component {
       history.replace('/SignIn')
     }
     this.getProfile()
+    this.setState({
+      onProfilePage: true
+    })
+  }
+  componentWillUnmount = () => {
+    this.setState({
+      onProfilePage: false
+    })
   }
 
   getProfile = () => {
@@ -169,12 +178,12 @@ class Profile extends Component {
                 <h5>Create a post</h5>
                 {/* this.state.showCreateAPost ? '' : 'hidden' */}
                 <i
-                  class={`fas fa-caret-down lessTopMargin ${
+                  className={`fas fa-caret-down lessTopMargin ${
                     !this.state.showCreateAPost ? '' : 'hidden'
                   }`}
                 />
                 <i
-                  class={`fas fa-caret-up lessBottomMargin ${
+                  className={`fas fa-caret-up lessBottomMargin ${
                     this.state.showCreateAPost ? '' : 'hidden'
                   }`}
                 />
@@ -240,6 +249,8 @@ class Profile extends Component {
               <Post
                 key={post.id}
                 id={post.id}
+                onProfilePage={this.state.onProfilePage}
+                getProfile={this.getProfile}
                 current_profile_author={post.current_profile_author}
                 profile_id={this.state.profile.id}
                 profileName={this.state.profile.name}

@@ -30,7 +30,7 @@ gavin = Profile.create!(name: "Gavin", about_me: "Ruby developer and improviser"
 
 # Manual image uploading
 gavin.profile_image.attach(io: image('client/src/assets/picklerick.jpg'), filename: 'picklerick.jpg')
-gavin.cover_image.attach(io: image('client/src/assets/space.jpeg'), filename: 'space.jpeg')
+gavin.cover_image.attach(io: image('client/src/assets/space.jpg'), filename: 'space.jpg')
 
 # This says, GAVIN (the profile) has a STRENGTH (boolean) in WEB (tag)
 ProfileTagging.create!(profile: gavin, tag: web, strength: true)
@@ -45,7 +45,7 @@ ProfileTagging.create!(profile: gavin, tag: gaming, strength: false)
 
 # [x , x, ] posts the user made, then post tagging, then interestedpost for one use to this post 
 postOne  = gavin.authored_posts.create!(title: "About SDG", body: "blah blah blah")
-postOne.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+postOne.post_image.attach(io: image('client/src/assets/dev.jpg'), filename: 'dev.jpg')
 
 # [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
 PostTagging.create!(post: postOne , tag: gaming)
@@ -54,7 +54,7 @@ PostTagging.create!(post: postOne , tag: networking)
 
 
 postTwo = gavin.authored_posts.create!(title: "About APU", body: "My improv team is called APU")
-postTwo.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+postTwo.post_image.attach(io: image('client/src/assets/dev.jpg'), filename: 'dev.jpg')
 
 # [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
 PostTagging.create!(post: postTwo, tag: gaming)
@@ -69,7 +69,7 @@ jason = Profile.create!(name: "Jason", about_me: "Ruby developer and CEO", quote
 
 # Manual image uploading
 jason.profile_image.attach(io: image('client/src/assets/picklerick.jpg'), filename: 'picklerick.jpg')
-jason.cover_image.attach(io: image('client/src/assets/space.jpeg'), filename: 'space.jpeg')
+jason.cover_image.attach(io: image('client/src/assets/space.jpg'), filename: 'space.jpg')
 
 # This says, JASON (the profile) has a STRENGTH (boolean) in WEB (tag)
 ProfileTagging.create!(profile: jason, tag: web, strength: true)
@@ -83,7 +83,7 @@ ProfileTagging.create!(profile: jason, tag: networking, strength: false)
 
 # [x , x, ] posts the user made, then post tagging, then interestedpost for one use to this post 
 postThree = jason.authored_posts.create!(title: "How to create a code school", body: "blah blah")
-postThree.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+postThree.post_image.attach(io: image('client/src/assets/dev.jpg'), filename: 'dev.jpg')
 
 # [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
 PostTagging.create!(post: postThree, tag: sports)
@@ -92,7 +92,7 @@ PostTagging.create!(post: postThree, tag: automotive)
 
 
 postFour = jason.authored_posts.create!(title: "How to create a other things", body: "blah blah")
-postFour.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+postFour.post_image.attach(io: image('client/src/assets/dev.jpg'), filename: 'dev.jpg')
 
 # [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
 PostTagging.create!(post: postFour, tag: cooking)
@@ -105,7 +105,7 @@ PostTagging.create!(post: postFour, tag: automotive)
 shea = Profile.create!(name: "shea", about_me: "creater of this app", quote: "resilence")
 # Manual image uploading
 shea.profile_image.attach(io: image('client/src/assets/picklerick.jpg'), filename: 'picklerick.jpg')
-shea.cover_image.attach(io: image('client/src/assets/space.jpeg'), filename: 'space.jpeg')
+shea.cover_image.attach(io: image('client/src/assets/space.jpg'), filename: 'space.jpg')
 
 # This says, SHEA (the profile) has a STRENGTH (boolean) in WEB (tag)
 ProfileTagging.create!(profile: shea, tag: health, strength: true)
@@ -119,7 +119,7 @@ ProfileTagging.create!(profile: shea, tag: general, strength: false)
 
 # [x , x, ] posts the user made, then post tagging, then interestedpost for one use to this post 
 postFive = shea.authored_posts.create!(title: "How to do stuff", body: "blah blah")
-postFive.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+postFive.post_image.attach(io: image('client/src/assets/dev.jpg'), filename: 'dev.jpg')
 
 # [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
 PostTagging.create!(post: postFive, tag: general)
@@ -128,7 +128,7 @@ PostTagging.create!(post: postFive, tag: automotive)
 
 
 postSix = shea.authored_posts.create!(title: "How do i get this backend stuff down?", body: "resilence i guess? meet up this weekend?")
-postSix.post_image.attach(io: image('client/src/assets/dev.jpeg'), filename: 'dev.jpeg')
+postSix.post_image.attach(io: image('client/src/assets/dev.jpg'), filename: 'dev.jpg')
 
 # [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
 PostTagging.create!(post: postSix, tag: life)
@@ -155,11 +155,10 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 # to do list React
 # [1/2] post component - disply number of comment and people interested. this will be done by doing a .length in react
 # [] implement moment for post timestamp. did already yarn add moment
-# [] notifications - make notifications button dynamic when there is a new notification 
 # [] go through all pages and components - add @media to all
 # [] fix time stamp formatting - .toLocaleTimeString
 # [] make where current_user cannot edit other users profile - backend data recieved already for this fix (me: t or f)
-# [] reload page after delete, or redirrect if on postWithComments component
+# [x] reload page after delete, or redirrect if on postWithComments component
 # [x] add a post option - get form going
 # [x] fix links wrapper in links issue
 # [x] footer issue - needs to be positioned at the bottom always
@@ -174,11 +173,9 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 # [x] make a guard clause for when clicked on current profile post 
 
 # to do list Ruby
-# [] deploy 
-# [] finish active storage setup and set up cloud image service
+# [x] deploy 
+# [x] finish active storage setup and set up cloud image service
 # [] notifications - recieve last 10 comments on my posts
-# [] get list of people interested in a post
-# [] set up count of people interested in a post
 # [x] delete post, button and id select id in place already
 
 

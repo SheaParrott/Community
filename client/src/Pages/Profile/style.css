@@ -1,14 +1,13 @@
 /* profile page */
 div.CoverImage {
   width: 100;
+  min-height: 181px;
   margin-top: 45px;
 }
 main.ProfileBody {
   margin-top: -140px;
 }
 img.ProfileCoverImage {
-  background: url(../../assets/space.jpeg) no-repeat;
-  background-size: contain;
   border: 1px solid black;
   width: 100%;
 }

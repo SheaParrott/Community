@@ -18,7 +18,7 @@ class Api::ProfilesController < ApplicationController
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,
         comment_count: post.comments.count,
-        timestamp: post.created_at
+        timestamp: post.created_at,
       }
     end
 
@@ -88,6 +88,11 @@ class Api::ProfilesController < ApplicationController
 
     profile = Profile.find(profile_id)
 
+    #list of people interested in a post
+
+
+
+
     # show authored posts
     posts = profile.authored_posts.map do |post|
       {
@@ -98,7 +103,7 @@ class Api::ProfilesController < ApplicationController
         body: post.body,
         comment_count: post.comments.count,
         author_id: post.author.id,
-        timestamp: post.created_at
+        timestamp: post.created_at,
       }
     end
 
@@ -123,7 +128,8 @@ class Api::ProfilesController < ApplicationController
     recommended_posts = profile.recommended_posts.map do |post|
       {
         id: post.id,
-        current_profile_author: if post.author.id == current_profile.id then true else false end,
+        # is_author
+        current_profile_author: post.author.id == current_profile.id,
         title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,

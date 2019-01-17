@@ -50,7 +50,6 @@ div.requestBoxMiddleBar {
   display: flex;
   justify-content: space-around;
   border-top: 1px solid black;
-  border-bottom: 1px solid black;
 }
 p.requestBoxClick {
   margin: 6px 1px 6px 1px;

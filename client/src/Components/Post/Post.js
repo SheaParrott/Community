@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import imageOrDefault from '../../imageOrDefault'
 import axios from 'axios'
 import CurrentProfileHelper from '../../currentProfileHelper'
+import history from '../../history'
 
 class Post extends Component {
   constructor(props) {
@@ -38,10 +39,14 @@ class Post extends Component {
     )
   }
   postDelete = () => {
-    console.log(this.props.id)
-
     axios.delete(`/api/posts/${this.props.id}`).then(response => {
       console.log(response.data)
+      if (this.props.onProfilePage) {
+        this.props.getProfile()
+      }
+      if (this.props.hideCommentLogoAndCount) {
+        history.go(-1)
+      }
     })
   }
   profileClass = () => {
@@ -61,6 +66,9 @@ class Post extends Component {
     )
   }
   hidePost = () => {
+    if (this.props.hideCommentLogoAndCount) {
+      history.go(-1)
+    }
     this.setState({
       hideThisPost: 'hidden'
     })
@@ -161,9 +169,6 @@ class Post extends Component {
                 }`}
               >
                 {this.props.comment_count} comments
-              </Link>
-              <Link to="/PeopleInterested" className="requestBoxBottomBarInfo">
-                5 Interested
               </Link>
             </div>
           </section>
