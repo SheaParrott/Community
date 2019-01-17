@@ -3,7 +3,6 @@ import './style.css'
 import Post from '../../Components/Post/Post'
 import Header from '../../Components/Header'
 import axios from 'axios'
-import CurrentProfileHelper from '../../currentProfileHelper'
 
 class Posts extends Component {
   constructor(props) {
@@ -36,9 +35,7 @@ class Posts extends Component {
       <div className="columnCentering">
         <Header />
         <div className="marginFromHeader">
-          <button onClick={this.test}>test</button>
           {posts.map(post => {
-            console.log(post)
             return (
               <Post
                 key={post.id}

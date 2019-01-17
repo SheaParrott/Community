@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './style.css'
 import { Link } from 'react-router-dom'
-import profileimg from '../../assets/picklerick.jpg'
 import Header from '../../Components/Header'
 import imageOrDefault from '../../imageOrDefault'
 import axios from 'axios'
@@ -17,7 +16,6 @@ class Notifications extends Component {
 
   componentDidMount = () => {
     axios.get('/api/comments').then(response => {
-      console.log(response.data.comments)
       this.setState({
         Notifications: response.data.comments
       })
@@ -32,9 +30,12 @@ class Notifications extends Component {
           <div className="notificationsBox columnCentering">
             {this.state.Notifications.filter(
               isAuthor => !isAuthor.is_author
-            ).map(notification => {
+            ).map((notification, index) => {
               return (
-                <section className="notificationsBox boxShadow widthbig">
+                <section
+                  key={index}
+                  className="notificationsBox boxShadow widthbig"
+                >
                   <Link to={`/Profile/${notification.profile_id}`}>
                     <img
                       className="notificationsBoxProfileImage"

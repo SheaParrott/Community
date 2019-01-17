@@ -50,11 +50,6 @@ class PostWithComments extends Component {
       this.componentDidMount()
     })
   }
-
-  testing = () => {
-    // console.log(this.props.match.params.post_id)
-  }
-
   render() {
     if (!this.state.post) {
       return <></>
@@ -64,7 +59,6 @@ class PostWithComments extends Component {
       <div className="columnCentering">
         <Header />
         <div className="marginFromHeader">
-          <button onClick={this.testing}>testing</button>
           <Post
             hideCommentLogoAndCount={this.state.hideCommentLogoAndCount}
             id={this.props.match.params.post_id}

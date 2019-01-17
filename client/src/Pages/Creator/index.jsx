@@ -14,18 +14,18 @@ class Creator extends Component {
         </div>
         <img className="creator boxShadow" src={CreatorImage} alt="Shea" />
         <div className="row">
-          <i class="fas fa-phone" />
+          <i className="fas fa-phone" />
           <h4 className="creatorInfo">(904) 629-8670</h4>
         </div>
         <div className="col">
           <a href="https://github.com/SheaParrott" rel="noopener">
-            <i class="fab fa-github" />
+            <i className="fab fa-github" />
             <h4 className="creatorInfo">github.com/SheaParrott</h4>
           </a>
         </div>
         <div className="col">
           <a href="https://www.linkedin.com/in/shea-parrott/" rel="noopener">
-            <i class="fab fa-linkedin" />
+            <i className="fab fa-linkedin" />
             <h4 className="creatorInfo">linkedin.com/in/shea-parrott/</h4>
           </a>
         </div>
@@ -37,7 +37,7 @@ class Creator extends Component {
         <div className="col">
           <a
             className="serif"
-            target="_blank"
+            rel="noopener"
             href="https://docs.google.com/document/d/1Z1NtGepxXQ0KSNtZz0EUiudEEIBaKcgVpIWB3Awpvl0/edit?usp=sharing"
           >
             <strong>Link to resume</strong>
@@ -48,7 +48,11 @@ class Creator extends Component {
             className="serif"
             href="https://docs.google.com/document/d/1Z1NtGepxXQ0KSNtZz0EUiudEEIBaKcgVpIWB3Awpvl0/export?format=pdf"
           >
-            <img className="widthbig resume boxShadow" src={resume} />
+            <img
+              className="widthbig resume boxShadow"
+              src={resume}
+              alt="resume"
+            />
           </a>
         </div>
       </div>

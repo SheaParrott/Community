@@ -178,7 +178,7 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 # [x] finish active storage setup and set up cloud image service
 # [] add validations on create a post
 #   - have send and display errors when errors happen
-# [] notifications - recieve last 10 comments on my posts
+# [x] notifications - recieve last 10 comments on my posts
 # [x] delete post, button and id select id in place already
 
 

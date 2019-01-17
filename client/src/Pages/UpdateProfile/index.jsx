@@ -40,7 +40,7 @@ class UpdateProfile extends Component {
         <Header />
         <form onSubmit={this.updateProfile}>
           <div className="moreMarginFromHeader columnCentering boxShadow widthbig">
-            <div className>
+            <div>
               <div className="someMargin">
                 <h3 className="updateProfile">Update profile</h3>
                 <h4 className="someMargin">Cover Image</h4>

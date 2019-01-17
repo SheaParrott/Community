@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 import axios from 'axios'
 import Header from '../../Components/Header'
-import requestimg from '../../assets/dev.jpg'
 import Post from '../../Components/Post/Post'
 
 import auth from '../../auth'
@@ -111,10 +110,6 @@ class Profile extends Component {
     }
   }
 
-  test = () => {
-    console.log(this.state.profile.me)
-  }
-
   render() {
     if (!this.state.profile) {
       return <></>
@@ -139,7 +134,6 @@ class Profile extends Component {
                 <h2 className="name">{this.state.profile.name}</h2>
               </div>
             </div>
-            <button onClick={this.test}>test</button>
             <div className="profileQuote widthbig">
               {this.state.profile.quote}
             </div>

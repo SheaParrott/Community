@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import moment from 'moment'
 import './style.css'
 import { Link } from 'react-router-dom'
 import imageOrDefault from '../../imageOrDefault'
@@ -40,7 +39,6 @@ class Post extends Component {
   }
   postDelete = () => {
     axios.delete(`/api/posts/${this.props.id}`).then(response => {
-      console.log(response.data)
       if (this.props.onProfilePage) {
         this.props.getProfile()
       }
@@ -77,18 +75,6 @@ class Post extends Component {
     return !this.props.current_profile_author ? '' : 'hidden'
   }
 
-  addToInterestedPosts = event => {
-    // need id for post. then created a axios call to make it happen
-    console.log(this.props.id)
-
-    axios
-      .post(`/api/interested_posts`, {
-        interested_post: { post_id: this.props.id }
-      })
-      .then(response => {
-        console.log(response.data)
-      })
-  }
   renderCommentLogo = () => {
     if (!this.props.hideCommentLogoAndCount) {
       return (
