@@ -83,6 +83,21 @@ class Post extends Component {
     }
   }
 
+  addToInterestedPosts = event => {
+    console.log(parseInt(this.props.id))
+    let post_id = parseInt(this.props.id)
+    // params.require(:interested_post).permit(:post_id)
+    axios
+      .post('/api/interested_posts', {
+        interested_post: {
+          post_id: post_id
+        }
+      })
+      .then(response => {
+        console.log(response.data)
+      })
+  }
+
   render() {
     return (
       <div className={this.state.hideThisPost}>

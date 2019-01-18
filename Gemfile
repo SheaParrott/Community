@@ -50,3 +50,5 @@ gem "jwt", "~> 2.1"
 
 gem "cloudinary", "~> 1.11"
 gem "activestorage-cloudinary-service", "~> 0.2.3"
+
+gem "rails-erd", "~> 1.5", group: :development

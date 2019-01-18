@@ -33,7 +33,7 @@ def show
   render json: {
     post: {
       id: post.id,
-      current_profile_author: if post.author.id == current_profile.id then true else false end,
+      current_profile_author: post.author.id == current_profile.id,
       title: post.title, 
       image: post.post_image.attached? && url_for(post.post_image),
       body: post.body, 

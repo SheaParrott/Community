@@ -15,6 +15,7 @@ end
 #    rails db:seed
 
 #tags
+admin = Tag.create!(name: "admin")
 general = Tag.create!(name: "general")
 life = Tag.create!(name: "life")
 health = Tag.create!(name: "health")
@@ -44,22 +45,16 @@ ProfileTagging.create!(profile: gavin, tag: gaming, strength: false)
 
 
 # [x , x, ] posts the user made, then post tagging, then interestedpost for one use to this post 
-postOne  = gavin.authored_posts.create!(title: "About SDG", body: "blah blah blah")
+postOne  = gavin.authored_posts.create!(title: "About SDG", body: "blah blah blah", tags: [gaming, web, networking])
 postOne.post_image.attach(io: image('client/src/assets/dev.jpg'), filename: 'dev.jpg')
 
-# [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
-PostTagging.create!(post: postOne , tag: gaming)
-PostTagging.create!(post: postOne , tag: web)
-PostTagging.create!(post: postOne , tag: networking)
+# [old way, now have validations, so doesnt work] create a bunch of of post taggings. associate posts with multiple tags
+# PostTagging.create!(post: postThree, tag: sports)
+# PostTagging.create!(post: postThree, tag: web)
+# PostTagging.create!(post: postThree, tag: automotive)
 
-
-postTwo = gavin.authored_posts.create!(title: "About APU", body: "My improv team is called APU")
+postTwo = gavin.authored_posts.create!(title: "About APU", body: "My improv team is called APU", tags: [gaming, web, networking])
 postTwo.post_image.attach(io: image('client/src/assets/dev.jpg'), filename: 'dev.jpg')
-
-# [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
-PostTagging.create!(post: postTwo, tag: gaming)
-PostTagging.create!(post: postTwo, tag: web)
-PostTagging.create!(post: postTwo, tag: networking)
 
 # end
 
@@ -82,22 +77,15 @@ ProfileTagging.create!(profile: jason, tag: life, strength: false)
 ProfileTagging.create!(profile: jason, tag: networking, strength: false)
 
 # [x , x, ] posts the user made, then post tagging, then interestedpost for one use to this post 
-postThree = jason.authored_posts.create!(title: "How to create a code school", body: "blah blah")
+postThree = jason.authored_posts.create!(title: "How to create a code school", body: "blah blah", tags: [sports, web, automotive])
 postThree.post_image.attach(io: image('client/src/assets/dev.jpg'), filename: 'dev.jpg')
 
-# [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
-PostTagging.create!(post: postThree, tag: sports)
-PostTagging.create!(post: postThree, tag: web)
-PostTagging.create!(post: postThree, tag: automotive)
 
 
-postFour = jason.authored_posts.create!(title: "How to create a other things", body: "blah blah")
+
+postFour = jason.authored_posts.create!(title: "How to create a other things", body: "blah blah", tags: [cooking, web, automotive])
 postFour.post_image.attach(io: image('client/src/assets/dev.jpg'), filename: 'dev.jpg')
 
-# [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
-PostTagging.create!(post: postFour, tag: cooking)
-PostTagging.create!(post: postFour, tag: web)
-PostTagging.create!(post: postFour, tag: automotive)
 
 # end
 
@@ -118,23 +106,11 @@ ProfileTagging.create!(profile: shea, tag: cooking, strength: false)
 ProfileTagging.create!(profile: shea, tag: general, strength: false)
 
 # [x , x, ] posts the user made, then post tagging, then interestedpost for one use to this post 
-postFive = shea.authored_posts.create!(title: "How to do stuff", body: "blah blah")
+postFive = shea.authored_posts.create!(title: "How to do stuff", body: "blah blah", tags: [general, sports, automotive])
 postFive.post_image.attach(io: image('client/src/assets/dev.jpg'), filename: 'dev.jpg')
 
-# [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
-PostTagging.create!(post: postFive, tag: general)
-PostTagging.create!(post: postFive, tag: sports)
-PostTagging.create!(post: postFive, tag: automotive)
-
-
-postSix = shea.authored_posts.create!(title: "How do i get this backend stuff down?", body: "resilence i guess? meet up this weekend?")
+postSix = shea.authored_posts.create!(title: "How do i get this backend stuff down?", body: "resilence i guess? meet up this weekend?", tags: [life, health, gaming])
 postSix.post_image.attach(io: image('client/src/assets/dev.jpg'), filename: 'dev.jpg')
-
-# [-, x, -] create a bunch of of post taggings. associate posts with multiple tags
-PostTagging.create!(post: postSix, tag: life)
-PostTagging.create!(post: postSix, tag: health)
-PostTagging.create!(post: postSix, tag: gaming)
-# end
 
 # [-, -, ] create some interested posts 
 InterestedPost.create!(post: postSix , profile: gavin)
@@ -174,6 +150,11 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 # [x] make a guard clause for when clicked on current profile post 
 
 # to do list Ruby
+# [x] set up standard comment on each profile that goes over the basics of a profile. 
+# [] come up with tags - Admin, Life, 
+# [] filter out the admin tag in backend - admin tag is purely for the posts created on profile create
+# [] should I? .. give every user the general tag so all general posts are shown
+# [] switch current user to be real current user and then deploy
 # [x] deploy 
 # [x] finish active storage setup and set up cloud image service
 # [x] add validations on create a post

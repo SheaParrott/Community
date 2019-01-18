@@ -1,7 +1,17 @@
 class Api::ProfilesController < ApplicationController
 
   def update
-    current_profile.update(profile_params)
+    params = profile_params
+
+
+    if(!profile_params[:quote].present? && profile_params[:about_me].present?)
+      params = no_quote
+    elsif(!profile_params[:about_me].present? && profile_params[:quote].present?) 
+      params = no_about_me
+    elsif(!profile_params[:quote].present? && !profile_params[:about_me].present?)
+      params = no_quote_no_about_me
+    end  
+    current_profile.update(params)
 
     render json: current_profile
   end
@@ -164,9 +174,20 @@ class Api::ProfilesController < ApplicationController
   end
   
   private
+  def no_quote
+    params.require(:profile).permit(:cover_image, :profile_image, :about_me, tag_ids: [])
+  end
+
+  def no_about_me
+      params.require(:profile).permit(:cover_image, :profile_image, :quote, tag_ids: [])
+  end
+
+  def no_quote_no_about_me
+      params.require(:profile).permit(:cover_image, :profile_image, tag_ids: [])   
+  end
 
   def profile_params
-    params.require(:profile).permit(:cover_image, :profile_image, :about_me, :name, tag_ids: [])
+    params.require(:profile).permit(:cover_image, :profile_image, :quote, :about_me, tag_ids: [])
   end
 
 

@@ -34,10 +34,10 @@ class Posts extends Component {
       <div className="columnCentering">
         <Header />
         <div className="marginFromHeader">
-          {posts.map(post => {
+          {posts.map((post, index) => {
             return (
               <Post
-                key={post.id}
+                key={index}
                 id={post.id}
                 current_profile_author={post.current_profile_author}
                 comment_count={post.comment_count}

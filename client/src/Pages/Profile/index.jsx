@@ -27,15 +27,26 @@ class Profile extends Component {
       history.replace('/SignIn')
     }
     this.getProfile()
-    this.setState({
-      onProfilePage: true
-    })
+    // this.setState(
+    //   {
+    //     onProfilePage: true
+    //   },
+    //   () => {
+    //     console.log(this.state.onProfilePage)
+    //   }
+    // )
   }
-  componentWillUnmount = () => {
-    this.setState({
-      onProfilePage: false
-    })
-  }
+
+  // componentWillUnmount = () => {
+  //   this.setState(
+  //     {
+  //       onProfilePage: false
+  //     },
+  //     () => {
+  //       console.log(this.state.onProfilePage)
+  //     }
+  //   )
+  // }
 
   getProfile = () => {
     const url = this.props.match.params.id
@@ -80,8 +91,8 @@ class Profile extends Component {
     } else if (this.state.profileBioSection === 'STRUGGLES') {
       return (
         <div>
-          {weakness.map(weakness => {
-            return <h5 key={weakness.id}>{weakness.name}</h5>
+          {weakness.map((weakness, index) => {
+            return <h5 key={index}>{weakness.name}</h5>
           })}
         </div>
       )

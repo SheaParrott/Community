@@ -51,6 +51,15 @@ class UpdateProfile extends Component {
                 <input type="file" name="profile[profile_image]" />
               </div>
               <div className="someMargin">
+                <h4 className="someMargin">Quote</h4>
+                <input
+                  className="width"
+                  type="text"
+                  name="profile[quote]"
+                  placeholder="Edit Quote Me Here"
+                />
+              </div>
+              <div className="someMargin">
                 <h4 className="someMargin">About Me</h4>
                 <input
                   className="width"
@@ -61,7 +70,7 @@ class UpdateProfile extends Component {
               </div>
             </div>
             <section className="width columnCentering boxShadow">
-              <h4 className="someMargin">Strengths</h4>
+              <h4 className="someMargin">Strengths / Weaknesses</h4>
               <section className="tagsBox">
                 {this.state.tags.map(tag => {
                   return (
@@ -80,24 +89,6 @@ class UpdateProfile extends Component {
             </section>
             <br />
 
-            <section className="width columnCentering boxShadow">
-              <h4 className="someMargin">Growing</h4>
-              <section className="tagsBox">
-                {this.state.tags.map(tag => {
-                  return (
-                    <h5 className="tag" key={tag.id}>
-                      <input
-                        type="checkbox"
-                        value={tag.id}
-                        name="profile[tag_ids][]"
-                        placeholder={tag.name}
-                      />
-                      <label>{tag.name}</label>
-                    </h5>
-                  )
-                })}
-              </section>
-            </section>
             <button className="someMargin" type="submit">
               SUBMIT
             </button>

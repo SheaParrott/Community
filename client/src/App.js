@@ -9,7 +9,6 @@ import UpdateProfile from './Pages/UpdateProfile/index'
 import Posts from './Pages/Posts/index'
 import PostWithComments from './Pages/PostWithComments/index'
 import Creator from './Pages/Creator/index'
-import PeopleInterested from './Pages/PeopleInterested/index'
 import Notifications from './Pages/Notifications/index'
 import Footer from './Components/Footer'
 
@@ -66,7 +65,6 @@ class App extends Component {
             path="/PostWithComments/:post_id"
             component={PostWithComments}
           />
-          <Route path="/PeopleInterested/" component={PeopleInterested} />
           <Route path="/Creator/" component={Creator} />
           <Footer />
         </div>
