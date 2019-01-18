@@ -30,3 +30,24 @@ img.resume:hover {
   box-shadow: 0 0 5px #349af0;
   cursor: pointer;
 }
+@media (min-width: 760px) {
+  h1.creator {
+    /* font-size: 2rem; */
+    font-size: 3rem;
+  }
+  img.creator {
+    /* width: 160px; */
+    width: 300px;
+  }
+  h4.creatorInfo {
+    /* previously was p tags, now h4 */
+    font-size: 2rem;
+  }
+  img.resume {
+    /* width: 160px; */
+    width: 300px;
+  }
+  .creatorPage {
+    font-size: 70px;
+  }
+}

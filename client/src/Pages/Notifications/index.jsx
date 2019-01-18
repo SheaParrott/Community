@@ -43,7 +43,7 @@ class Notifications extends Component {
                       alt="profile"
                     />
                   </Link>
-                  <h5>
+                  <h5 className="notifications">
                     <Link to={`/Profile/${notification.profile_id}`}>
                       {notification.profile_name}
                     </Link>{' '}

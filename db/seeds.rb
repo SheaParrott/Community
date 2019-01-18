@@ -176,7 +176,7 @@ Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 # to do list Ruby
 # [x] deploy 
 # [x] finish active storage setup and set up cloud image service
-# [] add validations on create a post
+# [x] add validations on create a post
 #   - have send and display errors when errors happen
 # [x] notifications - recieve last 10 comments on my posts
 # [x] delete post, button and id select id in place already

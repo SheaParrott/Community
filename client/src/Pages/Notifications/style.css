@@ -15,11 +15,17 @@ img.notificationsBoxProfileImage {
   box-shadow: 0 0 4px white;
   margin: 5px;
 }
-img.notificationsBox {
-  margin: 5px;
-  max-width: 60px;
-  max-height: 40px;
-}
 strong.post {
   color: rgba(0, 0, 0, 0.616);
+}
+@media (min-width: 760px) {
+  img.notificationsBoxProfileImage {
+    /* max-width: 40px; */
+    max-width: 60px;
+    /* max-height: 40px; */
+    max-height: 60px;
+  }
+  .notifications {
+    font-size: 1.5rem;
+  }
 }

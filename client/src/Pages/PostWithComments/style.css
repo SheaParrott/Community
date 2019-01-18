@@ -22,3 +22,8 @@ input.comment {
 button.comment {
   margin: 5px;
 }
+@media (min-width: 760px) {
+  h6.comment {
+    font-size: 1rem;
+  }
+}

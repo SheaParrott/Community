@@ -49,15 +49,16 @@ h5 {
 .moreMarginFromHeader {
   margin-top: 50px;
 }
-.boxShadow {
-  box-shadow: 0 0 5px black;
-}
 .width {
   width: 300px;
 }
 .widthbig {
   width: 310px;
 }
+.boxShadow {
+  box-shadow: 0 0 5px black;
+}
+
 button {
   margin: 1px;
   background: linear-gradient(rgba(14, 173, 0, 0.7), rgba(35, 105, 2));
@@ -66,32 +67,6 @@ button {
   outline-color: #349af0;
   padding: 4px 10px 4px 10px;
 }
-
-/* font-family: 'Lobster', cursive;
-like this for: use letter-spacing for added styling
-recommended and interested posts header
-7 comments and interested people
-footer bar
-font-family: 'Sarabun', sans-serif;
-contact info for creator component
-tags
-post title
-comment body
-font-family: 'Kaushan Script', cursive;
-name
-attribuutes bar
-tags?
-font-family: 'Pacifico', cursive; */
-
-/* font-family: 'Sarabun', sans-serif;
-font-family: 'Dancing Script', cursive;
-font-family: 'Charm', cursive;
-font-family: 'Great Vibes', cursive;
-font-family: 'Alegreya SC', serif; */
-/* font-family: 'Montserrat', sans-serif; */
-/* body and main content */
-/* font-family: 'Merriweather', serif; */
-/* headers and tiles and names */
 
 @font-face {
   font-family: 'community';
@@ -176,4 +151,83 @@ h6 {
 .red {
   color: rgba(255, 0, 0, 0.74);
   letter-spacing: 0.5px;
+}
+
+/* ipad */
+
+@media (min-width: 760px) {
+  h5 {
+    margin: 0;
+    padding: 5px;
+  }
+  .marginFromHeader {
+    margin-top: 45px;
+  }
+  .moreMarginFromHeader {
+    margin-top: 50px;
+  }
+  .width {
+    width: 430px;
+  }
+  .widthbig {
+    width: 450px;
+  }
+  /* general styling  */
+  h1.AppName,
+  .creator {
+    font-weight: 700;
+    letter-spacing: 0.9px;
+    font-size: 3rem;
+    margin: 0 0 20px 0;
+  }
+  p.AppName {
+    margin: 10px 0 0 -42px;
+    font-size: 0.7rem;
+  }
+  header {
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 0 5px black;
+    padding: 5px 0 5px 0;
+    font-size: 25px;
+    background: linear-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0.85));
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+  }
+  footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 0 5px black;
+    padding: 5px 0 5px 0;
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-top: 4px;
+    width: 100%;
+    z-index: 1;
+  }
+  a {
+    text-decoration: none;
+    margin: 6px;
+    color: black;
+    margin: 0;
+    padding: 0;
+  }
+  h4 {
+    margin: 0;
+  }
+  h6 {
+    margin: 3px 0 3px 0;
+  }
+  .fas,
+  .fab {
+    font-size: 2rem;
+  }
+  .red {
+    color: rgba(255, 0, 0, 0.74);
+    letter-spacing: 0.5px;
+  }
 }
