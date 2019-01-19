@@ -10,6 +10,7 @@ import auth from '../../auth'
 import history from '../../history'
 import CreateAPost from '../../Components/CreateAPost'
 import imageOrDefault from '../../imageOrDefault'
+import Loading from '../../Components/Loading'
 
 class Profile extends Component {
   constructor(props) {
@@ -22,31 +23,18 @@ class Profile extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount = () => {
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
     }
     this.getProfile()
-    // this.setState(
-    //   {
-    //     onProfilePage: true
-    //   },
-    //   () => {
-    //     console.log(this.state.onProfilePage)
-    //   }
-    // )
   }
 
-  // componentWillUnmount = () => {
-  //   this.setState(
-  //     {
-  //       onProfilePage: false
-  //     },
-  //     () => {
-  //       console.log(this.state.onProfilePage)
-  //     }
-  //   )
-  // }
+  changeOnProfilePage = () => {
+    this.setState({
+      onProfilePage: false
+    })
+  }
 
   getProfile = () => {
     const url = this.props.match.params.id
@@ -54,7 +42,10 @@ class Profile extends Component {
       : `/api/profiles/current`
 
     axios.get(url).then(response => {
-      this.setState({ profile: response.data.profile, showCreateAPost: false })
+      this.setState({
+        profile: response.data.profile,
+        showCreateAPost: false
+      })
     })
   }
   AttributeClickToChangeState = event => {
@@ -98,6 +89,7 @@ class Profile extends Component {
       )
     }
   }
+
   renderProfileimage = () => {
     if (!this.state.profile.me) {
       return (
@@ -109,7 +101,10 @@ class Profile extends Component {
       )
     } else {
       return (
-        <Link to={`/UpdateProfile/${this.state.profile.id}`}>
+        <Link
+          onClick={this.changeOnProfilePage}
+          to={`/UpdateProfile/${this.state.profile.id}`}
+        >
           <img
             className="ProfileImage currentProfileImage"
             src={imageOrDefault(this.state.profile.profile_image)}
@@ -119,14 +114,20 @@ class Profile extends Component {
       )
     }
   }
+  renderLoading = () => {
+    return (
+      <div className="marginFromHeader">
+        <Loading />
+      </div>
+    )
+  }
 
   render() {
     if (!this.state.profile) {
-      return <></>
+      return this.renderLoading()
     }
-
     return (
-      <>
+      <div>
         <Header />
         <div className="CoverImage">
           <img
@@ -211,7 +212,11 @@ class Profile extends Component {
               .slice(0, 3)
               .map((post, index) => {
                 return (
-                  <Link key={index} to={`/PostWithComments/${post.id}`}>
+                  <Link
+                    onClick={this.changeOnProfilePage}
+                    key={index}
+                    to={`/PostWithComments/${post.id}`}
+                  >
                     <div
                       className="ProfileRecommendedPost width"
                       onClick={this.CommentIDToBePassedToDataStore}
@@ -227,7 +232,10 @@ class Profile extends Component {
                   </Link>
                 )
               })}
-            <Link to={`/Profile/${this.state.profile.id}/posts/recommended`}>
+            <Link
+              onClick={this.changeOnProfilePage}
+              to={`/Profile/${this.state.profile.id}/posts/recommended`}
+            >
               <h6 onClick={this.state.getAllInterestedPosts}>See More</h6>
             </Link>
           </div>
@@ -235,7 +243,11 @@ class Profile extends Component {
             <h6>Interested Posts:</h6>
             {this.state.profile.interested_posts.slice(0, 3).map(post => {
               return (
-                <Link key={post.id} to={`/PostWithComments/${post.id}`}>
+                <Link
+                  onClick={this.changeOnProfilePage}
+                  key={post.id}
+                  to={`/PostWithComments/${post.id}`}
+                >
                   <div
                     className="ProfileRecommendedPost width"
                     onClick={this.CommentIDToBePassedToDataStore}
@@ -251,7 +263,10 @@ class Profile extends Component {
                 </Link>
               )
             })}
-            <Link to={`/Profile/${this.state.profile.id}/posts/interested`}>
+            <Link
+              onClick={this.changeOnProfilePage}
+              to={`/Profile/${this.state.profile.id}/posts/interested`}
+            >
               <h6 onClick={this.state.getAllInterestedPosts}>See More</h6>
             </Link>
           </div>
@@ -275,7 +290,7 @@ class Profile extends Component {
             )
           })}
         </main>
-      </>
+      </div>
     )
   }
 }

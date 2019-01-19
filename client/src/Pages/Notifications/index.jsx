@@ -4,25 +4,52 @@ import { Link } from 'react-router-dom'
 import Header from '../../Components/Header'
 import imageOrDefault from '../../imageOrDefault'
 import axios from 'axios'
+import auth from '../../auth'
+import history from '../../history'
+import Loading from '../../Components/Loading'
 
 class Notifications extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      Notifications: []
+      Notifications: [],
+      loading: false
     }
   }
 
   componentDidMount = () => {
     axios.get('/api/comments').then(response => {
-      this.setState({
-        Notifications: response.data.comments
-      })
+      if (response.data.comments.length === 0) {
+        console.log('no data')
+        this.setState({
+          loading: true
+        })
+      } else {
+        console.log('data')
+        this.setState({
+          loading: true,
+          Notifications: response.data.comments
+        })
+      }
     })
+    if (!auth.isAuthenticated()) {
+      history.replace('/SignIn')
+    }
+  }
+
+  renderLoading = () => {
+    return (
+      <div className="marginFromHeader">
+        <Loading />
+      </div>
+    )
   }
 
   render() {
+    if (!this.state.loading) {
+      return this.renderLoading()
+    }
     return (
       <div>
         <Header />

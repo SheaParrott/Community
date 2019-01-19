@@ -6,6 +6,8 @@ import axios from 'axios'
 import imageOrDefault from '../../imageOrDefault'
 import CurrentProfileHelper from '../../currentProfileHelper'
 import Post from '../../Components/Post/Post'
+import auth from '../../auth'
+import history from '../../history'
 
 class PostWithComments extends Component {
   constructor(props) {
@@ -19,15 +21,12 @@ class PostWithComments extends Component {
   }
   componentDidMount = () => {
     this.fetchPost()
-
     this.setState({
       hideCommentLogoAndCount: true
     })
-  }
-  componentWillUnmount = () => {
-    this.setState({
-      hideCommentLogoAndCount: false
-    })
+    if (!auth.isAuthenticated()) {
+      history.replace('/SignIn')
+    }
   }
 
   fetchPost = () => {
@@ -59,11 +58,15 @@ class PostWithComments extends Component {
       }
     })
   }
+  hideCommentLogoAndCount = () => {
+    this.setState({
+      hideCommentLogoAndCount: false
+    })
+  }
   render() {
     if (!this.state.post) {
       return <></>
     }
-
     return (
       <div className="columnCentering">
         <Header />
@@ -86,6 +89,7 @@ class PostWithComments extends Component {
                 return (
                   <div key={comment.id} className="comment widthbig">
                     <Link
+                      onClick={this.hideCommentLogoAndCount}
                       to={CurrentProfileHelper(
                         comment.current_profile_author,
                         comment.author_id
@@ -99,6 +103,7 @@ class PostWithComments extends Component {
                     </Link>
                     <div>
                       <Link
+                        onClick={this.hideCommentLogoAndCount}
                         to={CurrentProfileHelper(
                           comment.current_profile_author,
                           comment.author_id

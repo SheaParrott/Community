@@ -19,12 +19,12 @@ class SignIn extends Component {
             <i className="fas fa-hands-helping" />
             <p className="signInMissionStatements">HELP</p>
           </div>
-          <i class="fas fa-arrow-right" />
+          <i className="fas fa-arrow-right" />
           <div className="signInMissionStatements">
             <i className="fas fa-lightbulb" />
             <p className="signInMissionStatements">INSPIRE</p>
           </div>
-          <i class="fas fa-arrow-right" />
+          <i className="fas fa-arrow-right" />
           <div className="signInMissionStatementsRight">
             <i className="fab fa-connectdevelop" />
             <p className="signInMissionStatementsRight">CONNECT</p>

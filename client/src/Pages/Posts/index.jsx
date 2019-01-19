@@ -3,6 +3,9 @@ import './style.css'
 import Post from '../../Components/Post/Post'
 import Header from '../../Components/Header'
 import axios from 'axios'
+import Loading from '../../Components/Loading'
+import auth from '../../auth'
+import history from '../../history'
 
 class Posts extends Component {
   constructor(props) {
@@ -12,7 +15,8 @@ class Posts extends Component {
       profile: {
         interested_posts: [],
         recommended_posts: []
-      }
+      },
+      loading: true
     }
   }
 
@@ -20,8 +24,19 @@ class Posts extends Component {
     axios
       .get(`/api/profiles/${this.props.match.params.profile_id}`)
       .then(response => {
-        this.setState({ profile: response.data.profile })
+        this.setState({ profile: response.data.profile, loading: false })
       })
+    if (!auth.isAuthenticated()) {
+      history.replace('/SignIn')
+    }
+  }
+
+  renderLoading = () => {
+    return (
+      <div className="marginFromHeader">
+        <Loading />
+      </div>
+    )
   }
 
   render() {
@@ -29,7 +44,11 @@ class Posts extends Component {
       this.props.match.params.kind === 'interested'
         ? this.state.profile.interested_posts
         : this.state.profile.recommended_posts
-
+    {
+      if (this.state.loading) {
+        return this.renderLoading()
+      }
+    }
     return (
       <div className="columnCentering">
         <Header />

@@ -3,6 +3,7 @@ import './style.css'
 import history from '../../history'
 import axios from 'axios'
 import Header from '../../Components/Header'
+import auth from '../../auth'
 
 class UpdateProfile extends Component {
   constructor(props) {
@@ -17,6 +18,9 @@ class UpdateProfile extends Component {
     axios.get(`/api/tags`).then(response => {
       this.setState({ tags: response.data.tags })
     })
+    if (!auth.isAuthenticated()) {
+      history.replace('/SignIn')
+    }
   }
 
   updateProfile = event => {
@@ -24,9 +28,9 @@ class UpdateProfile extends Component {
     const form = event.target
     const formData = new FormData(form)
 
-    for (let pair of formData.entries()) {
-      console.log(pair[0] + ', ' + pair[1])
-    }
+    // for (let pair of formData.entries()) {
+    //   console.log(pair[0] + ', ' + pair[1])
+    // }
 
     axios.put('/api/profiles/update', formData).then(response => {
       form.reset()
