@@ -106,7 +106,7 @@ class PostWithComments extends Component {
                       )}
                     >
                       <img
-                        className="commentProfileImage"
+                        className="commentProfileImage box-secondary"
                         src={imageOrDefault(comment.author_image)}
                         alt="profile"
                       />
@@ -119,7 +119,9 @@ class PostWithComments extends Component {
                           comment.author_id
                         )}
                       >
-                        <h6 className="comment">{comment.author_name}</h6>
+                        <h6 className="comment text-secondary">
+                          {comment.author_name}
+                        </h6>
                       </Link>
                       <p className="comment">{comment.body}</p>
                     </div>

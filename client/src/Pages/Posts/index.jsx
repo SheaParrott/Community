@@ -4,8 +4,8 @@ import Post from '../../Components/Post/Post'
 import Header from '../../Components/Header'
 import axios from 'axios'
 import Loading from '../../Components/Loading'
-import auth from '../../auth'
-import history from '../../history'
+// import auth from '../../auth'
+// import history from '../../history'
 
 class Posts extends Component {
   constructor(props) {
@@ -22,9 +22,9 @@ class Posts extends Component {
       .then(response => {
         this.setState({ profile: response.data.profile })
       })
-    if (!auth.isAuthenticated()) {
-      history.replace('/SignIn')
-    }
+    // if (!auth.isAuthenticated()) {
+    //   history.replace('/SignIn')
+    // }
   }
 
   renderLoading = () => {

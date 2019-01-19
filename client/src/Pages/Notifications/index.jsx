@@ -65,17 +65,23 @@ class Notifications extends Component {
                 >
                   <Link to={`/Profile/${notification.profile_id}`}>
                     <img
-                      className="notificationsBoxProfileImage"
+                      className="notificationsBoxProfileImage box-secondary"
                       src={imageOrDefault(notification.profile_image)}
                       alt="profile"
                     />
                   </Link>
                   <h5 className="notifications">
-                    <Link to={`/Profile/${notification.profile_id}`}>
+                    <Link
+                      className="text-secondary"
+                      to={`/Profile/${notification.profile_id}`}
+                    >
                       {notification.profile_name}
                     </Link>{' '}
                     <strong className="post">commented on your</strong>{' '}
-                    <Link to={`/PostWithComments/${notification.id}`}>
+                    <Link
+                      className="text-secondary"
+                      to={`/PostWithComments/${notification.id}`}
+                    >
                       Post
                     </Link>
                   </h5>

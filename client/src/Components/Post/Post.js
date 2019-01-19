@@ -111,7 +111,7 @@ class Post extends Component {
                 )}
               >
                 <img
-                  className="requestBoxProfileImage"
+                  className="requestBoxProfileImage box-secondary"
                   src={imageOrDefault(this.props.profileImage)}
                   alt="profile"
                 />
@@ -123,7 +123,7 @@ class Post extends Component {
                     this.props.profile_id
                   )}
                 >
-                  <h4 className="requestBoxProfileName">
+                  <h4 className="requestBoxProfileName text-secondary">
                     {this.props.profileName}
                   </h4>
                 </Link>
@@ -170,7 +170,7 @@ class Post extends Component {
               <Link
                 onClick={this.CommentIDToBePassedToDataStore}
                 to={`/PostWithComments/${this.props.id}`}
-                className={`requestBoxBottomBarInfo ${
+                className={`requestBoxBottomBarInfo text-secondary ${
                   this.props.hideCommentLogoAndCount ? 'hidden' : ''
                 }`}
               >

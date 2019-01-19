@@ -44,7 +44,6 @@ div.profileQuote {
   padding: 5px 0 5px 0;
 }
 img.currentProfileImage:hover {
-  box-shadow: 0 0 5px #349af0;
   cursor: pointer;
 }
 div.profileAttributesBar {
@@ -70,7 +69,6 @@ h6.profileAttributesRight {
 h6.profileAttributesLeft:hover,
 h6.profileAttributesMiddle:hover,
 h6.profileAttributesRight:hover {
-  box-shadow: 0 0 5px #349af0;
   cursor: pointer;
 }
 

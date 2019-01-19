@@ -12,6 +12,12 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.text-primary:hover {
+  color: #450868;
+}
+.bg-primary {
+  background-color: #450868;
+}
 /* header/name fonts */
 h1,
 h2,
@@ -58,14 +64,19 @@ h5 {
 .boxShadow {
   box-shadow: 0 0 5px black;
 }
-
+input {
+  outline-color: #a1a1a1;
+}
 button {
   margin: 1px;
   background: linear-gradient(rgba(14, 173, 0, 0.7), rgba(35, 105, 2));
   color: white;
   font-weight: 700;
-  outline-color: #349af0;
+  outline-color: #a1a1a1;
   padding: 4px 10px 4px 10px;
+}
+button:hover {
+  border: 1px solid #a1a1a1;
 }
 
 @font-face {
@@ -98,12 +109,28 @@ header {
   box-shadow: 0 0 5px black;
   padding: 5px 0 5px 0;
   font-size: 25px;
-  background: linear-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0.85));
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: 1;
+  background: linear-gradient(#450868, #6e3490d5);
+  color: white;
+}
+.fa-connectdevelop.header,
+.fa-bell {
+  color: white;
+}
+.fa-connectdevelop.header:hover,
+.fa-bell:hover {
+  color: white;
+  text-shadow: 0 0 5px;
+}
+.white {
+  color: white;
+}
+a.white:hover {
+  text-shadow: 0 0 5px white;
 }
 p {
   margin: 6px;
@@ -119,6 +146,8 @@ footer {
   margin-top: 4px;
   width: 100%;
   z-index: 1;
+  background: linear-gradient(#35094ed5, #28043dbb);
+  color: white;
 }
 a {
   text-decoration: none;
@@ -127,8 +156,13 @@ a {
   margin: 0;
   padding: 0;
 }
-a:hover {
-  color: #349af0;
+.text-secondary:hover {
+  /* color: #349af0; */
+  color: #a1a1a1;
+  /* text-shadow: 0 0 1px #6e3490d5; */
+}
+.box-secondary:hover {
+  box-shadow: 0 0 5px #a1a1a1;
 }
 
 h4 {
@@ -144,8 +178,10 @@ h6 {
 .fa-magnet:hover,
 .fa-ellipsis-v:hover,
 .fa-caret-up:hover,
-.fa-caret-down:hover {
-  color: #349af0;
+.fa-caret-down:hover,
+.fa-magnet:hover,
+.fa-comment:hover {
+  color: #a1a1a1;
   cursor: pointer;
 }
 .red {

@@ -27,7 +27,6 @@ div.col {
   margin: 10px;
 }
 img.resume:hover {
-  box-shadow: 0 0 5px #349af0;
   cursor: pointer;
 }
 @media (min-width: 760px) {

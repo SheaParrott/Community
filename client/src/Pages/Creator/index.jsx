@@ -9,35 +9,52 @@ class Creator extends Component {
     return (
       <div>
         <div className="row">
-          <i className="fas fa-arrow-left" onClick={() => history.go(-1)} />
+          <i
+            className="fas fa-arrow-left text-secondary"
+            onClick={() => history.go(-1)}
+          />
           <h1 className="creator">Shea Parrott</h1>
         </div>
         <img className="creator boxShadow" src={CreatorImage} alt="Shea" />
         <div className="col">
-          <i className="fas fa-phone creatorPage" />
-          <h4 className="creatorInfo">(904) 629-8670</h4>
+          <a className="text-secondary" href="">
+            <i className="fas fa-phone creatorPage" />
+            <h4 className="creatorInfo">(904) 629-8670</h4>
+          </a>
         </div>
         <div className="col">
-          <a href="https://github.com/SheaParrott" rel="noopener">
+          <a
+            className="text-secondary"
+            href="https://github.com/SheaParrott"
+            rel="noopener"
+          >
             <i className="fab fa-github creatorPage" />
             <h4 className="creatorInfo">github.com/SheaParrott</h4>
           </a>
         </div>
         <div className="col">
-          <a href="https://www.linkedin.com/in/shea-parrott/" rel="noopener">
+          <a
+            className="text-secondary"
+            href="https://www.linkedin.com/in/shea-parrott/"
+            rel="noopener"
+          >
             <i className="fab fa-linkedin creatorPage" />
             <h4 className="creatorInfo">linkedin.com/in/shea-parrott/</h4>
           </a>
         </div>
         <div className="col">
-          <a href="http://shea-portfolio.surge.sh/" rel="noopener">
+          <a
+            className="text-secondary"
+            href="http://shea-portfolio.surge.sh/"
+            rel="noopener"
+          >
             <i class="fas fa-book-open creatorPage" />
             <h4 className="creatorInfo">shea-portfolio.surge.sh/</h4>
           </a>
         </div>
-        <div className="col">
+        <div className="col text-secondary">
           <a
-            className="serif"
+            className="serif text-secondary"
             rel="noopener"
             href="https://docs.google.com/document/d/1Z1NtGepxXQ0KSNtZz0EUiudEEIBaKcgVpIWB3Awpvl0/edit?usp=sharing"
           >
@@ -51,7 +68,7 @@ class Creator extends Component {
             href="https://docs.google.com/document/d/1Z1NtGepxXQ0KSNtZz0EUiudEEIBaKcgVpIWB3Awpvl0/export?format=pdf"
           >
             <img
-              className="widthbig resume boxShadow"
+              className="widthbig resume boxShadow box-secondary"
               src={resume}
               alt="resume"
             />

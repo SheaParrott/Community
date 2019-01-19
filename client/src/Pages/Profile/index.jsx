@@ -106,7 +106,7 @@ class Profile extends Component {
           to={`/UpdateProfile/${this.state.profile.id}`}
         >
           <img
-            className="ProfileImage currentProfileImage"
+            className="ProfileImage currentProfileImage box-secondary"
             src={imageOrDefault(this.state.profile.profile_image)}
             alt="profile"
           />
@@ -152,21 +152,21 @@ class Profile extends Component {
             <h6
               onClick={this.AttributeClickToChangeState}
               data-attribute="STRENGTHS"
-              className="profileAttributesLeft boxShadow"
+              className="profileAttributesLeft boxShadow box-secondary"
             >
               STRENGTHS
             </h6>
             <h6
               onClick={this.AttributeClickToChangeState}
               data-attribute="ABOUT ME"
-              className="profileAttributesMiddle boxShadow"
+              className="profileAttributesMiddle boxShadow box-secondary"
             >
               ABOUT ME
             </h6>
             <h6
               onClick={this.AttributeClickToChangeState}
               data-attribute="STRUGGLES"
-              className="profileAttributesRight boxShadow"
+              className="profileAttributesRight boxShadow box-secondary"
             >
               GROWING
             </h6>
@@ -186,12 +186,12 @@ class Profile extends Component {
               >
                 <h5>Create a post</h5>
                 <i
-                  className={`fas fa-caret-down lessTopMargin ${
+                  className={`fas fa-caret-down lessTopMargin text-secondary ${
                     !this.state.showCreateAPost ? '' : 'hidden'
                   }`}
                 />
                 <i
-                  className={`fas fa-caret-up lessBottomMargin ${
+                  className={`fas fa-caret-up lessBottomMargin text-secondary ${
                     this.state.showCreateAPost ? '' : 'hidden'
                   }`}
                 />
@@ -213,6 +213,7 @@ class Profile extends Component {
               .map((post, index) => {
                 return (
                   <Link
+                    className="text-secondary"
                     onClick={this.changeOnProfilePage}
                     key={index}
                     to={`/PostWithComments/${post.id}`}
@@ -236,7 +237,12 @@ class Profile extends Component {
               onClick={this.changeOnProfilePage}
               to={`/Profile/${this.state.profile.id}/posts/recommended`}
             >
-              <h6 onClick={this.state.getAllInterestedPosts}>See More</h6>
+              <h6
+                className="text-secondary"
+                onClick={this.state.getAllInterestedPosts}
+              >
+                See More
+              </h6>
             </Link>
           </div>
           <div className="ProfilePostsBox columnCentering boxShadow widthbig">
@@ -244,6 +250,7 @@ class Profile extends Component {
             {this.state.profile.interested_posts.slice(0, 3).map(post => {
               return (
                 <Link
+                  className="text-secondary"
                   onClick={this.changeOnProfilePage}
                   key={post.id}
                   to={`/PostWithComments/${post.id}`}
@@ -267,7 +274,12 @@ class Profile extends Component {
               onClick={this.changeOnProfilePage}
               to={`/Profile/${this.state.profile.id}/posts/interested`}
             >
-              <h6 onClick={this.state.getAllInterestedPosts}>See More</h6>
+              <h6
+                className="text-secondary"
+                onClick={this.state.getAllInterestedPosts}
+              >
+                See More
+              </h6>
             </Link>
           </div>
           {this.state.profile.posts.map(post => {

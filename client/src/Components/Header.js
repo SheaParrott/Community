@@ -8,7 +8,7 @@ class Header extends Component {
         <header>
           <p className="AppName">Community</p>
           <Link to="/profile">
-            <i className="fab fa-connectdevelop" />
+            <i className="fab fa-connectdevelop header" />
           </Link>
           <Link to="/Notifications">
             <i className="fas fa-bell" />
