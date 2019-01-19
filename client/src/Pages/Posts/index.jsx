@@ -36,39 +36,40 @@ class Posts extends Component {
   }
 
   render() {
-    const posts =
-      this.props.match.params.kind === 'interested'
-        ? this.state.profile.interested_posts
-        : this.state.profile.recommended_posts
     {
       if (!this.state.profile) {
         return this.renderLoading()
+      } else {
+        const posts =
+          this.props.match.params.kind === 'interested'
+            ? this.state.profile.interested_posts
+            : this.state.profile.recommended_posts
+        return (
+          <div className="columnCentering">
+            <Header />
+            <div className="marginFromHeader">
+              {posts.map((post, index) => {
+                return (
+                  <Post
+                    key={index}
+                    id={post.id}
+                    current_profile_author={post.current_profile_author}
+                    comment_count={post.comment_count}
+                    profile_id={post.author_id}
+                    profileName={post.name}
+                    profileImage={post.profile_image}
+                    postTitle={post.title}
+                    postImage={post.image}
+                    postBody={post.body}
+                    timestamp={post.timestamp}
+                  />
+                )
+              })}
+            </div>
+          </div>
+        )
       }
     }
-    return (
-      <div className="columnCentering">
-        <Header />
-        <div className="marginFromHeader">
-          {posts.map((post, index) => {
-            return (
-              <Post
-                key={index}
-                id={post.id}
-                current_profile_author={post.current_profile_author}
-                comment_count={post.comment_count}
-                profile_id={post.author_id}
-                profileName={post.name}
-                profileImage={post.profile_image}
-                postTitle={post.title}
-                postImage={post.image}
-                postBody={post.body}
-                timestamp={post.timestamp}
-              />
-            )
-          })}
-        </div>
-      </div>
-    )
   }
 }
 

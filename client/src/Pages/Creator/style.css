@@ -1,8 +1,20 @@
 /* creator page */
+div.header {
+  height: 100px;
+  margin: 0;
+}
 h1.creator {
-  font-size: 2rem;
-  margin: 0 0 10px 0;
-  padding-top: 10px;
+  font-family: 'community', cursive;
+  font-weight: 500;
+  letter-spacing: 0.9px;
+  font-size: 3rem;
+  margin: 0;
+  padding: 5px 0 10px 0;
+  background: linear-gradient(#450868, #6e3490d5);
+  color: #ffffffec;
+  /* background-color: #a1a1a127;
+  color: #50087a; */
+  text-shadow: 2px 2px 3px #3a3939, 0 0 4px #000000;
 }
 img.creator {
   width: 160px;
@@ -13,12 +25,6 @@ p.creatorInfo {
 img.resume {
   border-radius: 20%;
   width: 160px;
-}
-div.row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
 }
 div.col {
   display: flex;

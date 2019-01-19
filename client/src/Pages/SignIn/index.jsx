@@ -16,18 +16,18 @@ class SignIn extends Component {
         </div>
         <section className="signInMission">
           <div className="signInMissionStatements">
-            <i className="fas fa-hands-helping" />
-            <p className="signInMissionStatements">HELP</p>
+            <i className="fas fa-hands-helping primary-text" />
+            <p className="signInMissionStatements primary-text">HELP</p>
           </div>
-          <i className="fas fa-arrow-right" />
+          <i className="fas fa-arrow-right primary-text" />
           <div className="signInMissionStatements">
-            <i className="fas fa-lightbulb" />
-            <p className="signInMissionStatements">INSPIRE</p>
+            <i className="fas fa-lightbulb primary-text" />
+            <p className="signInMissionStatements primary-text">INSPIRE</p>
           </div>
-          <i className="fas fa-arrow-right" />
+          <i className="fas fa-arrow-right primary-text" />
           <div className="signInMissionStatementsRight">
-            <i className="fab fa-connectdevelop" />
-            <p className="signInMissionStatementsRight">CONNECT</p>
+            <i className="fab fa-connectdevelop primary-text" />
+            <p className="signInMissionStatementsRight primary-text">CONNECT</p>
           </div>
         </section>
         <section className="mission columnCentering">

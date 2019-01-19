@@ -8,12 +8,14 @@ class Creator extends Component {
   render() {
     return (
       <div>
-        <div className="row">
-          <i
-            className="fas fa-arrow-left text-secondary"
-            onClick={() => history.go(-1)}
-          />
+        <div class="header">
           <h1 className="creator">Shea Parrott</h1>
+          <h4
+            className="text-secondary boxShadow"
+            onClick={() => history.go(-1)}
+          >
+            Back
+          </h4>
         </div>
         <img className="creator boxShadow" src={CreatorImage} alt="Shea" />
         <div className="col">

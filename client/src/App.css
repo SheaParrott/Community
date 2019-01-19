@@ -12,6 +12,9 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.primary-text {
+  color: #000000a2;
+}
 .text-primary:hover {
   color: #450868;
 }
@@ -89,17 +92,18 @@ button:hover {
 }
 
 /* general styling  */
-h1.AppName,
-.creator {
+
+h1.AppName {
+  font-family: 'community', cursive;
   font-weight: 700;
   letter-spacing: 0.9px;
-  font-size: 3rem;
+  font-size: 5rem;
   margin: 0 0 20px 0;
-}
-.AppName {
-  font-family: 'community', cursive;
+  color: #450868;
+  text-shadow: 2px 2px 1px #838085;
 }
 p.AppName {
+  font-family: 'community', cursive;
   margin: 10px 0 0 -42px;
   font-size: 0.7rem;
 }
@@ -157,12 +161,12 @@ a {
   padding: 0;
 }
 .text-secondary:hover {
-  /* color: #349af0; */
   color: #a1a1a1;
-  /* text-shadow: 0 0 1px #6e3490d5; */
+  cursor: pointer;
 }
 .box-secondary:hover {
   box-shadow: 0 0 5px #a1a1a1;
+  cursor: pointer;
 }
 
 h4 {
@@ -215,13 +219,6 @@ div.loading {
     width: 450px;
   }
   /* general styling  */
-  h1.AppName,
-  .creator {
-    font-weight: 700;
-    letter-spacing: 0.9px;
-    font-size: 3rem;
-    margin: 0 0 20px 0;
-  }
   p.AppName {
     margin: 10px 0 0 -42px;
     font-size: 0.7rem;
