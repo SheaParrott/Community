@@ -4,19 +4,21 @@ import history from '../../history'
 import axios from 'axios'
 import Header from '../../Components/Header'
 import auth from '../../auth'
+import Loading from '../../Components/Loading'
 
 class UpdateProfile extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      tags: []
+      tags: [],
+      loading: true
     }
   }
 
   componentDidMount = () => {
     axios.get(`/api/tags`).then(response => {
-      this.setState({ tags: response.data.tags })
+      this.setState({ tags: response.data.tags, loading: false })
     })
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
@@ -38,7 +40,18 @@ class UpdateProfile extends Component {
     })
   }
 
+  renderLoading = () => {
+    return (
+      <div className="marginFromHeader">
+        <Loading />
+      </div>
+    )
+  }
+
   render() {
+    if (this.state.loading) {
+      return this.renderLoading()
+    }
     return (
       <div className="columnCentering">
         <Header />

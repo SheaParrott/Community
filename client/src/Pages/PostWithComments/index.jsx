@@ -8,6 +8,7 @@ import CurrentProfileHelper from '../../currentProfileHelper'
 import Post from '../../Components/Post/Post'
 import auth from '../../auth'
 import history from '../../history'
+import Loading from '../../Components/Loading'
 
 class PostWithComments extends Component {
   constructor(props) {
@@ -63,9 +64,18 @@ class PostWithComments extends Component {
       hideCommentLogoAndCount: false
     })
   }
+
+  renderLoading = () => {
+    return (
+      <div className="marginFromHeader">
+        <Loading />
+      </div>
+    )
+  }
+
   render() {
     if (!this.state.post) {
-      return <></>
+      return this.renderLoading()
     }
     return (
       <div className="columnCentering">

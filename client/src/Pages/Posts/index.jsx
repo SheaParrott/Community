@@ -12,11 +12,7 @@ class Posts extends Component {
     super(props)
 
     this.state = {
-      profile: {
-        interested_posts: [],
-        recommended_posts: []
-      },
-      loading: true
+      profile: false
     }
   }
 
@@ -24,7 +20,7 @@ class Posts extends Component {
     axios
       .get(`/api/profiles/${this.props.match.params.profile_id}`)
       .then(response => {
-        this.setState({ profile: response.data.profile, loading: false })
+        this.setState({ profile: response.data.profile })
       })
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
@@ -45,7 +41,7 @@ class Posts extends Component {
         ? this.state.profile.interested_posts
         : this.state.profile.recommended_posts
     {
-      if (this.state.loading) {
+      if (!this.state.profile) {
         return this.renderLoading()
       }
     }
