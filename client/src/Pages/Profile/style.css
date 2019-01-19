@@ -6,6 +6,7 @@ div.CoverImage {
 }
 main.ProfileBody {
   margin-top: -140px;
+  width: 100%;
 }
 img.ProfileCoverImage {
   border: 1px solid black;
@@ -18,6 +19,11 @@ img.ProfileImage {
   border: 1px solid black;
   box-shadow: 0 0 4px white;
 }
+/* img.centerImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
 div.nameBox {
   display: flex;
   justify-content: center;
@@ -35,9 +41,6 @@ div.name {
 }
 h4.aboutMe {
   padding: 5px 0 5px 0;
-}
-.fa-plus-circle {
-  font-size: 20px;
 }
 div.profileQuote {
   font-family: cursive;

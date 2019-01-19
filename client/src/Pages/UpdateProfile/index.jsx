@@ -5,6 +5,7 @@ import axios from 'axios'
 import Header from '../../Components/Header'
 import auth from '../../auth'
 import Loading from '../../Components/Loading'
+import imageOrDefault from '../../imageOrDefault'
 
 class UpdateProfile extends Component {
   constructor(props) {
@@ -12,13 +13,21 @@ class UpdateProfile extends Component {
 
     this.state = {
       tags: [],
-      loading: true
+      loading: true,
+      profileImage: null,
+      coverImage: null
     }
   }
 
   componentDidMount = () => {
     axios.get(`/api/tags`).then(response => {
-      this.setState({ tags: response.data.tags, loading: false })
+      this.setState({ tags: response.data.tags })
+    })
+    axios.get(`/api/profiles/current`).then(response => {
+      this.setState({
+        profile: response.data.profile,
+        loading: false
+      })
     })
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
@@ -48,6 +57,23 @@ class UpdateProfile extends Component {
     )
   }
 
+  handleCoverChange = event => {
+    if (!event.target.files[0]) {
+      return
+    }
+    this.setState({
+      coverImage: URL.createObjectURL(event.target.files[0])
+    })
+  }
+  handleProfileChange = event => {
+    if (!event.target.files[0]) {
+      return
+    }
+    this.setState({
+      profileImage: URL.createObjectURL(event.target.files[0])
+    })
+  }
+
   render() {
     if (this.state.loading) {
       return this.renderLoading()
@@ -61,11 +87,37 @@ class UpdateProfile extends Component {
               <div className="someMargin">
                 <h3 className="updateProfile">Update profile</h3>
                 <h4 className="someMargin">Cover Image</h4>
-                <input type="file" name="profile[cover_image]" />
+                <img
+                  className="createAPostImage boxShadow"
+                  src={
+                    this.state.coverImage
+                      ? this.state.coverImage
+                      : imageOrDefault(this.state.profile.cover_image)
+                  }
+                  alt="cover"
+                />
+                <input
+                  onChange={this.handleCoverChange}
+                  type="file"
+                  name="profile[cover_image]"
+                />
               </div>
-              <div className="someMargin">
+              <div className="someMargin columnCentering">
                 <h4 className="someMargin">Profile Image</h4>
-                <input type="file" name="profile[profile_image]" />
+                <img
+                  className="createAPostImage boxShadow"
+                  src={
+                    this.state.profileImage
+                      ? this.state.profileImage
+                      : imageOrDefault(this.state.profile.profile_image)
+                  }
+                  alt="cover"
+                />
+                <input
+                  onChange={this.handleProfileChange}
+                  type="file"
+                  name="profile[profile_image]"
+                />
               </div>
               <div className="someMargin">
                 <h4 className="someMargin">Quote</h4>

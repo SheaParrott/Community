@@ -1,4 +1,7 @@
 /* creator page */
+div.creatorPage {
+  width: 100%;
+}
 div.header {
   height: 100px;
   margin: 0;
@@ -8,6 +11,7 @@ h1.creator {
   font-weight: 500;
   letter-spacing: 0.9px;
   font-size: 3rem;
+  width: 100%;
   margin: 0;
   padding: 5px 0 10px 0;
   background: linear-gradient(#450868, #6e3490d5);
@@ -15,6 +19,10 @@ h1.creator {
   /* background-color: #a1a1a127;
   color: #50087a; */
   text-shadow: 2px 2px 3px #3a3939, 0 0 4px #000000;
+}
+h4.Font {
+  font-size: 1rem;
+  z-index: -1;
 }
 img.creator {
   width: 160px;
@@ -54,5 +62,60 @@ img.resume:hover {
   }
   .creatorPage {
     font-size: 70px;
+  }
+}
+
+@media (min-width: 760px) {
+  h1.creator {
+    /* font-size: 2rem; */
+    font-size: 3rem;
+  }
+  img.creator {
+    /* width: 160px; */
+    width: 300px;
+  }
+  div.largerViewCreator {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  h4.creatorInfo {
+    /* previously was p tags, now h4 */
+    font-size: 1.3rem;
+  }
+  div.col {
+    min-width: 200px;
+  }
+  img.resume {
+    /* width: 160px; */
+    width: 300px;
+  }
+  .creatorPage {
+    font-size: 70px;
+  }
+}
+
+@media (min-width: 999px) {
+  img.creator {
+    /* width: 160px; */
+    width: 250px;
+    margin-bottom: 30px;
+  }
+  img.resume {
+    /* width: 160px; */
+    width: 250px;
+  }
+  h4.creatorInfo {
+    /* previously was p tags, now h4 */
+    font-size: 1rem;
+  }
+  div.largerViewCreator {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
   }
 }

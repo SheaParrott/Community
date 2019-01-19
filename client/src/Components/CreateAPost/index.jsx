@@ -10,7 +10,8 @@ class CreateAPost extends Component {
 
     this.state = {
       tags: [],
-      errors: []
+      errors: [],
+      file: null
     }
   }
 
@@ -56,7 +57,7 @@ class CreateAPost extends Component {
                 </h4>
               )
             })}
-            <section>
+            <section className="columnCentering">
               <input
                 className="createAPost"
                 type="text"
@@ -64,12 +65,12 @@ class CreateAPost extends Component {
                 placeholder="Edit header text here"
               />
               <img
-                onClick={this.ImageInput}
                 className="createAPostImage boxShadow"
-                src={insertImage}
+                src={!this.state.file ? insertImage : this.state.file}
                 alt="request"
               />
               <input
+                onChange={this.handleChange}
                 className="createAPostImage"
                 type="file"
                 name="post[post_image]"

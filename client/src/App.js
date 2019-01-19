@@ -30,43 +30,50 @@ class App extends Component {
   render() {
     return (
       <Router history={history}>
-        <div className="App">
-          <Route path="/" exact component={SignIn} />
-          <Route path="/SignIn/" component={SignIn} />
+        <div className="background">
+          <div className="largestViewWidth">
+            <div className="App">
+              <Route path="/" exact component={SignIn} />
+              <Route path="/SignIn/" component={SignIn} />
 
-          <Route path="/login" render={() => auth.login()} />
-          <Route
-            path="/logout"
-            render={() => {
-              auth.logout()
+              <Route path="/login" render={() => auth.login()} />
+              <Route
+                path="/logout"
+                render={() => {
+                  auth.logout()
 
-              return <></>
-            }}
-          />
+                  return <></>
+                }}
+              />
 
-          <Route
-            path="/callback"
-            render={() => {
-              auth.handleAuthentication(() => {
-                axios.defaults.headers.common = {
-                  Authorization: auth.authorizationHeader()
-                }
-              })
+              <Route
+                path="/callback"
+                render={() => {
+                  auth.handleAuthentication(() => {
+                    axios.defaults.headers.common = {
+                      Authorization: auth.authorizationHeader()
+                    }
+                  })
 
-              return <></>
-            }}
-          />
-          <Route path="/Notifications/" component={Notifications} />
-          <Route exact path="/Profile" component={Profile} />
-          <Route exact path="/Profile/:id" component={Profile} />
-          <Route path="/UpdateProfile/:id" component={UpdateProfile} />
-          <Route path="/Profile/:profile_id/posts/:kind" component={Posts} />
-          <Route
-            path="/PostWithComments/:post_id"
-            component={PostWithComments}
-          />
-          <Route path="/Creator/" component={Creator} />
-          <Footer />
+                  return <></>
+                }}
+              />
+              <Route path="/Notifications/" component={Notifications} />
+              <Route exact path="/Profile" component={Profile} />
+              <Route exact path="/Profile/:id" component={Profile} />
+              <Route path="/UpdateProfile/:id" component={UpdateProfile} />
+              <Route
+                path="/Profile/:profile_id/posts/:kind"
+                component={Posts}
+              />
+              <Route
+                path="/PostWithComments/:post_id"
+                component={PostWithComments}
+              />
+              <Route path="/Creator/" component={Creator} />
+              <Footer />
+            </div>
+          </div>
         </div>
       </Router>
     )
@@ -74,61 +81,3 @@ class App extends Component {
 }
 
 export default App
-// ~COMMUNITY APP~
-// expand your world and build community
-// help & build eachother up app
-// inspirational quotes
-// good vibes
-
-// sign in page
-//
-//
-
-// in profile
-// picture
-// hobbies
-// interests
-// skills
-// struggles
-// - inspirational quotes to be added here
-//    - strive past struggles and build yourself and others
-// top 3 of what may interest you
-//predefine all the categories - gavins suggestion (:
-
-// request box
-// - hash search option
-// - picture, (help, interested in getting into, group meet)
-//   - include hash tag on requests
-
-// new feed option
-// - what friends are up to
-// - things that are related to your profile info
-
-// Things missing:
-// [x] create a post component
-// [x] add to your request to join community option
-// [x] see more in my community
-//     - make a my community page
-// [x] what i want to do, what i can do, what need help doing
-// [] add in default inspirational quotes and inspirational quotes section
-// [x] page for updating profile page
-//  - picture
-//  - strengths
-//  - about me
-//  - struggles
-
-// to do:
-// [x] add react router
-// [x] add axios
-// [] learn and add in accordian
-// [] make Notification bell light up when new Notifications are present
-//    - make notifications page or drop down menu aka accordian
-
-// accordian -- drop down menus
-// SCSS
-// bulma or bootstrap
-//  - templates for pluguins
-
-//  to do next
-//  - make folders for pages
-//  - add in react router

@@ -1,25 +1,18 @@
 .App {
   text-align: center;
-
-  /* body font */
   font-family: 'Montserrat', sans-serif;
-
-  /* font options */
-  /* font-weight: 700; */
-  /* letter-spacing: 0.5px; */
-
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
+  width: 100%;
+  box-shadow: 0 0 5px black;
 }
 .primary-text {
   color: #000000a2;
 }
 .text-primary:hover {
   color: #450868;
-}
-.bg-primary {
-  background-color: #450868;
 }
 /* header/name fonts */
 h1,
@@ -104,15 +97,20 @@ h1.AppName {
 }
 p.AppName {
   font-family: 'community', cursive;
-  margin: 10px 0 0 -42px;
-  font-size: 0.7rem;
+  margin: 0;
+  padding: 0;
+  font-size: 1.1rem;
+  width: 85px;
 }
+
 header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
   box-shadow: 0 0 5px black;
   padding: 5px 0 5px 0;
   font-size: 25px;
+  width: 100vw;
   position: fixed;
   top: 0;
   right: 0;
@@ -123,6 +121,7 @@ header {
 }
 .fa-connectdevelop.header,
 .fa-bell {
+  width: 85px;
   color: white;
 }
 .fa-connectdevelop.header:hover,
@@ -148,7 +147,10 @@ footer {
   font-size: 0.7rem;
   opacity: 0.7;
   margin-top: 4px;
-  width: 100%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100vw;
   z-index: 1;
   background: linear-gradient(#35094ed5, #28043dbb);
   color: white;
@@ -202,9 +204,12 @@ div.loading {
 /* ipad */
 
 @media (min-width: 760px) {
-  h5 {
-    margin: 0;
-    padding: 5px;
+  p.AppName {
+    width: 250px;
+  }
+  .fa-connectdevelop.header,
+  .fa-bell {
+    width: 250px;
   }
   .marginFromHeader {
     margin-top: 45px;
@@ -218,55 +223,18 @@ div.loading {
   .widthbig {
     width: 450px;
   }
-  /* general styling  */
-  p.AppName {
-    margin: 10px 0 0 -42px;
-    font-size: 0.7rem;
-  }
-  header {
+}
+@media (min-width: 1000px) {
+  div.largestViewWidth {
+    width: 80vw;
+    margin: 0 10vw 0 10vw;
     display: flex;
-    justify-content: space-around;
-    box-shadow: 0 0 5px black;
-    padding: 5px 0 5px 0;
-    font-size: 25px;
-    background: linear-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0.85));
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1;
-  }
-  footer {
-    display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    box-shadow: 0 0 5px black;
-    padding: 5px 0 5px 0;
-    font-size: 0.7rem;
-    opacity: 0.7;
-    margin-top: 4px;
-    width: 100%;
-    z-index: 1;
+    background: white;
   }
-  a {
-    text-decoration: none;
-    margin: 6px;
-    color: black;
-    margin: 0;
-    padding: 0;
-  }
-  h4 {
-    margin: 0;
-  }
-  h6 {
-    margin: 3px 0 3px 0;
-  }
-  .fas,
-  .fab {
-    font-size: 2rem;
-  }
-  .red {
-    color: rgba(255, 0, 0, 0.74);
-    letter-spacing: 0.5px;
+  div.background {
+    /* background: linear-gradient(#450868, #6e3490d5); */
+    background-color: #6e349009;
   }
 }
