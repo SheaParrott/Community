@@ -36,10 +36,107 @@ p.signInMissionStatementsRight {
   letter-spacing: 0.5px;
 }
 section.mission {
-  margin-top: 25px;
+  margin: 25px 0 0 0;
+}
+p.missionStatement {
+  text-align: left;
+}
+.widthSmall {
+  width: 275px;
+}
+
+@media (min-width: 360px) and (min-height: 650px) {
+  h1.AppName {
+    font-size: 4.5rem;
+    margin: 30px 0 30px 0;
+  }
+  section.signUp {
+    width: 280px;
+    margin: 15px 0 25px 0;
+  }
+  section.signInMission {
+    margin: 25px 0 25px 0;
+  }
+  div.signInMissionStatements {
+    width: 85px;
+  }
+  div.signInMissionStatementsRight {
+    width: 95px;
+  }
+  .widthSmall {
+    width: 290px;
+  }
+}
+
+@media (min-width: 360px) and (min-height: 800px) {
+  h1.AppName {
+    font-size: 5rem;
+    margin: 50px 0 50px 0;
+  }
+  section.signUp {
+    width: 280px;
+    margin: 20px 0 30px 0;
+  }
+  section.signInMission {
+    margin: 30px 0 30px 0;
+  }
+  div.signInMissionStatements {
+    width: 85px;
+  }
+  div.signInMissionStatementsRight {
+    width: 95px;
+  }
+  .widthSmall {
+    width: 290px;
+  }
+}
+
+@media (min-width: 410px) and (min-height: 720px) {
+  h1.AppName {
+    font-size: 5rem;
+    margin: 50px 0 50px 0;
+  }
+  section.signUp {
+    width: 300px;
+    margin: 15px 0 35px 0;
+  }
+  section.signInMission {
+    margin: 25px 0 25px 0;
+  }
+  div.signInMissionStatements {
+    width: 90px;
+  }
+  div.signInMissionStatementsRight {
+    width: 100px;
+  }
+  .widthSmall {
+    width: 300px;
+  }
+}
+
+@media (min-width: 760px) {
+  h1.AppName {
+    font-size: 6rem;
+    margin: 20px 0 20px 0;
+  }
+  section.signUp {
+    width: 310px;
+    margin: 60px 0 60px 0;
+  }
+  div.signInMissionStatements {
+    width: 100px;
+  }
+  div.signInMissionStatementsRight {
+    width: 110px;
+  }
+  section.mission {
+    margin-top: 40px;
+  }
+  .widthSmall {
+    width: 330px;
+  }
 }
 @media (min-width: 1000px) {
-  /* sign in page  */
   h1.AppName {
     font-size: 7rem;
     margin: 20px 0 20px 0;
@@ -53,5 +150,36 @@ section.mission {
   }
   div.signInMissionStatementsRight {
     width: 130px;
+  }
+  .widthSmall {
+    width: 360px;
+  }
+  p.missionStatement {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 1000px) and (min-height: 1350px) {
+  h1.AppName {
+    font-size: 7rem;
+    margin: 50px 0 50px 0;
+  }
+  section.signUp {
+    width: 350px;
+    margin: 100px 0 100px 0;
+  }
+  section.signInMission {
+    margin: 50px 0 50px 0;
+  }
+  div.signInMissionStatements {
+    width: 120px;
+  }
+  div.signInMissionStatementsRight {
+    width: 130px;
+  }
+  .widthSmall {
+    width: 360px;
+  }
+  p.missionStatement {
+    font-size: 1.3rem;
   }
 }

@@ -43,36 +43,14 @@ div.col {
 img.resume:hover {
   cursor: pointer;
 }
-@media (min-width: 760px) {
-  h1.creator {
-    /* font-size: 2rem; */
-    font-size: 3rem;
-  }
-  img.creator {
-    /* width: 160px; */
-    width: 300px;
-  }
-  h4.creatorInfo {
-    /* previously was p tags, now h4 */
-    font-size: 2rem;
-  }
-  img.resume {
-    /* width: 160px; */
-    width: 300px;
-  }
-  .creatorPage {
-    font-size: 70px;
-  }
-}
 
 @media (min-width: 760px) {
   h1.creator {
-    /* font-size: 2rem; */
-    font-size: 3rem;
+    font-size: 4rem;
   }
   img.creator {
-    /* width: 160px; */
-    width: 300px;
+    margin: 30px;
+    width: 275px;
   }
   div.largerViewCreator {
     width: 100%;
@@ -83,33 +61,31 @@ img.resume:hover {
     align-items: center;
   }
   h4.creatorInfo {
-    /* previously was p tags, now h4 */
     font-size: 1.3rem;
   }
   div.col {
     min-width: 200px;
   }
   img.resume {
-    /* width: 160px; */
-    width: 300px;
+    width: 275px;
   }
   .creatorPage {
-    font-size: 70px;
+    font-size: 60px;
   }
 }
 
 @media (min-width: 999px) {
+  h1.creator {
+    font-size: 5rem;
+  }
   img.creator {
-    /* width: 160px; */
     width: 250px;
-    margin-bottom: 30px;
+    margin: 50px;
   }
   img.resume {
-    /* width: 160px; */
     width: 250px;
   }
   h4.creatorInfo {
-    /* previously was p tags, now h4 */
     font-size: 1rem;
   }
   div.largerViewCreator {
@@ -117,5 +93,8 @@ img.resume:hover {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+  }
+  .creatorPage {
+    font-size: 50px;
   }
 }
