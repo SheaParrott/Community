@@ -1,5 +1,66 @@
 class Api::ProfilesController < ApplicationController
 
+  def interested_or_recommended
+    profile_id = params[:id]
+
+    profile = Profile.find(profile_id)
+
+    # onProfilePage={this.state.onProfilePage}
+
+    # show interested posts
+
+    interested_posts = profile.posts.map do |post|
+      {
+        id: post.id,
+        current_profile_author: post.author.id == current_profile.id,
+        title: post.title,
+        image: post.post_image.attached? && url_for(post.post_image),
+        body: post.body,
+        comment_count: post.comments.count,
+        timestamp: post.created_at, 
+        author_id: post.author.id, 
+        name: post.author.name, 
+        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image)
+      }
+    end
+
+    # current recommended posts
+    recommended_posts = profile.recommended_posts.map do |post|
+      {
+        id: post.id,
+        current_profile_author: post.author.id == current_profile.id,
+        title: post.title,
+        image: post.post_image.attached? && url_for(post.post_image),
+        body: post.body,
+        timestamp: post.created_at, 
+        author_id: post.author.id, 
+        name: post.author.name, 
+        comment_count: post.comments.count,
+        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image)
+      }
+    end
+
+    # show chosen profile tags
+    tags = profile.profile_taggings.map do |tagging|
+      {
+        id: tagging.tag.id, 
+        name: tagging.tag.name,
+        strength: tagging.strength 
+      }
+    end
+
+    # show render
+    render json: {
+      profile: {
+        interested_posts: interested_posts.to_set,
+        recommended_posts: recommended_posts.to_set,
+        tags: tags,
+        me: false, 
+      }
+    }
+  end
+
+
   def update
     params = profile_params
 
@@ -17,13 +78,15 @@ class Api::ProfilesController < ApplicationController
   end
 
   def current
-    
+    # puts "///////////////////////////////"
+    # p current_profile.profiles.id
+
     profile = current_profile
     # current authored posts
     posts = profile.authored_posts.map do |post|
       {
         id: post.id,
-        current_profile_author: if post.author.id == current_profile.id then true else false end,
+        current_profile_author: post.author.id == current_profile.id,
         title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,
@@ -36,7 +99,7 @@ class Api::ProfilesController < ApplicationController
     interested_posts = profile.posts.map do |post|
       {
         id: post.id,
-        current_profile_author: if post.author.id == current_profile.id then true else false end,
+        current_profile_author: post.author.id == current_profile.id,
         title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,
@@ -52,7 +115,7 @@ class Api::ProfilesController < ApplicationController
     recommended_posts = profile.recommended_posts.map do |post|
       {
         id: post.id,
-        current_profile_author: if post.author.id == current_profile.id then true else false end,
+        current_profile_author: post.author.id == current_profile.id,
         title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,
@@ -83,8 +146,8 @@ class Api::ProfilesController < ApplicationController
         profile_image: profile.profile_image.attached? && url_for(profile.profile_image),
         cover_image: profile.cover_image.attached? && url_for(profile.cover_image),
         posts: posts,
-        interested_posts: interested_posts,
-        recommended_posts: recommended_posts,
+        interested_posts: interested_posts.to_set,
+        recommended_posts: recommended_posts.to_set,
         tags: tags,
         me: true
       }
@@ -102,7 +165,7 @@ class Api::ProfilesController < ApplicationController
     posts = profile.authored_posts.map do |post|
       {
         id: post.id,
-        current_profile_author: if post.author.id == current_profile.id then true else false end,
+        current_profile_author: post.author.id == current_profile.id,
         title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,
@@ -116,7 +179,7 @@ class Api::ProfilesController < ApplicationController
     interested_posts = profile.posts.map do |post|
       {
         id: post.id,
-        current_profile_author: if post.author.id == current_profile.id then true else false end,
+        current_profile_author: post.author.id == current_profile.id,
         title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
         body: post.body,
@@ -165,10 +228,10 @@ class Api::ProfilesController < ApplicationController
         profile_image: profile.profile_image.attached? && url_for(profile.profile_image),
         cover_image: profile.cover_image.attached? && url_for(profile.cover_image),
         posts: posts,
-        interested_posts: interested_posts,
-        recommended_posts: recommended_posts,
+        interested_posts: interested_posts.to_set,
+        recommended_posts: recommended_posts.to_set,
         tags: tags,
-        me: false, 
+        me: false
       }
     }
   end

@@ -84,6 +84,8 @@ class PostWithComments extends Component {
           <Post
             hideCommentLogoAndCount={this.state.hideCommentLogoAndCount}
             id={this.props.match.params.post_id}
+            onProfilePage={false}
+            onPostsPage={false}
             current_profile_author={this.state.post.current_profile_author}
             profile_id={this.state.post.profile_id}
             profileName={this.state.post.profile_name}

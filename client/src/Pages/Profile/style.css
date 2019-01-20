@@ -113,6 +113,7 @@ div.ProfilePostsBox {
 div.ProfileRecommendedPost {
   display: flex;
   align-items: center;
+  text-align: left;
   box-shadow: 0 0 1px black;
   margin: 1px;
 }

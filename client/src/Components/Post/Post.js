@@ -34,9 +34,10 @@ class Post extends Component {
     axios.delete(`/api/posts/${this.props.id}`).then(response => {
       if (this.props.onProfilePage) {
         this.props.getProfile()
-      }
-      if (this.props.hideCommentLogoAndCount) {
+      } else if (this.props.hideCommentLogoAndCount) {
         history.go(-1)
+      } else if (this.props.onPostsPage) {
+        this.props.getPosts()
       }
     })
   }

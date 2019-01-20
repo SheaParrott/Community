@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "/api/profiles/current", to: "api/profiles#current"
   
   get "/api/profiles/:id", to: "api/profiles#show"
+  get "/api/profiles/:id/posts", to: "api/profiles#interested_or_recommended"
 
   put "api/profiles/update", to: "api/profiles#update"
   

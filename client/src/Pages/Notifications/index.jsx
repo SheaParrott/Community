@@ -19,20 +19,26 @@ class Notifications extends Component {
   }
 
   componentDidMount = () => {
-    axios.get('/api/comments').then(response => {
-      if (response.data.comments.length === 0) {
-        console.log('no data')
-        this.setState({
-          loading: true
-        })
-      } else {
-        console.log('data')
-        this.setState({
-          loading: true,
-          Notifications: response.data.comments
-        })
-      }
-    })
+    axios
+      .get('/api/comments', {
+        headers: {
+          Authorization: `Bearer ${auth.getIdToken()}`
+        }
+      })
+      .then(response => {
+        if (response.data.comments.length === 0) {
+          console.log('no data')
+          this.setState({
+            loading: true
+          })
+        } else {
+          console.log('data')
+          this.setState({
+            loading: true,
+            Notifications: response.data.comments
+          })
+        }
+      })
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
     }

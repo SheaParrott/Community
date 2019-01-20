@@ -10,7 +10,9 @@ class SignIn extends Component {
         <div>
           <section className="signUp columnCentering boxShadow">
             <Link to="/login">
-              <button onClick={this.signUp}>LOG IN / SIGN UP</button>
+              <button className="signin" onClick={this.signUp}>
+                LOG IN / SIGN UP
+              </button>
             </Link>
           </section>
         </div>

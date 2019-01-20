@@ -237,4 +237,16 @@ div.loading {
     /* background: linear-gradient(#450868, #6e3490d5); */
     background-color: #6e349009;
   }
+  button.signin {
+    font-size: 1.1rem;
+  }
+  button {
+    font-size: 0.8rem;
+  }
+  footer {
+    font-size: 0.9rem;
+  }
+  h4 {
+    font-size: 1.2rem;
+  }
 }

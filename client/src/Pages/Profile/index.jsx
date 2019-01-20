@@ -19,7 +19,7 @@ class Profile extends Component {
       profileBioSection: '',
       profile: null,
       showCreateAPost: false,
-      onProfilePage: false
+      onProfilePage: true
     }
   }
 
@@ -30,23 +30,23 @@ class Profile extends Component {
     this.getProfile()
   }
 
-  changeOnProfilePage = () => {
-    this.setState({
-      onProfilePage: false
-    })
-  }
-
   getProfile = () => {
     const url = this.props.match.params.id
       ? `/api/profiles/${this.props.match.params.id}`
       : `/api/profiles/current`
 
-    axios.get(url).then(response => {
-      this.setState({
-        profile: response.data.profile,
-        showCreateAPost: false
+    axios
+      .get(url, {
+        headers: {
+          Authorization: `Bearer ${auth.getIdToken()}`
+        }
       })
-    })
+      .then(response => {
+        this.setState({
+          profile: response.data.profile,
+          showCreateAPost: false
+        })
+      })
   }
   AttributeClickToChangeState = event => {
     this.setState({
@@ -101,10 +101,7 @@ class Profile extends Component {
       )
     } else {
       return (
-        <Link
-          onClick={this.changeOnProfilePage}
-          to={`/UpdateProfile/${this.state.profile.id}`}
-        >
+        <Link to={`/UpdateProfile/${this.state.profile.id}`}>
           <img
             className="ProfileImage currentProfileImage box-secondary"
             src={imageOrDefault(this.state.profile.profile_image)}
@@ -214,7 +211,6 @@ class Profile extends Component {
                 return (
                   <Link
                     className="text-secondary"
-                    onClick={this.changeOnProfilePage}
                     key={index}
                     to={`/PostWithComments/${post.id}`}
                   >
@@ -233,10 +229,7 @@ class Profile extends Component {
                   </Link>
                 )
               })}
-            <Link
-              onClick={this.changeOnProfilePage}
-              to={`/Profile/${this.state.profile.id}/posts/recommended`}
-            >
+            <Link to={`/Profile/${this.state.profile.id}/posts/recommended`}>
               <h6
                 className="text-secondary"
                 onClick={this.state.getAllInterestedPosts}
@@ -251,7 +244,6 @@ class Profile extends Component {
               return (
                 <Link
                   className="text-secondary"
-                  onClick={this.changeOnProfilePage}
                   key={post.id}
                   to={`/PostWithComments/${post.id}`}
                 >
@@ -270,10 +262,7 @@ class Profile extends Component {
                 </Link>
               )
             })}
-            <Link
-              onClick={this.changeOnProfilePage}
-              to={`/Profile/${this.state.profile.id}/posts/interested`}
-            >
+            <Link to={`/Profile/${this.state.profile.id}/posts/interested`}>
               <h6
                 className="text-secondary"
                 onClick={this.state.getAllInterestedPosts}
@@ -282,12 +271,14 @@ class Profile extends Component {
               </h6>
             </Link>
           </div>
-          {this.state.profile.posts.map(post => {
+          {this.state.profile.posts.map((post, index) => {
             return (
               <Post
-                key={post.id}
+                key={index}
                 id={post.id}
-                onProfilePage={this.state.onProfilePage}
+                hideCommentLogoAndCount={false}
+                onProfilePage={true}
+                onPostsPage={true}
                 getProfile={this.getProfile}
                 current_profile_author={post.current_profile_author}
                 profile_id={this.state.profile.id}

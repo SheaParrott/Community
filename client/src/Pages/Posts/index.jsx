@@ -4,29 +4,35 @@ import Post from '../../Components/Post/Post'
 import Header from '../../Components/Header'
 import axios from 'axios'
 import Loading from '../../Components/Loading'
-// import auth from '../../auth'
-// import history from '../../history'
+import auth from '../../auth'
+import history from '../../history'
 
 class Posts extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       profile: false
     }
   }
 
   componentDidMount = () => {
+    if (!auth.isAuthenticated()) {
+      history.replace('/SignIn')
+    } else {
+      this.getPosts()
+    }
+  }
+  getPosts = () => {
     axios
-      .get(`/api/profiles/${this.props.match.params.profile_id}`)
+      .get(`/api/profiles/${this.props.match.params.profile_id}/posts`, {
+        headers: {
+          Authorization: `Bearer ${auth.getIdToken()}`
+        }
+      })
       .then(response => {
         this.setState({ profile: response.data.profile })
       })
-    // if (!auth.isAuthenticated()) {
-    //   history.replace('/SignIn')
-    // }
   }
-
   renderLoading = () => {
     return (
       <div className="marginFromHeader">
@@ -51,8 +57,12 @@ class Posts extends Component {
               {posts.map((post, index) => {
                 return (
                   <Post
+                    hideCommentLogoAndCount={false}
                     key={index}
                     id={post.id}
+                    onProfilePage={false}
+                    onPostsPage={true}
+                    getPosts={this.getPosts}
                     current_profile_author={post.current_profile_author}
                     comment_count={post.comment_count}
                     profile_id={post.author_id}
@@ -74,3 +84,5 @@ class Posts extends Component {
 }
 
 export default Posts
+
+//

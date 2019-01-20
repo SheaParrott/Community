@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import insertImage from '../../assets/insert-image.png'
 import './style.css'
 import axios from 'axios'
+import auth from '../../auth'
 
 class CreateAPost extends Component {
   constructor(props) {
@@ -16,9 +17,15 @@ class CreateAPost extends Component {
   }
 
   componentDidMount = () => {
-    axios.get(`/api/tags`).then(response => {
-      this.setState({ tags: response.data.tags })
-    })
+    axios
+      .get(`/api/tags`, {
+        headers: {
+          Authorization: `Bearer ${auth.getIdToken()}`
+        }
+      })
+      .then(response => {
+        this.setState({ tags: response.data.tags })
+      })
   }
 
   createPost = event => {
