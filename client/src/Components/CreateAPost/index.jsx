@@ -48,6 +48,11 @@ class CreateAPost extends Component {
       }
     })
   }
+  handleChange = event => {
+    this.setState({
+      file: URL.createObjectURL(event.target.files[0])
+    })
+  }
   render() {
     return (
       <div
