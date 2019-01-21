@@ -74,14 +74,17 @@ class Post extends Component {
   renderCommentLogo = () => {
     if (!this.props.hideCommentLogoAndCount) {
       return (
-        <Link to={`/PostWithComments/${this.props.id}`}>
-          <i
-            onClick={this.CommentIDToBePassedToDataStore}
-            className={`far fa-comment  ${
-              this.props.hideCommentLogoAndCount ? 'hidden' : ''
-            }`}
-          />
-        </Link>
+        <div class="tooltip">
+          <Link to={`/PostWithComments/${this.props.id}`}>
+            <i
+              onClick={this.CommentIDToBePassedToDataStore}
+              className={`far fa-comment  ${
+                this.props.hideCommentLogoAndCount ? 'hidden' : ''
+              }`}
+            />
+          </Link>
+          <span class="tooltiptext">comment on post</span>
+        </div>
       )
     }
   }
@@ -157,6 +160,7 @@ class Post extends Component {
                   })}
                 </p>
               </div>
+
               <i
                 onClick={this.toggleMenu}
                 className={`fas fa-ellipsis-v ${this.profileClass()}`}
@@ -182,30 +186,47 @@ class Post extends Component {
               }`}
             >
               {this.renderCommentLogo()}
-              <i
-                onClick={
-                  this.props.onPostsPage
-                    ? this.removeFromInterestedPosts
-                    : this.addToInterestedPosts
-                }
-                className={`fas fa-magnet ${
-                  this.props.onPostsPage &&
-                  this.props.interested_or_recommended === 'interested'
-                    ? 'purple'
-                    : ''
-                }`}
-              />
+              {/* tooltip test */}
+              {/* <div class="tooltip">
+                Hover over me
+                <span class="tooltiptext">
+                  Add / remove from Interested Posts
+                </span>
+              </div> */}
+              {/* tooltip end */}
+              <div className="tooltip">
+                <i
+                  onClick={
+                    this.props.onPostsPage
+                      ? this.removeFromInterestedPosts
+                      : this.addToInterestedPosts
+                  }
+                  className={`fas fa-magnet ${
+                    this.props.onPostsPage &&
+                    this.props.interested_or_recommended === 'interested'
+                      ? 'purple'
+                      : ''
+                  }`}
+                />
+                <span className="tooltiptext">
+                  Add / remove from Interested Posts
+                </span>
+              </div>
             </div>
             <div className="requestBoxBottomBar">
-              <Link
-                onClick={this.CommentIDToBePassedToDataStore}
-                to={`/PostWithComments/${this.props.id}`}
-                className={`requestBoxBottomBarInfo text-secondary ${
-                  this.props.hideCommentLogoAndCount ? 'hidden' : ''
-                }`}
-              >
-                {this.props.comment_count} comments
-              </Link>
+              <div class="tooltip">
+                <Link
+                  onClick={this.CommentIDToBePassedToDataStore}
+                  to={`/PostWithComments/${this.props.id}`}
+                  className={`requestBoxBottomBarInfo text-secondary ${
+                    this.props.hideCommentLogoAndCount ? 'hidden' : ''
+                  }`}
+                >
+                  {this.props.comment_count} comments
+                </Link>
+
+                <span class="tooltiptext">comment on post</span>
+              </div>
             </div>
           </section>
         </section>

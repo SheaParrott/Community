@@ -1,5 +1,3 @@
-require 'open-uri'
-
 class Profile < ApplicationRecord
   has_many :authored_posts, class_name: "Post", foreign_key: :profile_id, dependent: :destroy
 
@@ -48,10 +46,13 @@ class Profile < ApplicationRecord
     Profile.find_or_create_by!(auth_sub: payload["sub"]) do |profile|
       Rails.logger.debug payload
 
-      profile.profile_image.attach(io: open(payload["picture"]),
-                                   filename: "profile.png")
+      begin
+        picture = Down.download(payload["picture"])
+        profile.profile_image.attach(io: picture, filename: picture.original_filename)
+      rescue Down::Error => exception
+        Rails.logger.info exception
+      end
 
-      # profile.avatar_url = payload["picture"]
       profile.name = payload["name"]
     end
   end
