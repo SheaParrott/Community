@@ -40,6 +40,13 @@ class UpdateProfile extends Component {
         })
     }
   }
+  renderLoading = () => {
+    return (
+      <div className="marginFromHeader">
+        <Loading />
+      </div>
+    )
+  }
 
   updateProfile = event => {
     event.preventDefault()
@@ -54,14 +61,6 @@ class UpdateProfile extends Component {
       form.reset()
       history.push('/Profile')
     })
-  }
-
-  renderLoading = () => {
-    return (
-      <div className="marginFromHeader">
-        <Loading />
-      </div>
-    )
   }
 
   handleCoverChange = event => {

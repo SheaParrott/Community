@@ -22,6 +22,13 @@ class Posts extends Component {
       this.getPosts()
     }
   }
+  renderLoading = () => {
+    return (
+      <div className="marginFromHeader">
+        <Loading />
+      </div>
+    )
+  }
   getPosts = () => {
     axios
       .get(`/api/profiles/${this.props.match.params.profile_id}/posts`, {
@@ -32,13 +39,6 @@ class Posts extends Component {
       .then(response => {
         this.setState({ profile: response.data.profile })
       })
-  }
-  renderLoading = () => {
-    return (
-      <div className="marginFromHeader">
-        <Loading />
-      </div>
-    )
   }
 
   render() {

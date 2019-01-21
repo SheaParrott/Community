@@ -25,17 +25,25 @@ class PostWithComments extends Component {
       history.replace('/SignIn')
     } else {
       this.fetchPost()
-      this.setState({
-        hideCommentLogoAndCount: true
-      })
     }
+  }
+  renderLoading = () => {
+    return (
+      <div className="marginFromHeader">
+        <Loading />
+      </div>
+    )
   }
 
   fetchPost = () => {
     axios
       .get(`/api/posts/${this.props.match.params.post_id}`)
       .then(response => {
-        this.setState({ post: response.data.post, errors: [] })
+        this.setState({
+          post: response.data.post,
+          errors: [],
+          hideCommentLogoAndCount: true
+        })
       })
   }
 
@@ -59,19 +67,6 @@ class PostWithComments extends Component {
         this.fetchPost()
       }
     })
-  }
-  hideCommentLogoAndCount = () => {
-    this.setState({
-      hideCommentLogoAndCount: false
-    })
-  }
-
-  renderLoading = () => {
-    return (
-      <div className="marginFromHeader">
-        <Loading />
-      </div>
-    )
   }
 
   render() {
@@ -102,7 +97,6 @@ class PostWithComments extends Component {
                 return (
                   <div key={comment.id} className="comment widthbig">
                     <Link
-                      onClick={this.hideCommentLogoAndCount}
                       to={CurrentProfileHelper(
                         comment.current_profile_author,
                         comment.author_id
@@ -116,7 +110,6 @@ class PostWithComments extends Component {
                     </Link>
                     <div>
                       <Link
-                        onClick={this.hideCommentLogoAndCount}
                         to={CurrentProfileHelper(
                           comment.current_profile_author,
                           comment.author_id

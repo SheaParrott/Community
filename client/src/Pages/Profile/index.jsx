@@ -30,6 +30,13 @@ class Profile extends Component {
       this.getProfile()
     }
   }
+  renderLoading = () => {
+    return (
+      <div className="marginFromHeader">
+        <Loading />
+      </div>
+    )
+  }
 
   getProfile = () => {
     const url = this.props.match.params.id
@@ -48,33 +55,6 @@ class Profile extends Component {
           showCreateAPost: false
         })
       })
-  }
-  AttributeClickToChangeState = event => {
-    this.setState({
-      profileBioSection: event.target.dataset.attribute
-    })
-  }
-
-  profileClass = () => {
-    return this.state.profile.me ? '' : 'hidden'
-  }
-
-  renderFillInBox = () => {
-    if (this.state.profileBioSection === 'TAGS') {
-      return (
-        <div>
-          {this.state.profile.tags.map((tag, index) => {
-            return (
-              <h4 key={index} className="aboutMe">
-                {tag.name}
-              </h4>
-            )
-          })}
-        </div>
-      )
-    } else {
-      return <h4 className="aboutMe">{this.state.profile.about_me}</h4>
-    }
   }
 
   renderProfileimage = () => {
@@ -98,12 +78,29 @@ class Profile extends Component {
       )
     }
   }
-  renderLoading = () => {
-    return (
-      <div className="marginFromHeader">
-        <Loading />
-      </div>
-    )
+
+  AttributeClickToChangeState = event => {
+    this.setState({
+      profileBioSection: event.target.dataset.attribute
+    })
+  }
+
+  renderFillInBox = () => {
+    if (this.state.profileBioSection === 'TAGS') {
+      return (
+        <div>
+          {this.state.profile.tags.map((tag, index) => {
+            return (
+              <h4 key={index} className="aboutMe">
+                {tag.name}
+              </h4>
+            )
+          })}
+        </div>
+      )
+    } else {
+      return <h4 className="aboutMe">{this.state.profile.about_me}</h4>
+    }
   }
 
   render() {
@@ -151,7 +148,7 @@ class Profile extends Component {
           <div className="profileBio boxShadow widthbig whiteBackground">
             {this.renderFillInBox()}
           </div>
-          <div className={this.profileClass()}>
+          <div className={`${this.state.profile.me ? '' : 'hidden'}`}>
             <div className="columnCentering">
               <div
                 className="profileCreateAPost whiteBackground widthbig boxShadow"
@@ -181,7 +178,7 @@ class Profile extends Component {
           </div>
           <div
             className={`ProfilePostsBox columnCentering boxShadow widthbig whiteBackground ${
-              !this.state.showCreateAPost ? '' : 'hidden'
+              this.state.profile.me ? '' : 'hidden'
             }`}
           >
             <h6>Recommended Posts:</h6>
