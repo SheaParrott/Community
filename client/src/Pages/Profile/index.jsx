@@ -102,6 +102,30 @@ class Profile extends Component {
       return <h4 className="aboutMe">{this.state.profile.about_me}</h4>
     }
   }
+  postsBox = posts => {
+    return posts.slice(0, 3).map((post, index) => {
+      return (
+        <Link
+          className="text-secondary"
+          key={index}
+          to={`/PostWithComments/${post.id}`}
+        >
+          <div
+            className="ProfileRecommendedPost width"
+            onClick={this.CommentIDToBePassedToDataStore}
+          >
+            <img
+              className="ProfileRequestBoxImage boxShadow"
+              src={imageOrDefault(post.image)}
+              alt="request"
+              onClick={this.CommentIDToBePassedToDataStore}
+            />
+            <h4>{post.title}</h4>
+          </div>
+        </Link>
+      )
+    })
+  }
 
   render() {
     if (!this.state.profile) {
@@ -182,30 +206,7 @@ class Profile extends Component {
             }`}
           >
             <h6>Recommended Posts:</h6>
-            {this.state.profile.recommended_posts
-              .slice(0, 3)
-              .map((post, index) => {
-                return (
-                  <Link
-                    className="text-secondary"
-                    key={index}
-                    to={`/PostWithComments/${post.id}`}
-                  >
-                    <div
-                      className="ProfileRecommendedPost width"
-                      onClick={this.CommentIDToBePassedToDataStore}
-                    >
-                      <img
-                        className="ProfileRequestBoxImage boxShadow"
-                        src={imageOrDefault(post.image)}
-                        alt="request"
-                        onClick={this.CommentIDToBePassedToDataStore}
-                      />
-                      <h4>{post.title}</h4>
-                    </div>
-                  </Link>
-                )
-              })}
+            {this.postsBox(this.state.profile.recommended_posts)}
             <Link to={`/Profile/${this.state.profile.id}/posts/recommended`}>
               <h6
                 className="text-secondary"
@@ -215,30 +216,13 @@ class Profile extends Component {
               </h6>
             </Link>
           </div>
-          <div className="ProfilePostsBox columnCentering boxShadow widthbig whiteBackground">
+          <div
+            className={`ProfilePostsBox columnCentering boxShadow widthbig whiteBackground ${
+              this.state.profile.me ? '' : 'hidden'
+            }`}
+          >
             <h6>Interested Posts:</h6>
-            {this.state.profile.interested_posts.slice(0, 3).map(post => {
-              return (
-                <Link
-                  className="text-secondary"
-                  key={post.id}
-                  to={`/PostWithComments/${post.id}`}
-                >
-                  <div
-                    className="ProfileRecommendedPost width"
-                    onClick={this.CommentIDToBePassedToDataStore}
-                  >
-                    <img
-                      className="ProfileRequestBoxImage boxShadow"
-                      src={imageOrDefault(post.image)}
-                      alt="request"
-                      onClick={this.CommentIDToBePassedToDataStore}
-                    />
-                    <h4>{post.title}</h4>
-                  </div>
-                </Link>
-              )
-            })}
+            {this.postsBox(this.state.profile.interested_posts)}
             <Link to={`/Profile/${this.state.profile.id}/posts/interested`}>
               <h6
                 className="text-secondary"
