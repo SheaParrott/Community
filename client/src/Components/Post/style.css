@@ -83,6 +83,9 @@ img.commentProfileImage {
   border-radius: 50%;
   margin-left: 7px;
 }
+.purple {
+  color: #450868;
+}
 
 @media (min-width: 767px) {
   img.requestBoxProfileImage {

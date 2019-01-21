@@ -255,7 +255,7 @@ class Profile extends Component {
                 id={post.id}
                 hideCommentLogoAndCount={false}
                 onProfilePage={true}
-                onPostsPage={true}
+                onPostsPage={false}
                 getProfile={this.getProfile}
                 current_profile_author={post.current_profile_author}
                 profile_id={this.state.profile.id}

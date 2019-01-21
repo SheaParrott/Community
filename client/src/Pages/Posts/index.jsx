@@ -37,8 +37,12 @@ class Posts extends Component {
         }
       })
       .then(response => {
+        console.log(response.data)
         this.setState({ profile: response.data.profile })
       })
+  }
+  removeFromInterested = id => {
+    console.log(id)
   }
 
   render() {
@@ -57,6 +61,12 @@ class Posts extends Component {
               {posts.map((post, index) => {
                 return (
                   <Post
+                    removeFromInterested={this.removeFromInterested}
+                    interested_or_recommended={
+                      this.props.match.params.kind === 'interested'
+                        ? 'interested'
+                        : 'recommended'
+                    }
                     hideCommentLogoAndCount={false}
                     key={index}
                     id={post.id}

@@ -5,6 +5,7 @@ import imageOrDefault from '../../imageOrDefault'
 import axios from 'axios'
 import CurrentProfileHelper from '../../currentProfileHelper'
 import history from '../../history'
+import auth from '../../auth'
 
 class Post extends Component {
   constructor(props) {
@@ -102,6 +103,28 @@ class Post extends Component {
       })
   }
 
+  removeFromInterestedPosts = event => {
+    console.log(this.props.id)
+    if (this.props.interested_or_recommended === 'interested') {
+      axios
+        .delete(`/api/interested_posts/${this.props.id}`, {
+          headers: {
+            Authorization: `Bearer ${auth.getIdToken()}`
+          }
+        })
+        .then(response => {
+          this.props.getPosts()
+        })
+    } else {
+      this.addToInterestedPosts()
+    }
+  }
+
+  // removeFromInterested={this.removeFromInterested}
+  // interested_or_recommended={
+  //   posts === 'interested' ? 'interested' : 'recommended'
+  // }
+
   render() {
     return (
       <div className={`whiteBackground ${this.state.hideThisPost}`}>
@@ -167,8 +190,17 @@ class Post extends Component {
             >
               {this.renderCommentLogo()}
               <i
-                onClick={this.addToInterestedPosts}
-                className="fas fa-magnet"
+                onClick={
+                  this.props.onPostsPage
+                    ? this.removeFromInterestedPosts
+                    : this.addToInterestedPosts
+                }
+                className={`fas fa-magnet ${
+                  this.props.onPostsPage &&
+                  this.props.interested_or_recommended === 'interested'
+                    ? 'purple'
+                    : ''
+                }`}
               />
             </div>
             <div className="requestBoxBottomBar">

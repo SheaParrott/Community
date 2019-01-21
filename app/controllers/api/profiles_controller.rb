@@ -9,6 +9,13 @@ class Api::ProfilesController < ApplicationController
 
     # show interested posts
 
+    # t.bigint "post_id"
+    # t.bigint "profile_id"
+    # def find_this
+    # current_profile.posts.find(:id).where(profile_id: current_profile.id, post_id: post.id)
+    # end
+
+
     interested_posts = profile.posts.map do |post|
       {
         id: post.id,

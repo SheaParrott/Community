@@ -9,16 +9,16 @@ Rails.application.routes.draw do
   
   post "/api/posts", to: "api/posts#create"
   get "/api/posts/:id", to: "api/posts#show"
-  post "/api/interested_posts", to: "api/interested_posts#create"
   delete "/api/posts/:id", to: "api/posts#destroy"
+
+
+  post "/api/interested_posts", to: "api/interested_posts#create"
+  delete "/api/interested_posts/:id", to: "api/interested_posts#destroy"
 
   post "/api/comment/create", to: "api/comments#create"
 
   get "/api/tags", to: "api/tags#show"
 
-  get "/api/profiles/:id/recommendedposts", to: "api/profiles#recommendedPosts"
-
-  get "/api/profiles/:id/interestedposts", to: "api/profiles#interestedPosts"
 
   get "/api/comments", to: "api/comments#index"
 end
