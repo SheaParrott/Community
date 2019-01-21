@@ -32,7 +32,8 @@ class Creator extends Component {
             <a
               className="text-secondary"
               href="https://github.com/SheaParrott"
-              rel="noopener"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <i className="fab fa-github creatorPage" />
               <h4 className="creatorInfo">github.com/SheaParrott</h4>
@@ -42,7 +43,8 @@ class Creator extends Component {
             <a
               className="text-secondary"
               href="https://www.linkedin.com/in/shea-parrott/"
-              rel="noopener"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <i className="fab fa-linkedin creatorPage" />
               <h4 className="creatorInfo">linkedin.com/in/shea-parrott/</h4>
@@ -52,7 +54,8 @@ class Creator extends Component {
             <a
               className="text-secondary"
               href="http://shea-portfolio.surge.sh/"
-              rel="noopener"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <i className="fas fa-book-open creatorPage" />
               <h4 className="creatorInfo">shea-portfolio.surge.sh/</h4>
@@ -61,7 +64,8 @@ class Creator extends Component {
           <div className="col text-secondary">
             <a
               className="serif text-secondary"
-              rel="noopener"
+              target="_blank"
+              rel="noopener noreferrer"
               href="https://docs.google.com/document/d/1Z1NtGepxXQ0KSNtZz0EUiudEEIBaKcgVpIWB3Awpvl0/edit?usp=sharing"
             >
               <i className="fas fa-file creatorPage" />
