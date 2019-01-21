@@ -147,19 +147,23 @@ class UpdateProfile extends Component {
             <section className="width columnCentering boxShadow tagsBox">
               <h4 className="someMargin">Strengths / Weaknesses</h4>
               <section className="tagsBox">
-                {this.state.tags.map(tag => {
-                  return (
-                    <h5 className="tag" key={tag.id}>
-                      <input
-                        type="checkbox"
-                        value={tag.id}
-                        name="profile[tag_ids][]"
-                        placeholder={tag.name}
-                      />
-                      <label>{tag.name}</label>
-                    </h5>
-                  )
-                })}
+                {this.state.tags
+                  .filter(removeAdmin => {
+                    return removeAdmin.name !== 'admin'
+                  })
+                  .map(tag => {
+                    return (
+                      <h5 className="tag" key={tag.id}>
+                        <input
+                          type="checkbox"
+                          value={tag.id}
+                          name="profile[tag_ids][]"
+                          placeholder={tag.name}
+                        />
+                        <label>{tag.name}</label>
+                      </h5>
+                    )
+                  })}
               </section>
             </section>
             <br />

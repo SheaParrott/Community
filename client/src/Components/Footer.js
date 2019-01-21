@@ -6,7 +6,7 @@ class Footer extends Component {
     return (
       <footer>
         <Link className="cursive white" to="/Creator">
-          Creator
+          Contact Me
         </Link>
         <Link className="cursive white" to="/logout">
           Log out

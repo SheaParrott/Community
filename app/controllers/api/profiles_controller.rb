@@ -40,6 +40,8 @@ class Api::ProfilesController < ApplicationController
       }
     end
 
+    recommended_posts = recommended_posts.select{ |post| post[:current_profile_author] == false}
+
     # show chosen profile tags
     tags = profile.profile_taggings.map do |tagging|
       {
@@ -48,6 +50,7 @@ class Api::ProfilesController < ApplicationController
         strength: tagging.strength 
       }
     end
+
 
     # show render
     render json: {
@@ -126,6 +129,8 @@ class Api::ProfilesController < ApplicationController
         profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
       }
     end
+
+    recommended_posts = recommended_posts.select{ |post| post[:current_profile_author] == false}
 
     # current chosen profile tags
     tags = profile.profile_taggings.map do |tagging|
@@ -208,6 +213,8 @@ class Api::ProfilesController < ApplicationController
         profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
       }
     end
+
+    recommended_posts = recommended_posts.select{ |post| post[:current_profile_author] == false}
 
     # show chosen profile tags
     tags = profile.profile_taggings.map do |tagging|

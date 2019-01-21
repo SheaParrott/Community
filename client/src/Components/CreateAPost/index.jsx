@@ -96,19 +96,23 @@ class CreateAPost extends Component {
               />
             </section>
             <section className="tagsBox widthbig boxShadow">
-              {this.state.tags.map(tag => {
-                return (
-                  <h5 className="tag" key={tag.id}>
-                    <input
-                      type="checkbox"
-                      value={tag.id}
-                      name="post[tag_ids][]"
-                      placeholder={tag.name}
-                    />
-                    <label>{tag.name}</label>
-                  </h5>
-                )
-              })}
+              {this.state.tags
+                .filter(removeAdmin => {
+                  return removeAdmin.name !== 'admin'
+                })
+                .map(tag => {
+                  return (
+                    <h5 className="tag" key={tag.id}>
+                      <input
+                        type="checkbox"
+                        value={tag.id}
+                        name="post[tag_ids][]"
+                        placeholder={tag.name}
+                      />
+                      <label>{tag.name}</label>
+                    </h5>
+                  )
+                })}
               <button className="postSubmit" type="submit">
                 Submit Post
               </button>

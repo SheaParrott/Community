@@ -15,7 +15,8 @@ end
 #    rails db:seed
 
 #tags
-admin = Tag.create!(name: "admin")
+# admin tag is good for first posts when creating an account. if kept, need to filter this tag out of options anytime we map through all tags
+admin = Tag.create!(name: "admin") 
 general = Tag.create!(name: "general")
 life = Tag.create!(name: "life")
 health = Tag.create!(name: "health")
@@ -127,39 +128,6 @@ Comment.create!(profile: shea, post: postOne, body: "imma baller")
 Comment.create!(profile: jason, post: postOne, body: "hey brotha i can help too")
 Comment.create!(profile: gavin, post: postOne, body: "thannnkkkksss")
 
-
-# to do list React
-# [x] post component - disply number of comments 
-# [] go through all pages and components - add @media to all
-# [] style update page better
-# [] add fontawesome logos to creator page and style better
-# [x] fix time stamp formatting - .toLocaleTimeString
-# [x] make where current_user cannot edit other users profile - backend data recieved already for this fix (me: t or f)
-# [x] reload page after delete, or redirrect if on postWithComments component
-# [x] add a post option - get form going
-# [x] fix links wrapper in links issue
-# [x] footer issue - needs to be positioned at the bottom always
-# [x] post component - when clicked add to my interested box
-# [x] Profile component - each struggle and strength needs to have a  tag tied to it
-# [x] profile component - community logo needs to go to users profile. could be done by passing the id
-# [x] profile component - create form page, update profile
-# [x] postwithcomments component - find a way to remove comment logo and display all comments without having to hard code most of the post html again. there is alot of repeated code here.
-# [x] createapost component - this will be a form page. could try changing things directy on page. notes there on idea of how. 
-# [x] createapost component - finish css and tie it to tags
-# [x] signin component - style again, add Oauth
-# [x] make a guard clause for when clicked on current profile post 
-
-# to do list Ruby
-# [x] set up standard comment on each profile that goes over the basics of a profile. 
+# to do list
 # [] come up with tags - Admin, Life, 
 # [] filter out the admin tag in backend - admin tag is purely for the posts created on profile create
-# [] should I? .. give every user the general tag so all general posts are shown
-# [] switch current user to be real current user and then deploy
-# [x] deploy 
-# [x] finish active storage setup and set up cloud image service
-# [x] add validations on create a post
-#   - have send and display errors when errors happen
-# [x] notifications - recieve last 10 comments on my posts
-# [x] delete post, button and id select id in place already
-
-
