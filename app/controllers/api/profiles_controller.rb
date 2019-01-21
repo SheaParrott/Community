@@ -5,47 +5,27 @@ class Api::ProfilesController < ApplicationController
 
     profile = Profile.find(profile_id)
 
-    # onProfilePage={this.state.onProfilePage}
-
-    # show interested posts
-
-    # t.bigint "post_id"
-    # t.bigint "profile_id"
-    # def find_this
-    # current_profile.posts.find(:id).where(profile_id: current_profile.id, post_id: post.id)
-    # end
-
-
-    interested_posts = profile.posts.map do |post|
-      {
-        id: post.id,
-        current_profile_author: post.author.id == current_profile.id,
-        title: post.title,
-        image: post.post_image.attached? && url_for(post.post_image),
-        body: post.body,
-        comment_count: post.comments.count,
-        timestamp: post.created_at, 
-        author_id: post.author.id, 
-        name: post.author.name, 
-        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image)
-      }
+    def get_posts (posts)
+      posts.map do |post|
+        {
+          id: post.id,
+          current_profile_author: post.author.id == current_profile.id,
+          title: post.title,
+          image: post.post_image.attached? && url_for(post.post_image),
+          body: post.body,
+          comment_count: post.comments.count,
+          timestamp: post.created_at, 
+          author_id: post.author.id, 
+          name: post.author.name, 
+          profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
+  
+        }
+      end
     end
 
-    # current recommended posts
-    recommended_posts = profile.recommended_posts.map do |post|
-      {
-        id: post.id,
-        current_profile_author: post.author.id == current_profile.id,
-        title: post.title,
-        image: post.post_image.attached? && url_for(post.post_image),
-        body: post.body,
-        timestamp: post.created_at, 
-        author_id: post.author.id, 
-        name: post.author.name, 
-        comment_count: post.comments.count,
-        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image)
-      }
-    end
+    interested_posts = get_posts(profile.posts)    
+
+    recommended_posts = get_posts(profile.recommended_posts) 
 
     recommended_posts = recommended_posts.select{ |post| post[:current_profile_author] == false}
 
@@ -88,9 +68,6 @@ class Api::ProfilesController < ApplicationController
   end
 
   def current
-    # puts "///////////////////////////////"
-    # p current_profile.profiles.id
-
     profile = current_profile
     # current authored posts
     posts = profile.authored_posts.map do |post|
@@ -105,37 +82,27 @@ class Api::ProfilesController < ApplicationController
       }
     end
 
-    # current interrested posts
-    interested_posts = profile.posts.map do |post|
-      {
-        id: post.id,
-        current_profile_author: post.author.id == current_profile.id,
-        title: post.title,
-        image: post.post_image.attached? && url_for(post.post_image),
-        body: post.body,
-        timestamp: post.created_at, 
-        author_id: post.author.id, 
-        name: post.author.name, 
-        comment_count: post.comments.count,
-        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
-      }
+    def get_posts (posts)
+      posts.map do |post|
+        {
+          id: post.id,
+          current_profile_author: post.author.id == current_profile.id,
+          title: post.title,
+          image: post.post_image.attached? && url_for(post.post_image),
+          body: post.body,
+          comment_count: post.comments.count,
+          timestamp: post.created_at, 
+          author_id: post.author.id, 
+          name: post.author.name, 
+          profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
+  
+        }
+      end
     end
 
-    # current recommended posts
-    recommended_posts = profile.recommended_posts.map do |post|
-      {
-        id: post.id,
-        current_profile_author: post.author.id == current_profile.id,
-        title: post.title,
-        image: post.post_image.attached? && url_for(post.post_image),
-        body: post.body,
-        timestamp: post.created_at, 
-        author_id: post.author.id, 
-        name: post.author.name, 
-        comment_count: post.comments.count,
-        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
-      }
-    end
+    interested_posts = get_posts(profile.posts)    
+
+    recommended_posts = get_posts(profile.recommended_posts) 
 
     recommended_posts = recommended_posts.select{ |post| post[:current_profile_author] == false}
 
@@ -186,39 +153,28 @@ class Api::ProfilesController < ApplicationController
       }
     end
 
-    # show authored posts
-    interested_posts = profile.posts.map do |post|
-      {
-        id: post.id,
-        current_profile_author: post.author.id == current_profile.id,
-        title: post.title,
-        image: post.post_image.attached? && url_for(post.post_image),
-        body: post.body,
-        comment_count: post.comments.count,
-        timestamp: post.created_at, 
-        author_id: post.author.id, 
-        name: post.author.name, 
-        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
 
-      }
+    def get_posts (posts)
+      posts.map do |post|
+        {
+          id: post.id,
+          current_profile_author: post.author.id == current_profile.id,
+          title: post.title,
+          image: post.post_image.attached? && url_for(post.post_image),
+          body: post.body,
+          comment_count: post.comments.count,
+          timestamp: post.created_at, 
+          author_id: post.author.id, 
+          name: post.author.name, 
+          profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
+  
+        }
+      end
     end
 
-    # current recommended posts
-    recommended_posts = profile.recommended_posts.map do |post|
-      {
-        id: post.id,
-        # is_author
-        current_profile_author: post.author.id == current_profile.id,
-        title: post.title,
-        image: post.post_image.attached? && url_for(post.post_image),
-        body: post.body,
-        timestamp: post.created_at, 
-        author_id: post.author.id, 
-        name: post.author.name, 
-        comment_count: post.comments.count,
-        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
-      }
-    end
+    interested_posts = get_posts(profile.posts)    
+
+    recommended_posts = get_posts(profile.recommended_posts) 
 
     recommended_posts = recommended_posts.select{ |post| post[:current_profile_author] == false}
 
