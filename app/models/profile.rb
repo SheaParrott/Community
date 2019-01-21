@@ -42,6 +42,11 @@ class Profile < ApplicationRecord
   
   end
 
+  def interested?(post)
+    # "posts" are the posts we are interested in
+    posts.include?(post)
+  end
+
   def self.from_auth_hash(payload)
     Profile.find_or_create_by!(auth_sub: payload["sub"]) do |profile|
       Rails.logger.debug payload

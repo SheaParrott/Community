@@ -41,7 +41,8 @@ def show
       profile_name: post.author.name, 
       profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
       comment_count: comments.size,
-      comments: comments
+      comments: comments,
+      interested: current_profile.interested?(post)
     }
   }
   end

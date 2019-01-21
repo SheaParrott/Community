@@ -14,8 +14,7 @@ class Post extends Component {
     this.state = {
       showMenu: false,
       otherShowMenu: false,
-      hideThisPost: '',
-      isAdded: ''
+      hideThisPost: ''
     }
   }
 
@@ -36,7 +35,7 @@ class Post extends Component {
     axios.delete(`/api/posts/${this.props.id}`).then(response => {
       if (this.props.onProfilePage) {
         this.props.getProfile()
-      } else if (this.props.hideCommentLogoAndCount) {
+      } else if (this.props.onPostWithCommentsPage) {
         history.go(-1)
       } else if (this.props.onPostsPage) {
         this.props.getPosts()
@@ -60,7 +59,7 @@ class Post extends Component {
     )
   }
   hidePost = () => {
-    if (this.props.hideCommentLogoAndCount) {
+    if (this.props.onPostWithCommentsPage) {
       history.go(-1)
     }
     this.setState({
@@ -72,14 +71,14 @@ class Post extends Component {
   }
 
   renderCommentLogo = () => {
-    if (!this.props.hideCommentLogoAndCount) {
+    if (!this.props.onPostWithCommentsPage) {
       return (
         <div class="tooltip">
           <Link to={`/PostWithComments/${this.props.id}`}>
             <i
               onClick={this.CommentIDToBePassedToDataStore}
               className={`far fa-comment  ${
-                this.props.hideCommentLogoAndCount ? 'hidden' : ''
+                this.props.onPostWithCommentsPage ? 'hidden' : ''
               }`}
             />
           </Link>
@@ -99,14 +98,18 @@ class Post extends Component {
         }
       })
       .then(response => {
-        this.setState({
-          isAdded: response.data.is_added
-        })
+        if (this.props.onPostsPage) {
+          this.props.getPosts()
+        } else if (this.props.onProfilePage) {
+          this.props.getProfile()
+        } else if (this.props.onPostWithCommentsPage) {
+          this.props.fetchPost()
+        }
       })
   }
 
   removeFromInterestedPosts = event => {
-    if (this.props.interested_or_recommended === 'interested') {
+    if (this.props.is_interested) {
       axios
         .delete(`/api/interested_posts/${this.props.id}`, {
           headers: {
@@ -114,7 +117,13 @@ class Post extends Component {
           }
         })
         .then(response => {
-          this.props.getPosts()
+          if (this.props.onPostsPage) {
+            this.props.getPosts()
+          } else if (this.props.onProfilePage) {
+            this.props.getProfile()
+          } else if (this.props.onPostWithCommentsPage) {
+            this.props.fetchPost()
+          }
         })
     } else {
       this.addToInterestedPosts()
@@ -172,7 +181,6 @@ class Post extends Component {
             </div>
             {this.renderDelete()}
             {this.renderAddToHidePostButton()}
-            <h4 className="secondary-text">{this.state.isAdded}</h4>
             <h4 className="requestBoxTitle">{this.props.postTitle}</h4>
             <img
               className="requestBoxImage"
@@ -182,7 +190,7 @@ class Post extends Component {
             <p>{this.props.postBody}</p>
             <div
               className={`requestBoxMiddleBar ${
-                this.props.hideCommentLogoAndCount ? '' : 'borderBottom'
+                this.props.onPostWithCommentsPage ? '' : 'borderBottom'
               }`}
             >
               {this.renderCommentLogo()}
@@ -196,16 +204,9 @@ class Post extends Component {
               {/* tooltip end */}
               <div className="tooltip">
                 <i
-                  onClick={
-                    this.props.onPostsPage
-                      ? this.removeFromInterestedPosts
-                      : this.addToInterestedPosts
-                  }
+                  onClick={this.removeFromInterestedPosts}
                   className={`fas fa-magnet ${
-                    this.props.onPostsPage &&
-                    this.props.interested_or_recommended === 'interested'
-                      ? 'purple'
-                      : ''
+                    this.props.is_interested ? 'purple' : ''
                   }`}
                 />
                 <span className="tooltiptext">
@@ -219,7 +220,7 @@ class Post extends Component {
                   onClick={this.CommentIDToBePassedToDataStore}
                   to={`/PostWithComments/${this.props.id}`}
                   className={`requestBoxBottomBarInfo text-secondary ${
-                    this.props.hideCommentLogoAndCount ? 'hidden' : ''
+                    this.props.onPostWithCommentsPage ? 'hidden' : ''
                   }`}
                 >
                   {this.props.comment_count} comments

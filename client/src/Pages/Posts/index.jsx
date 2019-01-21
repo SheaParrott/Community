@@ -38,55 +38,56 @@ class Posts extends Component {
         }
       })
       .then(response => {
+        console.log(response.data.profile)
         this.setState({ profile: response.data.profile })
       })
   }
 
   render() {
-    {
-      if (!this.state.profile) {
-        return this.renderLoading()
-      } else {
-        const posts =
-          this.props.match.params.kind === 'interested'
-            ? this.state.profile.interested_posts
-            : this.state.profile.recommended_posts
-        return (
-          <div className="columnCentering">
-            <Header />
-            <div className="marginFromHeader">
-              {posts.map((post, index) => {
-                return (
-                  <Post
-                    removeFromInterested={this.removeFromInterested}
-                    interested_or_recommended={
-                      this.props.match.params.kind === 'interested'
-                        ? 'interested'
-                        : 'recommended'
-                    }
-                    hideCommentLogoAndCount={false}
-                    key={index}
-                    id={post.id}
-                    onProfilePage={false}
-                    onPostsPage={true}
-                    getPosts={this.getPosts}
-                    current_profile_author={post.current_profile_author}
-                    comment_count={post.comment_count}
-                    profile_id={post.author_id}
-                    profileName={post.name}
-                    profileImage={post.profile_image}
-                    postTitle={post.title}
-                    postImage={post.image}
-                    postBody={post.body}
-                    timestamp={post.timestamp}
-                  />
-                )
-              })}
-            </div>
-          </div>
-        )
-      }
+    if (!this.state.profile) {
+      return this.renderLoading()
     }
+
+    const posts =
+      this.props.match.params.kind === 'interested'
+        ? this.state.profile.interested_posts
+        : this.state.profile.recommended_posts
+
+    return (
+      <div className="columnCentering">
+        <Header />
+        <div className="marginFromHeader">
+          {posts.map((post, index) => {
+            return (
+              <Post
+                removeFromInterested={this.removeFromInterested}
+                interested_or_recommended={
+                  this.props.match.params.kind === 'interested'
+                    ? 'interested'
+                    : 'recommended'
+                }
+                onPostWithCommentsPage={false}
+                key={index}
+                is_interested={post.interested}
+                id={post.id}
+                onProfilePage={false}
+                onPostsPage={true}
+                getPosts={this.getPosts}
+                current_profile_author={post.current_profile_author}
+                comment_count={post.comment_count}
+                profile_id={post.author_id}
+                profileName={post.name}
+                profileImage={post.profile_image}
+                postTitle={post.title}
+                postImage={post.image}
+                postBody={post.body}
+                timestamp={post.timestamp}
+              />
+            )
+          })}
+        </div>
+      </div>
+    )
   }
 }
 

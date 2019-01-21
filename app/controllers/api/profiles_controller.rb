@@ -18,7 +18,7 @@ class Api::ProfilesController < ApplicationController
           author_id: post.author.id, 
           name: post.author.name, 
           profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
-  
+          interested: current_profile.interested?(post),
         }
       end
     end
@@ -79,6 +79,7 @@ class Api::ProfilesController < ApplicationController
         body: post.body,
         comment_count: post.comments.count,
         timestamp: post.created_at,
+        interested: current_profile.interested?(post),
       }
     end
 
@@ -95,7 +96,7 @@ class Api::ProfilesController < ApplicationController
           author_id: post.author.id, 
           name: post.author.name, 
           profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
-  
+          interested: current_profile.interested?(post),
         }
       end
     end
@@ -127,7 +128,8 @@ class Api::ProfilesController < ApplicationController
         interested_posts: interested_posts.to_set,
         recommended_posts: recommended_posts.to_set,
         tags: tags,
-        me: true
+        me: true, 
+        
       }
     }
   end
@@ -150,6 +152,7 @@ class Api::ProfilesController < ApplicationController
         comment_count: post.comments.count,
         author_id: post.author.id,
         timestamp: post.created_at,
+        interested: current_profile.interested?(post),
       }
     end
 
@@ -167,7 +170,7 @@ class Api::ProfilesController < ApplicationController
           author_id: post.author.id, 
           name: post.author.name, 
           profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
-  
+          interested: current_profile.interested?(post),
         }
       end
     end

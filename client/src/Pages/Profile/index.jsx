@@ -234,11 +234,13 @@ class Profile extends Component {
             </Link>
           </div>
           {this.state.profile.posts.map((post, index) => {
+            console.log(post.interested)
             return (
               <Post
                 key={index}
+                is_interested={post.interested}
                 id={post.id}
-                hideCommentLogoAndCount={false}
+                onPostWithCommentsPage={false}
                 onProfilePage={true}
                 onPostsPage={false}
                 getProfile={this.getProfile}

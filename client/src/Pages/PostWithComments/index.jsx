@@ -16,7 +16,6 @@ class PostWithComments extends Component {
 
     this.state = {
       post: null,
-      hideCommentLogoAndCount: false,
       errors: []
     }
   }
@@ -42,8 +41,7 @@ class PostWithComments extends Component {
       .then(response => {
         this.setState({
           post: response.data.post,
-          errors: [],
-          hideCommentLogoAndCount: true
+          errors: []
         })
       })
   }
@@ -79,8 +77,10 @@ class PostWithComments extends Component {
         <Header />
         <div className="marginFromHeader">
           <Post
-            hideCommentLogoAndCount={this.state.hideCommentLogoAndCount}
+            is_interested={this.state.post.interested}
+            onPostWithCommentsPage={true}
             id={this.props.match.params.post_id}
+            fetchPost={this.fetchPost}
             onProfilePage={false}
             onPostsPage={false}
             current_profile_author={this.state.post.current_profile_author}
