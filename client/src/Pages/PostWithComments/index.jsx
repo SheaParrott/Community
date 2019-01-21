@@ -21,12 +21,13 @@ class PostWithComments extends Component {
     }
   }
   componentDidMount = () => {
-    this.fetchPost()
-    this.setState({
-      hideCommentLogoAndCount: true
-    })
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
+    } else {
+      this.fetchPost()
+      this.setState({
+        hideCommentLogoAndCount: true
+      })
     }
   }
 

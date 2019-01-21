@@ -170,6 +170,9 @@ a {
   color: #a1a1a1;
   cursor: pointer;
 }
+.secondary-text {
+  color: #a1a1a1;
+}
 .box-secondary:hover {
   box-shadow: 0 0 5px #a1a1a1;
   cursor: pointer;

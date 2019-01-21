@@ -20,23 +20,24 @@ class UpdateProfile extends Component {
   }
 
   componentDidMount = () => {
-    axios.get(`/api/tags`).then(response => {
-      this.setState({ tags: response.data.tags })
-    })
-    axios
-      .get(`/api/profiles/current`, {
-        headers: {
-          Authorization: `Bearer ${auth.getIdToken()}`
-        }
-      })
-      .then(response => {
-        this.setState({
-          profile: response.data.profile,
-          loading: false
-        })
-      })
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
+    } else {
+      axios.get(`/api/tags`).then(response => {
+        this.setState({ tags: response.data.tags })
+      })
+      axios
+        .get(`/api/profiles/current`, {
+          headers: {
+            Authorization: `Bearer ${auth.getIdToken()}`
+          }
+        })
+        .then(response => {
+          this.setState({
+            profile: response.data.profile,
+            loading: false
+          })
+        })
     }
   }
 

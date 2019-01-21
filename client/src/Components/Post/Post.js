@@ -13,7 +13,8 @@ class Post extends Component {
     this.state = {
       showMenu: false,
       otherShowMenu: false,
-      hideThisPost: ''
+      hideThisPost: '',
+      isAdded: ''
     }
   }
 
@@ -85,7 +86,6 @@ class Post extends Component {
   }
 
   addToInterestedPosts = event => {
-    console.log(parseInt(this.props.id))
     let post_id = parseInt(this.props.id)
     // params.require(:interested_post).permit(:post_id)
     axios
@@ -95,7 +95,10 @@ class Post extends Component {
         }
       })
       .then(response => {
-        console.log(response.data)
+        // console.log(response.data.is_added)
+        this.setState({
+          isAdded: response.data.is_added
+        })
       })
   }
 
@@ -149,6 +152,7 @@ class Post extends Component {
             </div>
             {this.renderDelete()}
             {this.renderAddToHidePostButton()}
+            <h4 className="secondary-text">{this.state.isAdded}</h4>
             <h4 className="requestBoxTitle">{this.props.postTitle}</h4>
             <img
               className="requestBoxImage"

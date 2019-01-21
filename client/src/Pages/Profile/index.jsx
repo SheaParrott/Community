@@ -26,8 +26,9 @@ class Profile extends Component {
   componentDidMount = () => {
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
+    } else {
+      this.getProfile()
     }
-    this.getProfile()
   }
 
   getProfile = () => {
@@ -179,8 +180,8 @@ class Profile extends Component {
             </div>
           </div>
           <div
-            className={`ProfilePostsBox columnCentering boxShadow widthbig whiteBackground${
-              this.state.profile.me ? '' : 'hidden'
+            className={`ProfilePostsBox columnCentering boxShadow widthbig whiteBackground ${
+              !this.state.showCreateAPost ? '' : 'hidden'
             }`}
           >
             <h6>Recommended Posts:</h6>

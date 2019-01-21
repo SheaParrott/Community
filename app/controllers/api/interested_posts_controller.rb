@@ -3,7 +3,9 @@ class Api::InterestedPostsController < ApplicationController
   def create
     interested_post = current_profile.interested_posts.create(interested_posts_params)
 
-    render json: interested_post
+    render json: {
+      is_added: "Added to Interested Posts"
+    }
   end
 
   private
