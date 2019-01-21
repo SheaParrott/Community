@@ -1,4 +1,4 @@
-import defaultImage from './assets/binaryRandomBlue.jpg'
+import defaultImage from './assets/defaultImage.jpg'
 
 const imageOrDefault = image => {
   return image || defaultImage
