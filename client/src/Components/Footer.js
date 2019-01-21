@@ -5,13 +5,13 @@ class Footer extends Component {
   render() {
     return (
       <footer>
-        <Link className="cursive white" to="/Creator">
-          Contact Me
+        <Link to="/Creator">
+          <p className="cursive white">Contact Me</p>
         </Link>
-        <Link className="cursive white" to="/logout">
-          Log out
+        <Link to="/logout">
+          <p className="cursive white"> Log out</p>
         </Link>
-        <p className="cursive">&copy; SheaParrott</p>
+        <p className="cursive whiteNoHover">&copy; SheaParrott</p>
       </footer>
     )
   }

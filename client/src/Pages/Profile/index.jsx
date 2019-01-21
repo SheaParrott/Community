@@ -69,13 +69,16 @@ class Profile extends Component {
       )
     } else {
       return (
-        <Link to={`/UpdateProfile/${this.state.profile.id}`}>
-          <img
-            className="ProfileImage currentProfileImage box-secondary"
-            src={imageOrDefault(this.state.profile.profile_image)}
-            alt="profile"
-          />
-        </Link>
+        <div className="tooltip">
+          <Link to={`/UpdateProfile/${this.state.profile.id}`}>
+            <img
+              className="ProfileImage currentProfileImage box-secondary"
+              src={imageOrDefault(this.state.profile.profile_image)}
+              alt="profile"
+            />
+          </Link>
+          <span className="tooltiptext">Update Profile</span>
+        </div>
       )
     }
   }
@@ -218,10 +221,11 @@ class Profile extends Component {
             </Link>
           </div>
           <div
-            className={`ProfilePostsBox columnCentering boxShadow widthbig whiteBackground ${
-              this.state.profile.me ? '' : 'hidden'
-            }`}
+            className={`ProfilePostsBox columnCentering boxShadow widthbig whiteBackground`}
           >
+            {/* ${
+              this.state.profile.me ? '' : 'hidden'
+            } */}
             <h6>Interested Posts:</h6>
             {this.postsBox(this.state.profile.interested_posts)}
             <Link to={`/Profile/${this.state.profile.id}/posts/interested`}>
@@ -234,7 +238,6 @@ class Profile extends Component {
             </Link>
           </div>
           {this.state.profile.posts.map((post, index) => {
-            console.log(post.interested)
             return (
               <Post
                 key={index}

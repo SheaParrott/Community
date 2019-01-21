@@ -121,23 +121,27 @@ header {
   left: 0;
   z-index: 1;
   background: linear-gradient(#450868, #6e3490d5);
-  color: white;
 }
-.fa-connectdevelop.header,
+.fa-home.header,
 .fa-bell {
   width: 85px;
-  color: white;
+  /* color: white; */
 }
-.fa-connectdevelop.header:hover,
+/* .fa-home.header:hover,
 .fa-bell:hover {
   color: white;
   text-shadow: 0 0 5px;
-}
+} */
 .white {
   color: white;
+  text-shadow: 0 0 10px black;
 }
-a.white:hover {
-  text-shadow: 0 0 5px white;
+.whiteNoHover {
+  color: white;
+  text-shadow: 0 0 10px black;
+}
+.white:hover {
+  text-shadow: 0 0 10px white;
 }
 p {
   margin: 6px;
@@ -148,7 +152,7 @@ footer {
   align-items: center;
   box-shadow: 0 0 5px black;
   padding: 5px 0 5px 0;
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   opacity: 0.7;
   margin-top: 4px;
   bottom: 0;
@@ -157,7 +161,6 @@ footer {
   width: 100vw;
   z-index: 1;
   background: linear-gradient(#35094ed5, #28043dbb);
-  color: white;
 }
 a {
   text-decoration: none;
@@ -171,6 +174,7 @@ a {
   cursor: pointer;
 }
 .secondary-text {
+  text-shadow: 0 0 1px #00000038;
   color: #a1a1a1;
 }
 .box-secondary:hover {
@@ -203,9 +207,6 @@ div.loading {
   align-items: center;
   height: 100vh;
 }
-/*  */
-
-/* special feature here */
 
 .tooltip {
   position: relative;
@@ -235,12 +236,40 @@ div.loading {
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
-  transition-delay: 0.8s;
+  transition-delay: 0.6s;
 }
 
-/* endddd */
+.tooltipBottom {
+  position: relative;
+  display: inline-block;
+}
 
-/*  */
+.tooltipBottom .tooltiptextBottom {
+  visibility: hidden;
+  width: 100px;
+  background-color: #a1a1a1bb;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-shadow: 0 0 5px #000000bb;
+  box-shadow: 0 0 5px #000000bb;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  transition: 0s;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltipBottom:hover .tooltiptextBottom {
+  visibility: visible;
+  transition-delay: 0.6s;
+}
 
 @media (min-width: 375px) {
   .width {

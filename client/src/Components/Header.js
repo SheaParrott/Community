@@ -4,15 +4,26 @@ import { Link } from 'react-router-dom'
 class Header extends Component {
   render() {
     return (
-      <header>
-        <p className="AppName">Community</p>
-        <Link to="/profile">
-          <i className="fab fa-connectdevelop header" />
-        </Link>
-        <Link to="/Notifications">
-          <i className="fas fa-bell" />
-        </Link>
-      </header>
+      <div>
+        <header>
+          <p className="AppName whiteNoHover">Community</p>
+
+          <div className="tooltipBottom">
+            <Link to="/profile">
+              {/* <i className="fab fa-connectdevelop header" /> */}
+              <i class="fas fa-home header white" />
+            </Link>
+            <span className="tooltiptextBottom">Home</span>
+          </div>
+
+          <div className="tooltipBottom">
+            <Link to="/Notifications">
+              <i className="fas fa-bell white" />
+            </Link>
+            <span className="tooltiptextBottom">Notifications</span>
+          </div>
+        </header>
+      </div>
     )
   }
 }

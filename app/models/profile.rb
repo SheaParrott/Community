@@ -30,13 +30,8 @@ class Profile < ApplicationRecord
   def make_default_posts
     admin = Tag.find_by(name: "admin")
     authored_posts.build(title: "Admin - Welcome to the Community!", body: "Here in the Community our goal is to provide a safe place to help one another and spread good vibes. This is a platform to seek out assistance, help others, build up the community, and maybe even pick up a new hobby", tags: [admin])
-    authored_posts.build(title: "Admin - Looking to make your profile your own?", body: "Click on you profile image for customization options. There you can update your profile image, cover image, quote, about me, and your tags", tags: [admin])
-    authored_posts.build(title: "Admin - Ready to explore and see what the Community has to offer?", body: "Click on your profile image and select some tags. This will start populating your recommended posts section on your profile.", tags: [admin])
+    authored_posts.build(title: "Admin - Looking to make your profile your own?", body: "Click on you profile image for customization options. There you can update your profile image, cover image, quote, about me, and your tags. Make sure to select some tags, this will enable the recommended posts feature.", tags: [admin])
     authored_posts.build(title: "Admin - See a post you would like to keep track of?", body: "Click the magnet icon, this will add that post to you interested posts section on your profile.", tags: [admin])
-    authored_posts.build(title: "Admin - Trying to find your the tags you have already chosen?", body: "Click in the STREGTHS / GROWING section at the top of you're profile. This is a complete list of tags you have currently chosen.", tags: [admin])
-    authored_posts.build(title: "Admin - Oops, did you create your post before you were finished with it?", body: "No problem, click on the menu bar located at the top right of the post. This will give you an opportunity to delete that posts and start again.", tags: [admin])
-    authored_posts.build(title: "Admin - Trying to stay connected?", body: "Click the notifications bell located on the top right of the header. This will take you to your notifications box.", tags: [admin])
-    authored_posts.build(title: "Admin - Trying to get back to your profile?", body: "Click the Community icon loacted in the middle of the header. This will take you back to your profile.", tags: [admin])
     authored_posts.build(title: "Admin - Have any questions about this platform or the creator?", body: "Click on the contact me link located at the bottom left of the footer. All inquiries are appreciated and welcome.", tags: [admin])
     authored_posts.build(title: "Admin - Nice, your ready!", body: "Go to take on the world, well the Community's world. Create a post, connect to other people through their posts and give them a comment. Have fun and spread good vibes!", tags: [admin])
   

@@ -73,7 +73,7 @@ class Post extends Component {
   renderCommentLogo = () => {
     if (!this.props.onPostWithCommentsPage) {
       return (
-        <div class="tooltip">
+        <div className="tooltip">
           <Link to={`/PostWithComments/${this.props.id}`}>
             <i
               onClick={this.CommentIDToBePassedToDataStore}
@@ -82,7 +82,7 @@ class Post extends Component {
               }`}
             />
           </Link>
-          <span class="tooltiptext">comment on post</span>
+          <span className="tooltiptext">Go to comments</span>
         </div>
       )
     }
@@ -131,6 +131,9 @@ class Post extends Component {
   }
 
   render() {
+    const value = !this.props.is_interested
+      ? 'Add to Interested Posts'
+      : 'remove from Interested Posts'
     return (
       <div className={`whiteBackground ${this.state.hideThisPost}`}>
         <section className="requestBoxCentering">
@@ -194,14 +197,6 @@ class Post extends Component {
               }`}
             >
               {this.renderCommentLogo()}
-              {/* tooltip test */}
-              {/* <div class="tooltip">
-                Hover over me
-                <span class="tooltiptext">
-                  Add / remove from Interested Posts
-                </span>
-              </div> */}
-              {/* tooltip end */}
               <div className="tooltip">
                 <i
                   onClick={this.removeFromInterestedPosts}
@@ -209,13 +204,11 @@ class Post extends Component {
                     this.props.is_interested ? 'purple' : ''
                   }`}
                 />
-                <span className="tooltiptext">
-                  Add / remove from Interested Posts
-                </span>
+                <span className="tooltiptext">{value}</span>
               </div>
             </div>
             <div className="requestBoxBottomBar">
-              <div class="tooltip">
+              <div className="tooltip">
                 <Link
                   onClick={this.CommentIDToBePassedToDataStore}
                   to={`/PostWithComments/${this.props.id}`}
@@ -226,7 +219,7 @@ class Post extends Component {
                   {this.props.comment_count} comments
                 </Link>
 
-                <span class="tooltiptext">comment on post</span>
+                <span className="tooltiptext">Go to comments</span>
               </div>
             </div>
           </section>

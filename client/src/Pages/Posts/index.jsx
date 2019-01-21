@@ -38,7 +38,6 @@ class Posts extends Component {
         }
       })
       .then(response => {
-        console.log(response.data.profile)
         this.setState({ profile: response.data.profile })
       })
   }
