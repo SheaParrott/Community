@@ -58,39 +58,21 @@ class Profile extends Component {
     return this.state.profile.me ? '' : 'hidden'
   }
 
-  fillInBox = () => {
-    let strengths = this.state.profile.tags.filter(s => {
-      return s.strength
-    })
-    let weakness = this.state.profile.tags.filter(w => {
-      return !w.strength
-    })
-
-    if (this.state.profileBioSection === '') {
-      return <h4 className="aboutMe">{this.state.profile.about_me}</h4>
-    }
-    if (this.state.profileBioSection === 'STRENGTHS') {
+  renderFillInBox = () => {
+    if (this.state.profileBioSection === 'TAGS') {
       return (
         <div>
-          {strengths.map(strength => {
-            return <h4 key={strength.id}>{strength.name}</h4>
-          })}
-        </div>
-      )
-    } else if (this.state.profileBioSection === 'ABOUT ME') {
-      return <h4 className="aboutMe">{this.state.profile.about_me}</h4>
-    } else if (this.state.profileBioSection === 'STRUGGLES') {
-      return (
-        <div>
-          {weakness.map((weakness, index) => {
+          {this.state.profile.tags.map((tag, index) => {
             return (
-              <h4 className="aboutMe" key={index}>
-                {weakness.name}
+              <h4 key={index} className="aboutMe">
+                {tag.name}
               </h4>
             )
           })}
         </div>
       )
+    } else {
+      return <h4 className="aboutMe">{this.state.profile.about_me}</h4>
     }
   }
 
@@ -159,14 +141,14 @@ class Profile extends Component {
             </h6>
             <h6
               onClick={this.AttributeClickToChangeState}
-              data-attribute="STRUGGLES"
+              data-attribute="TAGS"
               className="profileAttributesRight boxShadow"
             >
               STRENGTHS / GROWING
             </h6>
           </div>
           <div className="profileBio boxShadow widthbig whiteBackground">
-            {this.fillInBox()}
+            {this.renderFillInBox()}
           </div>
           <div className={this.profileClass()}>
             <div className="columnCentering">
