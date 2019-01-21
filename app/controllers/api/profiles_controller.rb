@@ -148,7 +148,6 @@ class Api::ProfilesController < ApplicationController
       }
     end
 
-    # current render
     render json: {
       profile: {
         id: profile.id,

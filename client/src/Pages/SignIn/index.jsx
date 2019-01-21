@@ -3,6 +3,9 @@ import './style.css'
 import { Link } from 'react-router-dom'
 
 class SignIn extends Component {
+  componentDidMount = () => {
+    window.scrollTo(0, 0)
+  }
   render() {
     return (
       <div className="columnCentering">

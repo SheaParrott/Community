@@ -64,8 +64,8 @@ class CreateAPost extends Component {
           <section className="createAPostCentering">
             {this.state.errors.map((error, index) => {
               return (
-                <h4 key={index} className="red">
-                  *{error}
+                <h4 key={index} className="secondary-text">
+                  {` * ${error}.`}
                 </h4>
               )
             })}

@@ -197,10 +197,6 @@ h6 {
   color: #a1a1a1;
   cursor: pointer;
 }
-.red {
-  color: rgba(255, 0, 0, 0.74);
-  letter-spacing: 0.5px;
-}
 div.loading {
   display: flex;
   justify-content: center;

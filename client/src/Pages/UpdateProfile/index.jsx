@@ -23,6 +23,7 @@ class UpdateProfile extends Component {
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
     } else {
+      window.scrollTo(0, 0)
       axios.get(`/api/tags`).then(response => {
         this.setState({ tags: response.data.tags })
       })

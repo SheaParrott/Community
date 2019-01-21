@@ -24,6 +24,7 @@ class PostWithComments extends Component {
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
     } else {
+      window.scrollTo(0, 0)
       this.fetchPost()
     }
   }
@@ -126,8 +127,8 @@ class PostWithComments extends Component {
               })}
               {this.state.errors.map((error, index) => {
                 return (
-                  <h5 className="red" key={index}>
-                    {error}
+                  <h5 className="secondary-text" key={index}>
+                    {` * ${error}`}
                   </h5>
                 )
               })}

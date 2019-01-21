@@ -1,6 +1,5 @@
 class Api::PostsController < ApplicationController
   
-  # post "/api/post/create" 
   def create 
     new_post = current_profile.authored_posts.create(post_params)
 
@@ -47,8 +46,6 @@ def show
   }
   end
 
-
-  # /api/posts
   def destroy 
 
     Post.find(params[:id]).destroy

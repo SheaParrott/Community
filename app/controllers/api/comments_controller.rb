@@ -1,5 +1,4 @@
 class Api::CommentsController < ApplicationController
-  # /api/comment/create
   def create
     new_comment = current_profile.comments.create(comment_params)
 
@@ -13,10 +12,8 @@ class Api::CommentsController < ApplicationController
   end 
 
   def index
-    # How many do want? the amount requested or 10 
     count = params.fetch(:count) { 15 }
 
-    # Get that many from the post_comments
     comments = current_profile.post_comments.order("created_at DESC").limit(count)
 
     render json: {

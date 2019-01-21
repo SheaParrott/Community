@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import CreatorImage from '../../assets/IMG_0327.jpg'
+import CreatorImage from '../../assets/hmm.jpg'
 import './style.css'
 import history from '../../history'
 import resume from '../../assets/resume.png'
 
 class Creator extends Component {
+  componentDidMount = () => {
+    window.scrollTo(0, 0)
+  }
   render() {
     return (
       <div className="creatorPage">

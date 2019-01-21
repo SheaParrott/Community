@@ -27,6 +27,7 @@ class Profile extends Component {
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
     } else {
+      window.scrollTo(0, 0)
       this.getProfile()
     }
   }

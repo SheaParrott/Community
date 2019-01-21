@@ -22,6 +22,7 @@ class Notifications extends Component {
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
     } else {
+      window.scrollTo(0, 0)
       axios
         .get('/api/comments', {
           headers: {
@@ -30,12 +31,10 @@ class Notifications extends Component {
         })
         .then(response => {
           if (response.data.comments.length === 0) {
-            console.log('no data')
             this.setState({
               loading: true
             })
           } else {
-            console.log('data')
             this.setState({
               loading: true,
               Notifications: response.data.comments

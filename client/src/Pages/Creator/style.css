@@ -26,6 +26,7 @@ h4.Font {
 }
 img.creator {
   width: 160px;
+  border-radius: 50%;
 }
 p.creatorInfo {
   font-weight: 700;

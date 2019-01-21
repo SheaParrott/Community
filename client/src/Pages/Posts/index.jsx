@@ -19,6 +19,7 @@ class Posts extends Component {
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
     } else {
+      window.scrollTo(0, 0)
       this.getPosts()
     }
   }
@@ -37,12 +38,8 @@ class Posts extends Component {
         }
       })
       .then(response => {
-        console.log(response.data)
         this.setState({ profile: response.data.profile })
       })
-  }
-  removeFromInterested = id => {
-    console.log(id)
   }
 
   render() {

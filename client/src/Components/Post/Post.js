@@ -96,7 +96,6 @@ class Post extends Component {
         }
       })
       .then(response => {
-        // console.log(response.data.is_added)
         this.setState({
           isAdded: response.data.is_added
         })
@@ -104,7 +103,6 @@ class Post extends Component {
   }
 
   removeFromInterestedPosts = event => {
-    console.log(this.props.id)
     if (this.props.interested_or_recommended === 'interested') {
       axios
         .delete(`/api/interested_posts/${this.props.id}`, {
@@ -119,11 +117,6 @@ class Post extends Component {
       this.addToInterestedPosts()
     }
   }
-
-  // removeFromInterested={this.removeFromInterested}
-  // interested_or_recommended={
-  //   posts === 'interested' ? 'interested' : 'recommended'
-  // }
 
   render() {
     return (

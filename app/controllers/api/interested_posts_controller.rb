@@ -1,7 +1,6 @@
 class Api::InterestedPostsController < ApplicationController
 
   def create
-    # need a guard clause to not add a post if it is already there
     if current_profile.interested_posts.where(interested_posts_params).present?
       render json: {
         is_added: "You have already added this Post to interested posts"
