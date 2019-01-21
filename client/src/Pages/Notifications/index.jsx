@@ -59,7 +59,7 @@ class Notifications extends Component {
     return (
       <div>
         <Header />
-        <div className="marginFromHeader">
+        <div className="marginFromHeader whiteBackground">
           <div className="notificationsBox columnCentering">
             {this.state.Notifications.filter(
               isAuthor => !isAuthor.is_author

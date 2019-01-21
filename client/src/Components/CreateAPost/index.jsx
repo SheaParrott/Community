@@ -56,7 +56,7 @@ class CreateAPost extends Component {
   render() {
     return (
       <div
-        className={` widthbig boxShadow  ${
+        className={`widthbig boxShadow whiteBackground ${
           this.props.showForm ? '' : 'hidden'
         }`}
       >

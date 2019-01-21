@@ -1,8 +1,5 @@
-/* profile page */
 div.CoverImage {
-  width: 100;
   min-height: 181px;
-  margin-top: 45px;
 }
 main.ProfileBody {
   margin-top: -140px;
@@ -11,6 +8,7 @@ main.ProfileBody {
 img.ProfileCoverImage {
   border: 1px solid black;
   width: 100%;
+  min-height: 181px;
 }
 img.ProfileImage {
   max-width: 150px;
@@ -19,11 +17,6 @@ img.ProfileImage {
   border: 1px solid black;
   box-shadow: 0 0 4px white;
 }
-/* img.centerImage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 div.nameBox {
   display: flex;
   justify-content: center;
@@ -39,35 +32,44 @@ div.name {
   padding: 0 5px 0 5px;
   border-radius: 20px;
 }
-h4.aboutMe {
-  padding: 5px 0 5px 0;
-}
 div.profileQuote {
   font-family: cursive;
-  padding: 5px 0 5px 0;
+  font-size: 1.2rem;
+  padding: 15px 0 15px 0;
+  text-shadow: 2px 2px 1px rgb(204, 204, 204);
 }
 img.currentProfileImage:hover {
   cursor: pointer;
 }
 div.profileAttributesBar {
   display: flex;
-  justify-content: space-around;
-  margin-top: 33px;
+  justify-content: space-evenly;
 }
 h6.profileAttributesLeft {
-  border-radius: 50%;
-  padding: 15px 22px 15px 22px;
-  margin: 2px -20px 2px 30px;
-}
-h6.profileAttributesMiddle {
-  border-radius: 50%;
-  padding: 15px 22px 10px 22px;
-  margin: -30px 9px 32px 9px;
+  background: linear-gradient(#450868e5, #60168bc0);
+  text-shadow: 0 0 1px black;
+  color: white;
+  border-radius: 20px;
+  width: 135px;
+  padding: 8px;
+  margin-right: 3px;
 }
 h6.profileAttributesRight {
-  border-radius: 50%;
-  padding: 15px 22px 15px 22px;
-  margin: 2px 30px 2px -20px;
+  background: linear-gradient(#450868e5, #60168bc0);
+  text-shadow: 0 0 1px black;
+  color: white;
+  border-radius: 20px;
+  width: 135px;
+  padding: 8px;
+  margin-left: 3px;
+}
+h6.profileAttributesLeft:hover {
+  background: linear-gradient(#450868c9, #60168ba8);
+  text-shadow: 0 0 1px #000000e7;
+}
+h6.profileAttributesRight:hover {
+  background: linear-gradient(#450868c9, #60168ba8);
+  text-shadow: 0 0 1px #000000e7;
 }
 h6.profileAttributesLeft:hover,
 h6.profileAttributesMiddle:hover,
@@ -77,6 +79,10 @@ h6.profileAttributesRight:hover {
 
 div.profileBio {
   margin: 5px;
+  padding: 15px 0 15px 0;
+}
+h4.aboutMe {
+  font-size: 1.1rem;
 }
 div.profileCreateAPost {
   margin-bottom: 5px;
@@ -119,4 +125,39 @@ div.ProfileRecommendedPost {
 }
 .hidden {
   display: none;
+}
+
+@media (min-width: 375px) {
+  h6.profileAttributesLeft {
+    width: 160px;
+  }
+  h6.profileAttributesRight {
+    width: 160px;
+  }
+}
+@media (min-width: 411px) {
+  h6.profileAttributesLeft {
+    width: 180px;
+    padding: 8px;
+  }
+  h6.profileAttributesRight {
+    width: 180px;
+    padding: 10px;
+  }
+}
+@media (min-width: 760px) {
+  h6.profileAttributesLeft {
+    width: 200px;
+  }
+  h6.profileAttributesRight {
+    width: 200px;
+  }
+}
+@media (min-width: 1000px) {
+  h6.profileAttributesLeft {
+    width: 220px;
+  }
+  h6.profileAttributesRight {
+    width: 220px;
+  }
 }

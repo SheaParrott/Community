@@ -101,7 +101,7 @@ class Post extends Component {
 
   render() {
     return (
-      <div className={this.state.hideThisPost}>
+      <div className={`whiteBackground ${this.state.hideThisPost}`}>
         <section className="requestBoxCentering">
           <section className="widthbig boxShadow">
             <div className="requestBoxTopBar">

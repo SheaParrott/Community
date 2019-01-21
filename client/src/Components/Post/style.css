@@ -5,6 +5,7 @@ section.requestBoxCentering {
   margin: 3px 0 3px 0;
 }
 div.requestBoxTopBar {
+  padding: 3px;
   display: flex;
   align-items: center;
   justify-content: space-around;

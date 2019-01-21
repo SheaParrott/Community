@@ -67,23 +67,27 @@ class Profile extends Component {
     })
 
     if (this.state.profileBioSection === '') {
-      return <h5 className="aboutMe">{this.state.profile.about_me}</h5>
+      return <h4 className="aboutMe">{this.state.profile.about_me}</h4>
     }
     if (this.state.profileBioSection === 'STRENGTHS') {
       return (
         <div>
           {strengths.map(strength => {
-            return <h5 key={strength.id}>{strength.name}</h5>
+            return <h4 key={strength.id}>{strength.name}</h4>
           })}
         </div>
       )
     } else if (this.state.profileBioSection === 'ABOUT ME') {
-      return <h5 className="aboutMe">{this.state.profile.about_me}</h5>
+      return <h4 className="aboutMe">{this.state.profile.about_me}</h4>
     } else if (this.state.profileBioSection === 'STRUGGLES') {
       return (
         <div>
           {weakness.map((weakness, index) => {
-            return <h5 key={index}>{weakness.name}</h5>
+            return (
+              <h4 className="aboutMe" key={index}>
+                {weakness.name}
+              </h4>
+            )
           })}
         </div>
       )
@@ -126,7 +130,7 @@ class Profile extends Component {
     return (
       <div>
         <Header />
-        <div className="CoverImage">
+        <div className="marginFromHeader CoverImage columnCentering">
           <img
             className="ProfileCoverImage"
             src={imageOrDefault(this.state.profile.cover_image)}
@@ -137,7 +141,7 @@ class Profile extends Component {
           <div className="profileTop">
             {this.renderProfileimage()}
             <div className="nameBox">
-              <div className="name boxShadow">
+              <div className="name boxShadow whiteBackground">
                 <h2 className="name">{this.state.profile.name}</h2>
               </div>
             </div>
@@ -145,36 +149,29 @@ class Profile extends Component {
               {this.state.profile.quote}
             </div>
           </div>
-          <div className="profileAttributesBar">
-            <h6
-              onClick={this.AttributeClickToChangeState}
-              data-attribute="STRENGTHS"
-              className="profileAttributesLeft boxShadow box-secondary"
-            >
-              STRENGTHS
-            </h6>
+          <div className="profileAttributesBar widthbig">
             <h6
               onClick={this.AttributeClickToChangeState}
               data-attribute="ABOUT ME"
-              className="profileAttributesMiddle boxShadow box-secondary"
+              className="profileAttributesLeft boxShadow"
             >
               ABOUT ME
             </h6>
             <h6
               onClick={this.AttributeClickToChangeState}
               data-attribute="STRUGGLES"
-              className="profileAttributesRight boxShadow box-secondary"
+              className="profileAttributesRight boxShadow"
             >
-              GROWING
+              STRENGTHS / GROWING
             </h6>
           </div>
-          <div className="profileBio boxShadow widthbig">
+          <div className="profileBio boxShadow widthbig whiteBackground">
             {this.fillInBox()}
           </div>
           <div className={this.profileClass()}>
             <div className="columnCentering">
               <div
-                className="profileCreateAPost widthbig boxShadow"
+                className="profileCreateAPost whiteBackground widthbig boxShadow"
                 onClick={() => {
                   this.setState({
                     showCreateAPost: !this.state.showCreateAPost
@@ -200,7 +197,7 @@ class Profile extends Component {
             </div>
           </div>
           <div
-            className={`ProfilePostsBox columnCentering boxShadow widthbig ${
+            className={`ProfilePostsBox columnCentering boxShadow widthbig whiteBackground${
               this.state.profile.me ? '' : 'hidden'
             }`}
           >
@@ -238,7 +235,7 @@ class Profile extends Component {
               </h6>
             </Link>
           </div>
-          <div className="ProfilePostsBox columnCentering boxShadow widthbig">
+          <div className="ProfilePostsBox columnCentering boxShadow widthbig whiteBackground">
             <h6>Interested Posts:</h6>
             {this.state.profile.interested_posts.slice(0, 3).map(post => {
               return (

@@ -15,8 +15,8 @@ input.createAPost {
   margin: 7px 10px 10px 10px;
 }
 img.createAPostImage {
-  max-width: 205px;
-  max-height: 145px;
+  max-width: 215px;
+  max-height: 155px;
 }
 
 section.tagsBox {
@@ -25,9 +25,42 @@ section.tagsBox {
   margin: 2px;
 }
 h5.tag {
+  display: flex;
+  align-items: center;
   min-width: 20px;
   max-height: 15px;
   box-shadow: 0 0 2px black;
   margin: 5px;
   padding: 5px;
+  border-radius: 7px;
+}
+@media (min-width: 375px) {
+  img.createAPostImage {
+    max-width: 245px;
+    max-height: 185px;
+  }
+}
+@media (min-width: 411px) {
+  img.createAPostImage {
+    max-width: 265px;
+    max-height: 205px;
+  }
+}
+@media (min-width: 760px) {
+  img.createAPostImage {
+    max-width: 305px;
+    max-height: 245px;
+  }
+}
+@media (min-width: 1000px) {
+  img.createAPostImage {
+    max-width: 335px;
+    max-height: 275px;
+  }
+}
+@media (min-width: 1000px) and (min-height: 1350px) {
+  img.createAPostImage {
+    max-width: 385px;
+    max-height: 325px;
+  }
 }

@@ -95,7 +95,7 @@ class PostWithComments extends Component {
             postBody={this.state.post.body}
             timestamp={this.state.post.time}
           />
-          <section className="BoxCentering widthbig">
+          <section className="BoxCentering widthbig whiteBackground">
             <div className="columnCentering">
               {this.state.post.comments.map(comment => {
                 return (

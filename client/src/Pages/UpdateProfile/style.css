@@ -18,3 +18,19 @@ section.tagsBox {
   flex-wrap: wrap;
   margin: 2px;
 }
+
+@media (min-width: 760px) {
+  div.someMargin {
+    margin: 35px;
+  }
+}
+@media (min-width: 1000px) {
+  div.someMargin {
+    margin: 55px;
+  }
+}
+@media (min-width: 1000px) and (min-height: 1350px) {
+  div.someMargin {
+    margin: 65px;
+  }
+}

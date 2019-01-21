@@ -7,12 +7,16 @@
   justify-content: space-between;
   width: 100%;
   box-shadow: 0 0 5px black;
+  background-color: #6e349005;
 }
 .primary-text {
   color: #000000a2;
 }
 .text-primary:hover {
   color: #450868;
+}
+.whiteBackground {
+  background-color: white;
 }
 /* header/name fonts */
 h1,
@@ -72,7 +76,7 @@ button {
   padding: 4px 10px 4px 10px;
 }
 button:hover {
-  border: 1px solid #a1a1a1;
+  cursor: pointer;
 }
 
 @font-face {
@@ -201,7 +205,22 @@ div.loading {
   height: 100vh;
 }
 
-/* ipad */
+@media (min-width: 375px) {
+  .width {
+    width: 350px;
+  }
+  .widthbig {
+    width: 360px;
+  }
+}
+@media (min-width: 411px) {
+  .width {
+    width: 390px;
+  }
+  .widthbig {
+    width: 400px;
+  }
+}
 
 @media (min-width: 760px) {
   p.AppName {
@@ -210,9 +229,6 @@ div.loading {
   .fa-connectdevelop.header,
   .fa-bell {
     width: 250px;
-  }
-  .marginFromHeader {
-    margin-top: 45px;
   }
   .moreMarginFromHeader {
     margin-top: 50px;
@@ -224,6 +240,7 @@ div.loading {
     width: 450px;
   }
 }
+
 @media (min-width: 1000px) {
   div.largestViewWidth {
     width: 80vw;
@@ -234,8 +251,7 @@ div.loading {
     background: white;
   }
   div.background {
-    /* background: linear-gradient(#450868, #6e3490d5); */
-    background-color: #6e349009;
+    background-color: #6e349013;
   }
   button.signin {
     font-size: 1.1rem;

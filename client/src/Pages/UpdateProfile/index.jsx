@@ -90,8 +90,8 @@ class UpdateProfile extends Component {
         <form onSubmit={this.updateProfile}>
           <div className="moreMarginFromHeader columnCentering boxShadow widthbig">
             <div>
-              <div className="someMargin">
-                <h3 className="updateProfile">Update profile</h3>
+              <h3 className="updateProfile">Update profile</h3>
+              <div className="someMargin columnCentering">
                 <h4 className="someMargin">Cover Image</h4>
                 <img
                   className="createAPostImage boxShadow"
@@ -144,7 +144,7 @@ class UpdateProfile extends Component {
                 />
               </div>
             </div>
-            <section className="width columnCentering boxShadow">
+            <section className="width columnCentering boxShadow tagsBox">
               <h4 className="someMargin">Strengths / Weaknesses</h4>
               <section className="tagsBox">
                 {this.state.tags.map(tag => {
@@ -164,7 +164,7 @@ class UpdateProfile extends Component {
             </section>
             <br />
 
-            <button className="someMargin" type="submit">
+            <button className="someMargin width" type="submit">
               SUBMIT
             </button>
           </div>

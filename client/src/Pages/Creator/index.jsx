@@ -11,7 +11,7 @@ class Creator extends Component {
         <div className="header">
           <h1 className="creator boxShadow">Shea Parrott</h1>
           <h4
-            className="Font text-secondary boxShadow "
+            className="Font text-secondary boxShadow whiteBackground"
             onClick={() => history.go(-1)}
           >
             Back
