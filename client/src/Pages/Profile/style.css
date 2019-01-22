@@ -79,7 +79,8 @@ h6.profileAttributesRight:hover {
 
 div.profileBio {
   margin: 5px;
-  padding: 15px 0 15px 0;
+  padding: 15px;
+  width: 280px;
 }
 h4.aboutMe {
   font-size: 1.1rem;
@@ -126,6 +127,9 @@ div.ProfileRecommendedPost {
 .hidden {
   display: none;
 }
+.somePadding {
+  padding: 10px;
+}
 
 @media (min-width: 375px) {
   h6.profileAttributesLeft {
@@ -133,6 +137,9 @@ div.ProfileRecommendedPost {
   }
   h6.profileAttributesRight {
     width: 160px;
+  }
+  div.profileBio {
+    width: 330px;
   }
 }
 @media (min-width: 411px) {
@@ -144,6 +151,9 @@ div.ProfileRecommendedPost {
     width: 180px;
     padding: 10px;
   }
+  div.profileBio {
+    width: 370px;
+  }
 }
 @media (min-width: 760px) {
   h6.profileAttributesLeft {
@@ -152,6 +162,9 @@ div.ProfileRecommendedPost {
   h6.profileAttributesRight {
     width: 200px;
   }
+  div.profileBio {
+    width: 420px;
+  }
 }
 @media (min-width: 1000px) {
   h6.profileAttributesLeft {
@@ -159,5 +172,8 @@ div.ProfileRecommendedPost {
   }
   h6.profileAttributesRight {
     width: 220px;
+  }
+  div.profileBio {
+    width: 450px;
   }
 }

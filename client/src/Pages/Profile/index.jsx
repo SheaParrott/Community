@@ -110,7 +110,7 @@ class Profile extends Component {
     return posts.slice(0, 3).map((post, index) => {
       return (
         <Link
-          className="text-secondary"
+          className="text-secondary secondary-text"
           key={index}
           to={`/PostWithComments/${post.id}`}
         >
@@ -173,7 +173,7 @@ class Profile extends Component {
               STRENGTHS / GROWING
             </h6>
           </div>
-          <div className="profileBio boxShadow widthbig whiteBackground">
+          <div className="profileBio boxShadow  whiteBackground">
             {this.renderFillInBox()}
           </div>
           <div className={`${this.state.profile.me ? '' : 'hidden'}`}>
@@ -186,7 +186,7 @@ class Profile extends Component {
                   })
                 }}
               >
-                <h5>Create a post</h5>
+                <h4>Create a post</h4>
                 <i
                   className={`fas fa-caret-down lessTopMargin text-secondary ${
                     !this.state.showCreateAPost ? '' : 'hidden'
@@ -209,15 +209,15 @@ class Profile extends Component {
               this.state.profile.me ? '' : 'hidden'
             }`}
           >
-            <h6>Recommended Posts:</h6>
+            <h4 className="somePadding">Recommended Posts:</h4>
             {this.postsBox(this.state.profile.recommended_posts)}
             <Link to={`/Profile/${this.state.profile.id}/posts/recommended`}>
-              <h6
-                className="text-secondary"
+              <h5
+                className="text-secondary somePadding"
                 onClick={this.state.getAllInterestedPosts}
               >
                 See More
-              </h6>
+              </h5>
             </Link>
           </div>
           <div
@@ -226,15 +226,15 @@ class Profile extends Component {
             {/* ${
               this.state.profile.me ? '' : 'hidden'
             } */}
-            <h6>Interested Posts:</h6>
+            <h4 className="somePadding">Interested Posts:</h4>
             {this.postsBox(this.state.profile.interested_posts)}
             <Link to={`/Profile/${this.state.profile.id}/posts/interested`}>
-              <h6
-                className="text-secondary"
+              <h5
+                className="text-secondary somePadding"
                 onClick={this.state.getAllInterestedPosts}
               >
                 See More
-              </h6>
+              </h5>
             </Link>
           </div>
           {this.state.profile.posts.map((post, index) => {

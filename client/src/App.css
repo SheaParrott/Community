@@ -174,8 +174,8 @@ a {
   cursor: pointer;
 }
 .secondary-text {
-  text-shadow: 0 0 1px #00000038;
-  color: #a1a1a1;
+  /* text-shadow: 0 0 1px rgba(0, 0, 0, 0.219); */
+  color: #0000009c;
 }
 .box-secondary:hover {
   box-shadow: 0 0 5px #a1a1a1;
