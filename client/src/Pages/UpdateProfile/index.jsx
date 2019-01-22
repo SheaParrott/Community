@@ -55,7 +55,8 @@ class UpdateProfile extends Component {
     // event.stopPropagation()
 
     alert('Getting the form')
-    const form = event.target
+    const form = document.getElementById('profile-form')
+
     alert('Getting the form data')
     const formData = new FormData(form)
 
@@ -87,6 +88,7 @@ class UpdateProfile extends Component {
       coverImage: URL.createObjectURL(event.target.files[0])
     })
   }
+
   handleProfileChange = event => {
     if (!event.target.files[0]) {
       return
@@ -103,7 +105,7 @@ class UpdateProfile extends Component {
     return (
       <div className="columnCentering">
         <Header />
-        <form onSubmit={this.updateProfile}>
+        <form id="profile-form">
           <div className="moreMarginFromHeader columnCentering boxShadow widthbig">
             <div>
               <h3 className="updateProfile">Update profile</h3>
@@ -184,7 +186,7 @@ class UpdateProfile extends Component {
             </section>
             <br />
 
-            <button className="someMargin width" type="submit">
+            <button className="someMargin width" onClick={this.updateProfile}>
               SUBMIT
             </button>
           </div>
