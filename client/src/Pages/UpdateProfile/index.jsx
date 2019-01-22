@@ -64,11 +64,16 @@ class UpdateProfile extends Component {
     // }
 
     alert('axios')
-    axios.put('/api/profiles/update', formData).then(response => {
-      alert('Axios result')
-      form.reset()
-      history.push('/Profile')
-    })
+    axios
+      .put('/api/profiles/update', formData)
+      .then(response => {
+        alert('Axios result')
+        form.reset()
+        history.push('/Profile')
+      })
+      .catch(response => {
+        alert(response)
+      })
 
     alert('returning false')
     return false
