@@ -103,11 +103,13 @@ class PostWithComments extends Component {
                         comment.author_id
                       )}
                     >
-                      <img
-                        className="commentProfileImage box-secondary"
-                        src={imageOrDefault(comment.author_image)}
-                        alt="profile"
-                      />
+                      <div className="profileImageContainer">
+                        <img
+                          className="commentProfileImage box-secondary"
+                          src={imageOrDefault(comment.author_image)}
+                          alt="profile"
+                        />
+                      </div>
                     </Link>
                     <div>
                       <Link

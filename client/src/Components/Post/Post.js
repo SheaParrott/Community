@@ -129,6 +129,47 @@ class Post extends Component {
       this.addToInterestedPosts()
     }
   }
+  renderBottomPost = () => {
+    const value = !this.props.is_interested
+      ? 'Add to Interested Posts'
+      : 'remove from Interested Posts'
+    return (
+      <div>
+        <div
+          className={`requestBoxMiddleBar ${
+            this.props.onPostWithCommentsPage ? '' : 'borderBottom'
+          }`}
+        >
+          {this.renderCommentLogo()}
+          <div className="tooltip">
+            {/* <i class="fas fa-thumbs-up"></i>fas fa-magnet */}
+            <i
+              onClick={this.removeFromInterestedPosts}
+              className={`fas fa-thumbs-up ${
+                this.props.is_interested ? 'purple' : ''
+              }`}
+            />
+            <span className="tooltiptext">{value}</span>
+          </div>
+        </div>
+        <div className="requestBoxBottomBar">
+          <div className="tooltip">
+            <Link
+              onClick={this.CommentIDToBePassedToDataStore}
+              to={`/PostWithComments/${this.props.id}`}
+              className={`requestBoxBottomBarInfo text-secondary ${
+                this.props.onPostWithCommentsPage ? 'hidden' : ''
+              }`}
+            >
+              {this.props.comment_count} comments
+            </Link>
+
+            <span className="tooltiptext">Go to comments</span>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   render() {
     const value = !this.props.is_interested
@@ -191,38 +232,7 @@ class Post extends Component {
               alt="request"
             />
             <p>{this.props.postBody}</p>
-            <div
-              className={`requestBoxMiddleBar ${
-                this.props.onPostWithCommentsPage ? '' : 'borderBottom'
-              }`}
-            >
-              {this.renderCommentLogo()}
-              <div className="tooltip">
-                {/* <i class="fas fa-thumbs-up"></i>fas fa-magnet */}
-                <i
-                  onClick={this.removeFromInterestedPosts}
-                  className={`fas fa-thumbs-up ${
-                    this.props.is_interested ? 'purple' : ''
-                  }`}
-                />
-                <span className="tooltiptext">{value}</span>
-              </div>
-            </div>
-            <div className="requestBoxBottomBar">
-              <div className="tooltip">
-                <Link
-                  onClick={this.CommentIDToBePassedToDataStore}
-                  to={`/PostWithComments/${this.props.id}`}
-                  className={`requestBoxBottomBarInfo text-secondary ${
-                    this.props.onPostWithCommentsPage ? 'hidden' : ''
-                  }`}
-                >
-                  {this.props.comment_count} comments
-                </Link>
-
-                <span className="tooltiptext">Go to comments</span>
-              </div>
-            </div>
+            {this.props.admin ? null : this.renderBottomPost()}
           </section>
         </section>
       </div>

@@ -235,6 +235,9 @@ div.loading {
   left: 50%;
   margin-left: -60px;
 }
+div.profileImageContainer {
+  width: 70px;
+}
 
 @media (min-width: 375px) {
   .width {

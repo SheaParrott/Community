@@ -118,12 +118,14 @@ class Profile extends Component {
             className="ProfileRecommendedPost width"
             onClick={this.CommentIDToBePassedToDataStore}
           >
-            <img
-              className="ProfileRequestBoxImage boxShadow"
-              src={imageOrDefault(post.image)}
-              alt="request"
-              onClick={this.CommentIDToBePassedToDataStore}
-            />
+            <div className="profileImageContainer">
+              <img
+                className="ProfileRequestBoxImage boxShadow"
+                src={imageOrDefault(post.image)}
+                alt="request"
+                onClick={this.CommentIDToBePassedToDataStore}
+              />
+            </div>
             <h4>{post.title}</h4>
           </div>
         </Link>
@@ -243,6 +245,7 @@ class Profile extends Component {
                 key={index}
                 is_interested={post.interested}
                 id={post.id}
+                admin={post.is_admin_tag}
                 onPostWithCommentsPage={false}
                 onProfilePage={true}
                 onPostsPage={false}

@@ -80,6 +80,7 @@ class Api::ProfilesController < ApplicationController
         comment_count: post.comments.count,
         timestamp: post.created_at,
         interested: current_profile.interested?(post),
+        is_admin_tag: post.tags.where(name: "admin").any?
       }
     end
 

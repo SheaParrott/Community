@@ -50,34 +50,18 @@ class UpdateProfile extends Component {
   }
 
   updateProfile = event => {
-    alert('Preventing default')
     event.preventDefault()
-    // event.stopPropagation()
-
-    alert('Getting the form')
-    const form = document.getElementById('profile-form')
-
-    alert('Getting the form data')
+    const form = event.target
     const formData = new FormData(form)
 
     // for (let pair of formData.entries()) {
     //   console.log(pair[0] + ', ' + pair[1])
     // }
 
-    alert('axios')
-    axios
-      .put('/api/profiles/update', formData)
-      .then(response => {
-        alert('Axios result')
-        form.reset()
-        history.push('/Profile')
-      })
-      .catch(response => {
-        alert(response)
-      })
-
-    alert('returning false')
-    return false
+    axios.put('/api/profiles/update', formData).then(response => {
+      form.reset()
+      history.push('/Profile')
+    })
   }
 
   handleCoverChange = event => {
@@ -88,7 +72,6 @@ class UpdateProfile extends Component {
       coverImage: URL.createObjectURL(event.target.files[0])
     })
   }
-
   handleProfileChange = event => {
     if (!event.target.files[0]) {
       return
@@ -105,7 +88,7 @@ class UpdateProfile extends Component {
     return (
       <div className="columnCentering">
         <Header />
-        <form id="profile-form">
+        <form onSubmit={this.updateProfile}>
           <div className="moreMarginFromHeader columnCentering boxShadow widthbig">
             <div>
               <h3 className="updateProfile">Update profile</h3>
@@ -186,7 +169,7 @@ class UpdateProfile extends Component {
             </section>
             <br />
 
-            <button className="someMargin width" onClick={this.updateProfile}>
+            <button className="someMargin width" type="submit">
               SUBMIT
             </button>
           </div>
