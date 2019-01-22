@@ -6,6 +6,11 @@
 #   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create!(name: 'Luke', movie: movies.first)
 
+# First remove all existing data
+Profile.destroy_all
+Post.destroy_all
+Tag.destroy_all
+
 def image(path)
   File.open(Rails.root.join(path))
 end
@@ -68,17 +73,17 @@ ProfileTagging.create!(profile: jason, tag: social, strength: true)
 postThree = jason.authored_posts.create!(title: "I need tips on how to create a business.", body: " I am thinking about starting my own code school. I need to know best practices on the begining stages", tags: [technology, networking])
 postThree.post_image.attach(io: image('client/src/assets/business.jpg'), filename: 'business.jpg')
 
-
-
-
 postFour = jason.authored_posts.create!(title: "Offering free coding class and help", body: "I am practicing on my curriculum for my code school I want to start. I am offering free code classes for a short period of time, for any interested.", tags: [networking, networking])
 postFour.post_image.attach(io: image('client/src/assets/developer.jpg'), filename: 'developer.jpg')
+
+postNine = jason.authored_posts.create!(title: "Anyone know a good muffler shop in Tampa?", body: "I was driving down the road the other day, next thing I know i hear a loud 'clunk'. I immediately pulled to the side of the road, to realize that my muffler fell off. My car still runs, but its extremely LOUD. Please help, I need a good reference ASAP!", tags: [automotive])
+postNine.post_image.attach(io: image('client/src/assets/muff.jpg'), filename: 'muff.jpg')
 
 
 # end
 
 # new profile
-shea = Profile.create!(name: "Mark Smith", about_me: "Aspiring developer, looking to take on the world by stor. Loves comedy shows, Pokemon, and taking nature walks.", quote: "resilence")
+shea = Profile.create!(name: "Mark Smith", about_me: "Aspiring developer, looking to take on the world by stor. Loves comedy shows, Pokemon, and taking nature walks.", quote: "Life is like a box of chocolates")
 # Manual image uploading
 shea.profile_image.attach(io: image('client/src/assets/mark.jpg'), filename: 'mark.jpg')
 shea.cover_image.attach(io: image('client/src/assets/one.jpg'), filename: 'one.jpg')
@@ -96,13 +101,43 @@ postFive.post_image.attach(io: image('client/src/assets/web.png'), filename: 'we
 postSix = shea.authored_posts.create!(title: "Want to learn how to play Magic the gathering card game.", body: "I have played pokemon cards over the years. Magic has always been really intriguing to me, but I have no friends that play it. Does anyone want to show me how? Or, does anyone know of a place I can go to meet local Magic players?", tags: [social, miscellaneous])
 postSix.post_image.attach(io: image('client/src/assets/MTG.jpg'), filename: 'MTG.jpg')
 
+postTen = shea.authored_posts.create!(title: "Anyone know of a place near tampa that rebuilds motors?", body: "Saturday, I went surfing at the beach. I wasnt paying attention to the tide and water got in my motor. It's not cranking anymore. I know I have water damage. Recommenations needed!", tags: [automotive])
+postTen.post_image.attach(io: image('client/src/assets/eng.jpg'), filename: 'eng.jpg')
+
+
+# new profile
+bill = Profile.create!(name: "Bill Saint", about_me: "General contractor weekdays. Aspiring fishing expert on the weekends.", quote: "Inspiration comes from within yourself. One has to be ")
+# Manual image uploading
+bill.profile_image.attach(io: image('client/src/assets/bill.jpg'), filename: 'bill.jpg')
+bill.cover_image.attach(io: image('client/src/assets/five.jpg'), filename: 'five.jpg')
+
+# This says, SHEA (the profile) has a STRENGTH (boolean) in technology (tag)
+ProfileTagging.create!(profile: bill, tag: networking, strength: true)
+ProfileTagging.create!(profile: bill, tag: automotive, strength: true)
+ProfileTagging.create!(profile: bill, tag: social, strength: true)
+
+
+# [x , x, ] posts the user made, then post tagging, then interestedpost for one use to this post 
+postSeven = bill.authored_posts.create!(title: "Where are the good places to fish in St. Pete.", body: "I am taking a trip down there in a few weeks with a few buddies. Please help!", tags: [social, miscellaneous])
+postSeven.post_image.attach(io: image('client/src/assets/fish.jpg'), filename: 'fish.jpg')
+
+postEight = bill.authored_posts.create!(title: "Anyone know a good painter in Jacksonville?", body: "I am in desperate need of a painter. My usual guy is out of town for the month.", tags: [miscellaneous])
+postEight.post_image.attach(io: image('client/src/assets/paint.jpg'), filename: 'paint.jpg')
+
+
 # [-, -, ] create some interested posts 
 InterestedPost.create!(post: postSix , profile: gavin)
 InterestedPost.create!(post: postFour , profile: gavin)
+InterestedPost.create!(post: postFive , profile: gavin)
 InterestedPost.create!(post: postOne  , profile: jason)
-InterestedPost.create!(post: postFive , profile: jason)
+InterestedPost.create!(post: postNine , profile: jason)
+InterestedPost.create!(post: postTen , profile: jason)
 InterestedPost.create!(post: postTwo , profile: shea)
-InterestedPost.create!(post: postThree , profile: shea)
+InterestedPost.create!(post: postSeven , profile: shea)
+InterestedPost.create!(post: postNine , profile: shea)
+InterestedPost.create!(post: postOne , profile: bill)
+InterestedPost.create!(post: postFour , profile: bill)
+InterestedPost.create!(post: postSix , profile: bill)
 
 
 # create a comment
@@ -131,5 +166,15 @@ Comment.create!(profile: shea, post: postSix, body: "Thats perfect for me, see y
 
 
 # to do list
-# [] come up with tags - Admin, emotional, 
-# [] filter out the admin tag in backend - admin tag is purely for the posts created on profile create
+# [] update profile not working
+# [] all new profiles have all tags selected
+# [] database not reseting on heroku
+
+# [x] hover icon not going away. maybe only make it show on bigger screens?
+# [x] make submit button bigger, padding
+# [] make a container around all images and give them a set size. To fix recommended issue and profile image
+# [] if recommended or interested posts === [] display a single default image and post "Click on profile and select a tag to see recommended posts", "click the magnet icon to add to interested posts list"
+# [] make admin post not clickable
+
+
+

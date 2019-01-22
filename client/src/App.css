@@ -72,8 +72,9 @@ button {
   background: linear-gradient(rgba(14, 173, 0, 0.7), rgba(35, 105, 2));
   color: white;
   font-weight: 700;
+  font-size: 1rem;
   outline-color: #a1a1a1;
-  padding: 4px 10px 4px 10px;
+  padding: 5px 10px 5px 10px;
 }
 button:hover {
   cursor: pointer;
@@ -192,11 +193,11 @@ h6 {
 .fab {
   font-size: 2rem;
 }
-.fa-magnet:hover,
+.fa-thumbs-up:hover,
 .fa-ellipsis-v:hover,
 .fa-caret-up:hover,
 .fa-caret-down:hover,
-.fa-magnet:hover,
+.fa-thumbs-up:hover,
 .fa-comment:hover {
   color: #a1a1a1;
   cursor: pointer;
@@ -206,37 +207,6 @@ div.loading {
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: #a1a1a1bb;
-  font-weight: 700;
-  text-shadow: 0 0 5px #000000bb;
-  box-shadow: 0 0 5px #000000bb;
-  color: rgb(255, 255, 255);
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  transition: 0s;
-
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -60px;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  transition-delay: 0.6s;
 }
 
 .tooltipBottom {
@@ -264,11 +234,6 @@ div.loading {
   top: 100%;
   left: 50%;
   margin-left: -60px;
-}
-
-.tooltipBottom:hover .tooltiptextBottom {
-  visibility: visible;
-  transition-delay: 0.6s;
 }
 
 @media (min-width: 375px) {
@@ -337,4 +302,40 @@ div.loading {
   .widthbig {
     width: 480px;
   }
+}
+@media (min-width: 1050px) {
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    transition-delay: 0.6s;
+  }
+
+  .tooltipBottom:hover .tooltiptextBottom {
+    visibility: visible;
+    transition-delay: 0.6s;
+  }
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #a1a1a1bb;
+  font-weight: 700;
+  text-shadow: 0 0 5px #000000bb;
+  box-shadow: 0 0 5px #000000bb;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  transition: 0s;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
 }

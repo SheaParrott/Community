@@ -145,7 +145,7 @@ class PostWithComments extends Component {
                   placeholder="Your new comment Here"
                 />
                 <button type="submit" className="comment width">
-                  submit
+                  SUBMIT
                 </button>
               </form>
             </div>

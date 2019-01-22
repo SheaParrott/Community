@@ -198,9 +198,10 @@ class Post extends Component {
             >
               {this.renderCommentLogo()}
               <div className="tooltip">
+                {/* <i class="fas fa-thumbs-up"></i>fas fa-magnet */}
                 <i
                   onClick={this.removeFromInterestedPosts}
-                  className={`fas fa-magnet ${
+                  className={`fas fa-thumbs-up ${
                     this.props.is_interested ? 'purple' : ''
                   }`}
                 />

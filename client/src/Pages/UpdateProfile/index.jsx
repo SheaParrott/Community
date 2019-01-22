@@ -50,14 +50,19 @@ class UpdateProfile extends Component {
   }
 
   updateProfile = event => {
+    alert('Preventing default')
     event.preventDefault()
+
+    alert('Getting the form')
     const form = event.target
+    alert('Getting the form data')
     const formData = new FormData(form)
 
     // for (let pair of formData.entries()) {
     //   console.log(pair[0] + ', ' + pair[1])
     // }
 
+    alert('axios')
     axios.put('/api/profiles/update', formData).then(response => {
       form.reset()
       history.push('/Profile')
