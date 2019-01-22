@@ -67,6 +67,8 @@ class UpdateProfile extends Component {
       form.reset()
       history.push('/Profile')
     })
+
+    return false
   }
 
   handleCoverChange = event => {
