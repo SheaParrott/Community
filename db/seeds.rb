@@ -168,13 +168,13 @@ Comment.create!(profile: shea, post: postSix, body: "Thats perfect for me, see y
 # to do list
 # [] update profile not working
 # [] all new profiles have all tags selected
-# [] database not reseting on heroku
+# [x] database not reseting on heroku
 
 # [x] hover icon not going away. maybe only make it show on bigger screens?
 # [x] make submit button bigger, padding
 # [] make a container around all images and give them a set size. To fix recommended issue and profile image
 # [] if recommended or interested posts === [] display a single default image and post "Click on profile and select a tag to see recommended posts", "click the magnet icon to add to interested posts list"
-# [] make admin post not clickable
+# [] make admin post not clickable. use hidden on entire container for comment and likes sectioin
 
 
 

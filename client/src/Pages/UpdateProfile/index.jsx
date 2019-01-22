@@ -52,6 +52,7 @@ class UpdateProfile extends Component {
   updateProfile = event => {
     alert('Preventing default')
     event.preventDefault()
+    // event.stopPropagation()
 
     alert('Getting the form')
     const form = event.target
@@ -64,10 +65,12 @@ class UpdateProfile extends Component {
 
     alert('axios')
     axios.put('/api/profiles/update', formData).then(response => {
+      alert('Axios result')
       form.reset()
       history.push('/Profile')
     })
 
+    alert('returning false')
     return false
   }
 
