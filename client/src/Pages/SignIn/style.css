@@ -9,7 +9,7 @@ h1.AppName {
   text-shadow: 2px 2px 3px #bdbdbd, 0 0 4px #000000;
 }
 section.signUp {
-  border: 1px solid black;
+  box-shadow: 0 0 5px black;
   width: 250px;
   border-radius: 5px;
   padding: 50px 0 50px 0;
@@ -43,6 +43,9 @@ p.missionStatement {
 }
 .widthSmall {
   width: 275px;
+}
+.show {
+  visibility: hidden;
 }
 
 @media (min-width: 360px) and (min-height: 650px) {
@@ -182,4 +185,47 @@ p.missionStatement {
   p.missionStatement {
     font-size: 1.3rem;
   }
+}
+@media (min-width: 1050px) {
+  h1.AppName {
+    box-shadow: 0 0 5px black;
+    width: 80vw;
+    padding-bottom: 40px;
+    margin: 0;
+    font-size: 5rem;
+    text-shadow: 2px 2px 3px #bdbdbd, 0 0 4px #000000;
+  }
+  .b-lv {
+    background-image: url(../../assets/splash.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+    margin-top: 2px;
+    width: 80vw;
+    height: 72vh;
+  }
+  .hide {
+    display: none;
+  }
+  .show {
+    visibility: visible;
+  }
+  section.signUp {
+    box-shadow: none;
+    width: 79vw;
+    border-radius: 5px;
+  }
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0 15px 0;
+    width: 80vw;
+    background: linear-gradient(#450868, #6e3490d5);
+    box-shadow: 0 0 5px black;
+  }
+  /* .click {
+   
+  } */
 }

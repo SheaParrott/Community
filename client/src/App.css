@@ -276,6 +276,14 @@ div.profileImageContainer {
 }
 
 @media (min-width: 1000px) {
+  footer {
+    margin-top: 0px;
+    width: 80vw;
+  }
+  header {
+    width: 80vw;
+    margin: 0 10vw 0 10vw;
+  }
   div.largestViewWidth {
     width: 80vw;
     margin: 0 10vw 0 10vw;
@@ -341,4 +349,14 @@ div.profileImageContainer {
   bottom: 100%;
   left: 50%;
   margin-left: -60px;
+}
+@media (min-width: 1050px) {
+  footer {
+    margin-top: 0px;
+    width: 80vw;
+  }
+  header {
+    width: 80vw;
+    margin: 0 10vw 0 10vw;
+  }
 }
