@@ -1,24 +1,3 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Full Stack fully functional social media platform geared towards helping others, getting help, overal building up the community, and spreading good vibes. This is a CRUD application using Ruby on Rails, React, Javascript, HTML, and CSS.
+<br/>
+![community](https://user-images.githubusercontent.com/44300521/51726684-9a444900-2036-11e9-9de0-00e6ea77895f.gif)
