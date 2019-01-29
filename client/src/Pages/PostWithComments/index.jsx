@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import './style.css'
 import Header from '../../Components/Header'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
-import imageOrDefault from '../../imageOrDefault'
-import CurrentProfileHelper from '../../currentProfileHelper'
 import Post from '../../Components/Post/Post'
 import auth from '../../auth'
 import history from '../../history'
 import Loading from '../../Components/Loading'
+import Comment from '../../Components/Comment'
 
 class PostWithComments extends Component {
   constructor(props) {
@@ -68,11 +66,6 @@ class PostWithComments extends Component {
       }
     })
   }
-  showDeleteComment = () => {
-    this.setState({
-      deleteComment: !this.state.deleteComment
-    })
-  }
 
   render() {
     if (!this.state.post) {
@@ -98,56 +91,18 @@ class PostWithComments extends Component {
             postBody={this.state.post.body}
             timestamp={this.state.post.time}
           />
-          <section className="BoxCentering widthbig whiteBackground">
+          <section className="BoxCentering widthbig whiteBackground boxShadow">
             <div className="columnCentering">
-              {this.state.post.comments.map(comment => {
+              {this.state.post.comments.map((comment, index) => {
                 return (
-                  <div key={comment.id} className="comment widthbig">
-                    <Link
-                      to={CurrentProfileHelper(
-                        comment.current_profile_author,
-                        comment.author_id
-                      )}
-                    >
-                      <div className="profileImageContainer">
-                        <img
-                          className="commentProfileImage box-secondary"
-                          src={imageOrDefault(comment.author_image)}
-                          alt="profile"
-                        />
-                      </div>
-                    </Link>
-                    <section className="commentBox width">
-                      <div>
-                        <Link
-                          to={CurrentProfileHelper(
-                            comment.current_profile_author,
-                            comment.author_id
-                          )}
-                        >
-                          <h6 className="comment text-secondary">
-                            {comment.author_name}
-                          </h6>
-                        </Link>
-                        <p className="comment">{comment.body}</p>
-                      </div>
-                      <div>
-                        <button
-                          className={`${
-                            this.state.deleteComment ? '' : 'hidden'
-                          }`}
-                        >
-                          Delete?
-                        </button>
-                        <i
-                          onClick={this.showDeleteComment}
-                          className={`fas fa-ellipsis-v deleteComment ${
-                            comment.current_profile_author ? '' : 'hidden'
-                          }`}
-                        />
-                      </div>
-                    </section>
-                  </div>
+                  <Comment
+                    key={index}
+                    current_profile_author={comment.current_profile_author}
+                    author_id={comment.author_id}
+                    author_image={comment.author_image}
+                    author_name={comment.author_name}
+                    body={comment.body}
+                  />
                 )
               })}
               {this.state.errors.map((error, index) => {
