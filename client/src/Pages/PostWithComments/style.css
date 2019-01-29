@@ -16,6 +16,11 @@ h6.comment,
 p.comment {
   margin: 0 0 0 15px;
 }
+section.commentBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 input.comment {
   margin: 5px;
 }

@@ -16,7 +16,8 @@ class PostWithComments extends Component {
 
     this.state = {
       post: null,
-      errors: []
+      errors: [],
+      deleteComment: false
     }
   }
   componentDidMount = () => {
@@ -67,6 +68,11 @@ class PostWithComments extends Component {
       }
     })
   }
+  showDeleteComment = () => {
+    this.setState({
+      deleteComment: !this.state.deleteComment
+    })
+  }
 
   render() {
     if (!this.state.post) {
@@ -111,19 +117,36 @@ class PostWithComments extends Component {
                         />
                       </div>
                     </Link>
-                    <div>
-                      <Link
-                        to={CurrentProfileHelper(
-                          comment.current_profile_author,
-                          comment.author_id
-                        )}
-                      >
-                        <h6 className="comment text-secondary">
-                          {comment.author_name}
-                        </h6>
-                      </Link>
-                      <p className="comment">{comment.body}</p>
-                    </div>
+                    <section className="commentBox width">
+                      <div>
+                        <Link
+                          to={CurrentProfileHelper(
+                            comment.current_profile_author,
+                            comment.author_id
+                          )}
+                        >
+                          <h6 className="comment text-secondary">
+                            {comment.author_name}
+                          </h6>
+                        </Link>
+                        <p className="comment">{comment.body}</p>
+                      </div>
+                      <div>
+                        <button
+                          className={`${
+                            this.state.deleteComment ? '' : 'hidden'
+                          }`}
+                        >
+                          Delete?
+                        </button>
+                        <i
+                          onClick={this.showDeleteComment}
+                          className={`fas fa-ellipsis-v deleteComment ${
+                            comment.current_profile_author ? '' : 'hidden'
+                          }`}
+                        />
+                      </div>
+                    </section>
                   </div>
                 )
               })}

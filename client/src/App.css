@@ -193,7 +193,13 @@ h6 {
 .fab {
   font-size: 2rem;
 }
-.fa-thumbs-up:hover,
+.fa-thumbs-up,
+.fa-comment,
+.deleteComment {
+  font-size: 20px;
+  margin: 5px;
+  opacity: 0.6;
+}
 .fa-ellipsis-v:hover,
 .fa-caret-up:hover,
 .fa-caret-down:hover,
