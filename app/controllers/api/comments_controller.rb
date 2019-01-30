@@ -25,6 +25,7 @@ class Api::CommentsController < ApplicationController
           id: comment.id,
           body: comment.body,
           post_id: comment.post_id,
+          post_title: comment.post.title,
           profile_id: comment.profile.id, 
           is_author: comment.profile.id == current_profile.id,
           profile_name: comment.profile.name, 
