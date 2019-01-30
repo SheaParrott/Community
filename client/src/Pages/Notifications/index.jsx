@@ -86,7 +86,7 @@ class Notifications extends Component {
                     <strong className="post">commented on your</strong>{' '}
                     <Link
                       className="text-secondary"
-                      to={`/PostWithComments/${notification.id}`}
+                      to={`/PostWithComments/${notification.post_id}`}
                     >
                       Post
                     </Link>
