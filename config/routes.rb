@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   delete "/api/interested_posts/:id", to: "api/interested_posts#destroy"
 
   post "/api/comment/create", to: "api/comments#create"
+  delete "/api/comment/:id", to: "api/comments#delete"
 
   get "/api/tags", to: "api/tags#show"
 

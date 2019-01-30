@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import imageOrDefault from '../imageOrDefault'
 import CurrentProfileHelper from '../currentProfileHelper'
+import axios from 'axios'
 
 class Comment extends Component {
   constructor(props) {
@@ -14,6 +15,11 @@ class Comment extends Component {
   showDeleteComment = () => {
     this.setState({
       deleteComment: !this.state.deleteComment
+    })
+  }
+  deleteComment = () => {
+    axios.delete(`/api/comment/${this.props.id}`).then(response => {
+      this.props.fetchPost()
     })
   }
   render() {
@@ -48,7 +54,10 @@ class Comment extends Component {
             <p className="comment">{this.props.body}</p>
           </div>
           <div>
-            <button className={`${this.state.deleteComment ? '' : 'hidden'}`}>
+            <button
+              onClick={this.deleteComment}
+              className={`${this.state.deleteComment ? '' : 'hidden'}`}
+            >
               Delete?
             </button>
             <i

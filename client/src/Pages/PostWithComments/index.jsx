@@ -97,6 +97,8 @@ class PostWithComments extends Component {
                 return (
                   <Comment
                     key={index}
+                    fetchPost={this.fetchPost}
+                    id={comment.id}
                     current_profile_author={comment.current_profile_author}
                     author_id={comment.author_id}
                     author_image={comment.author_image}

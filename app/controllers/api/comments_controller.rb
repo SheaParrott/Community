@@ -10,6 +10,9 @@ class Api::CommentsController < ApplicationController
       }
     end
   end 
+  def delete 
+    Comment.find(params[:id]).destroy
+  end
 
   def index
     count = params.fetch(:count) { 15 }
