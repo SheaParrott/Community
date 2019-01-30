@@ -53,7 +53,7 @@ class Comment extends Component {
             </Link>
             <p className="comment">{this.props.body}</p>
           </div>
-          <div>
+          <div className="commentBox">
             <button
               onClick={this.deleteComment}
               className={`${this.state.deleteComment ? '' : 'hidden'}`}
