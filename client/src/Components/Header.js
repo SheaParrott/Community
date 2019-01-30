@@ -6,8 +6,9 @@ class Header extends Component {
     return (
       <div>
         <header>
-          <p className="AppName whiteNoHover">Community</p>
-
+          <Link to="/profile">
+            <p className="AppName white">Community</p>
+          </Link>
           <div className="tooltipBottom">
             <Link to="/profile">
               {/* <i className="fab fa-connectdevelop header" /> */}
