@@ -63,7 +63,7 @@ class Comment extends Component {
             <i
               onClick={this.showDeleteComment}
               className={`fas fa-ellipsis-v deleteComment ${
-                this.props.current_profile_author ? '' : 'hidden'
+                this.props.current_profile_author ? '' : 'VisHidden'
               }`}
             />
           </div>
