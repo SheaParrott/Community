@@ -1,11 +1,16 @@
+div.test {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 div.CoverImage {
   min-height: 181px;
 }
 img.ProfileCoverImage {
   border: 1px solid black;
   width: 100%;
+  height: 100%;
 }
-
 /* playing with image optimization */
 
 /* div.CoverImage {
@@ -168,6 +173,11 @@ div.ProfileRecommendedPost {
     width: 370px;
   }
 }
+@media (min-width: 425px) {
+  .largerScreens {
+    max-width: 420px;
+  }
+}
 @media (min-width: 760px) {
   h6.profileAttributesLeft {
     width: 200px;
@@ -177,6 +187,9 @@ div.ProfileRecommendedPost {
   }
   div.profileBio {
     width: 420px;
+  }
+  .largerScreens {
+    max-width: 450px;
   }
 }
 @media (min-width: 1000px) {
@@ -188,5 +201,8 @@ div.ProfileRecommendedPost {
   }
   div.profileBio {
     width: 450px;
+  }
+  .largerScreens {
+    max-width: 480px;
   }
 }

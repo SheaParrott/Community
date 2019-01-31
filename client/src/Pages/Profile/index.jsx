@@ -140,126 +140,130 @@ class Profile extends Component {
     return (
       <div>
         <Header />
-        <div className="marginFromHeader CoverImage columnCentering">
-          <img
-            className="ProfileCoverImage"
-            src={imageOrDefault(this.state.profile.cover_image)}
-            alt="profile"
-          />
+        <div className="largerScreens">
+          <div className="test">
+            <div className="marginFromHeader CoverImage columnCentering">
+              <img
+                className="ProfileCoverImage"
+                src={imageOrDefault(this.state.profile.cover_image)}
+                alt="profile"
+              />
+            </div>
+          </div>
+          <main className="ProfileBody columnCentering">
+            <div className="profileTop">
+              {this.renderProfileimage()}
+              <div className="nameBox">
+                <div className="name boxShadow whiteBackground">
+                  <h2 className="name">{this.state.profile.name}</h2>
+                </div>
+              </div>
+              <div className="profileQuote widthbig">
+                {this.state.profile.quote}
+              </div>
+            </div>
+            <div className="profileAttributesBar widthbig">
+              <h6
+                onClick={this.AttributeClickToChangeState}
+                data-attribute="ABOUT ME"
+                className="profileAttributesLeft boxShadow"
+              >
+                ABOUT ME
+              </h6>
+              <h6
+                onClick={this.AttributeClickToChangeState}
+                data-attribute="TAGS"
+                className="profileAttributesRight boxShadow"
+              >
+                STRENGTHS / GROWING
+              </h6>
+            </div>
+            <div className="profileBio boxShadow  whiteBackground">
+              {this.renderFillInBox()}
+            </div>
+            <div className={`${this.state.profile.me ? '' : 'hidden'}`}>
+              <div className="columnCentering">
+                <div
+                  className="profileCreateAPost whiteBackground widthbig boxShadow"
+                  onClick={() => {
+                    this.setState({
+                      showCreateAPost: !this.state.showCreateAPost
+                    })
+                  }}
+                >
+                  <h4>Create a post</h4>
+                  <i
+                    className={`fas fa-caret-down lessTopMargin text-secondary ${
+                      !this.state.showCreateAPost ? '' : 'hidden'
+                    }`}
+                  />
+                  <i
+                    className={`fas fa-caret-up lessBottomMargin text-secondary ${
+                      this.state.showCreateAPost ? '' : 'hidden'
+                    }`}
+                  />
+                </div>
+                <CreateAPost
+                  showForm={this.state.showCreateAPost}
+                  reloadProfilePage={this.getProfile}
+                />
+              </div>
+            </div>
+            <div
+              className={`ProfilePostsBox columnCentering boxShadow widthbig whiteBackground ${
+                this.state.profile.me ? '' : 'hidden'
+              }`}
+            >
+              <h4 className="somePadding">Recommended Posts:</h4>
+              {this.postsBox(this.state.profile.recommended_posts)}
+              <Link to={`/Profile/${this.state.profile.id}/posts/recommended`}>
+                <h5
+                  className="text-secondary somePadding"
+                  onClick={this.state.getAllInterestedPosts}
+                >
+                  See More
+                </h5>
+              </Link>
+            </div>
+            <div
+              className={`ProfilePostsBox columnCentering boxShadow widthbig whiteBackground`}
+            >
+              <h4 className="somePadding">Interested Posts:</h4>
+              {this.postsBox(this.state.profile.interested_posts)}
+              <Link to={`/Profile/${this.state.profile.id}/posts/interested`}>
+                <h5
+                  className="text-secondary somePadding"
+                  onClick={this.state.getAllInterestedPosts}
+                >
+                  See More
+                </h5>
+              </Link>
+            </div>
+            {this.state.profile.posts.map((post, index) => {
+              return (
+                <Post
+                  key={index}
+                  is_interested={post.interested}
+                  id={post.id}
+                  admin={post.is_admin_tag}
+                  onPostWithCommentsPage={false}
+                  onProfilePage={true}
+                  onPostsPage={false}
+                  getProfile={this.getProfile}
+                  current_profile_author={post.current_profile_author}
+                  profile_id={this.state.profile.id}
+                  profileName={this.state.profile.name}
+                  profileImage={this.state.profile.profile_image}
+                  comment_count={post.comment_count}
+                  postTitle={post.title}
+                  postImage={post.image}
+                  postBody={post.body}
+                  timestamp={post.timestamp}
+                />
+              )
+            })}
+          </main>
         </div>
-        <main className="ProfileBody columnCentering">
-          <div className="profileTop">
-            {this.renderProfileimage()}
-            <div className="nameBox">
-              <div className="name boxShadow whiteBackground">
-                <h2 className="name">{this.state.profile.name}</h2>
-              </div>
-            </div>
-            <div className="profileQuote widthbig">
-              {this.state.profile.quote}
-            </div>
-          </div>
-          <div className="profileAttributesBar widthbig">
-            <h6
-              onClick={this.AttributeClickToChangeState}
-              data-attribute="ABOUT ME"
-              className="profileAttributesLeft boxShadow"
-            >
-              ABOUT ME
-            </h6>
-            <h6
-              onClick={this.AttributeClickToChangeState}
-              data-attribute="TAGS"
-              className="profileAttributesRight boxShadow"
-            >
-              STRENGTHS / GROWING
-            </h6>
-          </div>
-          <div className="profileBio boxShadow  whiteBackground">
-            {this.renderFillInBox()}
-          </div>
-          <div className={`${this.state.profile.me ? '' : 'hidden'}`}>
-            <div className="columnCentering">
-              <div
-                className="profileCreateAPost whiteBackground widthbig boxShadow"
-                onClick={() => {
-                  this.setState({
-                    showCreateAPost: !this.state.showCreateAPost
-                  })
-                }}
-              >
-                <h4>Create a post</h4>
-                <i
-                  className={`fas fa-caret-down lessTopMargin text-secondary ${
-                    !this.state.showCreateAPost ? '' : 'hidden'
-                  }`}
-                />
-                <i
-                  className={`fas fa-caret-up lessBottomMargin text-secondary ${
-                    this.state.showCreateAPost ? '' : 'hidden'
-                  }`}
-                />
-              </div>
-              <CreateAPost
-                showForm={this.state.showCreateAPost}
-                reloadProfilePage={this.getProfile}
-              />
-            </div>
-          </div>
-          <div
-            className={`ProfilePostsBox columnCentering boxShadow widthbig whiteBackground ${
-              this.state.profile.me ? '' : 'hidden'
-            }`}
-          >
-            <h4 className="somePadding">Recommended Posts:</h4>
-            {this.postsBox(this.state.profile.recommended_posts)}
-            <Link to={`/Profile/${this.state.profile.id}/posts/recommended`}>
-              <h5
-                className="text-secondary somePadding"
-                onClick={this.state.getAllInterestedPosts}
-              >
-                See More
-              </h5>
-            </Link>
-          </div>
-          <div
-            className={`ProfilePostsBox columnCentering boxShadow widthbig whiteBackground`}
-          >
-            <h4 className="somePadding">Interested Posts:</h4>
-            {this.postsBox(this.state.profile.interested_posts)}
-            <Link to={`/Profile/${this.state.profile.id}/posts/interested`}>
-              <h5
-                className="text-secondary somePadding"
-                onClick={this.state.getAllInterestedPosts}
-              >
-                See More
-              </h5>
-            </Link>
-          </div>
-          {this.state.profile.posts.map((post, index) => {
-            return (
-              <Post
-                key={index}
-                is_interested={post.interested}
-                id={post.id}
-                admin={post.is_admin_tag}
-                onPostWithCommentsPage={false}
-                onProfilePage={true}
-                onPostsPage={false}
-                getProfile={this.getProfile}
-                current_profile_author={post.current_profile_author}
-                profile_id={this.state.profile.id}
-                profileName={this.state.profile.name}
-                profileImage={this.state.profile.profile_image}
-                comment_count={post.comment_count}
-                postTitle={post.title}
-                postImage={post.image}
-                postBody={post.body}
-                timestamp={post.timestamp}
-              />
-            )
-          })}
-        </main>
       </div>
     )
   }
