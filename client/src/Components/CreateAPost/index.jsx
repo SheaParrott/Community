@@ -45,6 +45,9 @@ class CreateAPost extends Component {
       } else {
         this.props.reloadProfilePage()
         form.reset()
+        this.setState({
+          file: null
+        })
       }
     })
   }
@@ -70,7 +73,8 @@ class CreateAPost extends Component {
               )
             })}
             <section className="columnCentering">
-              <input
+              <textarea
+                rows="2"
                 className="createAPost"
                 type="text"
                 name="post[title]"
@@ -88,10 +92,11 @@ class CreateAPost extends Component {
                 name="post[post_image]"
                 placeholder="image"
               />
-              <input
+              <textarea
                 className="createAPost"
                 type="text"
                 name="post[body]"
+                rows="4"
                 placeholder="Edit Body Here"
               />
             </section>

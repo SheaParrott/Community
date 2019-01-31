@@ -120,7 +120,8 @@ class PostWithComments extends Component {
                   name="comment[post_id]"
                   value={this.props.match.params.post_id}
                 />
-                <input
+                <textarea
+                  rows="3"
                   className="comment width"
                   type="text"
                   name="comment[body]"

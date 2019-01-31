@@ -10,9 +10,13 @@ button.postSubmit {
 h4.createAPostTitle {
   margin: 7px 10px 10px 10px;
 }
-input.createAPost {
+input.createAPost,
+textarea.createAPost {
   width: 290px;
   margin: 7px 10px 10px 10px;
+}
+textarea {
+  resize: none;
 }
 input.createAPostImage {
   width: 75%;

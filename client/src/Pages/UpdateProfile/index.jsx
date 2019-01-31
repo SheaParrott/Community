@@ -15,7 +15,9 @@ class UpdateProfile extends Component {
       tags: [],
       loading: true,
       profileImage: null,
-      coverImage: null
+      coverImage: null,
+      quote: '',
+      aboutMe: ''
     }
   }
 
@@ -36,7 +38,9 @@ class UpdateProfile extends Component {
         .then(response => {
           this.setState({
             profile: response.data.profile,
-            loading: false
+            loading: false,
+            quote: response.data.profile.quote,
+            aboutMe: response.data.profile.about_me
           })
         })
     }
@@ -78,6 +82,18 @@ class UpdateProfile extends Component {
     }
     this.setState({
       profileImage: URL.createObjectURL(event.target.files[0])
+    })
+  }
+  handleQuoteChange = event => {
+    console.log(event.target.value)
+    this.setState({
+      quote: event.target.value
+    })
+  }
+  handleAboutMeChange = event => {
+    console.log(event.target.value)
+    this.setState({
+      aboutMe: event.target.value
     })
   }
 
@@ -128,20 +144,24 @@ class UpdateProfile extends Component {
               </div>
               <div className="someMargin">
                 <h4 className="someMargin">Quote</h4>
-                <input
+                <textarea
+                  onChange={this.handleQuoteChange}
+                  value={this.state.quote}
+                  rows="2"
                   className="width"
                   type="text"
                   name="profile[quote]"
-                  placeholder="Edit Quote Me Here"
                 />
               </div>
               <div className="someMargin">
                 <h4 className="someMargin">About Me</h4>
-                <input
+                <textarea
+                  onChange={this.handleAboutMeChange}
+                  value={this.state.aboutMe}
+                  rows="5"
                   className="width"
                   type="text"
                   name="profile[about_me]"
-                  placeholder="Edit About Me Here"
                 />
               </div>
             </div>

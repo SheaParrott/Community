@@ -76,7 +76,8 @@ h5 {
 .boxShadow {
   box-shadow: 0 0 5px black;
 }
-input {
+input,
+textarea {
   outline-color: #a1a1a1;
 }
 button {
