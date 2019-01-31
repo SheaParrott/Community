@@ -57,12 +57,12 @@ class Comment extends Component {
             <p className="comment">{this.props.body}</p>
           </div>
           <div className="commentBox">
-            <button
+            <i
               onClick={this.deleteComment}
-              className={`${this.state.deleteComment ? '' : 'hidden'}`}
-            >
-              Delete?
-            </button>
+              className={`fas fa-trash-alt red ${
+                this.state.deleteComment ? '' : 'VisHidden'
+              }`}
+            />
             <i
               onClick={this.showDeleteComment}
               className={`fas fa-ellipsis-v deleteComment ${

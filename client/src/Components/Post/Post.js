@@ -22,15 +22,6 @@ class Post extends Component {
     this.setState({ showMenu: !this.state.showMenu })
   }
 
-  renderDelete = () => {
-    return (
-      <div className={this.state.showMenu ? '' : 'hidden'}>
-        <div className="columnCentering widthbig">
-          <button onClick={this.postDelete}>Delete Post?</button>
-        </div>
-      </div>
-    )
-  }
   postDelete = () => {
     axios.delete(`/api/posts/${this.props.id}`).then(response => {
       if (this.props.onProfilePage) {
@@ -90,7 +81,6 @@ class Post extends Component {
 
   addToInterestedPosts = event => {
     let post_id = parseInt(this.props.id)
-    // params.require(:interested_post).permit(:post_id)
     axios
       .post('/api/interested_posts', {
         interested_post: {
@@ -142,7 +132,6 @@ class Post extends Component {
         >
           {this.renderCommentLogo()}
           <div className="tooltip">
-            {/* <i class="fas fa-thumbs-up"></i>fas fa-magnet */}
             <i
               onClick={this.removeFromInterestedPosts}
               className={`fas fa-thumbs-up ${
@@ -214,16 +203,23 @@ class Post extends Component {
                 </p>
               </div>
 
-              <i
-                onClick={this.toggleMenu}
-                className={`fas fa-ellipsis-v ${this.profileClass()}`}
-              />
-              <i
-                onClick={this.otherToggleMenu}
-                className={`fas fa-ellipsis-v ${this.otherProfileClass()}`}
-              />
+              <div>
+                <i
+                  onClick={this.postDelete}
+                  className={`fas fa-trash-alt red ${
+                    this.state.showMenu ? '' : 'VisHidden'
+                  }`}
+                />
+                <i
+                  onClick={this.toggleMenu}
+                  className={`fas fa-ellipsis-v ${this.profileClass()}`}
+                />
+                <i
+                  onClick={this.otherToggleMenu}
+                  className={`fas fa-ellipsis-v ${this.otherProfileClass()}`}
+                />
+              </div>
             </div>
-            {this.renderDelete()}
             {this.renderAddToHidePostButton()}
             <h4 className="requestBoxTitle">{this.props.postTitle}</h4>
             <img
