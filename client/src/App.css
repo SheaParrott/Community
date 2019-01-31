@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Merriweather', serif; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,6 +31,7 @@ ul,
 li,
 .serif {
   font-family: 'Merriweather', serif;
+  /* font-family: 'Montserrat', sans-serif; */
 }
 
 /* special font */
@@ -256,8 +258,13 @@ div.loading {
   left: 50%;
   margin-left: -60px;
 }
-div.profileImageContainer {
-  width: 70px;
+.profileImageContainer {
+  min-width: 50px;
+  max-width: 50px;
+}
+.ImageContainer {
+  min-width: 75px;
+  max-width: 75px;
 }
 
 @media (min-width: 375px) {

@@ -41,6 +41,10 @@ div.requestBoxTopBarInfo {
 h4.requestBoxTitle {
   margin: 7px 10px 10px 10px;
 }
+p.postBody {
+  text-align: left;
+  padding: 0 4px 0 4px;
+}
 img.requestBoxImage {
   max-width: 205px;
   max-height: 145px;
@@ -79,52 +83,41 @@ img.commentProfileImage {
 
 @media (min-width: 767px) {
   img.requestBoxProfileImage {
-    /* max-width: 50px; */
     max-width: 60px;
-    /* max-width: 50px; */
     max-height: 60px;
   }
   h4.requestBoxProfileName {
-    /* previously changed from p to h4 */
     font-size: 1.5rem;
   }
   p.requestBoxDate {
-    /* font-size: 0.8rem; */
     font-size: 0.9rem;
   }
   div.requestBoxTopBarInfo {
-    /* margin-left: 10px; */
     margin-left: 50px;
-    /* width: 180px; */
     width: 200px;
   }
   .fa-ellipsis-v {
-    /* width: 25px; */
     width: 30px;
-    /* height: 25px; */
     height: 30px;
-    /* font-size: 20px; */
     font-size: 25px;
   }
   img.requestBoxImage {
-    /* max-width: 205px; */
     max-width: 350px;
-    /* max-height: 145px; */
     max-height: 300px;
   }
   .fa-thumbs-up,
   .fa-comment {
-    /* from 20 to 25px */
     font-size: 25px;
   }
   .requestBoxBottomBarInfo {
-    /* from .7 to 1 */
     font-size: 1rem;
   }
   img.commentProfileImage {
-    /* max-width: 40px; */
     max-width: 50px;
-    /* max-height: 40px; */
     max-height: 50px;
+  }
+  .profileImageContainer {
+    min-width: 60px;
+    max-width: 60px;
   }
 }

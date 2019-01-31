@@ -118,7 +118,7 @@ class Profile extends Component {
             className="ProfileRecommendedPost width"
             onClick={this.CommentIDToBePassedToDataStore}
           >
-            <div className="profileImageContainer">
+            <div className="ImageContainer">
               <img
                 className="ProfileRequestBoxImage boxShadow"
                 src={imageOrDefault(post.image)}
@@ -225,9 +225,6 @@ class Profile extends Component {
           <div
             className={`ProfilePostsBox columnCentering boxShadow widthbig whiteBackground`}
           >
-            {/* ${
-              this.state.profile.me ? '' : 'hidden'
-            } */}
             <h4 className="somePadding">Interested Posts:</h4>
             {this.postsBox(this.state.profile.interested_posts)}
             <Link to={`/Profile/${this.state.profile.id}/posts/interested`}>

@@ -24,10 +24,6 @@ class Profile < ApplicationRecord
   after_create :make_default_posts
   after_create :default_tags
 
-  # trying to get recent comments from author_posts
-  # has_many :notifications, class_name: "comment", foreign_key: :comment_id, dependent: :destroy
-  # has_many :notifications, through :authored_posts
-
   def default_tags
     tags << Tag.all.where.not(name: "admin")
     # is_admin_tag: post.tags.where(name: "admin").any?

@@ -221,7 +221,7 @@ class Post extends Component {
               src={imageOrDefault(this.props.postImage)}
               alt="request"
             />
-            <p>{this.props.postBody}</p>
+            <p className="postBody">{this.props.postBody}</p>
             {this.props.admin ? null : this.renderBottomPost()}
           </section>
         </section>
