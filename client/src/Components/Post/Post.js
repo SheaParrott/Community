@@ -18,10 +18,6 @@ class Post extends Component {
     }
   }
 
-  toggleMenu = event => {
-    this.setState({ showMenu: !this.state.showMenu })
-  }
-
   postDelete = () => {
     axios.delete(`/api/posts/${this.props.id}`).then(response => {
       if (this.props.onProfilePage) {
@@ -33,21 +29,11 @@ class Post extends Component {
       }
     })
   }
-  profileClass = () => {
-    return this.props.current_profile_author ? '' : 'hidden'
+  toggleMenu = event => {
+    this.setState({ showMenu: !this.state.showMenu })
   }
-
   otherToggleMenu = () => {
     this.setState({ otherShowMenu: !this.state.otherShowMenu })
-  }
-  renderAddToHidePostButton = () => {
-    return (
-      <div className={this.state.otherShowMenu ? '' : 'hidden'}>
-        <div className="columnCentering widthbig">
-          <button onClick={this.hidePost}>Hide post?</button>
-        </div>
-      </div>
-    )
   }
   hidePost = () => {
     if (this.props.onPostWithCommentsPage) {
@@ -57,8 +43,33 @@ class Post extends Component {
       hideThisPost: 'hidden'
     })
   }
-  otherProfileClass = () => {
-    return !this.props.current_profile_author ? '' : 'hidden'
+
+  profileOptions = () => {
+    if (!this.props.current_profile_author) {
+      return (
+        <div>
+          <i
+            onClick={this.hidePost}
+            className={`fas fa-eye-slash red ${
+              this.state.otherShowMenu ? '' : 'VisHidden'
+            }`}
+          />
+          <i onClick={this.otherToggleMenu} className={`fas fa-ellipsis-v`} />
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <i
+            onClick={this.postDelete}
+            className={`fas fa-trash-alt red ${
+              this.state.showMenu ? '' : 'VisHidden'
+            }`}
+          />
+          <i onClick={this.toggleMenu} className="fas fa-ellipsis-v" />
+        </div>
+      )
+    }
   }
 
   renderCommentLogo = () => {
@@ -202,25 +213,8 @@ class Post extends Component {
                   })}
                 </p>
               </div>
-
-              <div>
-                <i
-                  onClick={this.postDelete}
-                  className={`fas fa-trash-alt red ${
-                    this.state.showMenu ? '' : 'VisHidden'
-                  }`}
-                />
-                <i
-                  onClick={this.toggleMenu}
-                  className={`fas fa-ellipsis-v ${this.profileClass()}`}
-                />
-                <i
-                  onClick={this.otherToggleMenu}
-                  className={`fas fa-ellipsis-v ${this.otherProfileClass()}`}
-                />
-              </div>
+              {this.profileOptions()}
             </div>
-            {this.renderAddToHidePostButton()}
             <h4 className="requestBoxTitle">{this.props.postTitle}</h4>
             <img
               className="requestBoxImage"
