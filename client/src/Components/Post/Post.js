@@ -29,6 +29,10 @@ class Post extends Component {
       }
     })
   }
+
+  updatePost = () => {
+    console.log('updateFunction')
+  }
   toggleMenu = event => {
     this.setState({ showMenu: !this.state.showMenu })
   }
@@ -60,12 +64,23 @@ class Post extends Component {
     } else {
       return (
         <div>
-          <i
-            onClick={this.postDelete}
-            className={`fas fa-trash-alt red ${
-              this.state.showMenu ? '' : 'VisHidden'
-            }`}
-          />
+          {/* working on a drop down menu here to clean up the view */}
+          {/* set the drop down to always visible and show or hide an empty 
+          element for where the text goes */}
+          <div className="dropDown ">
+            <span
+              className={`dropDowntext ${this.state.showMenu ? '' : 'hidden'}`}
+            >
+              <div onClick={this.postDelete} className="dropDownMenu red">
+                <i className="fas fa-trash-alt" />
+                <p>Delete Post</p>
+              </div>
+              <div onClick={this.updatePost} className="dropDownMenu">
+                <i className="fas fa-pencil-alt" />
+                <p>Update Post</p>
+              </div>
+            </span>
+          </div>
           <i onClick={this.toggleMenu} className="fas fa-ellipsis-v" />
         </div>
       )

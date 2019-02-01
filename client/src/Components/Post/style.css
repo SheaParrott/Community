@@ -121,3 +121,31 @@ img.commentProfileImage {
     max-width: 60px;
   }
 }
+
+.dropDown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropDown .dropDowntext {
+  width: 160px;
+  background-color: rgb(255, 255, 255);
+  /* color: #fff; */
+  /* text-align: center; */
+  box-shadow: 0 0 5px black;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the dropDown */
+  position: absolute;
+  z-index: 1;
+  /* top: 100%; */
+  left: 50%;
+  margin-top: 15px;
+  margin-left: -125px;
+}
+div.dropDownMenu {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}

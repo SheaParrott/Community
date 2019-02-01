@@ -270,3 +270,9 @@ class Profile extends Component {
 }
 
 export default Profile
+
+// to do:
+// create update post endpoint
+// create update comment endpoint
+// add in font awesome logo for editing
+// hook up endpoint onto the front end
