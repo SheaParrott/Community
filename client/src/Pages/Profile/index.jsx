@@ -203,10 +203,11 @@ class Profile extends Component {
                     }`}
                   />
                 </div>
-                <CreateAPost
-                  showForm={this.state.showCreateAPost}
-                  reloadProfilePage={this.getProfile}
-                />
+                <div>
+                  {this.state.showCreateAPost ? (
+                    <CreateAPost reloadProfilePage={this.getProfile} />
+                  ) : null}
+                </div>
               </div>
             </div>
             <div
@@ -270,9 +271,3 @@ class Profile extends Component {
 }
 
 export default Profile
-
-// to do:
-// create update post endpoint
-// create update comment endpoint
-// add in font awesome logo for editing
-// hook up endpoint onto the front end

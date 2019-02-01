@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post "/api/posts", to: "api/posts#create"
   get "/api/posts/:id", to: "api/posts#show"
   delete "/api/posts/:id", to: "api/posts#destroy"
+  put "/api/posts/update", to: "api/posts#update"
 
 
   post "/api/interested_posts", to: "api/interested_posts#create"

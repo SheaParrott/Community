@@ -6,6 +6,7 @@ import axios from 'axios'
 import CurrentProfileHelper from '../../currentProfileHelper'
 import history from '../../history'
 import auth from '../../auth'
+import CreateAPost from '../CreateAPost'
 
 class Post extends Component {
   constructor(props) {
@@ -14,7 +15,8 @@ class Post extends Component {
     this.state = {
       showMenu: false,
       otherShowMenu: false,
-      hideThisPost: ''
+      hideThisPost: '',
+      updateAPost: false
     }
   }
 
@@ -29,9 +31,11 @@ class Post extends Component {
       }
     })
   }
-
-  updatePost = () => {
-    console.log('updateFunction')
+  toggleUpdatePost = () => {
+    this.setState({
+      updateAPost: !this.state.updateAPost,
+      showMenu: !this.state.showMenu
+    })
   }
   toggleMenu = event => {
     this.setState({ showMenu: !this.state.showMenu })
@@ -48,6 +52,46 @@ class Post extends Component {
     })
   }
 
+  topBar = () => {
+    return (
+      <div className="requestBoxTopBar">
+        <Link
+          to={CurrentProfileHelper(
+            this.props.current_profile_author,
+            this.props.profile_id
+          )}
+        >
+          <img
+            className="requestBoxProfileImage box-secondary"
+            src={imageOrDefault(this.props.profileImage)}
+            alt="profile"
+          />
+        </Link>
+        <div className="requestBoxTopBarInfo">
+          <Link
+            to={CurrentProfileHelper(
+              this.props.current_profile_author,
+              this.props.profile_id
+            )}
+          >
+            <h4 className="requestBoxProfileName text-secondary">
+              {this.props.profileName}
+            </h4>
+          </Link>
+          <p className="requestBoxDate">
+            {new Date(this.props.timestamp).toLocaleTimeString([], {
+              month: 'short',
+              day: '2-digit',
+              year: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit'
+            })}
+          </p>
+        </div>
+        {this.profileOptions()}
+      </div>
+    )
+  }
   profileOptions = () => {
     if (!this.props.current_profile_author) {
       return (
@@ -78,7 +122,10 @@ class Post extends Component {
                 <i className="fas fa-trash-alt" />
                 <p>Delete Post</p>
               </div>
-              <div onClick={this.updatePost} className="dropDownMenu blue">
+              <div
+                onClick={this.toggleUpdatePost}
+                className="dropDownMenu blue"
+              >
                 <i className="fas fa-pencil-alt" />
                 <p>Update Post</p>
               </div>
@@ -193,46 +240,27 @@ class Post extends Component {
     const value = !this.props.is_interested
       ? 'Add to Interested Posts'
       : 'remove from Interested Posts'
+    if (this.state.updateAPost) {
+      return (
+        <div>
+          <section className="widthbig boxShadow">
+            {this.topBar()}
+            <CreateAPost
+              id={this.props.id}
+              updateAPost={this.state.updateAPost}
+              postTitle={this.props.postTitle}
+              postImage={this.props.postImage}
+              postBody={this.props.postBody}
+            />
+          </section>
+        </div>
+      )
+    }
     return (
       <div className={`whiteBackground ${this.state.hideThisPost}`}>
         <section className="requestBoxCentering">
           <section className="widthbig boxShadow">
-            <div className="requestBoxTopBar">
-              <Link
-                to={CurrentProfileHelper(
-                  this.props.current_profile_author,
-                  this.props.profile_id
-                )}
-              >
-                <img
-                  className="requestBoxProfileImage box-secondary"
-                  src={imageOrDefault(this.props.profileImage)}
-                  alt="profile"
-                />
-              </Link>
-              <div className="requestBoxTopBarInfo">
-                <Link
-                  to={CurrentProfileHelper(
-                    this.props.current_profile_author,
-                    this.props.profile_id
-                  )}
-                >
-                  <h4 className="requestBoxProfileName text-secondary">
-                    {this.props.profileName}
-                  </h4>
-                </Link>
-                <p className="requestBoxDate">
-                  {new Date(this.props.timestamp).toLocaleTimeString([], {
-                    month: 'short',
-                    day: '2-digit',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                  })}
-                </p>
-              </div>
-              {this.profileOptions()}
-            </div>
+            {this.topBar()}
             <h4 className="requestBoxTitle">{this.props.postTitle}</h4>
             <img
               className="requestBoxImage"
@@ -249,3 +277,15 @@ class Post extends Component {
 }
 
 export default Post
+// to do:
+// [] create update comment endpoint
+// [x] create update post endpoint
+// [x] add in font awesome logo for editing
+// [x] add dropdown menu
+// [x] set up createAPost component to update and pass props
+// [] set up onChange function for prop passed so we can edit
+// [] noticing clicking the post menu is causing multiple console logs
+//    in createAPost component
+//     - anticipating this will cause issues. Look more into some sort
+//       of guard clause
+// [] hook up endpoint onto the front end
