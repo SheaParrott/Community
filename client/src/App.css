@@ -52,9 +52,17 @@ h5 {
 }
 .red {
   color: #fc0000;
+  cursor: pointer;
 }
 .red:hover {
   color: #fc0000a6;
+}
+.blue {
+  color: #0400fc;
+  cursor: pointer;
+}
+.blue:hover {
+  color: #0400fca6;
 }
 .columnCentering {
   display: flex;
@@ -210,7 +218,8 @@ h6 {
 .fa-comment,
 .deleteComment,
 .fa-trash-alt,
-.fa-eye-slash {
+.fa-eye-slash,
+.fa-pencil-alt {
   font-size: 20px;
   margin: 5px;
   opacity: 0.6;
