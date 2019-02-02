@@ -143,7 +143,6 @@ class Profile extends Component {
         <div className="largerScreens">
           <div className="test">
             <div className="marginFromHeader CoverImage columnCentering">
-              <button onClick={this.updateAPost}>test</button>
               <img
                 className="ProfileCoverImage"
                 src={imageOrDefault(this.state.profile.cover_image)}
