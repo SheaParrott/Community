@@ -4,6 +4,8 @@ import insertImage from '../../assets/insert-image.png'
 import './style.css'
 import axios from 'axios'
 import auth from '../../auth'
+import loadingIMG from '../../assets/purpleloading.gif'
+import imageOrDefault from '../../imageOrDefault'
 
 class CreateAPost extends Component {
   constructor(props) {
@@ -12,7 +14,14 @@ class CreateAPost extends Component {
     this.state = {
       tags: [],
       errors: [],
-      file: null
+      file: null,
+      post: {
+        id: null,
+        title: undefined,
+        image: undefined,
+        body: undefined
+      },
+      UpdatingAndWaitingOnData: true
     }
   }
 
@@ -26,6 +35,9 @@ class CreateAPost extends Component {
       .then(response => {
         this.setState({ tags: response.data.tags })
       })
+    if (this.props.updateAPost) {
+      this.fetchPost()
+    }
   }
 
   createPost = event => {
@@ -54,6 +66,21 @@ class CreateAPost extends Component {
   updatePost = () => {
     // console.log('updateFunction')
     // after submitted reset the update post
+    // post={{
+    //   id: null,
+    //   title: undefined,
+    //   image: undefined,
+    //   body: undefined
+    // }}
+  }
+  fetchPost = () => {
+    axios.get(`/api/posts/${this.props.post.id}`).then(response => {
+      console.log(response.data)
+      this.setState({
+        post: response.data.post,
+        UpdatingAndWaitingOnData: false
+      })
+    })
   }
   handleChange = event => {
     this.setState({
@@ -61,7 +88,13 @@ class CreateAPost extends Component {
     })
   }
   postImage = () => {
-    return this.props.post.image ? this.props.post.image : insertImage
+    if (!this.props.updateAPost) {
+      return insertImage
+    } else if (this.props.updateAPost && this.state.UpdatingAndWaitingOnData) {
+      return loadingIMG
+    } else if (this.props.updateAPost && !this.state.UpdatingAndWaitingOnData) {
+      return imageOrDefault(this.state.post.image)
+    }
   }
 
   render() {
@@ -82,7 +115,7 @@ class CreateAPost extends Component {
                 className="createAPost"
                 type="text"
                 name="post[title]"
-                value={this.props.post.title}
+                value={this.state.post.title}
               />
               <img
                 className="createAPostImage boxShadow"
@@ -100,7 +133,7 @@ class CreateAPost extends Component {
                 type="text"
                 name="post[body]"
                 rows="4"
-                value={this.props.post.body}
+                value={this.state.post.body}
               />
             </section>
             <section className="tagsBox widthbig boxShadow">

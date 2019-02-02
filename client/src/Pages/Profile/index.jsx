@@ -143,6 +143,7 @@ class Profile extends Component {
         <div className="largerScreens">
           <div className="test">
             <div className="marginFromHeader CoverImage columnCentering">
+              <button onClick={this.updateAPost}>test</button>
               <img
                 className="ProfileCoverImage"
                 src={imageOrDefault(this.state.profile.cover_image)}
@@ -205,15 +206,7 @@ class Profile extends Component {
                 </div>
                 <div>
                   {this.state.showCreateAPost ? (
-                    <CreateAPost
-                      reloadProfilePage={this.getProfile}
-                      post={{
-                        id: null,
-                        title: undefined,
-                        image: undefined,
-                        body: undefined
-                      }}
-                    />
+                    <CreateAPost reloadProfilePage={this.getProfile} />
                   ) : null}
                 </div>
               </div>
