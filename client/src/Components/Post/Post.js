@@ -246,11 +246,8 @@ class Post extends Component {
           <section className="widthbig boxShadow">
             {this.topBar()}
             <CreateAPost
-              id={this.props.post.id}
+              post={this.props.post}
               updateAPost={this.state.updateAPost}
-              postTitle={this.props.post.title}
-              postImage={this.props.post.image}
-              postBody={this.props.post.body}
             />
           </section>
         </div>

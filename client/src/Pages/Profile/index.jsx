@@ -205,7 +205,15 @@ class Profile extends Component {
                 </div>
                 <div>
                   {this.state.showCreateAPost ? (
-                    <CreateAPost reloadProfilePage={this.getProfile} />
+                    <CreateAPost
+                      reloadProfilePage={this.getProfile}
+                      post={{
+                        id: null,
+                        title: undefined,
+                        image: undefined,
+                        body: undefined
+                      }}
+                    />
                   ) : null}
                 </div>
               </div>

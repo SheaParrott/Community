@@ -60,71 +60,10 @@ class CreateAPost extends Component {
       file: URL.createObjectURL(event.target.files[0])
     })
   }
-  postForm = () => {
-    if (!this.props.updateAPost) {
-      return (
-        <section className="columnCentering">
-          <textarea
-            rows="2"
-            className="createAPost"
-            type="text"
-            name="post[title]"
-            placeholder="Edit header text here"
-          />
-          <img
-            className="createAPostImage boxShadow"
-            src={!this.state.file ? insertImage : this.state.file}
-            alt="request"
-          />
-          <input
-            onChange={this.handleChange}
-            className="createAPostImage"
-            type="file"
-            name="post[post_image]"
-            placeholder="image"
-          />
-          <textarea
-            className="createAPost"
-            type="text"
-            name="post[body]"
-            rows="4"
-            placeholder="Edit Body Here"
-          />
-        </section>
-      )
-    } else {
-      console.log('refreshed..')
-      return (
-        <section className="columnCentering">
-          <textarea
-            rows="2"
-            className="createAPost"
-            type="text"
-            name="post[title]"
-            value={this.props.postTitle}
-          />
-          <img
-            className="createAPostImage boxShadow"
-            src={!this.state.file ? this.props.postImage : this.state.file}
-            alt="request"
-          />
-          <input
-            onChange={this.handleChange}
-            className="createAPostImage"
-            type="file"
-            name="post[post_image]"
-          />
-          <textarea
-            className="createAPost"
-            type="text"
-            name="post[body]"
-            rows="4"
-            value={this.props.postBody}
-          />
-        </section>
-      )
-    }
+  postImage = () => {
+    return this.props.post.image ? this.props.post.image : insertImage
   }
+
   render() {
     return (
       <div className="widthbig boxShadow whiteBackground">
@@ -137,7 +76,33 @@ class CreateAPost extends Component {
                 </h4>
               )
             })}
-            {this.postForm()}
+            <section className="columnCentering">
+              <textarea
+                rows="2"
+                className="createAPost"
+                type="text"
+                name="post[title]"
+                value={this.props.post.title}
+              />
+              <img
+                className="createAPostImage boxShadow"
+                src={!this.state.file ? this.postImage() : this.state.file}
+                alt="request"
+              />
+              <input
+                onChange={this.handleChange}
+                className="createAPostImage"
+                type="file"
+                name="post[post_image]"
+              />
+              <textarea
+                className="createAPost"
+                type="text"
+                name="post[body]"
+                rows="4"
+                value={this.props.post.body}
+              />
+            </section>
             <section className="tagsBox widthbig boxShadow">
               {this.state.tags
                 .filter(removeAdmin => {
