@@ -35,16 +35,17 @@ class Api::PostsController < ApplicationController
       post: {
         id: post.id,
         current_profile_author: post.author.id == current_profile.id,
-        title: post.title, 
+        title: post.title,
         image: post.post_image.attached? && url_for(post.post_image),
-        body: post.body, 
+        body: post.body,
+        comment_count: post.comments.count,
         timestamp: post.created_at,
-        author_id: post.author.id, 
-        name: post.author.name, 
+        interested: current_profile.interested?(post),
+        author_id: post.author.id,
+        name: post.author.name,
         profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
-        comment_count: comments.size,
+        is_admin_tag: post.tags.where(name: "admin").any?, 
         comments: comments,
-        interested: current_profile.interested?(post)
       }
     }
   end

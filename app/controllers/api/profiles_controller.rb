@@ -1,5 +1,6 @@
 class Api::ProfilesController < ApplicationController
 
+
   def interested_or_recommended
     profile_id = params[:id]
 
@@ -7,19 +8,7 @@ class Api::ProfilesController < ApplicationController
 
     def get_posts (posts)
       posts.map do |post|
-        {
-          id: post.id,
-          current_profile_author: post.author.id == current_profile.id,
-          title: post.title,
-          image: post.post_image.attached? && url_for(post.post_image),
-          body: post.body,
-          comment_count: post.comments.count,
-          timestamp: post.created_at, 
-          author_id: post.author.id, 
-          name: post.author.name, 
-          profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
-          interested: current_profile.interested?(post),
-        }
+        post_details(post)
       end
     end
 
@@ -70,38 +59,14 @@ class Api::ProfilesController < ApplicationController
   def current
     profile = current_profile
     # current authored posts
+
     posts = profile.authored_posts.map do |post|
-      {
-        id: post.id,
-        current_profile_author: post.author.id == current_profile.id,
-        title: post.title,
-        image: post.post_image.attached? && url_for(post.post_image),
-        body: post.body,
-        comment_count: post.comments.count,
-        timestamp: post.created_at,
-        interested: current_profile.interested?(post),
-        author_id: post.author.id,
-        name: post.author.name,
-        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
-        is_admin_tag: post.tags.where(name: "admin").any?
-      }
+      post_details(post)
     end
 
     def get_posts (posts)
       posts.map do |post|
-        {
-          id: post.id,
-          current_profile_author: post.author.id == current_profile.id,
-          title: post.title,
-          image: post.post_image.attached? && url_for(post.post_image),
-          body: post.body,
-          comment_count: post.comments.count,
-          timestamp: post.created_at, 
-          author_id: post.author.id, 
-          name: post.author.name, 
-          profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
-          interested: current_profile.interested?(post),
-        }
+        post_details(post)
       end
     end
 
@@ -132,8 +97,7 @@ class Api::ProfilesController < ApplicationController
         interested_posts: interested_posts.to_set,
         recommended_posts: recommended_posts.to_set,
         tags: tags,
-        me: true, 
-        
+        me: true,   
       }
     }
   end
@@ -147,37 +111,13 @@ class Api::ProfilesController < ApplicationController
 
     # show authored posts
     posts = profile.authored_posts.map do |post|
-      {
-        id: post.id,
-        current_profile_author: post.author.id == current_profile.id,
-        title: post.title,
-        image: post.post_image.attached? && url_for(post.post_image),
-        body: post.body,
-        comment_count: post.comments.count,
-        author_id: post.author.id,
-        name: post.author.name,
-        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image), 
-        timestamp: post.created_at,
-        interested: current_profile.interested?(post),
-      }
+      post_details(post)
     end
 
 
     def get_posts (posts)
       posts.map do |post|
-        {
-          id: post.id,
-          current_profile_author: post.author.id == current_profile.id,
-          title: post.title,
-          image: post.post_image.attached? && url_for(post.post_image),
-          body: post.body,
-          comment_count: post.comments.count,
-          timestamp: post.created_at, 
-          author_id: post.author.id, 
-          name: post.author.name, 
-          profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
-          interested: current_profile.interested?(post),
-        }
+        post_details(post)
       end
     end
 
@@ -215,6 +155,24 @@ class Api::ProfilesController < ApplicationController
   end
   
   private
+  def post_details(post)
+    {
+      id: post.id,
+      current_profile_author: post.author.id == current_profile.id,
+      title: post.title,
+      image: post.post_image.attached? && url_for(post.post_image),
+      body: post.body,
+      comment_count: post.comments.count,
+      timestamp: post.created_at,
+      interested: current_profile.interested?(post),
+      author_id: post.author.id,
+      name: post.author.name,
+      profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
+      is_admin_tag: post.tags.where(name: "admin").any?
+    }
+  end
+
+
   def no_quote
     params.require(:profile).permit(:cover_image, :profile_image, :about_me, tag_ids: [])
   end
