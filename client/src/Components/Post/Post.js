@@ -276,6 +276,7 @@ class Post extends Component {
 export default Post
 // to do:
 // [] create update comment endpoint
+// [] add drop down style menu for edit and delete for comments
 // [x] create update post endpoint
 // [x] add in font awesome logo for editing
 // [x] add dropdown menu

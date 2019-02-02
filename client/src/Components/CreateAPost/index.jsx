@@ -19,7 +19,8 @@ class CreateAPost extends Component {
         id: null,
         title: undefined,
         image: undefined,
-        body: undefined
+        body: undefined,
+        tags: undefined
       },
       UpdatingAndWaitingOnData: true
     }
@@ -63,16 +64,6 @@ class CreateAPost extends Component {
       }
     })
   }
-  updatePost = () => {
-    // console.log('updateFunction')
-    // after submitted reset the update post
-    // post={{
-    //   id: null,
-    //   title: undefined,
-    //   image: undefined,
-    //   body: undefined
-    // }}
-  }
   fetchPost = () => {
     axios.get(`/api/posts/${this.props.post.id}`).then(response => {
       console.log(response.data)
@@ -94,6 +85,13 @@ class CreateAPost extends Component {
       return loadingIMG
     } else if (this.props.updateAPost && !this.state.UpdatingAndWaitingOnData) {
       return imageOrDefault(this.state.post.image)
+    }
+  }
+  chosenTags = tag => {
+    if (this.props.updateAPost && !this.state.UpdatingAndWaitingOnData) {
+      return this.state.post.tags.find(tagg => {
+        return tagg.name.includes(tag)
+      })
     }
   }
 
@@ -149,6 +147,7 @@ class CreateAPost extends Component {
                         value={tag.id}
                         name="post[tag_ids][]"
                         placeholder={tag.name}
+                        checked={this.chosenTags(tag.name)}
                       />
                       <label>{tag.name}</label>
                     </h5>

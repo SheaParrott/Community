@@ -168,7 +168,8 @@ class Api::ProfilesController < ApplicationController
       author_id: post.author.id,
       name: post.author.name,
       profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
-      is_admin_tag: post.tags.where(name: "admin").any?
+      is_admin_tag: post.tags.where(name: "admin").any?, 
+      tags: post.tags, 
     }
   end
 
