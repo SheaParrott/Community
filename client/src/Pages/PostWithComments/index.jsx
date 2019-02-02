@@ -83,13 +83,13 @@ class PostWithComments extends Component {
             onProfilePage={false}
             onPostsPage={false}
             current_profile_author={this.state.post.current_profile_author}
-            profile_id={this.state.post.profile_id}
-            profileName={this.state.post.profile_name}
+            profile_id={this.state.post.author_id}
+            profileName={this.state.post.name}
             profileImage={this.state.post.profile_image}
             postTitle={this.state.post.title}
             postImage={this.state.post.image}
             postBody={this.state.post.body}
-            timestamp={this.state.post.time}
+            timestamp={this.state.post.timestamp}
           />
           <section className="BoxCentering widthbig whiteBackground boxShadow">
             <div className="columnCentering">

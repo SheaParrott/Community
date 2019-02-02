@@ -80,6 +80,9 @@ class Api::ProfilesController < ApplicationController
         comment_count: post.comments.count,
         timestamp: post.created_at,
         interested: current_profile.interested?(post),
+        author_id: post.author.id,
+        name: post.author.name,
+        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image),
         is_admin_tag: post.tags.where(name: "admin").any?
       }
     end
@@ -152,6 +155,8 @@ class Api::ProfilesController < ApplicationController
         body: post.body,
         comment_count: post.comments.count,
         author_id: post.author.id,
+        name: post.author.name,
+        profile_image: post.author.profile_image.attached? && url_for(post.author.profile_image), 
         timestamp: post.created_at,
         interested: current_profile.interested?(post),
       }
