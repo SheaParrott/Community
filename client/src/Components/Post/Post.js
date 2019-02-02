@@ -21,7 +21,7 @@ class Post extends Component {
   }
 
   postDelete = () => {
-    axios.delete(`/api/posts/${this.props.id}`).then(response => {
+    axios.delete(`/api/posts/${this.props.post.id}`).then(response => {
       if (this.props.onProfilePage) {
         this.props.getProfile()
       } else if (this.props.onPostWithCommentsPage) {
@@ -57,29 +57,29 @@ class Post extends Component {
       <div className="requestBoxTopBar">
         <Link
           to={CurrentProfileHelper(
-            this.props.current_profile_author,
-            this.props.profile_id
+            this.props.post.current_profile_author,
+            this.props.post.author_id
           )}
         >
           <img
             className="requestBoxProfileImage box-secondary"
-            src={imageOrDefault(this.props.profileImage)}
+            src={imageOrDefault(this.props.post.profile_image)}
             alt="profile"
           />
         </Link>
         <div className="requestBoxTopBarInfo">
           <Link
             to={CurrentProfileHelper(
-              this.props.current_profile_author,
-              this.props.profile_id
+              this.props.post.current_profile_author,
+              this.props.post.author_id
             )}
           >
             <h4 className="requestBoxProfileName text-secondary">
-              {this.props.profileName}
+              {this.props.post.name}
             </h4>
           </Link>
           <p className="requestBoxDate">
-            {new Date(this.props.timestamp).toLocaleTimeString([], {
+            {new Date(this.props.post.timestamp).toLocaleTimeString([], {
               month: 'short',
               day: '2-digit',
               year: 'numeric',
@@ -93,7 +93,7 @@ class Post extends Component {
     )
   }
   profileOptions = () => {
-    if (!this.props.current_profile_author) {
+    if (!this.props.post.current_profile_author) {
       return (
         <div>
           <div className="dropDown ">
@@ -141,7 +141,7 @@ class Post extends Component {
     if (!this.props.onPostWithCommentsPage) {
       return (
         <div className="tooltip">
-          <Link to={`/PostWithComments/${this.props.id}`}>
+          <Link to={`/PostWithComments/${this.props.post.id}`}>
             <i
               onClick={this.CommentIDToBePassedToDataStore}
               className={`far fa-comment  ${
@@ -156,7 +156,7 @@ class Post extends Component {
   }
 
   addToInterestedPosts = event => {
-    let post_id = parseInt(this.props.id)
+    let post_id = parseInt(this.props.post.id)
     axios
       .post('/api/interested_posts', {
         interested_post: {
@@ -175,9 +175,9 @@ class Post extends Component {
   }
 
   removeFromInterestedPosts = event => {
-    if (this.props.is_interested) {
+    if (this.props.post.interested) {
       axios
-        .delete(`/api/interested_posts/${this.props.id}`, {
+        .delete(`/api/interested_posts/${this.props.post.id}`, {
           headers: {
             Authorization: `Bearer ${auth.getIdToken()}`
           }
@@ -196,7 +196,7 @@ class Post extends Component {
     }
   }
   renderBottomPost = () => {
-    const value = !this.props.is_interested
+    const value = !this.props.post.interested
       ? 'Add to Interested Posts'
       : 'remove from Interested Posts'
     return (
@@ -211,7 +211,7 @@ class Post extends Component {
             <i
               onClick={this.removeFromInterestedPosts}
               className={`fas fa-thumbs-up ${
-                this.props.is_interested ? 'purple' : ''
+                this.props.post.interested ? 'purple' : ''
               }`}
             />
             <span className="tooltiptext">{value}</span>
@@ -221,12 +221,12 @@ class Post extends Component {
           <div className="tooltip">
             <Link
               onClick={this.CommentIDToBePassedToDataStore}
-              to={`/PostWithComments/${this.props.id}`}
+              to={`/PostWithComments/${this.props.post.id}`}
               className={`requestBoxBottomBarInfo text-secondary ${
                 this.props.onPostWithCommentsPage ? 'hidden' : ''
               }`}
             >
-              {this.props.comment_count} comments
+              {this.props.post.comment_count} comments
             </Link>
 
             <span className="tooltiptext">Go to comments</span>
@@ -237,7 +237,7 @@ class Post extends Component {
   }
 
   render() {
-    const value = !this.props.is_interested
+    const value = !this.props.post.interested
       ? 'Add to Interested Posts'
       : 'remove from Interested Posts'
     if (this.state.updateAPost) {
@@ -246,11 +246,11 @@ class Post extends Component {
           <section className="widthbig boxShadow">
             {this.topBar()}
             <CreateAPost
-              id={this.props.id}
+              id={this.props.post.id}
               updateAPost={this.state.updateAPost}
-              postTitle={this.props.postTitle}
-              postImage={this.props.postImage}
-              postBody={this.props.postBody}
+              postTitle={this.props.post.title}
+              postImage={this.props.post.image}
+              postBody={this.props.post.body}
             />
           </section>
         </div>
@@ -261,14 +261,14 @@ class Post extends Component {
         <section className="requestBoxCentering">
           <section className="widthbig boxShadow">
             {this.topBar()}
-            <h4 className="requestBoxTitle">{this.props.postTitle}</h4>
+            <h4 className="requestBoxTitle">{this.props.post.title}</h4>
             <img
               className="requestBoxImage"
-              src={imageOrDefault(this.props.postImage)}
+              src={imageOrDefault(this.props.post.image)}
               alt="request"
             />
-            <p className="postBody">{this.props.postBody}</p>
-            {this.props.admin ? null : this.renderBottomPost()}
+            <p className="postBody">{this.props.post.body}</p>
+            {this.props.post.is_admin_tag ? null : this.renderBottomPost()}
           </section>
         </section>
       </div>

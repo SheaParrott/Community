@@ -244,22 +244,11 @@ class Profile extends Component {
               return (
                 <Post
                   key={index}
-                  is_interested={post.interested}
-                  id={post.id}
-                  admin={post.is_admin_tag}
+                  post={post}
                   onPostWithCommentsPage={false}
                   onProfilePage={true}
                   onPostsPage={false}
                   getProfile={this.getProfile}
-                  current_profile_author={post.current_profile_author}
-                  profile_id={this.state.profile.id}
-                  profileName={this.state.profile.name}
-                  profileImage={this.state.profile.profile_image}
-                  comment_count={post.comment_count}
-                  postTitle={post.title}
-                  postImage={post.image}
-                  postBody={post.body}
-                  timestamp={post.timestamp}
                 />
               )
             })}

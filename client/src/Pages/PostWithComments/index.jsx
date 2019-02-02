@@ -76,20 +76,12 @@ class PostWithComments extends Component {
         <Header />
         <div className="marginFromHeader">
           <Post
-            is_interested={this.state.post.interested}
+            post={this.state.post}
             onPostWithCommentsPage={true}
             id={this.props.match.params.post_id}
             fetchPost={this.fetchPost}
             onProfilePage={false}
             onPostsPage={false}
-            current_profile_author={this.state.post.current_profile_author}
-            profile_id={this.state.post.author_id}
-            profileName={this.state.post.name}
-            profileImage={this.state.post.profile_image}
-            postTitle={this.state.post.title}
-            postImage={this.state.post.image}
-            postBody={this.state.post.body}
-            timestamp={this.state.post.timestamp}
           />
           <section className="BoxCentering widthbig whiteBackground boxShadow">
             <div className="columnCentering">

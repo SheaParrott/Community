@@ -67,20 +67,10 @@ class Posts extends Component {
                 }
                 onPostWithCommentsPage={false}
                 key={index}
-                is_interested={post.interested}
-                id={post.id}
+                post={post}
                 onProfilePage={false}
                 onPostsPage={true}
                 getPosts={this.getPosts}
-                current_profile_author={post.current_profile_author}
-                comment_count={post.comment_count}
-                profile_id={post.author_id}
-                profileName={post.name}
-                profileImage={post.profile_image}
-                postTitle={post.title}
-                postImage={post.image}
-                postBody={post.body}
-                timestamp={post.timestamp}
               />
             )
           })}
