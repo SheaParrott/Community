@@ -22,6 +22,7 @@ class Post extends Component {
 
   postDelete = () => {
     axios.delete(`/api/posts/${this.props.post.id}`).then(response => {
+      this.toggleMenu()
       if (this.props.onProfilePage) {
         this.props.getProfile()
       } else if (this.props.onPostWithCommentsPage) {
