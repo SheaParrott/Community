@@ -23,6 +23,8 @@ class CreateAPost extends Component {
         body: undefined,
         tags: undefined
       },
+      postTitle: undefined,
+      postBody: undefined,
       postTags: undefined,
       UpdatingAndWaitingOnData: true
     }
@@ -68,17 +70,28 @@ class CreateAPost extends Component {
   }
   fetchPost = () => {
     axios.get(`/api/posts/${this.props.post.id}`).then(response => {
-      console.log(response.data)
       this.setState({
         post: response.data.post,
+        postTitle: response.data.post.title,
+        postBody: response.data.post.body,
         postTags: response.data.post.tags,
         UpdatingAndWaitingOnData: false
       })
     })
   }
-  handleChange = event => {
+  updatePost = () => {
+    // onProfilePage={this.props.onPostsPage}
+    // onPostsPage={this.props.onPostsPage}
+    // onPostWithCommentsPage={this.props.onPostWithCommentsPage}
+    // getProfile={this.props.getProfile}
+    // getPosts={this.props.getPosts}
+    // fetchPost={this.props.fetchPost}
+    // axios to update page
+    // then use if statements to reload page depending on the page
+  }
+  handleTitleTextarea = event => {
     this.setState({
-      file: URL.createObjectURL(event.target.files[0])
+      postTitle: event.target.value
     })
   }
   postImage = () => {
@@ -90,6 +103,16 @@ class CreateAPost extends Component {
       return imageOrDefault(this.state.post.image)
     }
   }
+  handleImageChange = event => {
+    this.setState({
+      file: URL.createObjectURL(event.target.files[0])
+    })
+  }
+  handleBodyTextarea = event => {
+    this.setState({
+      postBody: event.target.value
+    })
+  }
   chosenTags = tag => {
     if (!tag.target) {
       if (this.props.updateAPost && !this.state.UpdatingAndWaitingOnData) {
@@ -99,7 +122,10 @@ class CreateAPost extends Component {
       }
     }
   }
-  handleInputs = event => {
+  handleTagInputs = event => {
+    if (!this.props.updateAPost) {
+      return
+    }
     // use of immutability helper to push and slice from state array
     if (!event.target.checked) {
       let TheTagToBeRemoved = this.state.postTags.find(tag => {
@@ -135,12 +161,12 @@ class CreateAPost extends Component {
             })}
             <section className="columnCentering">
               <textarea
-                onChange={this.handleInputs}
+                onChange={this.handleTitleTextarea}
                 rows="2"
                 className="createAPost"
                 type="text"
                 name="post[title]"
-                value={this.state.post.title}
+                value={this.state.postTitle}
               />
               <img
                 className="createAPostImage boxShadow"
@@ -148,18 +174,18 @@ class CreateAPost extends Component {
                 alt="request"
               />
               <input
-                onChange={this.handleChange}
+                onChange={this.handleImageChange}
                 className="createAPostImage"
                 type="file"
                 name="post[post_image]"
               />
               <textarea
-                onChange={this.handleInputs}
+                onChange={this.handleBodyTextarea}
                 className="createAPost"
                 type="text"
                 name="post[body]"
                 rows="4"
-                value={this.state.post.body}
+                value={this.state.postBody}
               />
             </section>
             <section className="tagsBox widthbig boxShadow">
@@ -171,7 +197,7 @@ class CreateAPost extends Component {
                   return (
                     <h5 className="tag" key={tag.id}>
                       <input
-                        onClick={this.handleInputs}
+                        onClick={this.handleTagInputs}
                         type="checkbox"
                         value={tag.id}
                         name="post[tag_ids][]"

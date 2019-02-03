@@ -246,6 +246,12 @@ class Post extends Component {
           <section className="widthbig boxShadow">
             {this.topBar()}
             <CreateAPost
+              onProfilePage={this.props.onPostsPage}
+              onPostsPage={this.props.onPostsPage}
+              onPostWithCommentsPage={this.props.onPostWithCommentsPage}
+              getProfile={this.props.getProfile}
+              getPosts={this.props.getPosts}
+              fetchPost={this.props.fetchPost}
               post={this.props.post}
               updateAPost={this.state.updateAPost}
             />
