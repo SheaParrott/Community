@@ -6,6 +6,7 @@ import axios from 'axios'
 import auth from '../../auth'
 import loadingIMG from '../../assets/purpleloading.gif'
 import imageOrDefault from '../../imageOrDefault'
+import update from 'immutability-helper'
 
 class CreateAPost extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class CreateAPost extends Component {
         body: undefined,
         tags: undefined
       },
+      postTags: undefined,
       UpdatingAndWaitingOnData: true
     }
   }
@@ -69,6 +71,7 @@ class CreateAPost extends Component {
       console.log(response.data)
       this.setState({
         post: response.data.post,
+        postTags: response.data.post.tags,
         UpdatingAndWaitingOnData: false
       })
     })
@@ -88,9 +91,32 @@ class CreateAPost extends Component {
     }
   }
   chosenTags = tag => {
-    if (this.props.updateAPost && !this.state.UpdatingAndWaitingOnData) {
-      return this.state.post.tags.find(tagg => {
-        return tagg.name.includes(tag)
+    if (!tag.target) {
+      if (this.props.updateAPost && !this.state.UpdatingAndWaitingOnData) {
+        return this.state.postTags.find(tagg => {
+          return tagg.name.includes(tag)
+        })
+      }
+    }
+  }
+  handleInputs = event => {
+    // use of immutability helper to push and slice from state array
+    if (!event.target.checked) {
+      let TheTagToBeRemoved = this.state.postTags.find(tag => {
+        return tag.name === event.target.placeholder
+      })
+
+      let index = this.state.postTags.indexOf(TheTagToBeRemoved)
+
+      this.setState({
+        postTags: update(this.state.postTags, { $splice: [[index, 1]] })
+      })
+    } else if (event.target.checked) {
+      let theNewTag = this.state.tags.find(newTag => {
+        return newTag.name === event.target.placeholder
+      })
+      this.setState({
+        postTags: update(this.state.postTags, { $push: [theNewTag] })
       })
     }
   }
@@ -109,6 +135,7 @@ class CreateAPost extends Component {
             })}
             <section className="columnCentering">
               <textarea
+                onChange={this.handleInputs}
                 rows="2"
                 className="createAPost"
                 type="text"
@@ -127,6 +154,7 @@ class CreateAPost extends Component {
                 name="post[post_image]"
               />
               <textarea
+                onChange={this.handleInputs}
                 className="createAPost"
                 type="text"
                 name="post[body]"
@@ -143,6 +171,7 @@ class CreateAPost extends Component {
                   return (
                     <h5 className="tag" key={tag.id}>
                       <input
+                        onClick={this.handleInputs}
                         type="checkbox"
                         value={tag.id}
                         name="post[tag_ids][]"
