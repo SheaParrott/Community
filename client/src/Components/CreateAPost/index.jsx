@@ -31,6 +31,12 @@ class CreateAPost extends Component {
   }
 
   componentDidMount = () => {
+    if (this.props.updateAPost) {
+      this.fetchPost()
+    }
+    this.fetchTags()
+  }
+  fetchTags = () => {
     axios
       .get(`/api/tags`, {
         headers: {
@@ -40,9 +46,6 @@ class CreateAPost extends Component {
       .then(response => {
         this.setState({ tags: response.data.tags })
       })
-    if (this.props.updateAPost) {
-      this.fetchPost()
-    }
   }
 
   fetchPost = () => {
@@ -88,20 +91,21 @@ class CreateAPost extends Component {
     axios.put('/api/posts/update', formData).then(response => {
       console.log(response.data)
       if (this.props.onProfilePage) {
-        console.log('reload profile')
         this.props.getProfile()
       } else if (this.props.onPostsPage) {
-        console.log('reload posts page')
         this.props.getPosts()
       } else if (this.props.onPostWithCommentsPage) {
-        console.log('reload post with comments')
         this.props.fetchPost()
       }
-      form.reset()
-      this.props.submittedUpdatePost()
-      this.setState({
-        file: null
-      })
+      this.setState(
+        {
+          file: null
+        },
+        () => {
+          form.reset()
+          this.props.submittedUpdatePost()
+        }
+      )
     })
   }
   handleTitleTextarea = event => {
