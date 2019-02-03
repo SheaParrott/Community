@@ -31,11 +31,16 @@ class Post extends Component {
       }
     })
   }
+  submittedUpdatePost = () => {
+    this.setState({
+      updateAPost: !this.state.updateAPost
+    })
+  }
   toggleUpdatePost = () => {
     this.setState({
-      updateAPost: !this.state.updateAPost,
-      showMenu: !this.state.showMenu
+      updateAPost: !this.state.updateAPost
     })
+    this.toggleMenu()
   }
   toggleMenu = event => {
     this.setState({ showMenu: !this.state.showMenu })
@@ -246,12 +251,13 @@ class Post extends Component {
           <section className="widthbig boxShadow">
             {this.topBar()}
             <CreateAPost
-              onProfilePage={this.props.onPostsPage}
+              onProfilePage={this.props.onProfilePage}
               onPostsPage={this.props.onPostsPage}
               onPostWithCommentsPage={this.props.onPostWithCommentsPage}
               getProfile={this.props.getProfile}
               getPosts={this.props.getPosts}
               fetchPost={this.props.fetchPost}
+              submittedUpdatePost={this.submittedUpdatePost}
               post={this.props.post}
               updateAPost={this.state.updateAPost}
             />

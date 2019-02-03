@@ -45,6 +45,17 @@ class CreateAPost extends Component {
     }
   }
 
+  fetchPost = () => {
+    axios.get(`/api/posts/${this.props.post.id}`).then(response => {
+      this.setState({
+        post: response.data.post,
+        postTitle: response.data.post.title,
+        postBody: response.data.post.body,
+        postTags: response.data.post.tags,
+        UpdatingAndWaitingOnData: false
+      })
+    })
+  }
   createPost = event => {
     event.preventDefault()
     const form = event.target
@@ -60,7 +71,7 @@ class CreateAPost extends Component {
           errors: response.data.errors
         })
       } else {
-        this.props.reloadProfilePage()
+        this.props.getProfile()
         form.reset()
         this.setState({
           file: null
@@ -68,26 +79,30 @@ class CreateAPost extends Component {
       }
     })
   }
-  fetchPost = () => {
-    axios.get(`/api/posts/${this.props.post.id}`).then(response => {
+
+  updatePost = event => {
+    event.preventDefault()
+    const form = event.target
+    const formData = new FormData(form)
+
+    axios.put('/api/posts/update', formData).then(response => {
+      console.log(response.data)
+      if (this.props.onProfilePage) {
+        console.log('reload profile')
+        this.props.getProfile()
+      } else if (this.props.onPostsPage) {
+        console.log('reload posts page')
+        this.props.getPosts()
+      } else if (this.props.onPostWithCommentsPage) {
+        console.log('reload post with comments')
+        this.props.fetchPost()
+      }
+      form.reset()
+      this.props.submittedUpdatePost()
       this.setState({
-        post: response.data.post,
-        postTitle: response.data.post.title,
-        postBody: response.data.post.body,
-        postTags: response.data.post.tags,
-        UpdatingAndWaitingOnData: false
+        file: null
       })
     })
-  }
-  updatePost = () => {
-    // onProfilePage={this.props.onPostsPage}
-    // onPostsPage={this.props.onPostsPage}
-    // onPostWithCommentsPage={this.props.onPostWithCommentsPage}
-    // getProfile={this.props.getProfile}
-    // getPosts={this.props.getPosts}
-    // fetchPost={this.props.fetchPost}
-    // axios to update page
-    // then use if statements to reload page depending on the page
   }
   handleTitleTextarea = event => {
     this.setState({
@@ -150,7 +165,9 @@ class CreateAPost extends Component {
   render() {
     return (
       <div className="widthbig boxShadow whiteBackground">
-        <form onSubmit={this.createPost}>
+        <form
+          onSubmit={this.props.updateAPost ? this.updatePost : this.createPost}
+        >
           <section className="createAPostCentering">
             {this.state.errors.map((error, index) => {
               return (
@@ -160,6 +177,13 @@ class CreateAPost extends Component {
               )
             })}
             <section className="columnCentering">
+              {this.props.updateAPost ? (
+                <input
+                  type="hidden"
+                  name="post[id]"
+                  value={this.props.post.id}
+                />
+              ) : null}
               <textarea
                 onChange={this.handleTitleTextarea}
                 rows="2"
@@ -209,7 +233,7 @@ class CreateAPost extends Component {
                   )
                 })}
               <button className="postSubmit" type="submit">
-                Submit Post
+                Submit
               </button>
             </section>
           </section>

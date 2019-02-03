@@ -54,7 +54,7 @@ class Api::PostsController < ApplicationController
   # "/api/posts/update"
   def update 
     post = Post.find(update_post_params[:id])
-    pos.update(update_post_params)
+    post.update(update_post_params)
   end
 
   def destroy 
