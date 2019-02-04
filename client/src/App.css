@@ -277,6 +277,33 @@ div.loading {
   max-width: 75px;
 }
 
+.popUp {
+  position: relative;
+  display: inline-block;
+}
+
+.popUp .popUptext {
+  width: 200px;
+  background-color: rgba(255, 255, 255, 0.995);
+  /* color: #fff; */
+  /* text-align: center; */
+  box-shadow: 0 0 5px black;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the popUp */
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  margin-top: 15px;
+  margin-left: -175px;
+}
+div.popUpMenu {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
 @media (min-width: 375px) {
   .width {
     width: 350px;

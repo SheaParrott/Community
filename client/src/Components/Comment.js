@@ -9,21 +9,58 @@ class Comment extends Component {
     super(props)
 
     this.state = {
-      deleteComment: false
+      commentOptions: false
     }
   }
-  showDeleteComment = () => {
+  handleCommentOptions = () => {
     this.setState({
-      deleteComment: !this.state.deleteComment
+      commentOptions: !this.state.commentOptions
     })
   }
   deleteComment = () => {
     axios.delete(`/api/comment/${this.props.id}`).then(response => {
       this.props.fetchPost()
       this.setState({
-        deleteComment: false
+        commentOptions: false
       })
     })
+  }
+  popupOptions = () => {
+    return (
+      <div className="commentBox">
+        <div>
+          <div className="popUp ">
+            <span
+              className={`popUptext ${
+                this.state.commentOptions ? '' : 'hidden'
+              }`}
+            >
+              <div onClick={this.deleteComment} className="popUpMenu red">
+                <i className="fas fa-trash-alt" />
+                <p>Delete Comment</p>
+              </div>
+              <div
+                onClick={this.toggleUpdateComment}
+                className="popUpMenu blue"
+              >
+                {/* toggleUpdateComment will show the inputs to Update
+            - build a form with the following:
+            - need a hidden field with the id as value
+            - need a text area to submit  */}
+                <i className="fas fa-pencil-alt" />
+                <p>Update Comment</p>
+              </div>
+            </span>
+          </div>
+          <i
+            onClick={this.handleCommentOptions}
+            className={`fas fa-ellipsis-v commentOptions ${
+              this.props.current_profile_author ? '' : 'VisHidden'
+            }`}
+          />
+        </div>
+      </div>
+    )
   }
   render() {
     return (
@@ -56,20 +93,7 @@ class Comment extends Component {
             </Link>
             <p className="comment">{this.props.body}</p>
           </div>
-          <div className="commentBox">
-            <i
-              onClick={this.deleteComment}
-              className={`fas fa-trash-alt red ${
-                this.state.deleteComment ? '' : 'VisHidden'
-              }`}
-            />
-            <i
-              onClick={this.showDeleteComment}
-              className={`fas fa-ellipsis-v deleteComment ${
-                this.props.current_profile_author ? '' : 'VisHidden'
-              }`}
-            />
-          </div>
+          {this.popupOptions()}
         </section>
       </div>
     )

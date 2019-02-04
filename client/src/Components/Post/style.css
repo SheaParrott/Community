@@ -39,11 +39,11 @@ div.requestBoxTopBarInfo {
   cursor: pointer;
 }
 h4.requestBoxTitle {
-  margin: 7px 10px 10px 10px;
+  margin: 7px 20px 10px 20px;
 }
 p.postBody {
   text-align: left;
-  padding: 0 4px 0 4px;
+  padding: 0 20px;
 }
 img.requestBoxImage {
   max-width: 205px;
@@ -79,6 +79,34 @@ img.commentProfileImage {
 }
 .purple {
   color: #450868;
+}
+
+.dropDown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropDown .dropDowntext {
+  width: 160px;
+  background-color: rgba(255, 255, 255, 0.995);
+  /* color: #fff; */
+  /* text-align: center; */
+  box-shadow: 0 0 5px black;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the dropDown */
+  position: absolute;
+  z-index: 1;
+  /* top: 100%; */
+  left: 50%;
+  margin-top: 15px;
+  margin-left: -125px;
+}
+div.dropDownMenu {
+  display: flex;
+  align-items: center;
+  padding: 5px;
 }
 
 @media (min-width: 767px) {
@@ -120,32 +148,4 @@ img.commentProfileImage {
     min-width: 60px;
     max-width: 60px;
   }
-}
-
-.dropDown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropDown .dropDowntext {
-  width: 160px;
-  background-color: rgba(255, 255, 255, 0.995);
-  /* color: #fff; */
-  /* text-align: center; */
-  box-shadow: 0 0 5px black;
-  border-radius: 6px;
-  padding: 5px 0;
-
-  /* Position the dropDown */
-  position: absolute;
-  z-index: 1;
-  /* top: 100%; */
-  left: 50%;
-  margin-top: 15px;
-  margin-left: -125px;
-}
-div.dropDownMenu {
-  display: flex;
-  align-items: center;
-  padding: 5px;
 }
