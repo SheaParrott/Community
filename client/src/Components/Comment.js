@@ -18,7 +18,7 @@ class Comment extends Component {
     })
   }
   deleteComment = () => {
-    axios.delete(`/api/comment/${this.props.id}`).then(response => {
+    axios.delete(`/api/comment/${this.props.comment.id}`).then(response => {
       this.props.fetchPost()
       this.setState({
         commentOptions: false
@@ -55,7 +55,7 @@ class Comment extends Component {
           <i
             onClick={this.handleCommentOptions}
             className={`fas fa-ellipsis-v commentOptions ${
-              this.props.current_profile_author ? '' : 'VisHidden'
+              this.props.comment.current_profile_author ? '' : 'VisHidden'
             }`}
           />
         </div>
@@ -67,14 +67,14 @@ class Comment extends Component {
       <div className="comment widthbig">
         <Link
           to={CurrentProfileHelper(
-            this.props.current_profile_author,
-            this.props.author_id
+            this.props.comment.current_profile_author,
+            this.props.comment.author_id
           )}
         >
           <div className="profileImageContainer">
             <img
               className="commentProfileImage box-secondary"
-              src={imageOrDefault(this.props.author_image)}
+              src={imageOrDefault(this.props.comment.author_image)}
               alt="profile"
             />
           </div>
@@ -83,15 +83,15 @@ class Comment extends Component {
           <div>
             <Link
               to={CurrentProfileHelper(
-                this.props.current_profile_author,
-                this.props.author_id
+                this.props.comment.current_profile_author,
+                this.props.comment.author_id
               )}
             >
               <h6 className="comment text-secondary">
-                {this.props.author_name}
+                {this.props.comment.author_name}
               </h6>
             </Link>
-            <p className="comment">{this.props.body}</p>
+            <p className="comment">{this.props.comment.body}</p>
           </div>
           {this.popupOptions()}
         </section>

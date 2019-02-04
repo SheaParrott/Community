@@ -91,12 +91,6 @@ class PostWithComments extends Component {
                     key={index}
                     fetchPost={this.fetchPost}
                     comment={comment}
-                    id={comment.id}
-                    current_profile_author={comment.current_profile_author}
-                    author_id={comment.author_id}
-                    author_image={comment.author_image}
-                    author_name={comment.author_name}
-                    body={comment.body}
                   />
                 )
               })}
