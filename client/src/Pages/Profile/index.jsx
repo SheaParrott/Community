@@ -8,7 +8,7 @@ import Post from '../../Components/Post/Post'
 
 import auth from '../../auth'
 import history from '../../history'
-import CreateAPost from '../../Components/CreateAPost'
+import PostForm from '../../Components/PostForm'
 import imageOrDefault from '../../imageOrDefault'
 import Loading from '../../Components/Loading'
 
@@ -205,7 +205,7 @@ class Profile extends Component {
                 </div>
                 <div>
                   {this.state.showCreateAPost ? (
-                    <CreateAPost getProfile={this.getProfile} />
+                    <PostForm getProfile={this.getProfile} />
                   ) : null}
                 </div>
               </div>

@@ -6,7 +6,7 @@ import axios from 'axios'
 import CurrentProfileHelper from '../../currentProfileHelper'
 import history from '../../history'
 import auth from '../../auth'
-import CreateAPost from '../CreateAPost'
+import PostForm from '../PostForm'
 
 class Post extends Component {
   constructor(props) {
@@ -251,7 +251,7 @@ class Post extends Component {
         <div>
           <section className="widthbig boxShadow">
             {this.topBar()}
-            <CreateAPost
+            <PostForm
               onProfilePage={this.props.onProfilePage}
               onPostsPage={this.props.onPostsPage}
               onPostWithCommentsPage={this.props.onPostWithCommentsPage}
@@ -297,6 +297,6 @@ export default Post
 // [x] create update post endpoint
 // [x] add in font awesome logo for editing
 // [x] add dropdown menu
-// [x] set up createAPost component to update and pass props
+// [x] set up PostForm component to update and pass props
 // [x] set up onChange function for prop passed so we can edit
 // [x] hook up endpoint onto the front end

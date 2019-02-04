@@ -7,6 +7,7 @@ import auth from '../../auth'
 import history from '../../history'
 import Loading from '../../Components/Loading'
 import Comment from '../../Components/Comment'
+import CommentForm from '../../Components/CommentForm'
 
 class PostWithComments extends Component {
   constructor(props) {
@@ -45,28 +46,6 @@ class PostWithComments extends Component {
       })
   }
 
-  createComment = event => {
-    event.preventDefault()
-    let form = event.target
-
-    const formData = new FormData(form)
-
-    // for (let pair of formData.entries()) {
-    //   console.log(pair[0] + ', ' + pair[1])
-    // }
-
-    axios.post('/api/comment/create', formData).then(response => {
-      if (response.data.errors) {
-        this.setState({
-          errors: response.data.errors
-        })
-      } else {
-        form.reset()
-        this.fetchPost()
-      }
-    })
-  }
-
   render() {
     if (!this.state.post) {
       return this.renderLoading()
@@ -94,30 +73,10 @@ class PostWithComments extends Component {
                   />
                 )
               })}
-              {this.state.errors.map((error, index) => {
-                return (
-                  <h5 className="secondary-text" key={index}>
-                    {` * ${error}`}
-                  </h5>
-                )
-              })}
-              <form onSubmit={this.createComment}>
-                <input
-                  type="hidden"
-                  name="comment[post_id]"
-                  value={this.props.match.params.post_id}
-                />
-                <textarea
-                  rows="3"
-                  className="comment width"
-                  type="text"
-                  name="comment[body]"
-                  placeholder="Your new comment Here"
-                />
-                <button type="submit" className="comment width">
-                  SUBMIT
-                </button>
-              </form>
+              <CommentForm
+                post_id={this.props.match.params.post_id}
+                fetchPost={this.fetchPost}
+              />
             </div>
           </section>
         </div>
