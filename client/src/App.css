@@ -224,6 +224,9 @@ h6 {
   margin: 5px;
   opacity: 0.6;
 }
+.fa-check {
+  font-size: 20px;
+}
 .fa-trash-alt {
   margin: 1px 10px 5px 5px;
 }

@@ -14,7 +14,7 @@ div.comment {
 }
 h6.comment,
 p.comment {
-  margin: 0 0 0 15px;
+  margin: 0 15px;
 }
 .commentBox {
   display: flex;
@@ -33,13 +33,37 @@ textarea.comment {
 }
 form.row {
   display: flex;
+  align-items: center;
 }
 button.comment {
   width: 95%;
   margin: 0 2.5%;
 }
+textarea.form {
+  width: 125px;
+  height: 26px;
+  margin: 0 15px;
+}
+@media (min-width: 375px) {
+  textarea.form {
+    width: 185px;
+  }
+}
+@media (min-width: 411px) {
+  textarea.form {
+    width: 220px;
+  }
+}
 @media (min-width: 760px) {
   h6.comment {
     font-size: 1rem;
+  }
+  textarea.form {
+    width: 260px;
+  }
+}
+@media (min-width: 1000px) {
+  textarea.form {
+    width: 290px;
   }
 }

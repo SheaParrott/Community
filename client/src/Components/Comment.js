@@ -98,13 +98,11 @@ class Comment extends Component {
                 {this.props.comment.author_name}
               </h6>
             </Link>
-            <div>
-              {this.state.updateComment ? (
-                <CommentForm updateComment={this.state.updateComment} />
-              ) : (
-                <p className="comment">{this.props.comment.body}</p>
-              )}
-            </div>
+            {this.state.updateComment ? (
+              <CommentForm updateComment={this.state.updateComment} />
+            ) : (
+              <p className="comment">{this.props.comment.body}</p>
+            )}
           </div>
           {this.popupOptions()}
         </section>

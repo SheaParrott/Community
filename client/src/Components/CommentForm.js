@@ -70,13 +70,16 @@ class CommentForm extends Component {
           />
           <textarea
             rows="3"
-            className="comment "
+            className={`${this.props.updateComment ? 'form' : 'comment'}`}
             type="text"
             name="comment[body]"
             placeholder="Your new comment Here"
           />
           {this.props.updateComment ? (
-            <button type="submit">
+            <button
+              className={`${this.props.updateComment ? 'form' : 'comment'}`}
+              type="submit"
+            >
               <i className="fas fa-check" />
             </button>
           ) : (
