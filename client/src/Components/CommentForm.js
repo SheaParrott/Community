@@ -6,8 +6,23 @@ class CommentForm extends Component {
     super(props)
 
     this.state = {
-      errors: []
+      errors: [],
+      commentBody: ''
     }
+  }
+  componentDidMount = () => {
+    if (this.props.updateComment) {
+      this.fetchComment()
+    } else {
+      return
+    }
+  }
+  fetchComment = () => {
+    axios.get(`/api/comment/${this.props.comment.id}`).then(response => {
+      this.setState({
+        commentBody: response.data.body
+      })
+    })
   }
   createComment = event => {
     event.preventDefault()
@@ -28,31 +43,36 @@ class CommentForm extends Component {
         form.reset()
         this.props.fetchPost()
         this.setState({
-          errors: []
+          errors: [],
+          commentBody: ''
         })
       }
     })
   }
   updateComment = event => {
     event.preventDefault()
-    // "/api/comments/update"
+    let form = event.target
+    const formData = new FormData(form)
 
-    console.log('updatecomment')
-    // axios.put('/api/comments/update').then(response => {
-    //   console.log(response.data)
-    // })
-    // updateComment={this.state.updateComment}
-    // handleUpdateComment={this.handleUpdateComment}
+    axios.put('/api/comment/update', formData).then(response => {
+      form.reset()
+      this.props.commentUpdated()
+      this.props.fetchPost()
+    })
+  }
+  handleCommentChange = event => {
+    this.setState({
+      commentBody: event.target.value
+    })
   }
 
   render() {
     let updateOrCreate = this.props.updateComment ? 'id' : 'post_id'
     return (
       <>
-        {' '}
         {this.state.errors.map((error, index) => {
           return (
-            <h5 className="secondary-text" key={index}>
+            <h5 className="error" key={index}>
               {` * ${error}`}
             </h5>
           )
@@ -66,20 +86,23 @@ class CommentForm extends Component {
           <input
             type="hidden"
             name={`comment[${updateOrCreate}]`}
-            value={this.props.post_id}
+            value={
+              this.props.updateComment
+                ? this.props.comment.id
+                : this.props.post_id
+            }
           />
           <textarea
             rows="3"
             className={`${this.props.updateComment ? 'form' : 'comment'}`}
             type="text"
             name="comment[body]"
+            onChange={this.handleCommentChange}
+            value={this.state.commentBody}
             placeholder="Your new comment Here"
           />
           {this.props.updateComment ? (
-            <button
-              className={`${this.props.updateComment ? 'form' : 'comment'}`}
-              type="submit"
-            >
+            <button type="submit">
               <i className="fas fa-check" />
             </button>
           ) : (

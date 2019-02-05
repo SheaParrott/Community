@@ -16,6 +16,9 @@
 .text-primary:hover {
   color: #450868;
 }
+.error {
+  color: red;
+}
 .whiteBackground {
   background-color: white;
 }

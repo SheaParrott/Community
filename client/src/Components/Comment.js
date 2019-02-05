@@ -32,6 +32,11 @@ class Comment extends Component {
     })
     this.handleCommentOptions()
   }
+  commentUpdated = () => {
+    this.setState({
+      updateComment: !this.state.updateComment
+    })
+  }
   popupOptions = () => {
     return (
       <div className="commentBox">
@@ -99,7 +104,12 @@ class Comment extends Component {
               </h6>
             </Link>
             {this.state.updateComment ? (
-              <CommentForm updateComment={this.state.updateComment} />
+              <CommentForm
+                comment={this.props.comment}
+                updateComment={this.state.updateComment}
+                commentUpdated={this.commentUpdated}
+                fetchPost={this.props.fetchPost}
+              />
             ) : (
               <p className="comment">{this.props.comment.body}</p>
             )}

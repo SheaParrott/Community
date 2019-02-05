@@ -1,4 +1,14 @@
 class Api::CommentsController < ApplicationController
+
+
+  def show 
+    comment_id = params[:id]
+
+    comment = Comment.find(comment_id)
+
+    render json: comment
+  end
+
   def create
     new_comment = current_profile.comments.create(comment_params)
 

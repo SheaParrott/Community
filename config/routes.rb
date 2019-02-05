@@ -16,9 +16,10 @@ Rails.application.routes.draw do
   post "/api/interested_posts", to: "api/interested_posts#create"
   delete "/api/interested_posts/:id", to: "api/interested_posts#destroy"
 
+  get "/api/comment/:id", to: "api/comments#show"
   post "/api/comment/create", to: "api/comments#create"
   delete "/api/comment/:id", to: "api/comments#delete"
-  put "/api/comments/update", to: "api/comments#update"
+  put "/api/comment/update", to: "api/comments#update"
 
   get "/api/tags", to: "api/tags#show"
 
