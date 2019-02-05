@@ -34,8 +34,16 @@ class Api::CommentsController < ApplicationController
       end
     }
   end
+  # "/api/comments/update"
+  def update 
+    comment = Comment.find(update_comment_params[:id])
+    comment.update(update_comment_params)
+  end
 
   private
+  def update_comment_params
+    params.require(:comment).permit(:id, :body)
+  end
 
   def comment_params
     params.require(:comment).permit(:post_id, :body)
