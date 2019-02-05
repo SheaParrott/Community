@@ -30,10 +30,6 @@ class CommentForm extends Component {
 
     const formData = new FormData(form)
 
-    // for (let pair of formData.entries()) {
-    //   console.log(pair[0] + ', ' + pair[1])
-    // }
-
     axios.post('/api/comment/create', formData).then(response => {
       if (response.data.errors) {
         this.setState({

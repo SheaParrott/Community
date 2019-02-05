@@ -287,16 +287,3 @@ class Post extends Component {
 }
 
 export default Post
-// to do:
-// [] create update comment endpoint
-// [] add drop down style menu for edit and delete for comments
-// [] need an hidden input for updating post
-// [] need to set up an onchange and manage a local state of the comment
-// [] set up function for the update comment and reload page
-// [] add show chosen tags feature for update profile
-// [x] create update post endpoint
-// [x] add in font awesome logo for editing
-// [x] add dropdown menu
-// [x] set up PostForm component to update and pass props
-// [x] set up onChange function for prop passed so we can edit
-// [x] hook up endpoint onto the front end

@@ -55,10 +55,6 @@ class Comment extends Component {
                 onClick={this.handleUpdateComment}
                 className="popUpMenu blue"
               >
-                {/* toggleUpdateComment will show the inputs to Update
-            - build a form with the following:
-            - need a hidden field with the id as value
-            - need a text area to submit  */}
                 <i className="fas fa-pencil-alt" />
                 <p>Update Comment</p>
               </div>
