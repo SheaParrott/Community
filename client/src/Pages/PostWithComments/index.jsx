@@ -41,7 +41,8 @@ class PostWithComments extends Component {
       .then(response => {
         this.setState({
           post: response.data.post,
-          errors: []
+          errors: [],
+          updateComment: false
         })
       })
   }
@@ -76,6 +77,7 @@ class PostWithComments extends Component {
               <CommentForm
                 post_id={this.props.match.params.post_id}
                 fetchPost={this.fetchPost}
+                updateComment={false}
               />
             </div>
           </section>

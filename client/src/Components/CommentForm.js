@@ -33,10 +33,22 @@ class CommentForm extends Component {
       }
     })
   }
+  updateComment = event => {
+    event.preventDefault()
+    // "/api/comments/update"
+
+    console.log('updatecomment')
+    // axios.put('/api/comments/update').then(response => {
+    //   console.log(response.data)
+    // })
+    // updateComment={this.state.updateComment}
+    // handleUpdateComment={this.handleUpdateComment}
+  }
 
   render() {
+    let updateOrCreate = this.props.updateComment ? 'id' : 'post_id'
     return (
-      <div>
+      <>
         {' '}
         {this.state.errors.map((error, index) => {
           return (
@@ -45,24 +57,35 @@ class CommentForm extends Component {
             </h5>
           )
         })}
-        <form onSubmit={this.createComment}>
+        <form
+          onSubmit={
+            this.props.updateComment ? this.updateComment : this.createComment
+          }
+          className={`${this.props.updateComment ? 'row' : 'widthbig'}`}
+        >
           <input
             type="hidden"
-            name="comment[post_id]"
+            name={`comment[${updateOrCreate}]`}
             value={this.props.post_id}
           />
           <textarea
             rows="3"
-            className="comment width"
+            className="comment "
             type="text"
             name="comment[body]"
             placeholder="Your new comment Here"
           />
-          <button type="submit" className="comment width">
-            SUBMIT
-          </button>
+          {this.props.updateComment ? (
+            <button type="submit">
+              <i className="fas fa-check" />
+            </button>
+          ) : (
+            <button type="submit" className="comment">
+              SUBMIT
+            </button>
+          )}
         </form>
-      </div>
+      </>
     )
   }
 }

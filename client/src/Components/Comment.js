@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import imageOrDefault from '../imageOrDefault'
 import CurrentProfileHelper from '../currentProfileHelper'
 import axios from 'axios'
+import CommentForm from './CommentForm'
 
 class Comment extends Component {
   constructor(props) {
@@ -25,6 +26,12 @@ class Comment extends Component {
       })
     })
   }
+  handleUpdateComment = () => {
+    this.setState({
+      updateComment: !this.state.updateComment
+    })
+    this.handleCommentOptions()
+  }
   popupOptions = () => {
     return (
       <div className="commentBox">
@@ -40,7 +47,7 @@ class Comment extends Component {
                 <p>Delete Comment</p>
               </div>
               <div
-                onClick={this.toggleUpdateComment}
+                onClick={this.handleUpdateComment}
                 className="popUpMenu blue"
               >
                 {/* toggleUpdateComment will show the inputs to Update
@@ -91,7 +98,13 @@ class Comment extends Component {
                 {this.props.comment.author_name}
               </h6>
             </Link>
-            <p className="comment">{this.props.comment.body}</p>
+            <div>
+              {this.state.updateComment ? (
+                <CommentForm updateComment={this.state.updateComment} />
+              ) : (
+                <p className="comment">{this.props.comment.body}</p>
+              )}
+            </div>
           </div>
           {this.popupOptions()}
         </section>

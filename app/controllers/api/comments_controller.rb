@@ -38,6 +38,14 @@ class Api::CommentsController < ApplicationController
   def update 
     comment = Comment.find(update_comment_params[:id])
     comment.update(update_comment_params)
+
+    if comment.valid?
+      render head: :ok
+    else
+      render json: {
+        errors: comment.errors.full_messages
+      }
+    end
   end
 
   private

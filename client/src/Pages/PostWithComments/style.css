@@ -27,6 +27,17 @@ input.comment {
 button.comment {
   margin: 5px;
 }
+textarea.comment {
+  width: 93%;
+  margin: 0 2.5%;
+}
+form.row {
+  display: flex;
+}
+button.comment {
+  width: 95%;
+  margin: 0 2.5%;
+}
 @media (min-width: 760px) {
   h6.comment {
     font-size: 1rem;

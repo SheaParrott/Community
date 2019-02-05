@@ -55,6 +55,14 @@ class Api::PostsController < ApplicationController
   def update 
     post = Post.find(update_post_params[:id])
     post.update(update_post_params)
+    
+    if post.valid?
+      render head: :ok
+    else
+      render json: {
+        errors: post.errors.full_messages
+      }
+    end
   end
 
   def destroy 
