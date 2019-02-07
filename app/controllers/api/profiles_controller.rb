@@ -12,9 +12,9 @@ class Api::ProfilesController < ApplicationController
       end
     end
 
-    interested_posts = get_posts(profile.posts)    
+    interested_posts = get_posts(profile.posts.uniq)    
 
-    recommended_posts = get_posts(profile.recommended_posts) 
+    recommended_posts = get_posts(profile.recommended_posts.uniq)
 
     recommended_posts = recommended_posts.select{ |post| post[:current_profile_author] == false}
 
@@ -70,9 +70,9 @@ class Api::ProfilesController < ApplicationController
       end
     end
 
-    interested_posts = get_posts(profile.posts)    
+    interested_posts = get_posts(profile.posts.uniq)   
 
-    recommended_posts = get_posts(profile.recommended_posts) 
+    recommended_posts = get_posts(profile.recommended_posts.uniq)
 
     recommended_posts = recommended_posts.select{ |post| post[:current_profile_author] == false}
 
@@ -121,9 +121,9 @@ class Api::ProfilesController < ApplicationController
       end
     end
 
-    interested_posts = get_posts(profile.posts)    
+    interested_posts = get_posts(profile.posts.uniq)    
 
-    recommended_posts = get_posts(profile.recommended_posts) 
+    recommended_posts = get_posts(profile.recommended_posts.uniq)
 
     recommended_posts = recommended_posts.select{ |post| post[:current_profile_author] == false}
 
