@@ -1,5 +1,15 @@
 class Api::ProfilesController < ApplicationController
+   # all options [:show, :create, :index, :destroy]
 
+  #  to do:
+  #   [x] fix how we know which profile we are on from hard coded 
+  #   to dynamic
+  #   []change how we get interested or recommended posts
+  #   for now lets just use the profile endpoint,
+  #    but need to make a endpoint for each of these to 
+  #    reduce the amount of data recieved
+  #   [] change all the endpoint names in the controllers
+  #   [] change all the api calls in React
 
   def interested_or_recommended
     profile_id = params[:id]
@@ -97,7 +107,7 @@ class Api::ProfilesController < ApplicationController
         interested_posts: interested_posts.to_set,
         recommended_posts: recommended_posts.to_set,
         tags: tags,
-        me: true,   
+        me: profile.id == current_profile.id,   
       }
     }
   end
@@ -149,7 +159,7 @@ class Api::ProfilesController < ApplicationController
         interested_posts: interested_posts.to_set,
         recommended_posts: recommended_posts.to_set,
         tags: tags,
-        me: false
+        me: profile.id == current_profile.id,   
       }
     }
   end

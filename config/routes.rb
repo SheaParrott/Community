@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
+  # namespace :api do 
+  #   resources :profiles
+  #   # add in a delete profile option on front end and get working. 
+  #   # all options [:show, :create, :index, :destroy]
+  #   resources :posts
+  #   resources :tags, only: [:index]
+  #   resources :comments
+  #   resources :interested_posts, only: [:create, :destroy]
+  # end
+
+
   get "/api/profiles/current", to: "api/profiles#current"
   
   get "/api/profiles/:id", to: "api/profiles#show"
