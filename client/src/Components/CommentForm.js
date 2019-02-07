@@ -18,7 +18,7 @@ class CommentForm extends Component {
     }
   }
   fetchComment = () => {
-    axios.get(`/api/comment/${this.props.comment.id}`).then(response => {
+    axios.get(`/api/comments/${this.props.comment.id}`).then(response => {
       this.setState({
         commentBody: response.data.body
       })
@@ -30,7 +30,7 @@ class CommentForm extends Component {
 
     const formData = new FormData(form)
 
-    axios.post('/api/comment/create', formData).then(response => {
+    axios.post('/api/comments', formData).then(response => {
       if (response.data.errors) {
         this.setState({
           errors: response.data.errors
@@ -50,11 +50,13 @@ class CommentForm extends Component {
     let form = event.target
     const formData = new FormData(form)
 
-    axios.put('/api/comment/update', formData).then(response => {
-      form.reset()
-      this.props.commentUpdated()
-      this.props.fetchPost()
-    })
+    axios
+      .put(`/api/comments/${this.props.comment.id}`, formData)
+      .then(response => {
+        form.reset()
+        this.props.commentUpdated()
+        this.props.fetchPost()
+      })
   }
   handleCommentChange = event => {
     this.setState({

@@ -1,9 +1,5 @@
 class Api::ProfilesController < ApplicationController
    # all options [:show, :create, :index, :destroy]
-  #  Prefix Verb  URI Pattern                 Controller#Action
-  #  api_profile GET   /api/profiles/:id(.:format) api/profiles#show
-  #              PATCH /api/profiles/:id(.:format) api/profiles#update
-  #              PUT   /api/profiles/:id(.:format) api/profiles#update
 
   #  to do:
   #   [x] fix how we know which profile we are on from hard coded 
@@ -57,65 +53,10 @@ class Api::ProfilesController < ApplicationController
   def update
     params = profile_params
 
-
-    # if(!profile_params[:quote].present? && profile_params[:about_me].present?)
-    #   params = no_quote
-    # elsif(!profile_params[:about_me].present? && profile_params[:quote].present?) 
-    #   params = no_about_me
-    # elsif(!profile_params[:quote].present? && !profile_params[:about_me].present?)
-    #   params = no_quote_no_about_me
-    # end  
     current_profile.update(params)
 
     render json: current_profile
   end
-
-  # def current
-  #   profile = current_profile
-  #   # current authored posts
-
-  #   posts = profile.authored_posts.map do |post|
-  #     post_details(post)
-  #   end
-
-  #   def get_posts (posts)
-  #     posts.map do |post|
-  #       post_details(post)
-  #     end
-  #   end
-
-  #   interested_posts = get_posts(profile.posts.uniq)   
-
-  #   recommended_posts = get_posts(profile.recommended_posts.uniq)
-
-  #   recommended_posts = recommended_posts.select{ |post| post[:current_profile_author] == false}
-
-  #   # current chosen profile tags
-  #   tags = profile.profile_taggings.map do |tagging|
-  #     {
-  #       id: tagging.tag.id, 
-  #       name: tagging.tag.name,
-  #       strength: tagging.strength 
-  #     }
-  #   end
-
-  #   render json: {
-  #     profile: {
-  #       id: profile.id,
-  #       name: profile.name,
-  #       about_me: profile.about_me,
-  #       quote: profile.quote,
-  #       profile_image: profile.profile_image.attached? && url_for(profile.profile_image),
-  #       cover_image: profile.cover_image.attached? && url_for(profile.cover_image),
-  #       posts: posts,
-  #       interested_posts: interested_posts.to_set,
-  #       recommended_posts: recommended_posts.to_set,
-  #       tags: tags,
-  #       me: profile.id == current_profile.id,   
-  #     }
-  #   }
-  # end
-
 
   def show
     if params[:id] == "undefined" then
@@ -189,19 +130,6 @@ class Api::ProfilesController < ApplicationController
       is_admin_tag: post.tags.where(name: "admin").any?, 
       tags: post.tags, 
     }
-  end
-
-
-  def no_quote
-    params.require(:profile).permit(:cover_image, :profile_image, :about_me, tag_ids: [])
-  end
-
-  def no_about_me
-      params.require(:profile).permit(:cover_image, :profile_image, :quote, tag_ids: [])
-  end
-
-  def no_quote_no_about_me
-      params.require(:profile).permit(:cover_image, :profile_image, tag_ids: [])   
   end
 
   def profile_params

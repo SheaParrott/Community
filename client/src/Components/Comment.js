@@ -19,7 +19,7 @@ class Comment extends Component {
     })
   }
   deleteComment = () => {
-    axios.delete(`/api/comment/${this.props.comment.id}`).then(response => {
+    axios.delete(`/api/comments/${this.props.comment.id}`).then(response => {
       this.props.fetchPost()
       this.setState({
         commentOptions: false

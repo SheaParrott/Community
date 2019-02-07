@@ -1,5 +1,5 @@
 class Api::PostsController < ApplicationController
-  
+   # all options [:show, :create, :index, :destroy, :update]
   def create 
     new_post = current_profile.authored_posts.create(post_params)
 
