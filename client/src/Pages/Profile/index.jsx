@@ -40,12 +40,12 @@ class Profile extends Component {
   }
 
   getProfile = () => {
-    const url = this.props.match.params.id
-      ? `/api/profiles/${this.props.match.params.id}`
-      : `/api/profiles/current`
+    // const url = this.props.match.params.id
+    //   ? `/api/profiles/${this.props.match.params.id}`
+    //   : `/api/profiles/current`
 
     axios
-      .get(url, {
+      .get(`/api/profiles/${this.props.match.params.id}`, {
         headers: {
           Authorization: `Bearer ${auth.getIdToken()}`
         }

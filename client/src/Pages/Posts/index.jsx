@@ -31,8 +31,9 @@ class Posts extends Component {
     )
   }
   getPosts = () => {
+    // `/api/profiles/${this.props.match.params.id}`
     axios
-      .get(`/api/profiles/${this.props.match.params.profile_id}/posts`, {
+      .get(`/api/profiles/${this.props.match.params.id}`, {
         headers: {
           Authorization: `Bearer ${auth.getIdToken()}`
         }

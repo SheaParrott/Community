@@ -27,10 +27,11 @@ class UpdateProfile extends Component {
     } else {
       window.scrollTo(0, 0)
       axios.get(`/api/tags`).then(response => {
+        console.log(response.data)
         this.setState({ tags: response.data.tags })
       })
       axios
-        .get(`/api/profiles/current`, {
+        .get(`/api/profiles/${this.props.match.params.id}`, {
           headers: {
             Authorization: `Bearer ${auth.getIdToken()}`
           }
@@ -62,10 +63,12 @@ class UpdateProfile extends Component {
     //   console.log(pair[0] + ', ' + pair[1])
     // }
 
-    axios.put('/api/profiles/update', formData).then(response => {
-      form.reset()
-      history.push('/Profile')
-    })
+    axios
+      .put(`/api/profiles/${this.props.match.params.id}`, formData)
+      .then(response => {
+        form.reset()
+        history.push('/Profile')
+      })
   }
 
   handleCoverChange = event => {
