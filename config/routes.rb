@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:show, :create, :update, :destroy]
     resources :tags, only: [:index]
     resources :comments
-    resources :interested_posts, only: [:create, :destroy]
+    resources :interested_posts, only: [:create, :destroy, :show]
   end
 
 
