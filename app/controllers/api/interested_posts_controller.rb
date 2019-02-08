@@ -1,16 +1,6 @@
 class Api::InterestedPostsController < ApplicationController
      # all options [:show, :create, :index, :destroy]
 
-  #  to do:
-  #   [x] fix how we know which profile we are on from hard coded 
-  #   to dynamic
-  #   []change how we get interested or recommended posts
-  #   for now lets just use the profile endpoint,
-  #    but need to make a endpoint for each of these to 
-  #    reduce the amount of data recieved
-  #   [x] change all the endpoint names in the controllers
-  #   [x] change all the api calls in React
-
   # def interested_or_recommended
   #   profile_id = params[:id]
 

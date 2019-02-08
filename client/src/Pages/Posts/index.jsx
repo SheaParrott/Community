@@ -33,6 +33,9 @@ class Posts extends Component {
   getPosts = () => {
     // `/api/profiles/${this.props.match.params.id}`
     // /api/interested_posts/:id
+    // created a local variable to change the url passed
+    // depending on which posts are needed to be seen
+    // [] create a recommended posts controller and endpoint
     const url =
       this.props.match.params.kind === 'interested'
         ? '/api/interested_posts/'
