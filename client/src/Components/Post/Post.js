@@ -3,7 +3,6 @@ import './style.css'
 import { Link } from 'react-router-dom'
 import imageOrDefault from '../../imageOrDefault'
 import axios from 'axios'
-import CurrentProfileHelper from '../../currentProfileHelper'
 import history from '../../history'
 import auth from '../../auth'
 import PostForm from '../PostForm'
@@ -61,12 +60,7 @@ class Post extends Component {
   topBar = () => {
     return (
       <div className="requestBoxTopBar">
-        <Link
-          to={CurrentProfileHelper(
-            this.props.post.current_profile_author,
-            this.props.post.author_id
-          )}
-        >
+        <Link to={`/Profile/${this.props.post.author_id}`}>
           <img
             className="requestBoxProfileImage box-secondary"
             src={imageOrDefault(this.props.post.profile_image)}
@@ -74,12 +68,7 @@ class Post extends Component {
           />
         </Link>
         <div className="requestBoxTopBarInfo">
-          <Link
-            to={CurrentProfileHelper(
-              this.props.post.current_profile_author,
-              this.props.post.author_id
-            )}
-          >
+          <Link to={`/Profile/${this.props.post.author_id}`}>
             <h4 className="requestBoxProfileName text-secondary">
               {this.props.post.name}
             </h4>

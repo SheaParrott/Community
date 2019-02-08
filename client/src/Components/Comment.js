@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import imageOrDefault from '../imageOrDefault'
-import CurrentProfileHelper from '../currentProfileHelper'
 import axios from 'axios'
 import CommentForm from './CommentForm'
 
@@ -73,12 +72,7 @@ class Comment extends Component {
   render() {
     return (
       <div className="comment widthbig">
-        <Link
-          to={CurrentProfileHelper(
-            this.props.comment.current_profile_author,
-            this.props.comment.author_id
-          )}
-        >
+        <Link to={`/Profile/${this.props.comment.author_id}`}>
           <div className="profileImageContainer">
             <img
               className="commentProfileImage box-secondary"
@@ -89,12 +83,7 @@ class Comment extends Component {
         </Link>
         <section className="commentBox width">
           <div>
-            <Link
-              to={CurrentProfileHelper(
-                this.props.comment.current_profile_author,
-                this.props.comment.author_id
-              )}
-            >
+            <Link to={`/Profile/${this.props.comment.author_id}`}>
               <h6 className="comment text-secondary">
                 {this.props.comment.author_name}
               </h6>
