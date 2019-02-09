@@ -40,10 +40,6 @@ class Profile extends Component {
   }
 
   getProfile = () => {
-    // const url = this.props.match.params.id
-    //   ? `/api/profiles/${this.props.match.params.id}`
-    //   : `/api/profiles/current`
-
     axios
       .get(`/api/profiles/${this.props.match.params.id}`, {
         headers: {

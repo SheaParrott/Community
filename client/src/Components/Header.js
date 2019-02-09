@@ -11,7 +11,6 @@ class Header extends Component {
           </Link>
           <div className="tooltipBottom">
             <Link to="/profile">
-              {/* <i className="fab fa-connectdevelop header" /> */}
               <i className="fas fa-home header white" />
             </Link>
             <span className="tooltiptextBottom">Home</span>

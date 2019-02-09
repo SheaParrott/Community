@@ -38,7 +38,6 @@ class Api::InterestedPostsController < ApplicationController
   # end
 
   def show
-    # return interested posts
     profile_id = params[:id]
 
     profile = Profile.find(profile_id)

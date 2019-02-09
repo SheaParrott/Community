@@ -50,7 +50,6 @@ class Api::PostsController < ApplicationController
     }
   end
 
-  # "/api/posts/update"
   def update 
     post = Post.find(update_post_params[:id])
     post.update(update_post_params)
