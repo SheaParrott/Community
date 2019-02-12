@@ -56,28 +56,31 @@ class Post extends Component {
       hideThisPost: 'hidden'
     })
   }
+  profilePageScroll = () => {
+    if (this.props.onProfilePage) {
+      this.props.alreadyOnProfileScrollUp()
+    }
+  }
 
   topBar = () => {
     return (
       <div className="requestBoxTopBar">
         <Link to={`/Profile/${this.props.post.author_id}`}>
           <img
+            onClick={this.profilePageScroll}
             className="requestBoxProfileImage box-secondary"
             src={imageOrDefault(this.props.post.profile_image)}
             alt="profile"
           />
-          {this.props.onProfilePage
-            ? this.props.alreadyOnProfileScrollUp()
-            : null}
         </Link>
         <div className="requestBoxTopBarInfo">
           <Link to={`/Profile/${this.props.post.author_id}`}>
-            <h4 className="requestBoxProfileName text-secondary">
+            <h4
+              onClick={this.profilePageScroll}
+              className="requestBoxProfileName text-secondary"
+            >
               {this.props.post.name}
             </h4>
-            {this.props.onProfilePage
-              ? this.props.alreadyOnProfileScrollUp()
-              : null}
           </Link>
           <p className="requestBoxDate">
             {new Date(this.props.post.timestamp).toLocaleTimeString([], {
