@@ -1,41 +1,6 @@
 class Api::InterestedPostsController < ApplicationController
-     # all options [:show, :create, :index, :destroy]
 
-  # def interested_or_recommended
-  #   profile_id = params[:id]
 
-  #   profile = Profile.find(profile_id)
-
-  #   def get_posts (posts)
-  #     posts.map do |post|
-  #       post_details(post)
-  #     end
-  #   end
-
-  #   interested_posts = get_posts(profile.posts.uniq)    
-
-  #   recommended_posts = get_posts(profile.recommended_posts.uniq)
-
-  #   recommended_posts = recommended_posts.select{ |post| post[:current_profile_author] == false}
-
-  #   # show chosen profile tags
-  #   tags = profile.profile_taggings.map do |tagging|
-  #     {
-  #       id: tagging.tag.id, 
-  #       name: tagging.tag.name,
-  #       strength: tagging.strength 
-  #     }
-  #   end
-
-  #   render json: {
-  #     profile: {
-  #       interested_posts: interested_posts.to_set,
-  #       recommended_posts: recommended_posts.to_set,
-  #       tags: tags,
-  #       me: false, 
-  #     }
-  #   }
-  # end
 
   def show
     profile_id = params[:id]

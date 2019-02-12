@@ -5,7 +5,6 @@ class Post < ApplicationRecord
   belongs_to :author, class_name: "Profile", foreign_key: :profile_id
 
   has_many :post_taggings, dependent: :destroy
-
   has_many :tags, through: :post_taggings
 
   has_one_attached :post_image  

@@ -31,25 +31,18 @@ class Posts extends Component {
     )
   }
   getPosts = () => {
-    // `/api/profiles/${this.props.match.params.id}`
-    // /api/interested_posts/:id
-    // created a local variable to change the url passed
-    // depending on which posts are needed to be seen
-    // [] create a recommended posts controller and endpoint
     const url =
       this.props.match.params.kind === 'interested'
-        ? '/api/interested_posts/'
-        : console.log('/api/recommended_posts/')
+        ? `/api/interested_posts/${this.props.match.params.profile_id}`
+        : '/api/profile_taggings'
 
-    console.log(this.props.match.params.profile_id)
     axios
-      .get(`${url}${this.props.match.params.profile_id}`, {
+      .get(`${url}`, {
         headers: {
           Authorization: `Bearer ${auth.getIdToken()}`
         }
       })
       .then(response => {
-        console.log(response.data)
         this.setState({ posts: response.data.posts })
       })
   }
