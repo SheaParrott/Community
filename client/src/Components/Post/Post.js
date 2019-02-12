@@ -66,12 +66,18 @@ class Post extends Component {
             src={imageOrDefault(this.props.post.profile_image)}
             alt="profile"
           />
+          {this.props.onProfilePage
+            ? this.props.alreadyOnProfileScrollUp()
+            : null}
         </Link>
         <div className="requestBoxTopBarInfo">
           <Link to={`/Profile/${this.props.post.author_id}`}>
             <h4 className="requestBoxProfileName text-secondary">
               {this.props.post.name}
             </h4>
+            {this.props.onProfilePage
+              ? this.props.alreadyOnProfileScrollUp()
+              : null}
           </Link>
           <p className="requestBoxDate">
             {new Date(this.props.post.timestamp).toLocaleTimeString([], {

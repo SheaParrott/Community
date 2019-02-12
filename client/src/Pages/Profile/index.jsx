@@ -129,6 +129,10 @@ class Profile extends Component {
     })
   }
 
+  alreadyOnProfileScrollUp = () => {
+    window.scrollTo(0, 0)
+  }
+
   render() {
     if (!this.state.profile) {
       return this.renderLoading()
@@ -241,6 +245,7 @@ class Profile extends Component {
                 <Post
                   key={index}
                   post={post}
+                  alreadyOnProfileScrollUp={this.alreadyOnProfileScrollUp}
                   onPostWithCommentsPage={false}
                   onProfilePage={true}
                   onPostsPage={false}
