@@ -6,6 +6,7 @@ import axios from 'axios'
 import history from '../../history'
 import auth from '../../auth'
 import PostForm from '../PostForm'
+import PostWithComments from '../../Pages/PostWithComments'
 
 class Post extends Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class Post extends Component {
       showMenu: false,
       otherShowMenu: false,
       hideThisPost: '',
-      updateAPost: false
+      updateAPost: false,
+      showPostWithComments: false
     }
   }
 
@@ -199,6 +201,9 @@ class Post extends Component {
       this.addToInterestedPosts()
     }
   }
+  onPostWithCommentsToggle = () => {
+    this.setState({ showPostWithComments: !this.state.showPostWithComments })
+  }
   renderBottomPost = () => {
     const value = !this.props.post.interested
       ? 'Add to Interested Posts'
@@ -265,10 +270,39 @@ class Post extends Component {
       )
     }
     return (
-      <div className={`whiteBackground ${this.state.hideThisPost}`}>
-        <section className="requestBoxCentering">
-          <section className="widthbig boxShadow">
-            {this.topBar()}
+      // <div className={`whiteBackground ${this.state.hideThisPost}`}>
+      //   <section className="requestBoxCentering">
+      //     <section className="widthbig boxShadow">
+      //       {this.topBar()}
+      //       <h4 className="requestBoxTitle">{this.props.post.title}</h4>
+      //       <img
+      //         className="requestBoxImage"
+      //         src={imageOrDefault(this.props.post.image)}
+      //         alt="request"
+      //       />
+      //       <p className="postBody">{this.props.post.body}</p>
+      //       {this.props.post.is_admin_tag ? null : this.renderBottomPost()}
+      //     </section>
+      //   </section>
+      // </div>
+      // {
+      //   /* start */
+      // }
+      <div className="whiteBackground">
+        <div className="postPopUp ">
+          <span
+            className={`postPopUptext  ${
+              this.state.showPostWithComments ? '' : 'hidden'
+            }`}
+          >
+            {this.state.showPostWithComments ? (
+              <PostWithComments post={this.props.post} />
+            ) : null}
+          </span>
+        </div>
+        <section className="widthbig boxShadow">
+          {this.topBar()}
+          <div onClick={this.onPostWithCommentsToggle}>
             <h4 className="requestBoxTitle">{this.props.post.title}</h4>
             <img
               className="requestBoxImage"
@@ -277,11 +311,59 @@ class Post extends Component {
             />
             <p className="postBody">{this.props.post.body}</p>
             {this.props.post.is_admin_tag ? null : this.renderBottomPost()}
-          </section>
+          </div>
         </section>
       </div>
+      // {
+      //   /* end */
+      // }
     )
   }
 }
 
 export default Post
+
+// this.state = {
+//   showMenu: false,
+//   otherShowMenu: false,
+//   hideThisPost: '',
+//   updateAPost: false,
+//   showPostWithComments: false
+// }
+
+// onPostWithCommentsToggle = () => {
+//   this.setState({ showPostWithComments: !this.state.showPostWithComments })
+// }
+
+// {
+//   /* start */
+// }
+// <div>
+//   <div className="PopUpPost ">
+//     {/* need a state for showPostWithComments and a toggle function */}
+//     <span
+//       className={`popUpCommentText ${
+//         this.state.showPostWithComments ? '' : 'hidden'
+//       }`}
+//     >
+//       <PostWithComments post={this.props.post} />
+//     </span>
+//   </div>
+//   {/* [x] post to be clicked for pop up goes here */}
+//   <section className="widthbig boxShadow">
+//     {this.topBar()}
+//     <div onClick={this.onPostWithCommentsToggle}>
+//       <h4 className="requestBoxTitle">{this.props.post.title}</h4>
+//       <img
+//         className="requestBoxImage"
+//         src={imageOrDefault(this.props.post.image)}
+//         alt="request"
+//       />
+//       <p className="postBody">{this.props.post.body}</p>
+//       {this.props.post.is_admin_tag ? null : this.renderBottomPost()}
+//     </div>
+//   </section>
+// </div>
+// {
+//   /* end */
+// }

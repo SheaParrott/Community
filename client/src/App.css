@@ -227,6 +227,9 @@ h6 {
   margin: 5px;
   opacity: 0.6;
 }
+.fa-times-circle {
+  cursor: pointer;
+}
 .fa-check {
   font-size: 20px;
 }
@@ -310,6 +313,29 @@ div.popUpMenu {
   padding: 5px;
 }
 
+/*  */
+.postPopUp {
+  position: relative;
+  display: inline-block;
+}
+
+.postPopUp .postPopUptext {
+  background-color: rgba(255, 255, 255, 0.995);
+  /* color: #fff; */
+  /* text-align: center; */
+
+  /* Position the postPopUp */
+  position: absolute;
+  z-index: 2;
+  top: 100%;
+  left: 50%;
+  right: 50%;
+
+  /* margin-top: 15px;
+  margin-left: -180px; */
+}
+
+/*  */
 @media (min-width: 375px) {
   .width {
     width: 350px;

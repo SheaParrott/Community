@@ -23,7 +23,7 @@ class PostWithComments extends Component {
     if (!auth.isAuthenticated()) {
       history.replace('/SignIn')
     } else {
-      window.scrollTo(0, 0)
+      // window.scrollTo(0, 0)
       this.fetchPost()
     }
   }
@@ -36,15 +36,15 @@ class PostWithComments extends Component {
   }
 
   fetchPost = () => {
-    axios
-      .get(`/api/posts/${this.props.match.params.post_id}`)
-      .then(response => {
-        this.setState({
-          post: response.data.post,
-          errors: [],
-          updateComment: false
-        })
+    console.log('hmmmm')
+    axios.get(`/api/posts/${this.props.post.id}`).then(response => {
+      console.log(response.data.post)
+      this.setState({
+        post: response.data.post,
+        errors: [],
+        updateComment: false
       })
+    })
   }
 
   render() {
@@ -52,16 +52,49 @@ class PostWithComments extends Component {
       return this.renderLoading()
     }
     return (
-      <div className="columnCentering">
-        <Header />
-        <div className="marginFromHeader">
+      // <div className="columnCentering">
+      //   <Header />
+      //   <div className="marginFromHeader">
+      //     <Post
+      //       post={this.state.post}
+      //       onPostWithCommentsPage={true}
+      //       id={this.props.match.params.post_id}
+      //       fetchPost={this.fetchPost}
+      //       onProfilePage={false}
+      //       onPostsPage={false}
+      //     />
+      //     <section className="BoxCentering widthbig whiteBackground boxShadow">
+      //       <div className="columnCentering">
+      //         {this.state.post.comments.map((comment, index) => {
+      //           return (
+      //             <Comment
+      //               key={index}
+      //               fetchPost={this.fetchPost}
+      //               comment={comment}
+      //             />
+      //           )
+      //         })}
+      //         <CommentForm
+      //           post_id={this.props.match.params.post_id}
+      //           fetchPost={this.fetchPost}
+      //           updateComment={false}
+      //         />
+      //       </div>
+      //     </section>
+      //   </div>
+      // </div>
+      <div className="container">
+        <div>
+          <div className="x">
+            <i class="fas fa-times-circle white" />
+          </div>
           <Post
             post={this.state.post}
             onPostWithCommentsPage={true}
-            id={this.props.match.params.post_id}
+            id={this.props.post.id}
             fetchPost={this.fetchPost}
-            onProfilePage={false}
-            onPostsPage={false}
+            // onProfilePage={false}
+            // onPostsPage={false}
           />
           <section className="BoxCentering widthbig whiteBackground boxShadow">
             <div className="columnCentering">
@@ -75,9 +108,9 @@ class PostWithComments extends Component {
                 )
               })}
               <CommentForm
-                post_id={this.props.match.params.post_id}
-                fetchPost={this.fetchPost}
-                updateComment={false}
+                post_id={this.props.post.id}
+                // fetchPost={this.fetchPost}
+                // updateComment={false}
               />
             </div>
           </section>
