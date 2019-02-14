@@ -108,7 +108,23 @@ div.dropDownMenu {
   align-items: center;
   padding: 5px;
 }
-
+/* 
+how I can make a pop up for posts and blur out the background
+.blur-filter {
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
+}
+.noblur {
+  -webkit-filter: blur(0);
+  -moz-filter: blur(0);
+  -o-filter: blur(0);
+  -ms-filter: blur(0);
+  filter: blur(0);
+}
+ */
 @media (min-width: 767px) {
   img.requestBoxProfileImage {
     max-width: 60px;
