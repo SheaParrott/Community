@@ -1,4 +1,5 @@
-Community is a full stack single-page application with full CRUD functionality built from the ground up and deployed using git and a remote web server. 
+<i>Community<i/> is a full stack single-page application with full CRUD functionality built from the ground up and deployed using git and a remote web server. 
+<br/>
 <br/>
 Technologies Used:
 <br/>
