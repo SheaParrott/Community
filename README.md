@@ -1,4 +1,4 @@
-<i>Community<i/> is a full stack single-page application with full CRUD functionality built from the ground up and deployed using git and a remote web server. 
+<i>Community<i/> is a social media platform geared toward helping others, building up the community as a whole, and spreading positive mentality. This is a full stack single-page application with full CRUD functionality built from the ground up and deployed using git and a remote web server.
 <br/>
 <br/>
 Technologies Used:
